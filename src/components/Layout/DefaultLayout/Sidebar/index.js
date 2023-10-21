@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import styles from './Sidebar.module.scss';
 import Menu, { MenuItem } from './Menu';
 import config from '../../../../config';
-import { HomeIcon } from '../../../Icons';
+import { CustomerIcon, HomeIcon, MessageIcon, OrderIcon, ProductIcon, SalesEventIcon } from '../../../Icons';
 
 const cx = classNames.bind(styles);
 
@@ -17,9 +17,12 @@ function Sidebar() {
                 <hr />
             </div>
             <Menu>
-                <MenuItem title="Home" to={config.routes.home} icon={<HomeIcon />} />
-                <MenuItem title="Product" to={config.routes.product} icon={null} />
-                <MenuItem title="Order" to={config.routes.order} icon={null} />
+                <MenuItem title="TRANG CHỦ" to={config.routes.home} icon={<HomeIcon />} />
+                <MenuItem title="SẢN PHẨM" to={config.routes.product} icon={<ProductIcon />} />
+                <MenuItem title="ĐƠN HÀNG" to={config.routes.order} icon={<OrderIcon />} />
+                <MenuItem title="KHÁCH HÀNG" to={config.routes.product} icon={<CustomerIcon />} />
+                <MenuItem title="KHUYẾN MÃI" to={config.routes.product} icon={<SalesEventIcon />} />
+                <MenuItem title="TIN NHẮN" to={config.routes.order} icon={<MessageIcon />} />
             </Menu>
         </aside>
     );

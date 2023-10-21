@@ -10,7 +10,7 @@
 }
 
 hr {
-    color: #FCAF17;
+    color: var(--primary);
     height: 1px;
     width: 160px;
     border-style: solid;
@@ -26,5 +26,5 @@ hr {
 .shop {
     font-size: 25px;
     font-weight: 600;
-    color: #FCAF17;
+    color: var(--primary);
 }
