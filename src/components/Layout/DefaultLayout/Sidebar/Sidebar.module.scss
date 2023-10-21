@@ -1,0 +1,30 @@
+.wrapper {
+    width: var(--default-layout-width);
+    max-width: 100%;
+}
+
+.name-and-lineborder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+hr {
+    color: #FCAF17;
+    height: 1px;
+    width: 160px;
+    border-style: solid;
+    margin-top: 19px;
+    margin-bottom: 35px;
+}
+
+.name {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.shop {
+    font-size: 25px;
+    font-weight: 600;
+    color: #FCAF17;
+}

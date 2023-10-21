@@ -1,0 +1,20 @@
+.wrapper {
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 25px;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: white;
+}
+
+.icon {
+    color: var(--primary-color-text);
+    width: 18px;
+}
+
+.icon+.title {
+    margin-left: 20px;
+    color: var(--primary-color-text);
+}

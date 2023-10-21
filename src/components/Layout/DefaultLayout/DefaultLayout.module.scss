@@ -1,0 +1,19 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    width: 206px;
+    display: flex;
+    margin-top: 21px;
+    padding-left: 28px;
+    padding-right: 28px;
+}
+
+.container {
+    display: flex;
+    background-color: #F5F5F5;
+    flex-direction: column;
+    width: 100%;
+}

@@ -1,0 +1,13 @@
+.content {
+    width: 220px;
+}
+
+.sortbar-item {
+    width: 100%;
+    justify-content: flex-start;
+
+    &:hover {
+        background-color: gray;
+        border-radius: 0;
+    }
+}
