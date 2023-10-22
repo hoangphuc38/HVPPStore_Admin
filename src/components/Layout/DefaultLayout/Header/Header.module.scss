@@ -53,12 +53,43 @@
 .task-bar {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    margin-left: 300px;
+}
+
+.notification {
+    display: flex;
+    cursor: pointer;
+    position: relative;
+    margin-right: 37px;
+}
+
+.notification-icon {
+    font-size: 50px;
+    color: var(--primary-color-text);
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.counter {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    font-size: 15px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -2px;
+    right: -2px;
 }
 
 .sortdown-btn {
     font-size: 33px;
     margin-left: 28px;
-    color: #2A2A86;
+    color: var(--primary-color-text);
     background-color: transparent;
     cursor: pointer;
 }

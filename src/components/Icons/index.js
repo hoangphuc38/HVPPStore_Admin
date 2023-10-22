@@ -1,16 +1,15 @@
-export const HomeIcon = ({ width = '30px', height = '30px', className }) => (
+export const HomeIcon = ({ width = '30px', height = '30px' }) => (
     <svg xmlns="http://www.w3.org/2000/svg"
         height={height}
         width={width}
         fill="currentColor"
-        className={className}
         viewBox="0 0 576 512"
     >
         <path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z" />
     </svg>
 );
 
-export const ProductIcon = ({ width = '30px', height = '30px', color = '#2A2A86' }) => (
+export const ProductIcon = ({ width = '30px', height = '30px' }) => (
     <svg xmlns="http://www.w3.org/2000/svg"
         height={height}
         width={width}
@@ -20,7 +19,7 @@ export const ProductIcon = ({ width = '30px', height = '30px', color = '#2A2A86'
     </svg>
 );
 
-export const OrderIcon = ({ width = '30px', height = '30px', color = '#2A2A86' }) => (
+export const OrderIcon = ({ width = '30px', height = '30px' }) => (
     <svg xmlns="http://www.w3.org/2000/svg"
         height={height}
         width={width}
@@ -30,7 +29,7 @@ export const OrderIcon = ({ width = '30px', height = '30px', color = '#2A2A86' }
     </svg>
 );
 
-export const CustomerIcon = ({ width = '30px', height = '30px', color = '#2A2A86' }) => (
+export const CustomerIcon = ({ width = '30px', height = '30px' }) => (
     <svg xmlns="http://www.w3.org/2000/svg"
         height={height}
         width={width}
@@ -40,15 +39,15 @@ export const CustomerIcon = ({ width = '30px', height = '30px', color = '#2A2A86
     </svg>
 );
 
-export const SalesEventIcon = ({ width = '30px', height = '30px', color = '#2A2A86' }) => (
+export const SalesEventIcon = ({ width = '30px', height = '30px' }) => (
     <svg height={height}
         width={width}
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512"
         fill="currentColor">
-        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
         <g id="SVGRepo_iconCarrier">
             <g>
                 <polygon points="217.989,246.205 214.344,276.8 233.322,273.071 218.355,246.134 "></polygon>
@@ -58,17 +57,31 @@ export const SalesEventIcon = ({ width = '30px', height = '30px', color = '#2A2A
     </svg>
 );
 
-export const MessageIcon = ({ width = '30px', height = '30px', color = '#2A2A86' }) => (
+export const MessageIcon = ({ width = '30px', height = '30px' }) => (
     <svg viewBox="0 0 24 24"
         height={height}
         width={width}
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg">
-        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
         <g id="SVGRepo_iconCarrier">
-            <path d="M17 2H7C4.24 2 2 4.23 2 6.98V12.96V13.96C2 16.71 4.24 18.94 7 18.94H8.5C8.77 18.94 9.13 19.12 9.3 19.34L10.8 21.33C11.46 22.21 12.54 22.21 13.2 21.33L14.7 19.34C14.89 19.09 15.19 18.94 15.5 18.94H17C19.76 18.94 22 16.71 22 13.96V6.98C22 4.23 19.76 2 17 2ZM8 12C7.44 12 7 11.55 7 11C7 10.45 7.45 10 8 10C8.55 10 9 10.45 9 11C9 11.55 8.56 12 8 12ZM12 12C11.44 12 11 11.55 11 11C11 10.45 11.45 10 12 10C12.55 10 13 10.45 13 11C13 11.55 12.56 12 12 12ZM16 12C15.44 12 15 11.55 15 11C15 10.45 15.45 10 16 10C16.55 10 17 10.45 17 11C17 11.55 16.56 12 16 12Z" fill="#2A2A86"></path>
+            <path d="M17 2H7C4.24 2 2 4.23 2 6.98V12.96V13.96C2 16.71 4.24 18.94 7 18.94H8.5C8.77 18.94 9.13 19.12 9.3 19.34L10.8 21.33C11.46 22.21 12.54 22.21 13.2 21.33L14.7 19.34C14.89 19.09 15.19 18.94 15.5 18.94H17C19.76 18.94 22 16.71 22 13.96V6.98C22 4.23 19.76 2 17 2ZM8 12C7.44 12 7 11.55 7 11C7 10.45 7.45 10 8 10C8.55 10 9 10.45 9 11C9 11.55 8.56 12 8 12ZM12 12C11.44 12 11 11.55 11 11C11 10.45 11.45 10 12 10C12.55 10 13 10.45 13 11C13 11.55 12.56 12 12 12ZM16 12C15.44 12 15 11.55 15 11C15 10.45 15.45 10 16 10C16.55 10 17 10.45 17 11C17 11.55 16.56 12 16 12Z"></path>
         </g>
     </svg>
 );
 
+export const NotificationIcon = ({ width = '30px', height = '30px', color = '#2A2A86' }) => (
+    <svg fill={color}
+        height={height}
+        width={width}
+        viewBox="0 0 512 512"
+        xmlns="http://www.w3.org/2000/svg">
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+            <path d="M256,480a80.09,80.09,0,0,0,73.3-48H182.7A80.09,80.09,0,0,0,256,480Z"></path>
+            <path d="M400,288V227.47C400,157,372.64,95.61,304,80l-8-48H216l-8,48c-68.88,15.61-96,76.76-96,147.47V288L64,352v48H448V352Z"></path>
+        </g>
+    </svg>
+);

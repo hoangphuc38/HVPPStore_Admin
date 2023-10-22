@@ -1,11 +1,12 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass, faRightFromBracket, faSortDown, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faMagnifyingGlass, faRightFromBracket, faSortDown, faUser } from '@fortawesome/free-solid-svg-icons';
 import AvatarItem from '../../../AvatarItem';
 import Tippy from '@tippyjs/react/headless';
 import Wrapper from '../../../Popper';
 import Menu from '../../../Popper/Menu';
+import { NotificationIcon } from '../../../Icons';
 
 const cx = classNames.bind(styles);
 
@@ -35,6 +36,13 @@ function Header() {
                 </div>
 
                 <div className={cx('task-bar')}>
+                    <div className={cx('notification')}>
+                        <button className={cx('notification-icon')}>
+                            <FontAwesomeIcon icon={faBell} />
+                        </button>
+                        <div className={cx('counter')}>2</div>
+                    </div>
+
                     <AvatarItem />
 
                     <Menu
