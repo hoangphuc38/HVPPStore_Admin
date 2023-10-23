@@ -20,9 +20,9 @@ function Sidebar() {
                 <MenuItem title="TRANG CHỦ" to={config.routes.home} icon={<HomeIcon />} />
                 <MenuItem title="SẢN PHẨM" to={config.routes.product} icon={<ProductIcon />} />
                 <MenuItem title="ĐƠN HÀNG" to={config.routes.order} icon={<OrderIcon />} />
-                <MenuItem title="KHÁCH HÀNG" to={config.routes.product} icon={<CustomerIcon />} />
-                <MenuItem title="KHUYẾN MÃI" to={config.routes.product} icon={<SalesEventIcon />} />
-                <MenuItem title="TIN NHẮN" to={config.routes.order} icon={<MessageIcon />} />
+                <MenuItem title="KHÁCH HÀNG" to={config.routes.customer} icon={<CustomerIcon />} />
+                <MenuItem title="KHUYẾN MÃI" to={config.routes.salesevent} icon={<SalesEventIcon />} />
+                <MenuItem title="TIN NHẮN" to={config.routes.message} icon={<MessageIcon />} />
             </Menu>
         </aside>
     );

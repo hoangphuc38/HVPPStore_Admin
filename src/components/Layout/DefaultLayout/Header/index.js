@@ -1,12 +1,10 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faMagnifyingGlass, faRightFromBracket, faSortDown, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faRightFromBracket, faSortDown, faUser } from '@fortawesome/free-solid-svg-icons';
 import AvatarItem from '../../../AvatarItem';
-import Tippy from '@tippyjs/react/headless';
-import Wrapper from '../../../Popper';
 import Menu from '../../../Popper/Menu';
-import { NotificationIcon } from '../../../Icons';
+import SearchBar from '../../../SearchBar';
 
 const cx = classNames.bind(styles);
 
@@ -28,12 +26,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('search')}>
-                    <input placeholder='Tìm kiếm' spellCheck={false} />
-                    <button className={cx('search-btn')}>
-                        <FontAwesomeIcon icon={faMagnifyingGlass} />
-                    </button>
-                </div>
+                <SearchBar />
 
                 <div className={cx('task-bar')}>
                     <div className={cx('notification')}>

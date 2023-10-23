@@ -1,0 +1,21 @@
+.content {
+    margin-left: 38px;
+    margin-top: 36px;
+}
+
+.dropdown-bar {
+    width: 341px;
+    height: 55px;
+}
+
+.Dropdown-root {
+    position: absolute;
+}
+
+.Dropdown-control {
+    width: 360px;
+    height: 55px;
+    border: 2px solid var(--primary-color-text);
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}

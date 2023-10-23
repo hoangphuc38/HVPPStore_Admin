@@ -1,5 +1,6 @@
 .content {
     width: 220px;
+    margin-top: 3px;
 }
 
 .sortbar-item {
@@ -7,7 +8,7 @@
     justify-content: flex-start;
 
     &:hover {
-        background-color: gray;
+        background-color: #f2f9fc;
         border-radius: 0;
     }
 }
