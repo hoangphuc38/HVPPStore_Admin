@@ -3,19 +3,72 @@
     margin-top: 36px;
 }
 
+.sortbars-and-button {
+    display: flex;
+    flex-direction: row;
+    gap: 385px;
+}
+
+.sortbars {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+}
+
 .dropdown-bar {
     width: 341px;
     height: 55px;
 }
 
-.Dropdown-root {
-    position: absolute;
-}
-
 .Dropdown-control {
+    display: flex;
     width: 360px;
     height: 55px;
     border: 2px solid var(--primary-color-text);
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    align-items: center;
+    padding-left: 30px;
+    color: var(--primary-color-text);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.is-open .Dropdown-arrow {
+    border-color: transparent transparent #2A2A86;
+    border-width: 0px 10px 10px;
+    top: 20px;
+}
+
+.Dropdown-arrow {
+    border-color: #2A2A86 transparent transparent;
+    border-width: 10px 10px 0;
+    top: 20px;
+}
+
+
+.Dropdown-control-season {
+    display: flex;
+    width: 207px;
+    height: 55px;
+    border: 2px solid var(--primary-color-text);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    align-items: center;
+    padding-left: 30px;
+    color: var(--primary-color-text);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.Dropdown-arrow-season {
+    border-color: #2A2A86 transparent transparent;
+    border-width: 10px 10px 0;
+    top: 20px;
+}
+
+.add-product-btn {
+    background-color: var(--primary-color-text);
 }
