@@ -1,18 +1,30 @@
 .product-wrapper {
+    display: flex;
+    position: relative;
     width: 234px;
-    height: 307px;
+    height: 100%;
+    box-shadow: -2px 2px 2px 2px #D9D9D9;
 }
 
 .image {
     width: 220px;
-    height: 214px;
+    height: 290px;
 }
 
 .content {
     background-color: white;
+    width: 234px;
 }
 
 .price-and-star {
     display: flex;
     gap: 38px;
+}
+
+.delete-btn {
+    display: flex;
+    position: relative;
+    top: -15px;
+    left: -20px;
+    height: 35px;
 }

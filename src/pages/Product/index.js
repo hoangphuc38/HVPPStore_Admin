@@ -52,9 +52,7 @@ function Product() {
                     products.length > 0 &&
                     products.map((product) => {
                         return (
-                            <ProductItem key={product.id} data={product}>
-
-                            </ProductItem>
+                            <ProductItem key={product.id} data={product} />
                         )
                     })
 
