@@ -72,3 +72,10 @@
 .add-product-btn {
     background-color: var(--primary-color-text);
 }
+
+.product-list {
+    display: grid;
+    margin-top: 40px;
+    grid-template-columns: auto auto auto auto;
+    gap: 70px;
+}

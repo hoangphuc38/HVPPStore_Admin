@@ -5,11 +5,18 @@ import styles from './Product.module.scss';
 import Button from '../../components/Button';
 import { AddIcon } from '../../components/Icons';
 import { useState } from 'react';
+import ProductItem from '../../components/ProductItem';
 
 const cx = classNames.bind(styles);
 
 function Product() {
-    const [product, setProduct] = useState([]);
+    const [products, setProducts] = useState([
+        { id: '001', image: '', description: 'Áo Real Madrid', price: '200.000đ', stars: '5', isDelete: false },
+        { id: '002', image: '', description: 'Áo Real Madrid', price: '200.000đ', stars: '5', isDelete: false },
+        { id: '003', image: '', description: 'Áo Real Madrid', price: '200.000đ', stars: '5', isDelete: false },
+        { id: '004', image: '', description: 'Áo Real Madrid', price: '200.000đ', stars: '5', isDelete: false },
+
+    ]);
 
     const optionClothes = [
         'Áo 1', 'Áo 2'
@@ -17,19 +24,10 @@ function Product() {
     const optionSeasons = [
         '2008', '2009', '2010'
     ];
-    const itemProducts = [
-        {
-            image: '',
-            description: '',
-            price: '',
-            stars: '',
-            isDelete: false,
-        }
-    ]
+
     const defaultOptionClothes = 'Chung';
     const defaultOptionSeasons = 'Mùa giải';
 
-    setProduct(itemProducts);
 
     return (
         <div className={cx('content')}>
@@ -50,7 +48,17 @@ function Product() {
                 <Button className={cx('add-product-btn')} primary leftIcon={<AddIcon />}>Thêm sản phẩm</Button>
             </div>
             <div className={cx('product-list')}>
+                {
+                    products.length > 0 &&
+                    products.map((product) => {
+                        return (
+                            <ProductItem key={product.id} data={product}>
 
+                            </ProductItem>
+                        )
+                    })
+
+                }
             </div>
         </div>
 
