@@ -4,17 +4,20 @@
     padding: 9px 25px;
     border-radius: 20px;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
+    background-color: white;
+    color: var(--primary-color-text);
+}
+
+.primary {
+    background-color: var(--primary-color-text);
+    color: white;
 }
 
 .icon {
-    color: var(--primary-color-text);
+    width: 30px;
     height: 30px;
-}
-
-.title {
-    color: white;
 }
 
 .icon+.title {

@@ -1,21 +1,22 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faRightFromBracket, faSortDown, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faSortDown } from '@fortawesome/free-solid-svg-icons';
 import AvatarItem from '../../../AvatarItem';
 import Menu from '../../../Popper/Menu';
 import SearchBar from '../../../SearchBar';
+import { UserIcon, LogoutIcon } from '../../../Icons';
 
 const cx = classNames.bind(styles);
 
 const SORTBAR_ITEMS = [
     {
-        icon: <FontAwesomeIcon icon={faUser} />,
+        icon: <UserIcon />,
         title: 'Đổi mật khẩu',
         to: '',
     },
     {
-        icon: <FontAwesomeIcon icon={faRightFromBracket} />,
+        icon: <LogoutIcon />,
         title: 'Đăng xuất',
         to: '',
     },
