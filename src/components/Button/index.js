@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
-function Button({ to, href, children, primary, leftIcon, className, onClick }) {
+function Button({ to, href, children, primary, orange, leftIcon, className, onClick }) {
     let Comp = 'button';
 
     const props = {
@@ -22,6 +22,7 @@ function Button({ to, href, children, primary, leftIcon, className, onClick }) {
     const classes = cx('wrapper', {
         [className]: className,
         primary,
+        orange,
     })
 
     return (

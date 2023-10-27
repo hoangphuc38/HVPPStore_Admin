@@ -1,6 +1,15 @@
+import classNames from 'classnames/bind';
+import styles from './Customer.module.scss';
+import SearchBar from '../../components/SearchBar';
+
+const cx = classNames.bind(styles);
+
 function Customer() {
     return (
-        <h2>Customer Page</h2>
+        <div className={cx('container')}>
+            <SearchBar placeholder="Tìm kiếm khách hàng" />
+
+        </div>
     );
 }
 
