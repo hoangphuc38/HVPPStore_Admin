@@ -6,15 +6,16 @@ import Button from '../../components/Button';
 import { AddIcon } from '../../components/Icons';
 import { useState } from 'react';
 import ProductItem from '../../components/ProductItem';
+import config from '../../config';
 
 const cx = classNames.bind(styles);
 
 function Product() {
     const [products, setProducts] = useState([
-        { id: '001', image: '', description: 'Áo Real Madrid', price: '200.000đ', stars: '5', isDelete: false },
-        { id: '002', image: '', description: 'Áo Real Madrid', price: '200.000đ', stars: '5', isDelete: false },
-        { id: '003', image: '', description: 'Áo Real Madrid', price: '200.000đ', stars: '5', isDelete: false },
-        { id: '004', image: '', description: 'Áo Real Madrid', price: '200.000đ', stars: '5', isDelete: false },
+        { id: '001', image: '', description: 'Áo Real Madrid màu đen mùa 2023-2024', price: '200.000đ', stars: '5', isDelete: false },
+        { id: '002', image: '', description: 'Áo Real Madrid màu đen mùa 2023-2024', price: '200.000đ', stars: '5', isDelete: false },
+        { id: '003', image: '', description: 'Áo Real Madrid màu đen mùa 2023-2024', price: '200.000đ', stars: '5', isDelete: false },
+        { id: '004', image: '', description: 'Áo Real Madrid màu đen mùa 2023-2024', price: '200.000đ', stars: '5', isDelete: false },
 
     ]);
 
@@ -34,18 +35,22 @@ function Product() {
             <div className={cx('sortbars-and-button')}>
                 <div className={cx('sortbars')}>
                     <Dropdown controlClassName={cx('Dropdown-control')}
-                        arrowClassName={cx('Dropdown-arrow')}
+                        arrowClosed={<span className={cx('arrow-closed')} />}
+                        arrowOpen={<span className={cx('arrow-open')} />}
+                        menuClassName={cx('menu-open')}
                         options={optionClothes}
                         value={defaultOptionClothes}
                         placeholder="Select" />
 
                     <Dropdown controlClassName={cx('Dropdown-control-season')}
-                        arrowClassName={cx('Dropdown-arrow-season')}
+                        arrowClosed={<span className={cx('arrow-closed')} />}
+                        arrowOpen={<span className={cx('arrow-open')} />}
+                        menuClassName={cx('menu-open')}
                         options={optionSeasons}
                         value={defaultOptionSeasons}
                         placeholder="Select" />
                 </div>
-                <Button className={cx('add-product-btn')} primary leftIcon={<AddIcon />}>Thêm sản phẩm</Button>
+                <Button href={config.routes.addProduct} className={cx('add-product-btn')} primary leftIcon={<AddIcon />}>Thêm sản phẩm</Button>
             </div>
             <div className={cx('product-list')}>
                 {

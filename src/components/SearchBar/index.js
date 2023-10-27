@@ -5,10 +5,10 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const cx = classNames.bind(styles);
 
-function SearchBar() {
+function SearchBar({ placeholder }) {
     return (
         <div className={cx('search')}>
-            <input placeholder='Tìm kiếm' spellCheck={false} />
+            <input type="search" placeholder={placeholder} spellCheck={false} />
             <button className={cx('search-btn')}>
                 <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>

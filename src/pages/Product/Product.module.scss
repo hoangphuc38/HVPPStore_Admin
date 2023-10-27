@@ -33,19 +33,6 @@
     font-weight: 500;
 }
 
-.is-open .Dropdown-arrow {
-    border-color: transparent transparent #2A2A86;
-    border-width: 0px 10px 10px;
-    top: 20px;
-}
-
-.Dropdown-arrow {
-    border-color: #2A2A86 transparent transparent;
-    border-width: 10px 10px 0;
-    top: 20px;
-}
-
-
 .Dropdown-control-season {
     display: flex;
     width: 207px;
@@ -62,10 +49,34 @@
     font-weight: 500;
 }
 
-.Dropdown-arrow-season {
+.arrow-closed {
     border-color: #2A2A86 transparent transparent;
+    border-style: solid;
     border-width: 10px 10px 0;
+    content: ' ';
+    display: block;
+    height: 0;
+    position: absolute;
+    right: 10px;
     top: 20px;
+    width: 0
+}
+
+.arrow-open {
+    border-color: transparent transparent #2A2A86;
+    border-style: solid;
+    border-width: 0px 10px 10px;
+    content: ' ';
+    display: block;
+    height: 0;
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    width: 0
+}
+
+.menu-open {
+    border-radius: 5px;
 }
 
 .add-product-btn {

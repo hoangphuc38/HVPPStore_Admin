@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faSortDown } from '@fortawesome/free-solid-svg-icons';
 import AvatarItem from '../../../AvatarItem';
 import Menu from '../../../Popper/Menu';
-import SearchBar from '../../../SearchBar';
 import { UserIcon, LogoutIcon } from '../../../Icons';
 
 const cx = classNames.bind(styles);
@@ -27,7 +26,6 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <SearchBar placeholder="Tìm kiếm sản phẩm" />
 
                 <div className={cx('task-bar')}>
                     <div className={cx('notification')}>

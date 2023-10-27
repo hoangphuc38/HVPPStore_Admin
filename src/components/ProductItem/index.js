@@ -14,8 +14,7 @@ function ProductItem({ data }) {
                 <div className={cx('content')}>
                     <span className={cx('description')}>{data.description}</span>
                     <div className={cx('price-and-star')}>
-                        <span>{data.price}</span>
-                        <span>{data.stars}</span>
+                        <span className={cx('price')}>{data.price}</span>
                     </div>
                 </div>
             </div>
