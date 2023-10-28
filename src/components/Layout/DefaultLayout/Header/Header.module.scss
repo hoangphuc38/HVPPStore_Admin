@@ -5,16 +5,16 @@
 
 .inner {
     height: 100%;
-    width: var(--default-layout-width);
+    width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .task-bar {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-left: 300px;
 }
 
 .notification {

@@ -5,7 +5,7 @@
 .sortbars-and-button {
     display: flex;
     flex-direction: row;
-    gap: 385px;
+    justify-content: space-between;
 }
 
 .sortbars {
