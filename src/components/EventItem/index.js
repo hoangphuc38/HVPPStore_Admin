@@ -2,7 +2,6 @@ import classNames from "classnames/bind";
 import styles from './EventItem.module.scss';
 import images from '../../images/Logo.png';
 import { RemoveIcon } from "../Icons";
-import Button from '../Button';
 import { EditIcon } from "../Icons";
 
 const cx = classNames.bind(styles);
@@ -14,14 +13,19 @@ function EventItem({ data }) {
                 <img className={cx('image')} src={images} alt="eventImage" />
 
                 <div className={cx('content')}>
-                    <span className={cx('description')}>{data.description}</span>
-                    <span className={cx('description')}>{data.description}</span>
-                    <span className={cx('description')}>{data.description}</span>
-                    <span className={cx('description')}>{data.description}</span>
+                    <p className={cx('title')}>{data.title}</p>
+                    <p className={cx('value')}>Giảm <b className={cx('value-number')}>{data.promotion_value}</b> hóa đơn</p>
+                    <p className={cx('code')}>Mã giảm giá: {data.code}</p>
+                    <p className={cx('time')}>Có hiệu lực từ {data.time_used}</p>
                 </div>
 
-                <Button orange leftIcon={<EditIcon />} />
+                <div className={cx('edit-btn-wrapper')}>
+                    <button className={cx('edit-btn')}>
+                        <EditIcon />
+                    </button>
+                </div>
             </div>
+
             <div className={cx('delete-btn')}>
                 <RemoveIcon />
             </div>

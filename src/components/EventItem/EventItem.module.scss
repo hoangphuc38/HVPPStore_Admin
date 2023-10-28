@@ -1,0 +1,67 @@
+.event-wrapper {
+    display: flex;
+    position: relative;
+    width: 510px;
+    box-shadow: -2px 2px 2px 2px #D9D9D9;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.info-image-editBtn {
+    display: flex;
+    flex-direction: row;
+    width: 520px;
+    height: 100%;
+    padding: 13px 18px 13px 12px;
+}
+
+.image {
+    width: 91px;
+    height: 95px;
+}
+
+.content {
+    display: grid;
+    font-size: 15px;
+    margin-left: 20px;
+    width: 310px;
+    gap: 3px;
+}
+
+.title {
+    font-weight: 800;
+}
+
+.value .code {
+    font-weight: 500;
+}
+
+.value-number {
+    color: red;
+    font-weight: 800;
+}
+
+.time {
+    color: red;
+    font-weight: 400;
+}
+
+.edit-btn-wrapper {
+    display: flex;
+    align-items: flex-end;
+}
+
+.edit-btn {
+    background-color: var(--primary);
+    border-radius: 10px;
+    width: 30px;
+    height: 30px;
+    margin-left: 28px;
+}
+
+.delete-btn {
+    display: flex;
+    position: relative;
+    top: -15px;
+    left: -20px;
+}

@@ -148,7 +148,7 @@ export const AddSaleIcon = ({ width = '30px', height = '30px', color = 'white' }
     </svg>
 );
 
-export const EditIcon = ({ width = '30px', height = '30px' }) => (
+export const EditIcon = ({ width = '15px', height = '15px' }) => (
     <svg viewBox="0 0 20 20"
         height={height}
         width={width}

@@ -11,7 +11,7 @@ function SaleEvent() {
     const EVENT_INFOS = [
         {
             id: '001',
-            title: 'Đồng hành cùng UEFA Champions League',
+            title: 'Đồng hành cùng UEFA Champions League dkajhsdkjashdkahdksaj',
             promotion_value: '10%',
             code: 'HVPP2023',
             time_used: '30/09/2023  00:00',
