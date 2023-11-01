@@ -11,34 +11,34 @@ function AddEvent({ closeDialog }) {
             <div className={cx("overlay")}></div>
             <div className={cx("modal")}>
                 <header className={cx("modal__header")}>
-                    <h2>Thêm s? ki?n khuy?n m?i</h2>
+                    <h2>Thêm sự kiện khuyến mãi</h2>
 
                 </header>
                 <main className={cx("modal__main")}>
                     <div className={cx('title-event')}>
-                        <span>Tên s? ki?n:   </span>
+                        <span>Tên sự kiện:   </span>
                         <input className={cx('input-event')} type="text" />
                     </div>
                     <div className={cx('title-event')}>
-                        <span>M?c gi?m:   </span>
+                        <span>Mức giảm:   </span>
                         <input className={cx('input-event')} type="text" />
                     </div>
                     <div className={cx('title-event')}>
-                        <span>M? gi?m giá:   </span>
+                        <span>Mã giảm giá:   </span>
                         <input className={cx('input-event')} type="text" />
                     </div>
                     <div className={cx('title-event')}>
-                        <span>Th?i gian áp d?ng:   </span>
+                        <span>Thời gian áp dụng:   </span>
 
                         <div className={cx('date')}>
-                            <span className={cx('from-to')}>T?</span>
+                            <span className={cx('from-to')}>Từ</span>
                             <input className={cx('input-time')} type="text" />
                             <button className={cx('calendar-btn')}>
                                 <CalendarIcon />
                             </button>
                         </div>
                         <div className={cx('date')}>
-                            <span className={cx('from-to')}>ð?n</span>
+                            <span className={cx('from-to')}>đến</span>
                             <input className={cx('input-time')} type="text" />
                             <button className={cx('calendar-btn')}>
                                 <CalendarIcon />
@@ -48,7 +48,7 @@ function AddEvent({ closeDialog }) {
 
                     <div className={cx('buttons')}>
                         <Button className={cx('button-detail')} orange>Thêm</Button>
-                        <Button className={cx('button-detail')} onClick={closeDialog} red>H?y</Button>
+                        <Button className={cx('button-detail')} onClick={closeDialog} red>Hủy</Button>
                     </div>
 
                 </main>
