@@ -26,9 +26,9 @@ function EventItem({ data }) {
                 </div>
             </div>
 
-            <div className={cx('delete-btn')}>
+            <button className={cx('delete-btn')}>
                 <RemoveIcon />
-            </div>
+            </button>
         </div>
     );
 }

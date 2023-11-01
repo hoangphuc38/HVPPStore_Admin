@@ -5,11 +5,17 @@
 }
 
 .sidebar {
-    width: 10%;
+    width: 5%;
+    height: 100%;
     display: flex;
-    padding-top: 85px;
+    padding-top: 90px;
     background-image: url("../../../images/background-header.jpg");
     background-size: cover;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
 }
 
 .container {
@@ -20,4 +26,6 @@
     padding-top: 26px;
     padding-left: 38px;
     padding-right: 30px;
+    margin-left: 5%;
+    overflow: auto;
 }

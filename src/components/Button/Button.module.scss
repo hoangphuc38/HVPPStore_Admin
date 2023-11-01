@@ -10,6 +10,8 @@
     color: var(--primary-color-text);
 }
 
+//Types of button
+
 .primary {
     background-color: var(--primary-color-text);
     color: white;
@@ -21,6 +23,20 @@
     color: white;
     text-decoration: none;
 }
+
+.red {
+    background-color: var(--red);
+    color: white;
+    text-decoration: none;
+}
+
+.green {
+    background-color: var(--green);
+    color: white;
+    text-decoration: none;
+}
+
+//Layout in button
 
 .icon {
     width: 30px;

@@ -4,6 +4,8 @@ import SearchBar from '../../components/SearchBar';
 import Button from '../../components/Button';
 import { AddSaleIcon } from '../../components/Icons';
 import EventItem from '../../components/EventItem';
+import { useState } from 'react';
+import AddEvent from '../../components/FormEvent/AddEvent'
 
 const cx = classNames.bind(styles);
 
@@ -32,11 +34,20 @@ function SaleEvent() {
         },
     ];
 
+    const [isOpen, setIsOpen] = useState(false);
+    const openDialog = () => {
+        setIsOpen(true);
+    }
+
+    const closeDialog = () => {
+        setIsOpen(false);
+    }
+
     return (
         <div className={cx('container')}>
             <div className={cx('search-and-addbutton')}>
                 <SearchBar placeholder="Tìm kiếm khuyến mãi" />
-                <Button orange leftIcon={<AddSaleIcon />}>Thêm khuyến mãi</Button>
+                <Button orange leftIcon={<AddSaleIcon />} onClick={openDialog}>Thêm khuyến mãi</Button>
             </div>
             <div className={cx('event-list')}>
                 {
@@ -48,6 +59,12 @@ function SaleEvent() {
                     })
                 }
             </div>
+
+            {
+                isOpen && (
+                    <AddEvent closeDialog={closeDialog} />
+                )
+            }
 
         </div>
     );

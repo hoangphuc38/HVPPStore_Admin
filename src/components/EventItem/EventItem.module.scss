@@ -57,11 +57,15 @@
     width: 30px;
     height: 30px;
     margin-left: 28px;
+    cursor: pointer;
 }
 
 .delete-btn {
     display: flex;
     position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    height: 25%;
     top: -15px;
     left: -20px;
 }
