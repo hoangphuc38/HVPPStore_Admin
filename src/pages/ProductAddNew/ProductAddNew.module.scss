@@ -64,12 +64,14 @@ p {
     align-items: center;
     border-radius: 15px;
     background-color: var(--primary-color-text);
+    cursor: pointer;
 }
 
 .circle-back {
     display: flex;
     width: 72px;
     height: 72px;
+    border: 1px solid var(--primary-color-text);
     background-color: white;
     border-radius: 50%;
     align-items: center;
@@ -155,7 +157,8 @@ p {
     position: absolute;
     right: 10px;
     top: 20px;
-    width: 0
+    width: 0;
+    cursor: pointer;
 }
 
 .arrow-open {
@@ -168,7 +171,8 @@ p {
     position: absolute;
     right: 10px;
     top: 20px;
-    width: 0
+    width: 0;
+    cursor: pointer;
 }
 
 .menu-open {
@@ -185,6 +189,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .info-input {
@@ -202,4 +207,15 @@ textarea {
     border: 1px solid var(--primary-color-text);
     border-radius: 15px;
     font-family: 'Roboto', sans-serif;
+}
+
+.save-cancel-buttons {
+    gap: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cancel-button {
+    border-radius: 15px;
+    margin-bottom: 20px;
 }

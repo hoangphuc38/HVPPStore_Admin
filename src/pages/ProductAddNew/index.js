@@ -78,6 +78,11 @@ function ProductAddNew() {
                     <p>Thông tin sản phẩm</p>
                     <textarea type="text" className={cx('info-input')} cols="40" rows="5"></textarea>
                 </div>
+
+                <div className={cx('save-cancel-buttons')}>
+                    <Button className={cx('cancel-button')} red>Hủy</Button>
+                    <Button className={cx('cancel-button')} orange>Lưu</Button>
+                </div>
             </div>
         </div>
     );
