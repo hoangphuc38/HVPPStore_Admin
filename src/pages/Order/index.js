@@ -19,14 +19,21 @@ function Order() {
             customer_name: 'Hoàng Phúc',
             time_ordered: '30/09/2023',
             order_value: '3.000.000đ',
-            status: 'Chờ xác nhận',
+            status: 'Đã nhận',
         },
         {
             order_id: 'HVPP205',
             customer_name: 'Hoàng Phúc',
             time_ordered: '30/09/2023',
             order_value: '3.000.000đ',
-            status: 'Chờ xác nhận',
+            status: 'Đã hủy',
+        },
+        {
+            order_id: 'HVPP205',
+            customer_name: 'Hoàng Phúc',
+            time_ordered: '30/09/2023',
+            order_value: '3.000.000đ',
+            status: 'Đang vận chuyển',
         },
     ]
 
@@ -38,6 +45,21 @@ function Order() {
     ];
 
     const defaultOptionStatusOrders = 'Trạng thái đơn hàng';
+
+    const renderStatusOrderFontStyle = (val) => {
+        if (val.status === 'Chờ xác nhận') {
+            return <td className={cx('status-yellow')}>{val.status}</td>
+        }
+        else if (val.status === 'Đã nhận') {
+            return <td className={cx('status-green')}>{val.status}</td>
+        }
+        else if (val.status === 'Đang vận chuyển') {
+            return <td className={cx('status-blue')}>{val.status}</td>
+        }
+        else {
+            return <td className={cx('status-red')}>{val.status}</td>
+        }
+    }
 
     return (
         <div className={cx('container')}>
@@ -61,7 +83,28 @@ function Order() {
                 }
             </div>
 
-
+            <div className={cx('order-table')}>
+                <table>
+                    <tr>
+                        <th>Mã đơn hàng</th>
+                        <th>Tên khách hàng</th>
+                        <th>Thời gian</th>
+                        <th>Giá trị đơn hàng</th>
+                        <th>Trạng thái</th>
+                    </tr>
+                    {ORDER_INFOS.map((val, key) => {
+                        return (
+                            <tr key={key}>
+                                <td>{val.order_id}</td>
+                                <td>{val.customer_name}</td>
+                                <td>{val.time_ordered}</td>
+                                <td>{val.order_value}</td>
+                                {renderStatusOrderFontStyle(val)}
+                            </tr>
+                        )
+                    })}
+                </table>
+            </div>
 
         </div>
     );

@@ -84,3 +84,51 @@
     font-style: italic;
     font-weight: 500;
 }
+
+.order-table {
+    margin-top: 35px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.65);
+    border-radius: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 95%;
+    margin-top: 18px;
+    margin-bottom: 100px;
+}
+
+td {
+    text-align: center;
+    border-bottom: 3px solid #D9D9D9;
+    padding: 20px;
+}
+
+tr:hover {
+    background-color: #f2f9fc;
+    cursor: pointer;
+}
+
+.status-yellow {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.status-green {
+    color: var(--green);
+    font-weight: 700;
+}
+
+.status-red {
+    color: var(--red);
+    font-weight: 700;
+}
+
+.status-blue {
+    color: var(--primary-color-text);
+    font-weight: 700;
+}
