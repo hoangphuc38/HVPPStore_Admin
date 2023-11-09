@@ -10,10 +10,10 @@ function Message() {
         <div className={cx('container')}>
             <div className={cx('chat-list-container')}>
                 <div className={cx('search')}>
-                    <input type="search" placeholder="Tìm kiếm ai đó" spellCheck={false} />
                     <button className={cx('search-btn')}>
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </button>
+                    <input type="search" placeholder="Tìm kiếm ai đó ..." spellCheck={false} />
                 </div>
             </div>
 
