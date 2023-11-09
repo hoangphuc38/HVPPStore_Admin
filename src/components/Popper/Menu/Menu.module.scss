@@ -8,7 +8,7 @@
     justify-content: flex-start;
 
     &:hover {
-        background-color: #f2f9fc;
+        background-color: var(--hover-color);
         border-radius: 0;
     }
 }

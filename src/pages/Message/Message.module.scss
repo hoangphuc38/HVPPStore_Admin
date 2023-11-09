@@ -9,11 +9,14 @@
     height: 100%;
     border-right: 2px solid #D9D9D9;
     padding-left: 2%;
-    padding-right: 2%;
+    padding-right: 1%;
+    display: flex;
+    flex-flow: column;
 }
 
 .message-content-container {
     width: 70%;
+    overflow-y: scroll;
 }
 
 .search {
@@ -43,4 +46,36 @@
     margin-right: 16px;
     color: white;
     cursor: pointer;
+}
+
+.title {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    color: black;
+    font-size: 18px;
+}
+
+.user-list {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.message-content-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-chat-message-notification {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 29px;
+}
+
+.notification-text {
+    font-weight: 600;
+    font-size: 20px;
 }
