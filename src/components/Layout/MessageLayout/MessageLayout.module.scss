@@ -1,7 +1,18 @@
 .wrapper {
     display: flex;
-    flex-direction: row;
-    height: 100vh;
+    flex-flow: column;
+    height: 100%;
+}
+
+.header {
+    padding-right: 3%;
+    flex: 0 1 auto;
+}
+
+.content {
+    flex: 1 1 auto;
+    margin-top: 18px;
+    background-color: white;
 }
 
 .sidebar {
@@ -19,13 +30,12 @@
 }
 
 .container {
-    display: flex;
     background-color: #F5F5F5;
-    flex-direction: column;
-    width: 100%;
+    width: 95%;
     padding-top: 26px;
-    padding-left: 38px;
-    padding-right: 30px;
     margin-left: 5%;
     overflow: auto;
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
 }

@@ -21,10 +21,10 @@ const SORTBAR_ITEMS = [
     },
 ];
 
-function Header() {
+function Header({ className }) {
 
     return (
-        <header className={cx('wrapper')}>
+        <header className={cx('wrapper', className)}>
             <div className={cx('inner')}>
 
                 <div className={cx('task-bar')}>

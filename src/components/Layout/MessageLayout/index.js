@@ -12,7 +12,7 @@ function MessageLayout({ children }) {
                 <Sidebar />
             </div>
             <div className={cx('container')}>
-                <Header />
+                <Header className={cx('header')} />
                 <div className={cx('content')}>
                     {children}
                 </div>
