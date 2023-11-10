@@ -8,15 +8,20 @@ import ProductAddNew from "../pages/ProductAddNew";
 
 import NoSearchLayout from "../components/Layout/NoSearchLayout";
 import MessageLayout from "../components/Layout/MessageLayout";
+import OrderDetail from "../pages/OrderDetail";
+
+import routes from "../config/routes";
 
 const publicRoutes = [
-    { path: '/', component: Home, layout: NoSearchLayout },
-    { path: '/product', component: Product },
-    { path: '/order', component: Order, layout: NoSearchLayout },
-    { path: '/customer', component: Customer, layout: NoSearchLayout },
-    { path: '/salesevent', component: SaleEvent, layout: NoSearchLayout },
-    { path: '/message', component: Message, layout: MessageLayout },
-    { path: '/product/newproduct', component: ProductAddNew, layout: NoSearchLayout },
+    { path: routes.home, component: Home, layout: NoSearchLayout },
+    { path: routes.product, component: Product },
+    { path: routes.addProduct, component: ProductAddNew, layout: NoSearchLayout },
+    { path: routes.order, component: Order, layout: NoSearchLayout },
+    { path: routes.detailOrder, component: OrderDetail, layout: NoSearchLayout },
+    { path: routes.customer, component: Customer, layout: NoSearchLayout },
+    { path: routes.salesevent, component: SaleEvent, layout: NoSearchLayout },
+    { path: routes.message, component: Message, layout: MessageLayout },
+
 ];
 
 export { publicRoutes };

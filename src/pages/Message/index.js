@@ -3,7 +3,7 @@ import styles from './Message.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import UserMessageItem from '../../components/UserMessageItem';
-import { NoChatMessageIcon } from '../../components/Icons';
+import { ExitMessageIcon, NoChatMessageIcon } from '../../components/Icons';
 import { useState } from 'react';
 import CurrentUserItem from '../../components/CurrentUserItem';
 
@@ -57,6 +57,10 @@ function Message() {
         setCurrentMessage(activeUser);
     }
 
+    const closeMessage = () => {
+        setIsShow(false);
+    }
+
     return (
         <div className={cx('container')}>
             <div className={cx('chat-list-container')}>
@@ -94,8 +98,8 @@ function Message() {
                                 })
                             }
 
-                            <div className={cx('exit-btn')}>
-
+                            <div className={cx('exit-btn')} onClick={closeMessage}>
+                                <ExitMessageIcon />
                             </div>
 
                         </div>

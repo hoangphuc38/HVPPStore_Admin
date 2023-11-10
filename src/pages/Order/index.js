@@ -2,6 +2,8 @@ import classNames from 'classnames/bind';
 import styles from './Order.module.scss';
 import SearchBar from '../../components/SearchBar';
 import Dropdown from 'react-dropdown';
+import config from '../../config';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -94,13 +96,15 @@ function Order() {
                     </tr>
                     {ORDER_INFOS.map((val, key) => {
                         return (
-                            <tr key={key}>
-                                <td>{val.order_id}</td>
-                                <td>{val.customer_name}</td>
-                                <td>{val.time_ordered}</td>
-                                <td>{val.order_value}</td>
-                                {renderStatusOrderFontStyle(val)}
-                            </tr>
+                            <Link to={`/order/${val.order_id}`} className={cx('wrapper')}>
+                                <tr key={key}>
+                                    <td>{val.order_id}</td>
+                                    <td>{val.customer_name}</td>
+                                    <td>{val.time_ordered}</td>
+                                    <td>{val.order_value}</td>
+                                    {renderStatusOrderFontStyle(val)}
+                                </tr>
+                            </Link>
                         )
                     })}
                 </table>

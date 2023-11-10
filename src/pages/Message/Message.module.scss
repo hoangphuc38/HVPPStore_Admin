@@ -23,7 +23,7 @@
     display: flex;
     width: 367px;
     height: 45px;
-    margin-top: 33px;
+    margin-top: 25px;
     padding-left: 7px;
     border-radius: 15px;
     background-color: rgba(42, 42, 134, 0.80);
@@ -64,13 +64,14 @@
 
 .message-content-container {
     width: 70%;
-    overflow-y: scroll;
     padding: 17px 25px 17px 15px;
 }
 
 .message-header {
     display: flex;
     justify-content: space-between;
+    padding-bottom: 23px;
+    border-bottom: 2px solid #D9D9D9;
 }
 
 .exit-btn {
