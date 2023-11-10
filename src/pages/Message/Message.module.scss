@@ -63,9 +63,32 @@
 }
 
 .message-content-container {
+    width: 70%;
+    overflow-y: scroll;
+    padding: 17px 25px 17px 15px;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.exit-btn {
+    display: flex;
+    width: 56px;
+    height: 56px;
+    background-color: var(--primary-color-text);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.no-message-content-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 70%;
 }
 
 .no-chat-message-notification {

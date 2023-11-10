@@ -1,11 +1,11 @@
 import classNames from "classnames/bind";
-import styles from './UserMessageItem.module.scss';
+import styles from './CurrentUserItem.module.scss';
 
 const cx = classNames.bind(styles);
 
-function UserMessageItem({ data, onClick }) {
+function CurrentUserItem({ data }) {
     return (
-        <div className={cx('wrapper')} onClick={onClick}>
+        <div className={cx('wrapper')}>
             <div className={cx('avatar-wrapper')}>
                 <img className={cx('avatar')}
                     src={data.avatar}
@@ -16,13 +16,12 @@ function UserMessageItem({ data, onClick }) {
                 <div className={cx('name')}>
                     <span>{data.nameUser}</span>
                 </div>
-                <div className={cx('message')}>
-                    <span className={cx('text')}>{data.lastMessage}</span>
-                    <span>{data.timeMessage}</span>
+                <div className={cx('time')}>
+                    <span>Hoạt động {data.lastSeen} trước</span>
                 </div>
             </div>
         </div>
     );
 }
 
-export default UserMessageItem;
+export default CurrentUserItem;
