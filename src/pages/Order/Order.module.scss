@@ -23,29 +23,13 @@
     display: flex;
     width: 310px;
     height: 55px;
-    border: 2px solid var(--primary-color-text);
+    border: 3px solid var(--primary-color-text);
     border-radius: 20px;
     align-items: center;
     padding-left: 30px;
     color: var(--primary-color-text);
     font-size: 18px;
-    font-weight: 500;
-}
-
-.Dropdown-control-season {
-    display: flex;
-    width: 207px;
-    height: 55px;
-    border: 2px solid var(--primary-color-text);
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    align-items: center;
-    padding-left: 30px;
-    color: var(--primary-color-text);
-    font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .arrow-closed {
