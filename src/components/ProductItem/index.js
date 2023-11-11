@@ -5,7 +5,7 @@ import { RemoveIcon } from "../Icons";
 
 const cx = classNames.bind(styles);
 
-function ProductItem({ data }) {
+function ProductItem({ data, onClick }) {
     return (
         <div className={cx('product-wrapper')}>
             <div className={cx('info-image')}>
@@ -18,7 +18,7 @@ function ProductItem({ data }) {
                     </div>
                 </div>
             </div>
-            <div className={cx('delete-btn')}>
+            <div className={cx('delete-btn')} onClick={onClick}>
                 <RemoveIcon />
             </div>
         </div>

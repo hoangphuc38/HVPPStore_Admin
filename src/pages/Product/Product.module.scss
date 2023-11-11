@@ -84,8 +84,8 @@
 }
 
 .product-list {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     margin-top: 40px;
-    grid-template-columns: auto auto auto auto;
-    gap: 90px;
+    gap: 100px;
 }

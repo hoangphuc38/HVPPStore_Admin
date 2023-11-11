@@ -6,6 +6,7 @@ import { AddSaleIcon } from '../../components/Icons';
 import EventItem from '../../components/EventItem';
 import { useState } from 'react';
 import AddEvent from '../../components/FormEvent/AddEvent'
+import DetailEvent from '../../components/FormEvent/DetailEvent';
 
 const cx = classNames.bind(styles);
 
@@ -16,31 +17,57 @@ function SaleEvent() {
             title: 'Đồng hành cùng UEFA Champions League dkajhsdkjashdkahdksaj',
             promotion_value: '10%',
             code: 'HVPP2023',
-            time_used: '30/09/2023  00:00',
+            start_time: '01/09/2023 00:00',
+            expired_time: '30/09/2023  00:00',
         },
         {
             id: '002',
             title: 'Đồng hành cùng UEFA Champions League',
             promotion_value: '10%',
             code: 'HVPP2023',
-            time_used: '30/09/2023  00:00',
+            start_time: '01/09/2023 00:00',
+            expired_time: '30/09/2023  00:00',
         },
         {
             id: '003',
             title: 'Đồng hành cùng UEFA Champions League',
             promotion_value: '10%',
             code: 'HVPP2023',
-            time_used: '30/09/2023  00:00',
+            start_time: '01/09/2023 00:00',
+            expired_time: '30/09/2023  00:00',
         },
     ];
 
-    const [isOpen, setIsOpen] = useState(false);
+
+    const [events, setEvents] = useState(EVENT_INFOS);
+    const [isOpenNewEvent, setIsOpenNewEvent] = useState(false);
+    const [isSelectEvent, setIsSelectEvent] = useState(false);
+    const [selectedEvent, setSelectedEvent] = useState({});
+
     const openDialog = () => {
-        setIsOpen(true);
+        setIsOpenNewEvent(true);
     }
 
     const closeDialog = () => {
-        setIsOpen(false);
+        setIsOpenNewEvent(false);
+    }
+
+    const selectEvent = (event) => {
+        let currentEvent = EVENT_INFOS;
+        console.log(currentEvent);
+        currentEvent = currentEvent.filter(item => item.id === event.id);
+        setSelectedEvent(currentEvent[0]);
+        setIsSelectEvent(true);
+    }
+
+    const closeSelectedEvent = () => {
+        setIsSelectEvent(false);
+    }
+
+    const HandleDeleteEvent = (event) => {
+        let currentEvents = events;
+        currentEvents = currentEvents.filter(item => item.id !== event.id);
+        setEvents(currentEvents);
     }
 
     return (
@@ -51,18 +78,26 @@ function SaleEvent() {
             </div>
             <div className={cx('event-list')}>
                 {
-                    EVENT_INFOS.length > 0 &&
-                    EVENT_INFOS.map((event) => {
+                    events.length > 0 &&
+                    events.map((event) => {
                         return (
-                            <EventItem key={event.id} data={event} />
+                            <EventItem key={event.id}
+                                data={event}
+                                editEvent={() => selectEvent(event)}
+                                deleteEvent={() => HandleDeleteEvent(event)} />
                         )
                     })
                 }
             </div>
 
             {
-                isOpen && (
+                isOpenNewEvent && (
                     <AddEvent closeDialog={closeDialog} />
+                )
+            }
+            {
+                isSelectEvent && (
+                    <DetailEvent closeDialog={closeSelectedEvent} data={selectedEvent} />
                 )
             }
 

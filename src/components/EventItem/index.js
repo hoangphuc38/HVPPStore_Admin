@@ -6,7 +6,7 @@ import { EditIcon } from "../Icons";
 
 const cx = classNames.bind(styles);
 
-function EventItem({ data }) {
+function EventItem({ editEvent, deleteEvent, data }) {
     return (
         <div className={cx('event-wrapper')}>
             <div className={cx('info-image-editBtn')}>
@@ -16,17 +16,17 @@ function EventItem({ data }) {
                     <p className={cx('title')}>{data.title}</p>
                     <p className={cx('value')}>Giảm <b className={cx('value-number')}>{data.promotion_value}</b> hóa đơn</p>
                     <p className={cx('code')}>Mã giảm giá: {data.code}</p>
-                    <p className={cx('time')}>Có hiệu lực từ {data.time_used}</p>
+                    <p className={cx('time')}>Có hiệu lực từ {data.expired_time}</p>
                 </div>
 
                 <div className={cx('edit-btn-wrapper')}>
-                    <button className={cx('edit-btn')}>
+                    <button className={cx('edit-btn')} onClick={editEvent}>
                         <EditIcon />
                     </button>
                 </div>
             </div>
 
-            <button className={cx('delete-btn')}>
+            <button className={cx('delete-btn')} onClick={deleteEvent}>
                 <RemoveIcon />
             </button>
         </div>

@@ -16,6 +16,7 @@ function Product() {
         { id: '002', image: '', description: 'Áo Real Madrid màu đen mùa 2023-2024', price: '200.000đ', stars: '5', isDelete: false },
         { id: '003', image: '', description: 'Áo Real Madrid màu đen mùa 2023-2024', price: '200.000đ', stars: '5', isDelete: false },
         { id: '004', image: '', description: 'Áo Real Madrid màu đen mùa 2023-2024', price: '200.000đ', stars: '5', isDelete: false },
+        { id: '005', image: '', description: 'Áo Real Madrid màu đen mùa 2023-2024', price: '200.000đ', stars: '5', isDelete: false },
 
     ]);
 
@@ -28,6 +29,13 @@ function Product() {
 
     const defaultOptionClothes = 'Chung';
     const defaultOptionSeasons = 'Mùa giải';
+
+    //Functions
+    const HandleDeleteProduct = (product) => {
+        let currentProducts = products;
+        currentProducts = currentProducts.filter(item => item.id !== product.id);
+        setProducts(currentProducts);
+    }
 
 
     return (
@@ -57,7 +65,7 @@ function Product() {
                     products.length > 0 &&
                     products.map((product) => {
                         return (
-                            <ProductItem key={product.id} data={product} />
+                            <ProductItem key={product.id} data={product} onClick={() => HandleDeleteProduct(product)} />
                         )
                     })
 

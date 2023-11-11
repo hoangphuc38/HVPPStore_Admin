@@ -51,9 +51,7 @@ function Message() {
     const showMessage = (user) => {
         setIsShow(true);
         let activeUser = USER_INFOS;
-        console.log(activeUser);
         activeUser = activeUser.filter(item => item.id === user.id);
-        console.log(activeUser);
         setCurrentMessage(activeUser);
     }
 

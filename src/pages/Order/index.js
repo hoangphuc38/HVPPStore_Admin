@@ -2,7 +2,6 @@ import classNames from 'classnames/bind';
 import styles from './Order.module.scss';
 import SearchBar from '../../components/SearchBar';
 import Dropdown from 'react-dropdown';
-import config from '../../config';
 import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
@@ -18,21 +17,21 @@ function Order() {
         },
         {
             order_id: 'HVPP205',
-            customer_name: 'Hoàng Phúc',
+            customer_name: 'Vũ Phạm Đình Thái',
             time_ordered: '30/09/2023',
             order_value: '3.000.000đ',
             status: 'Đã nhận',
         },
         {
             order_id: 'HVPP205',
-            customer_name: 'Hoàng Phúc',
+            customer_name: 'Lê Văn Phú',
             time_ordered: '30/09/2023',
             order_value: '3.000.000đ',
             status: 'Đã hủy',
         },
         {
             order_id: 'HVPP205',
-            customer_name: 'Hoàng Phúc',
+            customer_name: 'Phạm Nguyễn Đình Thái',
             time_ordered: '30/09/2023',
             order_value: '3.000.000đ',
             status: 'Đang vận chuyển',
@@ -50,16 +49,16 @@ function Order() {
 
     const renderStatusOrderFontStyle = (val) => {
         if (val.status === 'Chờ xác nhận') {
-            return <td className={cx('status-yellow')}>{val.status}</td>
+            return <span className={cx('status-yellow')}>{val.status}</span>
         }
         else if (val.status === 'Đã nhận') {
-            return <td className={cx('status-green')}>{val.status}</td>
+            return <span className={cx('status-green')}>{val.status}</span>
         }
         else if (val.status === 'Đang vận chuyển') {
-            return <td className={cx('status-blue')}>{val.status}</td>
+            return <span className={cx('status-blue')}>{val.status}</span>
         }
         else {
-            return <td className={cx('status-red')}>{val.status}</td>
+            return <span className={cx('status-red')}>{val.status}</span>
         }
     }
 
@@ -86,28 +85,34 @@ function Order() {
             </div>
 
             <div className={cx('order-table')}>
-                <table>
-                    <tr>
-                        <th>Mã đơn hàng</th>
-                        <th>Tên khách hàng</th>
-                        <th>Thời gian</th>
-                        <th>Giá trị đơn hàng</th>
-                        <th>Trạng thái</th>
-                    </tr>
-                    {ORDER_INFOS.map((val, key) => {
-                        return (
-                            <Link to={`/order/${val.order_id}`} className={cx('wrapper')}>
-                                <tr key={key}>
-                                    <td>{val.order_id}</td>
-                                    <td>{val.customer_name}</td>
-                                    <td>{val.time_ordered}</td>
-                                    <td>{val.order_value}</td>
-                                    {renderStatusOrderFontStyle(val)}
-                                </tr>
-                            </Link>
-                        )
-                    })}
-                </table>
+                <div className={cx('table-content')}>
+                    <div className={cx('header-title')}>
+                        <span>Mã đơn hàng</span>
+                        <span>Tên khách hàng</span>
+                        <span>Thời gian</span>
+                        <span>Giá trị đơn hàng</span>
+                        <span>Trạng thái</span>
+                    </div>
+
+                    <div className={cx('detail-infos')}>
+                        {
+                            ORDER_INFOS.map((val, key) => {
+                                return (
+                                    <div className={cx('info-wrapper')}>
+                                        <Link className={cx('info')} to={`/order/${val.order_id}`}>
+                                            <span className={cx('id')}>{val.order_id}</span>
+                                            <span className={cx('name')}>{val.customer_name}</span>
+                                            <span className={cx('time')}>{val.time_ordered}</span>
+                                            <span className={cx('value')}>{val.order_value}</span>
+                                            {renderStatusOrderFontStyle(val)}
+                                        </Link>
+                                    </div>
+
+                                )
+                            })
+                        }
+                    </div>
+                </div>
             </div>
 
         </div>
