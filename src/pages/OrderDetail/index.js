@@ -1,11 +1,33 @@
 import classNames from 'classnames/bind';
 import styles from './OrderDetail.module.scss';
 import { useState } from 'react';
-import image from '../../images/Ao-real-madrid-san-khach-2023-1.webp';
+import DetailProductItem from '../../components/DetailProductItem';
 
 const cx = classNames.bind(styles);
 
 function OrderDetail() {
+    const PRODUCTS_INFO = [
+        {
+            imageProduct: '../../images/Ao-real-madrid-san-khach-2023-1.webp',
+            nameProduct: 'Áo Real Madrid mùa giải 2023 - 2024',
+            quantityProduct: '4',
+            sizeProduct: 'XL',
+            sumPrice: '2.000.000',
+        },
+        {
+            imageProduct: '../../images/Ao-real-madrid-san-khach-2023-1.webp',
+            nameProduct: 'Áo Real Madrid mùa giải 2023 - 2024',
+            quantityProduct: '4',
+            sizeProduct: 'XL',
+            sumPrice: '2.000.000',
+        },
+    ];
+    const delivery_payment = {
+        sumOrder: '4.000.000',
+        deliveryOrder: 'Bình thường',
+        paymentMethod: 'Visa',
+    }
+
     const [isOpen, setIsOpen] = useState(false);
 
     const openProductList = () => {
@@ -73,18 +95,19 @@ function OrderDetail() {
                                 <div className={cx('icon-product-list')}></div>
                                 <span className={cx('text-title')}>DANH SÁCH SẢN PHẨM</span>
                             </div>
-                            <div className={cx('icon-sortdown')} onClick={closeProductList}></div>
+                            <div className={cx('icon-sortdown-close')} onClick={closeProductList}></div>
                         </div>
 
-                        <div className={cx('detail-product')}>
-                            <img className={cx('product-image')} src={image} alt='ProductImage' />
-                            <div className={cx('product-info')}>
-                                <span>Áo Real Madrid</span>
-                                <span>Áo Real Madrid</span>
-                                <span>Áo Real Madrid</span>
-                                <span>Áo Real Madrid</span>
-                            </div>
+                        <div className={cx('products-info')}>
+                            {
+                                PRODUCTS_INFO.map((product, key) => {
+                                    return (
+                                        <DetailProductItem data={product} key={key} />
+                                    )
+                                })
+                            }
                         </div>
+
                     </div>
                     :
                     <div className={cx('product-list')}>
@@ -105,6 +128,19 @@ function OrderDetail() {
                     <div className={cx('icon-delivery-payment')}></div>
                     <span className={cx('text-title')}>PHƯƠNG THỨC VẬN CHUYỂN & THANH TOÁN</span>
                 </div>
+                <div className={cx('content')}>
+                    <div className={cx('content-title')}>
+                        <p>Tổng giá trị đơn hàng:</p>
+                        <p>Phương thức vận chuyển:</p>
+                        <p>Phương thức thanh toán:</p>
+                    </div>
+                    <div className={cx('content-detail')}>
+                        <span className={cx('sum-order')}>{delivery_payment.sumOrder}</span>
+                        <span>{delivery_payment.deliveryOrder}</span>
+                        <span>{delivery_payment.paymentMethod}</span>
+                    </div>
+                </div>
+
             </div>
 
         </div>

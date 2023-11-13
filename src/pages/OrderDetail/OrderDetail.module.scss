@@ -117,13 +117,14 @@
 .title-wrapper {
     display: flex;
     justify-content: space-between;
+    transition-duration: 2.5s;
 }
 
 .title-wrapper-open {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 40px;
-    transition-duration: 2.168s;
+    margin-bottom: 30px;
+    transition-duration: 2.5s;
 }
 
 .icon-sortdown {
@@ -131,29 +132,24 @@
     background-color: transparent;
     width: 30px;
     height: 30px;
+    transition: transform 1s;
     cursor: pointer;
 }
 
-.detail-product {
-    display: flex;
-    align-items: center;
-    height: 200px;
-    width: 100%;
-    background-color: white;
-    padding: 15px 0 15px 18px;
-}
-
-.product-image {
-    width: 145px;
-    height: 170px;
-    border-radius: 15px;
-    margin-right: 37px;
-}
-
-.product-info {
+.products-info {
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.icon-sortdown-close {
+    background: url('../../images/ChevronDown.png'), lightgray 50% / contain no-repeat;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: transform 1s;
+    transform: rotate(180deg);
 }
 
 .delivery-payment {
@@ -165,4 +161,29 @@
     background-color: transparent;
     width: 30px;
     height: 30px;
+}
+
+.content {
+    display: flex;
+    gap: 70px;
+    margin-top: 30px;
+}
+
+.content-title {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 20px;
+}
+
+.content-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-style: italic;
+    font-size: 20px;
+}
+
+.sum-order {
+    color: var(--red);
 }
