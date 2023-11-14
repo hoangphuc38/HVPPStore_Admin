@@ -2,12 +2,13 @@ import classNames from "classnames/bind";
 import styles from './ProductItem.module.scss';
 import images from '../../images/Ao-real-madrid-san-khach-2023-1.webp';
 import { RemoveIcon } from "../Icons";
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
-function ProductItem({ data, onClick }) {
+function ProductItem({ data, onClick, href }) {
     return (
-        <div className={cx('product-wrapper')}>
+        <Link className={cx('product-wrapper')} to={href}>
             <div className={cx('info-image')}>
                 <img className={cx('image')} src={images} alt="productImage" />
 
@@ -21,7 +22,7 @@ function ProductItem({ data, onClick }) {
             <div className={cx('delete-btn')} onClick={onClick}>
                 <RemoveIcon />
             </div>
-        </div>
+        </Link>
     );
 }
 

@@ -65,7 +65,7 @@ function Product() {
                     products.length > 0 &&
                     products.map((product) => {
                         return (
-                            <ProductItem key={product.id} data={product} onClick={() => HandleDeleteProduct(product)} />
+                            <ProductItem key={product.id} href={`/product/${product.id}`} data={product} onClick={() => HandleDeleteProduct(product)} />
                         )
                     })
 

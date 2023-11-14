@@ -11,11 +11,13 @@ import MessageLayout from "../components/Layout/MessageLayout";
 import OrderDetail from "../pages/OrderDetail";
 
 import routes from "../config/routes";
+import ProductDetail from "../pages/ProductDetail";
 
 const publicRoutes = [
     { path: routes.home, component: Home, layout: NoSearchLayout },
     { path: routes.product, component: Product },
     { path: routes.addProduct, component: ProductAddNew, layout: NoSearchLayout },
+    { path: routes.detailProduct, component: ProductDetail, layout: NoSearchLayout },
     { path: routes.order, component: Order, layout: NoSearchLayout },
     { path: routes.detailOrder, component: OrderDetail, layout: NoSearchLayout },
     { path: routes.customer, component: Customer, layout: NoSearchLayout },
