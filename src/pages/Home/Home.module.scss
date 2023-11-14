@@ -1,0 +1,139 @@
+.container {
+    margin-top: 10px;
+}
+
+.slogan-downloadbtn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slogan {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-shop {
+    display: flex;
+    flex-direction: row;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.sport {
+    color: var(--primary);
+}
+
+.slogan-sentence {
+    font-style: italic;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.statistic-btn {
+    width: 299px;
+    height: 60px;
+    border-radius: 15px;
+}
+
+.first-labels {
+    margin-top: 28px;
+    display: flex;
+}
+
+.statistic-boxes {
+    display: flex;
+    width: 55%;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.box {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 310px;
+    border-radius: 20px;
+    background-color: white;
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.customer-icon {
+    background: url('../../images/Customer.png'), lightgray 50% / contain no-repeat;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+}
+
+.quantity {
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.change-to-last-month {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.interest-change {
+    font-style: italic;
+}
+
+.sales-today-icon {
+    background: url('../../images/MoneyBag.png'), lightgray 50% / contain no-repeat;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+}
+
+.sales-month-icon {
+    background: url('../../images/BusinessManagement.png'), lightgray 50% / contain no-repeat;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+}
+
+.sales-year-icon {
+    background: url('../../images/Profit.png'), lightgray 50% / contain no-repeat;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+}
+
+.second-box {
+    width: 45%;
+    border-radius: 20px;
+    background-color: white;
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
+}
+
+.second-labels {
+    display: flex;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    justify-content: space-between;
+}
+
+.first-statistic {
+    width: 60%;
+    height: 372px;
+    border-radius: 20px;
+    background-color: white;
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
+}
+
+.second-statistic {
+    width: 35%;
+    height: 372px;
+    border-radius: 20px;
+    background-color: white;
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
+}
