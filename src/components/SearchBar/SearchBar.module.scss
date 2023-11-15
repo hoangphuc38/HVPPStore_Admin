@@ -11,11 +11,16 @@
         flex: 1;
         height: 100%;
         padding-right: 36px;
-        color: gray;
-        font-size: 15px;
+        color: var(--primary-text-color);
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 16px;
         border: none;
         outline: none;
         background-color: transparent;
+
+        &::placeholder {
+            font-family: 'Nunito Sans', sans-serif;
+        }
     }
 }
 

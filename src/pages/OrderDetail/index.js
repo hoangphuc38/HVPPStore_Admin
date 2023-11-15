@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import styles from './OrderDetail.module.scss';
-import { useState } from 'react';
 import DetailProductItem from '../../components/DetailProductItem';
+import Accordion from '../../components/Accordion';
 
 const cx = classNames.bind(styles);
 
@@ -26,18 +26,6 @@ function OrderDetail() {
         sumOrder: '4.000.000',
         deliveryOrder: 'Bình thường',
         paymentMethod: 'Visa',
-    }
-
-    const [isOpen, setIsOpen] = useState(false);
-
-    const openProductList = () => {
-        setIsOpen(true);
-        console.log("Open ->");
-    }
-
-    const closeProductList = () => {
-        setIsOpen(false);
-        console.log("Close ->");
     }
 
     return (
@@ -86,42 +74,17 @@ function OrderDetail() {
                 </div>
             </div>
 
-            {
-                isOpen
-                    ?
-                    <div className={cx('product-list')}>
-                        <div className={cx('title-wrapper-open')}>
-                            <div className={cx('title')}>
-                                <div className={cx('icon-product-list')}></div>
-                                <span className={cx('text-title')}>DANH SÁCH SẢN PHẨM</span>
-                            </div>
-                            <div className={cx('icon-sortdown-close')} onClick={closeProductList}></div>
-                        </div>
-
-                        <div className={cx('products-info')}>
-                            {
-                                PRODUCTS_INFO.map((product, key) => {
-                                    return (
-                                        <DetailProductItem data={product} key={key} />
-                                    )
-                                })
-                            }
-                        </div>
-
-                    </div>
-                    :
-                    <div className={cx('product-list')}>
-                        <div className={cx('title-wrapper')}>
-                            <div className={cx('title')}>
-                                <div className={cx('icon-product-list')}></div>
-                                <span className={cx('text-title')}>DANH SÁCH SẢN PHẨM</span>
-                            </div>
-                            <div className={cx('icon-sortdown')} onClick={openProductList}></div>
-                        </div>
-                    </div>
-
-
-            }
+            <Accordion item={
+                <>
+                    {
+                        PRODUCTS_INFO.map((product, index) => {
+                            return (
+                                <DetailProductItem data={product} key={index} />
+                            )
+                        })
+                    }
+                </>
+            } />
 
             <div className={cx('delivery-payment')}>
                 <div className={cx('title')}>
@@ -130,9 +93,9 @@ function OrderDetail() {
                 </div>
                 <div className={cx('content')}>
                     <div className={cx('content-title')}>
-                        <p>Tổng giá trị đơn hàng:</p>
-                        <p>Phương thức vận chuyển:</p>
-                        <p>Phương thức thanh toán:</p>
+                        <span>Tổng giá trị đơn hàng:</span>
+                        <span>Phương thức vận chuyển:</span>
+                        <span>Phương thức thanh toán:</span>
                     </div>
                     <div className={cx('content-detail')}>
                         <span className={cx('sum-order')}>{delivery_payment.sumOrder}</span>

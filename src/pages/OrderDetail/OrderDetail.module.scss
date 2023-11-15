@@ -2,13 +2,10 @@
     margin-top: 20px;
 }
 
-.order-status {
-    margin-bottom: 37px;
-}
-
 .title {
     display: flex;
     gap: 13px;
+    margin-top: 20px;
 }
 
 .icon-status {
@@ -20,7 +17,7 @@
 
 .text-title {
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .status-bar-container {
@@ -96,7 +93,7 @@
 }
 
 .title-info {
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .info {
@@ -174,6 +171,7 @@
     flex-direction: column;
     gap: 20px;
     font-size: 20px;
+    font-weight: 700;
 }
 
 .content-detail {

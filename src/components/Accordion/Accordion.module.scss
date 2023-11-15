@@ -1,0 +1,50 @@
+.accordion {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .first {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        cursor: pointer;
+
+        .title {
+            display: flex;
+            gap: 13px;
+
+            .icon-product-list {
+                background: url('../../images/OrderCompleted.png'), lightgray 50% / contain no-repeat;
+                background-color: transparent;
+                width: 30px;
+                height: 30px;
+            }
+
+            .text-title {
+                font-size: 20px;
+                font-weight: 600;
+            }
+        }
+
+        .arrow-icon {
+            font-size: 30px;
+        }
+
+        span {
+            font-weight: 600;
+        }
+    }
+
+    .second {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        transition: height ease-in 0.1s;
+    }
+
+    .expanded {
+        height: auto;
+    }
+}

@@ -1,28 +1,40 @@
 import classNames from "classnames/bind";
 import styles from './ProductItem.module.scss';
-import images from '../../images/Ao-real-madrid-san-khach-2023-1.webp';
-import { RemoveIcon } from "../Icons";
-import { Link } from 'react-router-dom';
+import image from '../../images/Ao-real-madrid-san-khach-2023-1.webp';
+import Button from "../Button";
+import { RemoveProductIcon } from "../Icons";
 
 const cx = classNames.bind(styles);
 
 function ProductItem({ data, onClick, href }) {
     return (
-        <Link className={cx('product-wrapper')} to={href}>
-            <div className={cx('info-image')}>
-                <img className={cx('image')} src={images} alt="productImage" />
+        <div className={cx('product-wrapper')}>
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
+            <label for="vehicle1"></label>
+            <div className={cx('product-detail')}>
+                <img src={image} className={cx('product-image')} alt="product" />
 
-                <div className={cx('content')}>
-                    <span className={cx('description')}>{data.description}</span>
-                    <div className={cx('price-and-star')}>
-                        <span className={cx('price')}>{data.price}</span>
-                    </div>
+                <div className={cx('name-price')}>
+                    <div className={cx('name')}>{data.description}</div>
+                    <div className={cx('price')}>{data.price}</div>
+                </div>
+
+                <div className={cx('sold-product')}>
+                    <span>Đã bán</span>
+                    <span className={cx('sold-text')}>{data.sold}K</span>
+                </div>
+
+                <div className={cx('button-wrapper')}>
+                    <Button href={href} orange>Xem chi tiết</Button>
                 </div>
             </div>
-            <div className={cx('delete-btn')} onClick={onClick}>
-                <RemoveIcon />
+            <div className={cx('delete-wrapper')} onClick={onClick}>
+                <RemoveProductIcon />
             </div>
-        </Link>
+
+
+
+        </div>
     );
 }
 

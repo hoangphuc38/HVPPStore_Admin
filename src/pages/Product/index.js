@@ -12,11 +12,46 @@ const cx = classNames.bind(styles);
 
 function Product() {
     const [products, setProducts] = useState([
-        { id: '001', image: '', description: 'Áo Real Madrid màu đen mùa 2023-2024', price: '200.000đ', stars: '5', isDelete: false },
-        { id: '002', image: '', description: 'Áo Real Madrid màu đen mùa 2023-2024', price: '200.000đ', stars: '5', isDelete: false },
-        { id: '003', image: '', description: 'Áo Real Madrid màu đen mùa 2023-2024', price: '200.000đ', stars: '5', isDelete: false },
-        { id: '004', image: '', description: 'Áo Real Madrid màu đen mùa 2023-2024', price: '200.000đ', stars: '5', isDelete: false },
-        { id: '005', image: '', description: 'Áo Real Madrid màu đen mùa 2023-2024', price: '200.000đ', stars: '5', isDelete: false },
+        {
+            id: '001',
+            image: '',
+            description: 'Áo Real Madrid màu đen mùa 2023-2024',
+            price: '200.000đ',
+            stars: '5',
+            sold: '2.0',
+        },
+        {
+            id: '002',
+            image: '',
+            description: 'Áo Real Madrid màu đen mùa 2023-2024',
+            price: '200.000đ',
+            stars: '5',
+            sold: '2.0',
+        },
+        {
+            id: '003',
+            image: '',
+            description: 'Áo Real Madrid màu đen mùa 2023-2024',
+            price: '200.000đ',
+            stars: '5',
+            sold: '2.0',
+        },
+        {
+            id: '004',
+            image: '',
+            description: 'Áo Real Madrid màu đen mùa 2023-2024',
+            price: '200.000đ',
+            stars: '5',
+            sold: '2.0',
+        },
+        {
+            id: '005',
+            image: '',
+            description: 'Áo Real Madrid màu đen mùa 2023-2024',
+            price: '200.000đ',
+            stars: '5',
+            sold: '2.0',
+        },
 
     ]);
 
@@ -26,9 +61,14 @@ function Product() {
     const optionSeasons = [
         '2008', '2009', '2010'
     ];
+    const optionSortProducts = [
+        'Sản phẩm bán được nhiều nhất',
+        'Sản phẩm bán được ít nhất',
+    ]
 
     const defaultOptionClothes = 'Chung';
     const defaultOptionSeasons = 'Mùa giải';
+    const defaultOptionSortProducts = 'Lọc sản phẩm';
 
     //Functions
     const HandleDeleteProduct = (product) => {
@@ -60,17 +100,34 @@ function Product() {
                 </div>
                 <Button href={config.routes.addProduct} className={cx('add-product-btn')} primary leftIcon={<AddIcon />}>Thêm sản phẩm</Button>
             </div>
-            <div className={cx('product-list')}>
-                {
-                    products.length > 0 &&
-                    products.map((product) => {
-                        return (
-                            <ProductItem key={product.id} href={`/product/${product.id}`} data={product} onClick={() => HandleDeleteProduct(product)} />
-                        )
-                    })
+            <div className={cx('product-table-wrapper')}>
+                <div className={cx('product-table')}>
+                    <div className={cx('functions')}>
+                        <Button red>Xóa sản phẩm đã chọn</Button>
 
-                }
+                        <Dropdown controlClassName={cx('Dropdown-control-sort')}
+                            arrowClosed={<span className={cx('arrow-closed-sort')} />}
+                            arrowOpen={<span className={cx('arrow-open-sort')} />}
+                            menuClassName={cx('menu-open')}
+                            options={optionSortProducts}
+                            value={defaultOptionSortProducts}
+                            placeholder="Select" />
+                    </div>
+                    <div className={cx('table-content')}>
+                        {
+                            products.length > 0 &&
+                            products.map((product) => {
+                                return (
+                                    <ProductItem data={product} onClick={() => HandleDeleteProduct(product)} href={`/product/${product.id}`} />
+                                )
+                            })
+                        }
+
+                    </div>
+                </div>
+
             </div>
+
         </div>
 
     );
