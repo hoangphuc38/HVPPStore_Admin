@@ -31,8 +31,6 @@
 }
 
 .statistic-btn {
-    width: 299px;
-    height: 60px;
     border-radius: 15px;
 }
 
@@ -63,6 +61,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-weight: 700;
 }
 
 .customer-icon {
@@ -85,6 +84,7 @@
 
 .interest-change {
     font-style: italic;
+    color: var(--green);
 }
 
 .sales-today-icon {
