@@ -5,6 +5,7 @@ import Button from '../../components/Button';
 import Dropdown from 'react-dropdown';
 import SizeButton from '../../components/SizeButton';
 import image from '../../images/Ao-real-madrid-san-khach-2023-1.webp';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
@@ -15,8 +16,12 @@ function ProductDetail() {
         productSeason: '2022 - 2023',
         productSize: ['S', 'M', 'L'],
         productDescription: 'Áo ngon, chất lượng',
-        productImages: ['1', '2', '3', '4'],
-
+        productImages: [
+            'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw21a150b7/images/large/701225667001_pp_01_mcfc.png?sw=400&sh=400&sm=fit',
+            'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog/default/dw34725556/product-sets/mancity-23/away_kids_set_bg2324.png?sw=1600&sh=1600&sm=fit',
+            'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dwe19c4448/images/large/701225698001_pp_01_mcfc.png?sw=1600&sh=1600&sm=fit',
+            'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw78dae72f/images/large/701225658001_pp_01_mcfc.png?sw=1600&sh=1600&sm=fit',
+        ],
     }
 
     const optionSeasons = [
@@ -28,6 +33,18 @@ function ProductDetail() {
 
     const defaultOptionSeasons = PRODUCT_DETAIL.productSeason;
 
+    const [mainImage, setMainImage] = useState(PRODUCT_DETAIL.productImages[0]);
+    const [imageList, setImageList] = useState(PRODUCT_DETAIL.productImages);
+
+    const HandleNextImage = (image) => {
+        let currentList = PRODUCT_DETAIL.productImages;
+        currentList = currentList.filter((img) => img !== image);
+        currentList = [...currentList, image];
+
+        setImageList(currentList);
+        setMainImage(currentList[0]);
+    }
+
     return (
         <div className={cx('container')}>
             <div className={cx('image-function')}>
@@ -37,13 +54,13 @@ function ProductDetail() {
                     </div>
 
                     <div className={cx('image-product')}>
-                        <img src={image} alt='product-thumb' className={cx('product-thumb')} />
+                        <img src={mainImage} alt='product-thumb' className={cx('product-thumb')} />
                         <button className={cx('add-image-btn')}>
                             <AddImageIcon />
                         </button>
                     </div>
 
-                    <div className={cx('circle-next')}>
+                    <div className={cx('circle-next')} onClick={HandleNextImage}>
                         <NextIcon />
                     </div>
                 </div>

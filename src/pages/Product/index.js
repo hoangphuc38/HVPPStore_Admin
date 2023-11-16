@@ -14,7 +14,7 @@ function Product() {
     const [products, setProducts] = useState([
         {
             id: '001',
-            image: '',
+            image: 'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw21a150b7/images/large/701225667001_pp_01_mcfc.png?sw=400&sh=400&sm=fit',
             description: 'Áo Real Madrid màu đen mùa 2023-2024',
             price: '200.000đ',
             stars: '5',
@@ -22,7 +22,7 @@ function Product() {
         },
         {
             id: '002',
-            image: '',
+            image: 'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw21a150b7/images/large/701225667001_pp_01_mcfc.png?sw=400&sh=400&sm=fit',
             description: 'Áo Real Madrid màu đen mùa 2023-2024',
             price: '200.000đ',
             stars: '5',
@@ -30,7 +30,7 @@ function Product() {
         },
         {
             id: '003',
-            image: '',
+            image: 'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw21a150b7/images/large/701225667001_pp_01_mcfc.png?sw=400&sh=400&sm=fit',
             description: 'Áo Real Madrid màu đen mùa 2023-2024',
             price: '200.000đ',
             stars: '5',
@@ -38,7 +38,7 @@ function Product() {
         },
         {
             id: '004',
-            image: '',
+            image: 'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw21a150b7/images/large/701225667001_pp_01_mcfc.png?sw=400&sh=400&sm=fit',
             description: 'Áo Real Madrid màu đen mùa 2023-2024',
             price: '200.000đ',
             stars: '5',
@@ -46,7 +46,7 @@ function Product() {
         },
         {
             id: '005',
-            image: '',
+            image: 'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw21a150b7/images/large/701225667001_pp_01_mcfc.png?sw=400&sh=400&sm=fit',
             description: 'Áo Real Madrid màu đen mùa 2023-2024',
             price: '200.000đ',
             stars: '5',

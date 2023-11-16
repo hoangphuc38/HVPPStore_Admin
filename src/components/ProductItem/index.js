@@ -12,7 +12,7 @@ function ProductItem({ data, onClick, href }) {
             <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
             <label for="vehicle1"></label>
             <div className={cx('product-detail')}>
-                <img src={image} className={cx('product-image')} alt="product" />
+                <img src={data.image} className={cx('product-image')} alt="product" />
 
                 <div className={cx('name-price')}>
                     <div className={cx('name')}>{data.description}</div>

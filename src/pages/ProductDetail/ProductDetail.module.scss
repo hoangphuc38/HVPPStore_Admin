@@ -50,6 +50,8 @@ p {
     width: 345px;
     height: 475px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     border-radius: 15px;
     background: #FFF;
@@ -57,8 +59,8 @@ p {
 }
 
 .product-thumb {
-    width: 345px;
-    height: 475px;
+    width: 95%;
+    transition: transform 0.3s ease-in-out;
 }
 
 .add-image-btn {
