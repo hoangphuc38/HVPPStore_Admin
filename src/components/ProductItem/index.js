@@ -5,11 +5,14 @@ import { RemoveProductIcon } from "../Icons";
 
 const cx = classNames.bind(styles);
 
-function ProductItem({ data, onClick, href }) {
+function ProductItem({ data, onClick, deleteItem, href }) {
     return (
         <div className={cx('product-wrapper')}>
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-            <label for="vehicle1"></label>
+            <div className={cx('input-wrapper')}>
+                <input type="checkbox" id="product1" name="product" className={cx('check-isdelete')} onClick={deleteItem} />
+                <label for="product"></label>
+            </div>
+
             <div className={cx('product-detail')}>
                 <img src={data.image} className={cx('product-image')} alt="product" />
 

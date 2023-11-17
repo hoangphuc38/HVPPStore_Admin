@@ -16,7 +16,7 @@ function Product() {
             id: '001',
             image: 'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw21a150b7/images/large/701225667001_pp_01_mcfc.png?sw=400&sh=400&sm=fit',
             description: 'Áo Real Madrid màu đen mùa 2023-2024',
-            price: '200.000đ',
+            price: '500.000đ',
             stars: '5',
             sold: '2.0',
         },
@@ -32,7 +32,7 @@ function Product() {
             id: '003',
             image: 'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw21a150b7/images/large/701225667001_pp_01_mcfc.png?sw=400&sh=400&sm=fit',
             description: 'Áo Real Madrid màu đen mùa 2023-2024',
-            price: '200.000đ',
+            price: '300.000đ',
             stars: '5',
             sold: '2.0',
         },
@@ -40,7 +40,7 @@ function Product() {
             id: '004',
             image: 'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw21a150b7/images/large/701225667001_pp_01_mcfc.png?sw=400&sh=400&sm=fit',
             description: 'Áo Real Madrid màu đen mùa 2023-2024',
-            price: '200.000đ',
+            price: '250.000đ',
             stars: '5',
             sold: '2.0',
         },
@@ -48,7 +48,7 @@ function Product() {
             id: '005',
             image: 'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw21a150b7/images/large/701225667001_pp_01_mcfc.png?sw=400&sh=400&sm=fit',
             description: 'Áo Real Madrid màu đen mùa 2023-2024',
-            price: '200.000đ',
+            price: '290.000đ',
             stars: '5',
             sold: '2.0',
         },
@@ -70,10 +70,28 @@ function Product() {
     const defaultOptionSeasons = 'Mùa giải';
     const defaultOptionSortProducts = 'Lọc sản phẩm';
 
+    const [removeItems, setRemoveItems] = useState([]);
+
     //Functions
     const HandleDeleteProduct = (product) => {
         let currentProducts = products;
         currentProducts = currentProducts.filter(item => item.id !== product.id);
+        setProducts(currentProducts);
+    }
+
+    const addtoRemoveItems = (product) => {
+        let removeList = removeItems;
+        let selectedList = products;
+        selectedList = selectedList.filter(item => item.id === product.id);
+        removeList.push(selectedList[0]);
+
+        setRemoveItems(removeList);
+    }
+
+    const HandleDeleteAllRemoveItems = () => {
+        let currentProducts = products;
+        currentProducts = currentProducts.filter(item => !removeItems.find(product => item.id === product.id));
+
         setProducts(currentProducts);
     }
 
@@ -103,7 +121,7 @@ function Product() {
             <div className={cx('product-table-wrapper')}>
                 <div className={cx('product-table')}>
                     <div className={cx('functions')}>
-                        <Button red>Xóa sản phẩm đã chọn</Button>
+                        <Button onClick={HandleDeleteAllRemoveItems} red>Xóa sản phẩm đã chọn</Button>
 
                         <Dropdown controlClassName={cx('Dropdown-control-sort')}
                             arrowClosed={<span className={cx('arrow-closed-sort')} />}
@@ -118,7 +136,10 @@ function Product() {
                             products.length > 0 &&
                             products.map((product) => {
                                 return (
-                                    <ProductItem data={product} onClick={() => HandleDeleteProduct(product)} href={`/product/${product.id}`} />
+                                    <ProductItem data={product}
+                                        deleteItem={() => addtoRemoveItems(product)}
+                                        onClick={() => HandleDeleteProduct(product)}
+                                        href={`/product/${product.id}`} />
                                 )
                             })
                         }

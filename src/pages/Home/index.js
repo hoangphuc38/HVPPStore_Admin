@@ -6,6 +6,7 @@ import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import BarChartItem from '../../components/StatisticItem/BarChartItem';
+import LineChartItem from '../../components/StatisticItem/LineChartItem';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -30,6 +31,81 @@ function Home() {
             uv: 2000,
             pv: 9800,
             amt: 2290,
+        },
+    ];
+
+    const dataLineChart = [
+        {
+            name: '1',
+            uv: 4000,
+            pv: 2.4,
+            amt: 2400,
+        },
+        {
+            name: '2',
+            uv: 3000,
+            pv: 1.398,
+            amt: 2210,
+        },
+        {
+            name: '3',
+            uv: 2000,
+            pv: 9.800,
+            amt: 2290,
+        },
+        {
+            name: '4',
+            uv: 2780,
+            pv: 3.908,
+            amt: 2000,
+        },
+        {
+            name: '5',
+            uv: 1890,
+            pv: 4.800,
+            amt: 2181,
+        },
+        {
+            name: '6',
+            uv: 2390,
+            pv: 3.800,
+            amt: 2500,
+        },
+        {
+            name: '7',
+            uv: 3490,
+            pv: 4.300,
+            amt: 2100,
+        },
+        {
+            name: '8',
+            uv: 4000,
+            pv: 2.400,
+            amt: 2400,
+        },
+        {
+            name: '9',
+            uv: 3000,
+            pv: 1.398,
+            amt: 2210,
+        },
+        {
+            name: '10',
+            uv: 2000,
+            pv: 9.800,
+            amt: 2290,
+        },
+        {
+            name: '11',
+            uv: 2780,
+            pv: 3.908,
+            amt: 2000,
+        },
+        {
+            name: '12',
+            uv: 1890,
+            pv: 4.800,
+            amt: 2181,
         },
     ];
 
@@ -134,6 +210,14 @@ function Home() {
 
             <div className={cx('second-labels')}>
                 <div className={cx('first-statistic')}>
+                    <div className={cx('content-wrapper')}>
+                        <div className={cx('chart-title')}>
+                            <span>Doanh thu năm 2023</span>
+                        </div>
+                        <div className={cx('chart')}>
+                            <LineChartItem data={dataLineChart} />
+                        </div>
+                    </div>
 
                 </div>
                 <div className={cx('second-statistic')}>
