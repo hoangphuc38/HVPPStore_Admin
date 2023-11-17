@@ -11,11 +11,11 @@ import config from '../../config';
 const cx = classNames.bind(styles);
 
 function Product() {
-    const [products, setProducts] = useState([
+    const products = [
         {
             id: '001',
             image: 'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw21a150b7/images/large/701225667001_pp_01_mcfc.png?sw=400&sh=400&sm=fit',
-            description: 'Áo Real Madrid màu đen mùa 2023-2024',
+            description: 'Áo Real Madrid màu đen mùa 2009-2010',
             price: '500.000đ',
             stars: '5',
             sold: '2.0',
@@ -26,42 +26,43 @@ function Product() {
             description: 'Áo Real Madrid màu đen mùa 2023-2024',
             price: '200.000đ',
             stars: '5',
-            sold: '2.0',
+            sold: '4.0',
         },
         {
             id: '003',
             image: 'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw21a150b7/images/large/701225667001_pp_01_mcfc.png?sw=400&sh=400&sm=fit',
-            description: 'Áo Real Madrid màu đen mùa 2023-2024',
+            description: 'Áo Arsenal màu đen mùa 2009-2010',
             price: '300.000đ',
             stars: '5',
-            sold: '2.0',
+            sold: '3.0',
         },
         {
             id: '004',
             image: 'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw21a150b7/images/large/701225667001_pp_01_mcfc.png?sw=400&sh=400&sm=fit',
-            description: 'Áo Real Madrid màu đen mùa 2023-2024',
+            description: 'Áo Arsenal màu đen mùa 2023-2024',
             price: '250.000đ',
             stars: '5',
-            sold: '2.0',
+            sold: '9.0',
         },
         {
             id: '005',
             image: 'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw21a150b7/images/large/701225667001_pp_01_mcfc.png?sw=400&sh=400&sm=fit',
-            description: 'Áo Real Madrid màu đen mùa 2023-2024',
+            description: 'Áo Real Madrid màu đen mùa 2008-2009',
             price: '290.000đ',
             stars: '5',
-            sold: '2.0',
+            sold: '2.5',
         },
 
-    ]);
+    ];
 
     const optionClothes = [
-        'Áo 1', 'Áo 2'
+        'Tất cả', 'Real Madrid', 'Arsenal'
     ];
     const optionSeasons = [
-        '2008', '2009', '2010'
+        'Tất cả', '2008-2009', '2009-2010', '2023-2024'
     ];
     const optionSortProducts = [
+        'Chung',
         'Sản phẩm bán được nhiều nhất',
         'Sản phẩm bán được ít nhất',
     ]
@@ -71,12 +72,13 @@ function Product() {
     const defaultOptionSortProducts = 'Lọc sản phẩm';
 
     const [removeItems, setRemoveItems] = useState([]);
+    const [sortList, setSortList] = useState(products);
 
     //Functions
     const HandleDeleteProduct = (product) => {
         let currentProducts = products;
         currentProducts = currentProducts.filter(item => item.id !== product.id);
-        setProducts(currentProducts);
+        setSortList(currentProducts);
     }
 
     const addtoRemoveItems = (product) => {
@@ -92,7 +94,34 @@ function Product() {
         let currentProducts = products;
         currentProducts = currentProducts.filter(item => !removeItems.find(product => item.id === product.id));
 
-        setProducts(currentProducts);
+        setSortList(currentProducts);
+    }
+
+    const sortSale = (option) => {
+        if (option === "Sản phẩm bán được ít nhất") {
+            let ascendingSale = [...sortList].sort((a, b) => a.sold - b.sold);
+            console.log("Sắp xếp dưới lên: ", ascendingSale);
+            setSortList(ascendingSale);
+        }
+        else if (option === "Sản phẩm bán được nhiều nhất") {
+            let descendingSale = [...sortList].sort((a, b) => b.sold - a.sold);
+            console.log("Sắp xếp trên xuống: ", descendingSale);
+            setSortList(descendingSale);
+        }
+        else {
+            setSortList(products);
+        }
+    }
+
+    const sortCategory = (option) => {
+        if (option === "Tất cả") {
+            setSortList(products);
+        }
+        else {
+            let sortedList = [...products].filter(product => product.description.includes(option))
+            console.log(sortedList);
+            setSortList(sortedList);
+        }
     }
 
 
@@ -104,6 +133,7 @@ function Product() {
                         arrowClosed={<span className={cx('arrow-closed')} />}
                         arrowOpen={<span className={cx('arrow-open')} />}
                         menuClassName={cx('menu-open')}
+                        onChange={(e) => sortCategory(e.value)}
                         options={optionClothes}
                         value={defaultOptionClothes}
                         placeholder="Select" />
@@ -111,6 +141,7 @@ function Product() {
                     <Dropdown controlClassName={cx('Dropdown-control-season')}
                         arrowClosed={<span className={cx('arrow-closed')} />}
                         arrowOpen={<span className={cx('arrow-open')} />}
+                        onChange={(e) => sortCategory(e.value)}
                         menuClassName={cx('menu-open')}
                         options={optionSeasons}
                         value={defaultOptionSeasons}
@@ -126,6 +157,7 @@ function Product() {
                         <Dropdown controlClassName={cx('Dropdown-control-sort')}
                             arrowClosed={<span className={cx('arrow-closed-sort')} />}
                             arrowOpen={<span className={cx('arrow-open-sort')} />}
+                            onChange={(e) => sortSale(e.value)}
                             menuClassName={cx('menu-open')}
                             options={optionSortProducts}
                             value={defaultOptionSortProducts}
@@ -133,8 +165,8 @@ function Product() {
                     </div>
                     <div className={cx('table-content')}>
                         {
-                            products.length > 0 &&
-                            products.map((product) => {
+                            sortList.length > 0 &&
+                            sortList.map((product) => {
                                 return (
                                     <ProductItem data={product}
                                         deleteItem={() => addtoRemoveItems(product)}

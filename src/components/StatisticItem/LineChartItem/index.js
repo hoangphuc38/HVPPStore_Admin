@@ -20,6 +20,7 @@ const CustomTooltip = ({ active, payload, label }) => {
                 <div className={cx('wrapper')}>
                     <p className={cx("label")}>{`Tháng ${label}`}</p>
                     <p className={cx("intro")}>{`Doanh thu: ${payload[0].value}`}</p>
+                    <p className={cx("intro")}>{`Lợi nhuận: ${payload[1].value}`}</p>
                 </div>
 
             </div>
@@ -55,6 +56,7 @@ function LineChartItem({ data }) {
                 <Tooltip content={CustomTooltip} />
                 <Legend />
                 <Line type="monotone" dataKey="pv" stroke="#2A2A86" activeDot={{ r: 8 }} />
+                <Line type="monotone" dataKey="uv" stroke="#319B2F" />
             </LineChart>
         </ResponsiveContainer>
     );

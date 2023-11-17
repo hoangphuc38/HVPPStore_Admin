@@ -3,6 +3,7 @@ import styles from './Order.module.scss';
 import SearchBar from '../../components/SearchBar';
 import Dropdown from 'react-dropdown';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
@@ -36,9 +37,38 @@ function Order() {
             order_value: '3.000.000đ',
             status: 'Đang vận chuyển',
         },
+        {
+            order_id: 'HVPP205',
+            customer_name: 'Hoàng Phúc',
+            time_ordered: '30/09/2023',
+            order_value: '3.000.000đ',
+            status: 'Chờ xác nhận',
+        },
+        {
+            order_id: 'HVPP205',
+            customer_name: 'Vũ Phạm Đình Thái',
+            time_ordered: '30/09/2023',
+            order_value: '3.000.000đ',
+            status: 'Đã nhận',
+        },
+        {
+            order_id: 'HVPP205',
+            customer_name: 'Lê Văn Phú',
+            time_ordered: '30/09/2023',
+            order_value: '3.000.000đ',
+            status: 'Đã hủy',
+        },
+        {
+            order_id: 'HVPP205',
+            customer_name: 'Phạm Nguyễn Đình Thái',
+            time_ordered: '30/09/2023',
+            order_value: '3.000.000đ',
+            status: 'Đang vận chuyển',
+        },
     ]
 
     const optionStatusOrders = [
+        'Tất cả',
         'Chờ xác nhận',
         'Đang vận chuyển',
         'Đã nhận',
@@ -46,6 +76,31 @@ function Order() {
     ];
 
     const defaultOptionStatusOrders = 'Trạng thái đơn hàng';
+    const statusOrder = [
+        'Chờ xác nhận',
+        'Đang vận chuyển',
+        'Đã nhận',
+        'Đã hủy'
+    ]
+
+    //set default list according to Status of Order
+    let defaultList = [...ORDER_INFOS].sort((d1, d2) => statusOrder.indexOf(d1.status) - statusOrder.indexOf(d2.status));
+    const [sortList, setSortList] = useState(defaultList);
+
+
+    //Functions
+    const sortStatusOrder = (option) => {
+        if (option === 'Tất cả') {
+            let sortList =
+                [...ORDER_INFOS].sort((d1, d2) => statusOrder.indexOf(d1.status) - statusOrder.indexOf(d2.status));
+
+            setSortList(sortList);
+        }
+        else {
+            let sortList = [...ORDER_INFOS].filter(order => order.status === option);
+            setSortList(sortList);
+        }
+    }
 
     const renderStatusOrderFontStyle = (val) => {
         if (val.status === 'Chờ xác nhận') {
@@ -71,6 +126,7 @@ function Order() {
                         arrowClosed={<span className={cx('arrow-closed')} />}
                         arrowOpen={<span className={cx('arrow-open')} />}
                         menuClassName={cx('menu-open')}
+                        onChange={(e) => sortStatusOrder(e.value)}
                         options={optionStatusOrders}
                         value={defaultOptionStatusOrders}
                         placeholder="Select" />
@@ -78,8 +134,8 @@ function Order() {
             </div>
             <div className={cx('order-counter')}>
                 {
-                    ORDER_INFOS.length > 0
-                        ? <span>Tất cả {ORDER_INFOS.length} đơn hàng</span>
+                    sortList.length > 0
+                        ? <span>Tất cả {sortList.length} đơn hàng</span>
                         : <span>Không tìm thấy đơn hàng</span>
                 }
             </div>
@@ -96,7 +152,7 @@ function Order() {
 
                     <div className={cx('detail-infos')}>
                         {
-                            ORDER_INFOS.map((val, key) => {
+                            sortList.map((val, key) => {
                                 return (
                                     <div className={cx('info-wrapper')}>
                                         <Link className={cx('info')} to={`/order/${val.order_id}`}>
