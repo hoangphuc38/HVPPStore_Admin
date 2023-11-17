@@ -5,13 +5,35 @@ import { StatisticIcon } from '../../components/Icons';
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
+import BarChartItem from '../../components/StatisticItem/BarChartItem';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const cx = classNames.bind(styles);
 
 function Home() {
-    const data = {
+    const dataBarChart = [
+        {
+            name: 'Manchester City',
+            uv: 4000,
+            pv: 2400,
+            amt: 2400,
+        },
+        {
+            name: 'Barcelona',
+            uv: 3000,
+            pv: 1398,
+            amt: 2210,
+        },
+        {
+            name: 'Liverpool',
+            uv: 2000,
+            pv: 9800,
+            amt: 2290,
+        },
+    ];
+
+    const dataPieChart = {
         labels: ['Manchester City', 'Manchester United', 'Liverpool', 'Arsenal'],
         datasets: [
             {
@@ -20,7 +42,7 @@ function Home() {
                 backgroundColor: [
                     '#AAC9FF',
                     '#2A2A86',
-                    '#319B2F',
+                    '#FCAF17',
                     '#EF0D0D',
                 ],
                 borderColor: [
@@ -29,16 +51,10 @@ function Home() {
                     'white',
                     'white',
                 ],
-                borderWidth: 1,
+                hoverOffset: 4
             },
         ],
     }
-    // const data = [
-    //     { name: "Đức", value: 400 },
-    //     { name: "Manchester City", value: 300 },
-    //     { name: "Pháp", value: 300 },
-    //     { name: "Anh", value: 200 }
-    // ];
 
     return (
         <div className={cx('container')}>
@@ -105,7 +121,14 @@ function Home() {
                 </div>
 
                 <div className={cx('second-box')}>
-
+                    <div className={cx('content-wrapper')}>
+                        <div className={cx('chart-title')}>
+                            <span>Top 3 Nhóm sản phẩm bán chạy nhất tháng 11</span>
+                        </div>
+                        <div className={cx('chart')}>
+                            <BarChartItem data={dataBarChart} />
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -115,10 +138,10 @@ function Home() {
                 </div>
                 <div className={cx('second-statistic')}>
                     <div className={cx('chart-title')}>
-                        <span>Nhóm sản phẩm đem lợi nhuận cao nhất</span>
+                        <span>Nhóm sản phẩm đem lợi nhuận cao nhất tháng</span>
                     </div>
-                    <div className={cx('pie-chart')}>
-                        <Pie data={data} className={'chart'} />
+                    <div className={cx('pie-chart-wrapper')}>
+                        <Pie data={dataPieChart} />
                     </div>
 
                 </div>

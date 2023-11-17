@@ -4,7 +4,6 @@ import { AddIcon, AddImageIcon, BackIcon, NextIcon } from '../../components/Icon
 import Button from '../../components/Button';
 import Dropdown from 'react-dropdown';
 import SizeButton from '../../components/SizeButton';
-import image from '../../images/Ao-real-madrid-san-khach-2023-1.webp';
 import { useState } from 'react';
 
 const cx = classNames.bind(styles);

@@ -1,6 +1,5 @@
 import classNames from "classnames/bind";
 import styles from './ProductItem.module.scss';
-import image from '../../images/Ao-real-madrid-san-khach-2023-1.webp';
 import Button from "../Button";
 import { RemoveProductIcon } from "../Icons";
 
