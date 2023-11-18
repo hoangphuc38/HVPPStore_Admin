@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
-function Button({ to, href, children, primary, orange, red, green, leftIcon, className, onClick }) {
+function Button({ to, href, children, primary, orange, red, green, leftIcon, rightIcon, className, onClick }) {
     let Comp = 'button';
 
     const props = {
@@ -29,8 +29,9 @@ function Button({ to, href, children, primary, orange, red, green, leftIcon, cla
 
     return (
         <Comp className={classes} href={href} onClick={onClick}>
-            {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
+            {leftIcon && <span className={cx('left-icon')}>{leftIcon}</span>}
             <span className={cx('title')}>{children}</span>
+            {rightIcon && <span className={cx('right-icon')}>{rightIcon}</span>}
         </Comp>
     );
 }

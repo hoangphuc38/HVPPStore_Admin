@@ -26,7 +26,7 @@ function BarChartItem({ data }) {
                 }}
             >
                 <XAxis dataKey="name" stroke="#2A2A86" tickLine={false} />
-                <YAxis stroke="#2A2A86" />
+                <YAxis stroke="#2A2A86" domain={[0, 15000]} />
                 <Bar dataKey="pv"
                     fill="#2A2A86"
                     barSize={40}

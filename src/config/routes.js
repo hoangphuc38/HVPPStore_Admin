@@ -1,5 +1,8 @@
 const routes = {
-    home: '/',
+    home: '/home',
+    statisticBestSeller: '/home/statistic/best-seller',
+    statisticrRevenueContributor: '/home/statistic/top-contributor',
+    statisticRevenueSales: '/home/statistic/revenue-and-sales',
     product: '/product',
     addProduct: '/product/newproduct',
     detailProduct: '/product/:id',

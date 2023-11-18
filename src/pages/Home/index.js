@@ -1,12 +1,13 @@
 import classNames from 'classnames/bind';
 import styles from './Home.module.scss';
 import Button from '../../components/Button';
-import { StatisticIcon } from '../../components/Icons';
+import { DetailIcon, StatisticIcon } from '../../components/Icons';
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import BarChartItem from '../../components/StatisticItem/BarChartItem';
 import LineChartItem from '../../components/StatisticItem/LineChartItem';
+import config from '../../config';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -142,7 +143,9 @@ function Home() {
                     </div>
                     <span className={cx('slogan-sentence')}>Cháy cùng ngọn lửa đam mê</span>
                 </div>
-                <Button leftIcon={<StatisticIcon />} className={cx('statistic-btn')} primary>Xuất hình ảnh thống kê</Button>
+                <Button leftIcon={<StatisticIcon />}
+                    className={cx('statistic-btn')}
+                    primary>Xuất hình ảnh thống kê</Button>
             </div>
 
             <div className={cx('first-labels')}>
@@ -200,6 +203,10 @@ function Home() {
                     <div className={cx('content-wrapper')}>
                         <div className={cx('chart-title')}>
                             <span>Top 3 Nhóm sản phẩm bán chạy nhất tháng 11</span>
+                            <Button primary
+                                rightIcon={<DetailIcon />}
+                                className={cx('detail-btn')}
+                                href={config.routes.statisticBestSeller}>Xem thêm</Button>
                         </div>
                         <div className={cx('chart')}>
                             <BarChartItem data={dataBarChart} />
@@ -213,6 +220,10 @@ function Home() {
                     <div className={cx('content-wrapper')}>
                         <div className={cx('chart-title')}>
                             <span>Doanh thu năm 2023</span>
+                            <Button primary
+                                rightIcon={<DetailIcon />}
+                                className={cx('detail-btn')}
+                                href={config.routes.statisticRevenueSales}>Xem thêm</Button>
                         </div>
                         <div className={cx('chart')}>
                             <LineChartItem data={dataLineChart} />
@@ -222,7 +233,11 @@ function Home() {
                 </div>
                 <div className={cx('second-statistic')}>
                     <div className={cx('chart-title')}>
-                        <span>Nhóm sản phẩm đem lợi nhuận cao nhất tháng</span>
+                        <span className={cx('title')}>Nhóm sản phẩm đem lợi nhuận cao nhất tháng 11</span>
+                        <Button primary
+                            rightIcon={<DetailIcon />}
+                            className={cx('detail-btn')}
+                            href={config.routes.statisticrRevenueContributor}>Xem thêm</Button>
                     </div>
                     <div className={cx('pie-chart-wrapper')}>
                         <Pie data={dataPieChart} />

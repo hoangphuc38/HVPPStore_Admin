@@ -32,13 +32,21 @@ function ProductDetail() {
 
     const defaultOptionSeasons = PRODUCT_DETAIL.productSeason;
 
-    const [mainImage, setMainImage] = useState(PRODUCT_DETAIL.productImages[0]);
     const [imageList, setImageList] = useState(PRODUCT_DETAIL.productImages);
+    const [mainImage, setMainImage] = useState(imageList[0]);
 
     const HandleNextImage = (image) => {
-        let currentList = PRODUCT_DETAIL.productImages;
-        currentList = currentList.filter((img) => img !== image);
-        currentList = [...currentList, image];
+        let currentList = imageList;
+        console.log("danh sách ảnh hiện tại: ", currentList);
+        let selectedImage = currentList.filter((img) => img === image);
+        console.log("ảnh hiện tại: ", selectedImage[0]);
+
+        currentList = [...currentList, selectedImage[0]];
+
+        currentList.shift();
+
+        console.log("danh sách ảnh sau khi nhấn: ", currentList);
+        console.log("ảnh mới: ", currentList[0]);
 
         setImageList(currentList);
         setMainImage(currentList[0]);
@@ -59,7 +67,7 @@ function ProductDetail() {
                         </button>
                     </div>
 
-                    <div className={cx('circle-next')} onClick={HandleNextImage}>
+                    <div className={cx('circle-next')} onClick={() => HandleNextImage(mainImage)}>
                         <NextIcon />
                     </div>
                 </div>

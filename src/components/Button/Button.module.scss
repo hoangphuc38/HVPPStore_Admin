@@ -39,11 +39,20 @@
 
 //Layout in button
 
-.icon {
+.left-icon {
     width: 30px;
     height: 30px;
 }
 
-.icon+.title {
+.right-icon {
+    width: 14px;
+    height: 14px;
+}
+
+.left-icon+.title {
     margin-left: 15px;
+}
+
+.right-icon {
+    margin-left: 5px;
 }
