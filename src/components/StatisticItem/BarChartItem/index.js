@@ -11,7 +11,7 @@ const renderCustomBarLabel = ({ x, y, width, value }) => {
     return <text x={x + width / 2} y={y} fill="#2A2A86" textAnchor="middle" dy={-6}>{`${value / 1000}K`}</text>;
 };
 
-function BarChartItem({ data }) {
+function BarChartItem({ data, domain, fontSize }) {
     return (
         <ResponsiveContainer width="100%" height="100%">
             <BarChart
@@ -25,8 +25,8 @@ function BarChartItem({ data }) {
                     bottom: 0,
                 }}
             >
-                <XAxis dataKey="name" stroke="#2A2A86" tickLine={false} />
-                <YAxis stroke="#2A2A86" domain={[0, 15000]} />
+                <XAxis dataKey="name" stroke="#2A2A86" tickLine={false} fontSize={fontSize} />
+                <YAxis stroke="#2A2A86" domain={domain} padding={{ left: '20px' }} />
                 <Bar dataKey="pv"
                     fill="#2A2A86"
                     barSize={40}
