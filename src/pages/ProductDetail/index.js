@@ -13,7 +13,20 @@ function ProductDetail() {
         productName: 'Áo Real Madrid màu đen mùa giải 2022-2023',
         productPrice: '500.000',
         productSeason: '2022 - 2023',
-        productSize: ['S', 'M', 'L'],
+        productSize: [
+            {
+                size: 'L',
+                quantity: 10,
+            },
+            {
+                size: 'XL',
+                quantity: 10,
+            },
+            {
+                size: 'M',
+                quantity: 10,
+            },
+        ],
         productDescription: 'Áo ngon, chất lượng',
         productImages: [
             'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw21a150b7/images/large/701225667001_pp_01_mcfc.png?sw=400&sh=400&sm=fit',
@@ -31,32 +44,39 @@ function ProductDetail() {
     ];
 
     const defaultOptionSeasons = PRODUCT_DETAIL.productSeason;
+    const [index, setIndex] = useState(0);
+    const [mainImage, setMainImage] = useState(PRODUCT_DETAIL.productImages[0]);
 
-    const [imageList, setImageList] = useState(PRODUCT_DETAIL.productImages);
-    const [mainImage, setMainImage] = useState(imageList[0]);
-
-    const HandleNextImage = (image) => {
-        let currentList = imageList;
-        console.log("danh sách ảnh hiện tại: ", currentList);
-        let selectedImage = currentList.filter((img) => img === image);
-        console.log("ảnh hiện tại: ", selectedImage[0]);
-
-        currentList = [...currentList, selectedImage[0]];
-
-        currentList.shift();
-
-        console.log("danh sách ảnh sau khi nhấn: ", currentList);
-        console.log("ảnh mới: ", currentList[0]);
-
-        setImageList(currentList);
-        setMainImage(currentList[0]);
+    const HandleNextImage = () => {
+        console.log("anh hien tai: ", mainImage);
+        if (index < PRODUCT_DETAIL.productImages.length - 1) {
+            setIndex(index + 1);
+            setMainImage(PRODUCT_DETAIL.productImages[index + 1]);
+        } else {
+            setIndex(0);
+            setMainImage(PRODUCT_DETAIL.productImages[0]);
+        }
     }
+
+    const HandleBackImage = () => {
+        console.log("anh hien tai: ", mainImage);
+        if (index > 0) {
+            setIndex(index - 1);
+            setMainImage(PRODUCT_DETAIL.productImages[index - 1]);
+        }
+        else {
+            setIndex(PRODUCT_DETAIL.productImages.length - 1);
+            setMainImage(PRODUCT_DETAIL.productImages[PRODUCT_DETAIL.productImages.length - 1]);
+        }
+    }
+
+
 
     return (
         <div className={cx('container')}>
             <div className={cx('image-function')}>
                 <div className={cx('image-buttons')}>
-                    <div className={cx('circle-back')}>
+                    <div className={cx('circle-back')} onClick={HandleBackImage}>
                         <BackIcon />
                     </div>
 
@@ -67,22 +87,21 @@ function ProductDetail() {
                         </button>
                     </div>
 
-                    <div className={cx('circle-next')} onClick={() => HandleNextImage(mainImage)}>
+                    <div className={cx('circle-next')} onClick={HandleNextImage}>
                         <NextIcon />
                     </div>
                 </div>
                 <div className={cx('num-of-image')}>
                     {
-                        PRODUCT_DETAIL.productImages.map((image) => {
+                        PRODUCT_DETAIL.productImages.map((image, curIndex) => {
                             return (
-                                <div className={cx('circle')}></div>
+                                <div className={curIndex === index ? cx('circle-active') : cx('circle')}></div>
                             )
                         })
                     }
 
                 </div>
                 <div className={cx('buttons')}>
-                    <Button className={cx('button-size')} green>Thêm ảnh</Button>
                     <Button className={cx('button-size')} red>Xóa ảnh</Button>
                     <Button className={cx('button-size')} orange>Lưu ảnh</Button>
                 </div>
@@ -118,11 +137,12 @@ function ProductDetail() {
 
                 <div className={cx('size-product')}>
                     <p>Kích cỡ</p>
+                    <span className={cx('tooltip-text')}>Tooltip text</span>
                     <div className={cx('size-list')}>
                         {
-                            PRODUCT_DETAIL.productSize.map((size, key) => {
+                            PRODUCT_DETAIL.productSize.map((item, key) => {
                                 return (
-                                    <SizeButton size={size} key={key} />
+                                    <SizeButton size={item.size} key={key} className={cx('button-size')} />
                                 )
                             })
                         }

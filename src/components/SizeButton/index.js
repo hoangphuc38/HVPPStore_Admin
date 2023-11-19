@@ -3,9 +3,9 @@ import styles from './SizeButton.module.scss';
 
 const cx = classNames.bind(styles);
 
-function SizeButton({ size }) {
+function SizeButton({ size, className }) {
     return (
-        <button className={cx('size-button-wrapper')}>
+        <button className={cx('size-button-wrapper', className)}>
             {size}
         </button>
     );
