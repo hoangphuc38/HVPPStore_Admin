@@ -43,6 +43,7 @@
     margin-bottom: 30px;
     font-size: 18px;
     color: var(--primary-color-text);
+    font-weight: 600;
 }
 
 .input-event {
@@ -50,20 +51,22 @@
     margin-left: 20px;
     width: 83%;
     font-size: 18px;
+    font-family: 'Nunito Sans', sans-serif;
     color: var(--primary-color-text);
 }
 
 .input-time {
     border-bottom: 1px solid #D9D9D9;
-    width: 50%;
+    width: auto;
     font-size: 18px;
+    font-family: 'Nunito Sans', sans-serif;
     color: var(--primary-color-text);
 }
 
 .date {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 20px;
 }
 
 .from-to {
@@ -71,8 +74,6 @@
     color: black;
     font-weight: 500;
 }
-
-
 
 .calendar-btn {
     background-color: white;

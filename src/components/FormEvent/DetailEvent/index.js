@@ -1,11 +1,30 @@
 import classNames from 'classnames/bind';
 import styles from './DetailEvent.module.scss';
 import Button from '../../Button';
-import { CalendarIcon } from '../../Icons';
 
 const cx = classNames.bind(styles);
 
 function DetailEvent({ closeDialog, data }) {
+
+    const formatDate = (date) => {
+        const inputDate = new Date('30/09/2023 12:00');
+
+        const year = inputDate.getUTCFullYear();
+        const month = (inputDate.getMonth()).toString().padStart(2, "0");
+        const day = inputDate.getDate().toString().padStart(2, "0");
+        const time = inputDate.getHours().toString().padStart(2, "0")
+            + ':'
+            + inputDate.getMinutes().toString().padStart(2, "0");
+
+        const formattedDate = `${year}-${month}-${day}T${time}`;
+        console.log("ngày gốc: ", inputDate);
+        console.log("ngày: ", day);
+        console.log("tháng: ", month);
+        console.log("năm: ", year);
+        console.log(formattedDate);
+        return formattedDate;
+    }
+
     return (
         <>
             <div className={cx("overlay")}></div>
@@ -32,17 +51,17 @@ function DetailEvent({ closeDialog, data }) {
 
                         <div className={cx('date')}>
                             <span className={cx('from-to')}>Từ</span>
-                            <input className={cx('input-time')} type="text" value={data.start_time} />
-                            <button className={cx('calendar-btn')}>
-                                <CalendarIcon />
-                            </button>
+                            <input className={cx('input-time')}
+                                type="datetime-local"
+                                value={formatDate(data.start_time)} />
+
                         </div>
                         <div className={cx('date')}>
                             <span className={cx('from-to')}>đến</span>
-                            <input className={cx('input-time')} type="text" value={data.expired_time} />
-                            <button className={cx('calendar-btn')}>
-                                <CalendarIcon />
-                            </button>
+                            <input className={cx('input-time')}
+                                type="datetime-local"
+                                value={formatDate(data.expired_time)} />
+
                         </div>
                     </div>
 

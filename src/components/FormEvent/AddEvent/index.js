@@ -1,7 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './AddEvent.module.scss';
 import Button from '../../Button';
-import { CalendarIcon } from '../../Icons';
 
 const cx = classNames.bind(styles);
 
@@ -32,17 +31,13 @@ function AddEvent({ closeDialog }) {
 
                         <div className={cx('date')}>
                             <span className={cx('from-to')}>Từ</span>
-                            <input className={cx('input-time')} type="text" />
-                            <button className={cx('calendar-btn')}>
-                                <CalendarIcon />
-                            </button>
+                            <input className={cx('input-time')} type="datetime-local" />
+
                         </div>
                         <div className={cx('date')}>
                             <span className={cx('from-to')}>đến</span>
-                            <input className={cx('input-time')} type="text" />
-                            <button className={cx('calendar-btn')}>
-                                <CalendarIcon />
-                            </button>
+                            <input className={cx('input-time')} type="datetime-local" />
+
                         </div>
                     </div>
 
