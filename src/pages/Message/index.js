@@ -13,7 +13,7 @@ function Message() {
     const USER_INFOS = [
         {
             id: '1',
-            avatar: 'https://s3-alpha-sig.figma.com/img/4946/7246/df99b8b27bb55053d3dbe89de686ea45?Expires=1700438400&Signature=SV8TxLMZvJq5yhnMZ1eClHHlRWsHzJ4BQhEWkLCWHGgitltEsIAaAJ55vP4sDZghzcTf0gmApzs1I2fYJ7y2u02a1IizmXVW41rHyP672zUVevUVJZgqcabz1GHdcinSFwGVSyWXkaYXrurbPBZHw1BSm-UtsZSJDxo5gKlOx6iGlITRls-Xx1RzyYEFCZnqt4MjC4FfWbCKEyLKqkp1xGfPk94dk82mHgexqOmxyOE3YZqDVeVS9xK4wTGnaydI3~-XTjDSEw~sT6vC9CojdcoMMn0oMVjDW2kcWsiKS07bujYxWAQ8wN0NfBg-hv723m8NBXtlLjA4DsbmwLYSJA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+            avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             nameUser: 'Hoàng Phúc',
             lastMessage: 'Mặt hàng này còn không ạ',
             timeMessage: '10p',
@@ -21,7 +21,7 @@ function Message() {
         },
         {
             id: '2',
-            avatar: 'https://s3-alpha-sig.figma.com/img/4946/7246/df99b8b27bb55053d3dbe89de686ea45?Expires=1700438400&Signature=SV8TxLMZvJq5yhnMZ1eClHHlRWsHzJ4BQhEWkLCWHGgitltEsIAaAJ55vP4sDZghzcTf0gmApzs1I2fYJ7y2u02a1IizmXVW41rHyP672zUVevUVJZgqcabz1GHdcinSFwGVSyWXkaYXrurbPBZHw1BSm-UtsZSJDxo5gKlOx6iGlITRls-Xx1RzyYEFCZnqt4MjC4FfWbCKEyLKqkp1xGfPk94dk82mHgexqOmxyOE3YZqDVeVS9xK4wTGnaydI3~-XTjDSEw~sT6vC9CojdcoMMn0oMVjDW2kcWsiKS07bujYxWAQ8wN0NfBg-hv723m8NBXtlLjA4DsbmwLYSJA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+            avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             nameUser: 'Lê Hoài Hải',
             lastMessage: 'Mặt hàng này còn không ạ',
             timeMessage: '10p',
@@ -29,7 +29,7 @@ function Message() {
         },
         {
             id: '3',
-            avatar: 'https://s3-alpha-sig.figma.com/img/4946/7246/df99b8b27bb55053d3dbe89de686ea45?Expires=1700438400&Signature=SV8TxLMZvJq5yhnMZ1eClHHlRWsHzJ4BQhEWkLCWHGgitltEsIAaAJ55vP4sDZghzcTf0gmApzs1I2fYJ7y2u02a1IizmXVW41rHyP672zUVevUVJZgqcabz1GHdcinSFwGVSyWXkaYXrurbPBZHw1BSm-UtsZSJDxo5gKlOx6iGlITRls-Xx1RzyYEFCZnqt4MjC4FfWbCKEyLKqkp1xGfPk94dk82mHgexqOmxyOE3YZqDVeVS9xK4wTGnaydI3~-XTjDSEw~sT6vC9CojdcoMMn0oMVjDW2kcWsiKS07bujYxWAQ8wN0NfBg-hv723m8NBXtlLjA4DsbmwLYSJA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+            avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             nameUser: 'Lê Văn Phú',
             lastMessage: 'Mặt hàng này còn không ạ djhaddsadsadákhdkahsdkuasjdkadks',
             timeMessage: '10p',
@@ -37,7 +37,7 @@ function Message() {
         },
         {
             id: '4',
-            avatar: 'https://s3-alpha-sig.figma.com/img/4946/7246/df99b8b27bb55053d3dbe89de686ea45?Expires=1700438400&Signature=SV8TxLMZvJq5yhnMZ1eClHHlRWsHzJ4BQhEWkLCWHGgitltEsIAaAJ55vP4sDZghzcTf0gmApzs1I2fYJ7y2u02a1IizmXVW41rHyP672zUVevUVJZgqcabz1GHdcinSFwGVSyWXkaYXrurbPBZHw1BSm-UtsZSJDxo5gKlOx6iGlITRls-Xx1RzyYEFCZnqt4MjC4FfWbCKEyLKqkp1xGfPk94dk82mHgexqOmxyOE3YZqDVeVS9xK4wTGnaydI3~-XTjDSEw~sT6vC9CojdcoMMn0oMVjDW2kcWsiKS07bujYxWAQ8wN0NfBg-hv723m8NBXtlLjA4DsbmwLYSJA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+            avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             nameUser: 'Trần Tuấn Vũ',
             lastMessage: 'Mặt hàng này còn không ạ',
             timeMessage: '10p',

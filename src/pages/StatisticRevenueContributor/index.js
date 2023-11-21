@@ -55,17 +55,14 @@ function StatisticRevenueContributor() {
     const defaultOptionYear = '2023';
 
     const [selectedFilter, setSelectedFilter] = useState('Theo tháng');
-    const [statisticChart, setStatisticChart] = useState('Theo tháng');
 
     const HandleSelectFilter = (option) => {
         if (option === 'Theo năm') {
             setSelectedFilter('Theo năm');
-            setStatisticChart('Theo năm');
             console.log("state: ", option);
         }
         else {
             setSelectedFilter('Theo tháng');
-            setStatisticChart('Theo tháng');
             console.log("state: ", option);
         }
     }

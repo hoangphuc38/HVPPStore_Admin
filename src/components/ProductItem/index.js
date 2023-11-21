@@ -9,7 +9,11 @@ function ProductItem({ data, onClick, deleteItem, href }) {
     return (
         <div className={cx('product-wrapper')}>
             <div className={cx('input-wrapper')}>
-                <input type="checkbox" id="product1" name="product" className={cx('check-isdelete')} onClick={deleteItem} />
+                <input type="checkbox"
+                    id="product1"
+                    name="product"
+                    className={cx('check-isdelete')}
+                    onClick={deleteItem} />
                 <label for="product"></label>
             </div>
 

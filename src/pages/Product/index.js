@@ -147,7 +147,10 @@ function Product() {
                         value={defaultOptionSeasons}
                         placeholder="Select" />
                 </div>
-                <Button href={config.routes.addProduct} className={cx('add-product-btn')} primary leftIcon={<AddIcon />}>Thêm sản phẩm</Button>
+                <Button href={config.routes.addProduct}
+                    className={cx('add-product-btn')}
+                    primary
+                    leftIcon={<AddIcon />}>Thêm sản phẩm</Button>
             </div>
             <div className={cx('product-table-wrapper')}>
                 <div className={cx('product-table')}>
@@ -168,7 +171,8 @@ function Product() {
                             sortList.length > 0 &&
                             sortList.map((product) => {
                                 return (
-                                    <ProductItem data={product}
+                                    <ProductItem key={product.id}
+                                        data={product}
                                         deleteItem={() => addtoRemoveItems(product)}
                                         onClick={() => HandleDeleteProduct(product)}
                                         href={`/product/${product.id}`} />
