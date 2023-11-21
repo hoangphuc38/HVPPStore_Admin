@@ -1,3 +1,30 @@
+.search-result {
+    width: 523px;
+    font-size: 16px;
+
+    h4 {
+        padding: 0px 16px;
+    }
+
+    .result-wrapper {
+        display: flex;
+        align-items: center;
+        padding: 5px 16px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #F5F7F8;
+        }
+
+        .search-icon {
+            margin-right: 10px;
+        }
+    }
+
+
+}
+
+
 .search {
     width: 523px;
     height: 56px;

@@ -113,7 +113,7 @@ function StatisticRevenueContributor() {
 
             <div className={cx('statistic-wrapper')}>
                 <div className={cx('statistic-content')}>
-                    <Pie data={dataPieChart} />
+                    <Pie data={dataPieChart} options={{ plugins: { legend: { position: "right" } } }} />
 
                 </div>
             </div>
