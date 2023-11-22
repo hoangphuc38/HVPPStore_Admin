@@ -42,14 +42,14 @@ function Order() {
             customer_name: 'Hoàng Phúc',
             time_ordered: '30/09/2023',
             order_value: '3.000.000đ',
-            status: 'Chờ xác nhận',
+            status: 'Đã xác nhận',
         },
         {
             order_id: 'HVPP205',
             customer_name: 'Vũ Phạm Đình Thái',
             time_ordered: '30/09/2023',
             order_value: '3.000.000đ',
-            status: 'Đã nhận',
+            status: 'Chờ nhận',
         },
         {
             order_id: 'HVPP205',
@@ -70,7 +70,9 @@ function Order() {
     const optionStatusOrders = [
         'Tất cả',
         'Chờ xác nhận',
+        'Đã xác nhận',
         'Đang vận chuyển',
+        'Chờ nhận',
         'Đã nhận',
         'Đã hủy'
     ];
@@ -78,7 +80,9 @@ function Order() {
     const defaultOptionStatusOrders = 'Trạng thái đơn hàng';
     const statusOrder = [
         'Chờ xác nhận',
+        'Đã xác nhận',
         'Đang vận chuyển',
+        'Chờ nhận',
         'Đã nhận',
         'Đã hủy'
     ]
@@ -111,6 +115,12 @@ function Order() {
         }
         else if (val.status === 'Đang vận chuyển') {
             return <span className={cx('status-blue')}>{val.status}</span>
+        }
+        else if (val.status === 'Đã xác nhận') {
+            return <span className={cx('status-lightblue')}>{val.status}</span>
+        }
+        else if (val.status === 'Chờ nhận') {
+            return <span className={cx('status-lightgreen')}>{val.status}</span>
         }
         else {
             return <span className={cx('status-red')}>{val.status}</span>

@@ -6,6 +6,8 @@ import UserMessageItem from '../../components/UserMessageItem';
 import { ExitMessageIcon, NoChatMessageIcon } from '../../components/Icons';
 import { useState } from 'react';
 import CurrentUserItem from '../../components/CurrentUserItem';
+import camera from '../../images/Camera.png';
+import send from '../../images/EmailSend.png';
 
 const cx = classNames.bind(styles);
 
@@ -83,7 +85,6 @@ function Message() {
 
 
             </div>
-
             {
                 isShow
                     ? <div className={cx('message-content-container')}>
@@ -99,9 +100,19 @@ function Message() {
                             <div className={cx('exit-btn')} onClick={closeMessage}>
                                 <ExitMessageIcon />
                             </div>
+                        </div>
+                        <div className={cx('message-content')}>
 
                         </div>
-
+                        <div className={cx('message-input')}>
+                            <div className={cx('photo-button')}>
+                                <img src={camera} alt='camera' />
+                            </div>
+                            <div className={cx('input-content')}>
+                                <input type='text' placeholder='Aa' />
+                                <img src={send} alt='send-message' className={cx('send-button')} />
+                            </div>
+                        </div>
                     </div>
 
                     : <div className={cx('no-message-content-container')}>
@@ -109,8 +120,6 @@ function Message() {
                             <NoChatMessageIcon />
                             <span className={cx('notification-text')}>Chưa có đoạn hội thoại nào hiển thị</span>
                         </div>
-
-
                     </div>
             }
         </div>

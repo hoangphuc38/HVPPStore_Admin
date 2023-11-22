@@ -2,10 +2,33 @@ import classNames from 'classnames/bind';
 import styles from './OrderDetail.module.scss';
 import DetailProductItem from '../../components/DetailProductItem';
 import Accordion from '../../components/Accordion';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
 function OrderDetail() {
+    const STATUS_ORDER = [
+        {
+            number: 1,
+            status: 'CHỜ XÁC NHẬN'
+        },
+        {
+            number: 2,
+            status: 'ĐÃ XÁC NHẬN'
+        },
+        {
+            number: 3,
+            status: 'ĐANG VẬN CHUYỂN'
+        },
+        {
+            number: 4,
+            status: 'CHỜ NHẬN'
+        },
+        {
+            number: 5,
+            status: 'ĐÃ NHẬN'
+        },
+    ]
     const PRODUCTS_INFO = [
         {
             imageProduct: '../../images/Ao-real-madrid-san-khach-2023-1.webp',
@@ -27,6 +50,41 @@ function OrderDetail() {
         deliveryOrder: 'Bình thường',
         paymentMethod: 'Visa',
     }
+    const [statusSelectedOrder, setStatusSelectedOrder] = useState("CHỜ XÁC NHẬN");
+    const [activeIndex, setActiveIndex] = useState(1);
+
+    const HandleChangeStatus = () => {
+        if (activeIndex < 5) {
+            setActiveIndex(activeIndex + 1);
+            setStatusSelectedOrder(STATUS_ORDER[activeIndex].status);
+        }
+        else {
+            setActiveIndex(5);
+            setStatusSelectedOrder('ĐÃ NHẬN');
+        }
+
+    }
+
+    const renderStatusOrderFontStyle = (statusSelectedOrder) => {
+        if (statusSelectedOrder === 'CHỜ XÁC NHẬN') {
+            return <span className={cx('status-yellow')}>{statusSelectedOrder}</span>
+        }
+        else if (statusSelectedOrder === 'ĐÃ NHẬN') {
+            return <span className={cx('status-green')}>{statusSelectedOrder}</span>
+        }
+        else if (statusSelectedOrder === 'ĐANG VẬN CHUYỂN') {
+            return <span className={cx('status-blue')}>{statusSelectedOrder}</span>
+        }
+        else if (statusSelectedOrder === 'ĐÃ XÁC NHẬN') {
+            return <span className={cx('status-lightblue')}>{statusSelectedOrder}</span>
+        }
+        else if (statusSelectedOrder === 'CHỜ NHẬN') {
+            return <span className={cx('status-lightgreen')}>{statusSelectedOrder}</span>
+        }
+        else {
+            return <span className={cx('status-red')}>{statusSelectedOrder}</span>
+        }
+    }
 
     return (
         <div className={cx('container')}>
@@ -38,19 +96,33 @@ function OrderDetail() {
 
                 <div className={cx('status-bar-container')}>
                     <div className={cx('status-bar')}>
-                        <div className={cx('circle')}>1</div>
-                        <hr className={cx('line')} />
-                        <div className={cx('circle')}>2</div>
-                        <hr className={cx('line')} />
-                        <div className={cx('circle')}>3</div>
-                        <hr className={cx('line')} />
-                        <div className={cx('circle')}>4</div>
-                        <hr className={cx('line')} />
-                        <div className={cx('circle')}>5</div>
+                        {
+                            STATUS_ORDER.map((status, curIndex) => {
+                                if (curIndex === 4) {
+                                    return (
+                                        <div className={activeIndex === curIndex + 1 ? cx('circle-active') : cx('circle')}
+                                            onClick={HandleChangeStatus}
+                                        >
+                                            {status.number}
+                                        </div>
+                                    )
+                                }
+                                return (
+                                    <>
+                                        <div className={activeIndex === curIndex + 1 ? cx('circle-active') : cx('circle')}
+                                            onClick={HandleChangeStatus}
+                                        >
+                                            {status.number}
+                                        </div>
+                                        <hr className={cx('line')} />
+                                    </>
+                                )
+                            })
+                        }
                     </div>
                 </div>
 
-                <div className={cx('status-text')}>CHỜ XÁC NHẬN</div>
+                <div className={cx('status-text')}>{renderStatusOrderFontStyle(statusSelectedOrder)}</div>
             </div>
 
             <div className={cx('customer-info')}>

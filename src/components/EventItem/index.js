@@ -21,7 +21,7 @@ function EventItem({ editEvent, deleteEvent, data }) {
 
                 <div className={cx('edit-btn-wrapper')}>
                     <button className={cx('edit-btn')} onClick={editEvent}>
-                        <EditIcon />
+                        <EditIcon width="15px" height="15px" />
                     </button>
                 </div>
             </div>

@@ -1,10 +1,11 @@
 import classNames from 'classnames/bind';
 import styles from './ProductDetail.module.scss';
-import { AddIcon, AddImageIcon, BackIcon, NextIcon } from '../../components/Icons';
+import { AddImageIcon, BackIcon, EditIcon, NextIcon } from '../../components/Icons';
 import Button from '../../components/Button';
 import Dropdown from 'react-dropdown';
 import SizeButton from '../../components/SizeButton';
 import { useState } from 'react';
+import EditQuantitySizeForm from '../../components/EditQuantitySizeForm';
 
 const cx = classNames.bind(styles);
 
@@ -20,11 +21,11 @@ function ProductDetail() {
             },
             {
                 size: 'XL',
-                quantity: 10,
+                quantity: 20,
             },
             {
                 size: 'M',
-                quantity: 10,
+                quantity: 30,
             },
         ],
         productDescription: 'Áo ngon, chất lượng',
@@ -46,6 +47,7 @@ function ProductDetail() {
     const defaultOptionSeasons = PRODUCT_DETAIL.productSeason;
     const [index, setIndex] = useState(0);
     const [mainImage, setMainImage] = useState(PRODUCT_DETAIL.productImages[0]);
+    const [openEditDialog, setOpenEditDialog] = useState(false);
 
     const HandleNextImage = () => {
         console.log("anh hien tai: ", mainImage);
@@ -70,7 +72,13 @@ function ProductDetail() {
         }
     }
 
+    const HandleOpenEditDialog = () => {
+        setOpenEditDialog(true);
+    }
 
+    const HandleCloseEditDialog = () => {
+        setOpenEditDialog(false);
+    }
 
     return (
         <div className={cx('container')}>
@@ -137,17 +145,19 @@ function ProductDetail() {
 
                 <div className={cx('size-product')}>
                     <p>Kích cỡ</p>
-                    <span className={cx('tooltip-text')}>Tooltip text</span>
                     <div className={cx('size-list')}>
                         {
                             PRODUCT_DETAIL.productSize.map((item, key) => {
                                 return (
-                                    <SizeButton size={item.size} key={key} className={cx('button-size')} />
+                                    <SizeButton size={item.size}
+                                        key={key}
+                                        quantity={item.quantity}
+                                        className={cx('button-size')} />
                                 )
                             })
                         }
-                        <button className={cx('add-size-btn')}>
-                            <AddIcon />
+                        <button className={cx('add-size-btn')} onClick={HandleOpenEditDialog}>
+                            <EditIcon width="20px" height="20px" />
                         </button>
                     </div>
                 </div>
@@ -167,6 +177,13 @@ function ProductDetail() {
                     <Button className={cx('cancel-button')} orange>Lưu</Button>
                 </div>
             </div>
+
+            {
+                openEditDialog &&
+                (
+                    <EditQuantitySizeForm closeDialog={HandleCloseEditDialog} data={PRODUCT_DETAIL.productSize} />
+                )
+            }
         </div>
     );
 }

@@ -3,11 +3,14 @@ import styles from './SizeButton.module.scss';
 
 const cx = classNames.bind(styles);
 
-function SizeButton({ size, className }) {
+function SizeButton({ size, className, quantity }) {
     return (
-        <button className={cx('size-button-wrapper', className)}>
-            {size}
-        </button>
+        <div className={cx('wrapper')}>
+            <span className={cx('tooltip-text')}>{quantity}</span>
+            <button className={cx('size-button-wrapper', className)}>
+                {size}
+            </button>
+        </div>
     );
 }
 
