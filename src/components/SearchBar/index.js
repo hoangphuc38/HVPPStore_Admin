@@ -8,7 +8,7 @@ import Wrapper from "../Popper";
 
 const cx = classNames.bind(styles);
 
-function SearchBar({ placeholder }) {
+function SearchBar({ placeholder, href }) {
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
@@ -18,13 +18,15 @@ function SearchBar({ placeholder }) {
             return;  //Xử lý trường hợp trường q của api bắt buộc khác ''
         }
 
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+        fetch(href + `${encodeURIComponent(searchValue)}&type=less`)
             .then((res) => res.json())
             .then((res) => {
                 setSearchResult(res.data);
             })
 
     }, [searchValue])
+
+    console.log("kết quả: ", searchResult);
 
     const HandleHideResult = () => {
         setShowResult(false);

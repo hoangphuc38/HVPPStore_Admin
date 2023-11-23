@@ -1,16 +1,19 @@
 .wrapper {
     display: flex;
     align-items: center;
-    height: 15%;
+    height: 75px;
 
     &:hover {
-        background-color: var(--hover-color);
+        background-color: #D9D9D9;
         border-radius: 10px;
         cursor: pointer;
     }
 }
 
-.wrapper.active {
+.wrapper-active {
+    display: flex;
+    align-items: center;
+    height: 75px;
     background-color: var(--hover-color);
     border-radius: 10px;
     cursor: pointer;

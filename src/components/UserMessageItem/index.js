@@ -3,9 +3,9 @@ import styles from './UserMessageItem.module.scss';
 
 const cx = classNames.bind(styles);
 
-function UserMessageItem({ data, onClick }) {
+function UserMessageItem({ data, onClick, isActive }) {
     return (
-        <div className={cx('wrapper')} onClick={onClick}>
+        <div className={isActive ? cx('wrapper-active') : cx('wrapper')} onClick={onClick}>
             <div className={cx('avatar-wrapper')}>
                 <img className={cx('avatar')}
                     src={data.avatar}

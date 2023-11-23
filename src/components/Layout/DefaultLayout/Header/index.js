@@ -27,7 +27,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <SearchBar placeholder="Tìm kiếm sản phẩm" />
+                <SearchBar placeholder="Tìm kiếm sản phẩm" href={'https://tiktok.fullstack.edu.vn/api/users/search?q='} />
 
                 <div className={cx('task-bar')}>
                     <div className={cx('notification')}>

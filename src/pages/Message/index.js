@@ -12,6 +12,8 @@ import send from '../../images/EmailSend.png';
 const cx = classNames.bind(styles);
 
 function Message() {
+    const USER_ID = '002';
+
     const USER_INFOS = [
         {
             id: '1',
@@ -47,6 +49,44 @@ function Message() {
         },
     ]
 
+    const CONVERSATION = [
+        {
+            idUser: '001',
+            timeMessage: '23/11/2023 6:50',
+            textMessage: 'Alo alo',
+            imageMessage: '',
+            videoMessage: '',
+        },
+        {
+            idUser: '002',
+            timeMessage: '23/11/2023 6:51',
+            textMessage: '',
+            imageMessage: 'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw21a150b7/images/large/701225667001_pp_01_mcfc.png?sw=400&sh=400&sm=fit',
+            videoMessage: '',
+        },
+        {
+            idUser: '001',
+            timeMessage: '23/11/2023 6:51',
+            textMessage: 'Mặt hàng này còn không sốp',
+            imageMessage: '',
+            videoMessage: '',
+        },
+        {
+            idUser: '001',
+            timeMessage: '23/11/2023 6:51',
+            textMessage: '',
+            imageMessage: 'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dwe19c4448/images/large/701225698001_pp_01_mcfc.png?sw=1600&sh=1600&sm=fit',
+            videoMessage: '',
+        },
+        {
+            idUser: '002',
+            timeMessage: '23/11/2023 6:52',
+            textMessage: 'Check inbox',
+            imageMessage: '',
+            videoMessage: '',
+        },
+    ]
+
     const [isShow, setIsShow] = useState(false);
     const [currentMessage, setCurrentMessage] = useState({});
 
@@ -77,7 +117,16 @@ function Message() {
                     {
                         USER_INFOS.map((user, key) => {
                             return (
-                                <UserMessageItem data={user} key={user.id} onClick={() => showMessage(user)} />
+                                <UserMessageItem data={user}
+                                    key={user.id}
+                                    onClick={() => showMessage(user)}
+                                    isActive={
+                                        Object.keys(currentMessage).length === 0
+                                            ? false
+                                            : (
+                                                user.id === currentMessage[0].id ? true : false
+                                            )
+                                    } />
                             )
                         })
                     }
@@ -102,11 +151,38 @@ function Message() {
                             </div>
                         </div>
                         <div className={cx('message-content')}>
+                            {
+                                CONVERSATION.map((message) => {
+                                    return (
+                                        <div className={message.idUser === USER_ID ? cx('owner') : cx('other')}>
+                                            {
+                                                message.imageMessage &&
+                                                <div className={cx('image-wrapper')}>
+                                                    <img src={message.imageMessage}
+                                                        className={cx('image')}
+                                                        alt='message' />
+                                                </div>
 
+
+                                            }
+                                            {
+                                                message.textMessage &&
+                                                <div className={cx('text-wrapper')}>
+                                                    {message.textMessage}
+                                                </div>
+                                            }
+
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
                         <div className={cx('message-input')}>
                             <div className={cx('photo-button')}>
-                                <img src={camera} alt='camera' />
+                                <input type='file' id='file' className={cx('input-file')} />
+                                <label htmlFor='file' className={cx('camera-icon')}>
+                                    <img src={camera} alt='camera' />
+                                </label>
                             </div>
                             <div className={cx('input-content')}>
                                 <input type='text' placeholder='Aa' />

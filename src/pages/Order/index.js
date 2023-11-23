@@ -130,7 +130,7 @@ function Order() {
     return (
         <div className={cx('container')}>
             <div className={cx('search-and-sortbar')}>
-                <SearchBar placeholder="Tìm kiếm đơn hàng" />
+                <SearchBar placeholder="Tìm kiếm đơn hàng" href={'https://tiktok.fullstack.edu.vn/api/users/search?q='} />
                 <div className={cx('sortbar')}>
                     <Dropdown controlClassName={cx('Dropdown-control')}
                         arrowClosed={<span className={cx('arrow-closed')} />}
