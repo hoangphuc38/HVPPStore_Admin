@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faSortDown, faBars } from '@fortawesome/free-solid-svg-icons';
 import AvatarItem from '../../../AvatarItem';
 import Menu from '../../../Popper/Menu';
 import { UserIcon, LogoutIcon } from '../../../Icons';
@@ -26,6 +26,10 @@ function Header({ className }) {
     return (
         <header className={cx('wrapper', className)}>
             <div className={cx('inner')}>
+                <button className={cx('bar-icon')}>
+                    <FontAwesomeIcon icon={faBars} />
+                </button>
+
 
                 <div className={cx('task-bar')}>
                     <div className={cx('notification')}>

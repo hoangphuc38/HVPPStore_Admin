@@ -70,6 +70,12 @@ function SaleEvent() {
         setEvents(currentEvents);
     }
 
+    const HandleEditEvent = (event) => {
+
+
+        setSelectedEvent(event);
+    }
+
     return (
         <div className={cx('container')}>
             <div className={cx('search-and-addbutton')}>
@@ -97,7 +103,8 @@ function SaleEvent() {
             }
             {
                 isSelectEvent && (
-                    <DetailEvent closeDialog={closeSelectedEvent} data={selectedEvent} />
+                    <DetailEvent closeDialog={closeSelectedEvent}
+                        data={selectedEvent} />
                 )
             }
 

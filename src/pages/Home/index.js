@@ -143,9 +143,13 @@ function Home() {
                     </div>
                     <span className={cx('slogan-sentence')}>Cháy cùng ngọn lửa đam mê</span>
                 </div>
-                <Button leftIcon={<StatisticIcon />}
+                <Button leftIcon={<StatisticIcon width={25} height={25} />}
                     className={cx('statistic-btn')}
                     primary>Xuất hình ảnh thống kê</Button>
+
+                <button className={cx('statistic-btn-mobile')}>
+                    <StatisticIcon width={15} height={15} />
+                </button>
             </div>
 
             <div className={cx('first-labels')}>
@@ -202,7 +206,7 @@ function Home() {
                 <div className={cx('second-box')}>
                     <div className={cx('content-wrapper')}>
                         <div className={cx('chart-title')}>
-                            <span>Top 3 Nhóm sản phẩm bán chạy nhất tháng 11</span>
+                            <span className={cx('title-text')}>Top 3 Nhóm sản phẩm bán chạy nhất tháng 11</span>
                             <Button primary
                                 rightIcon={<DetailIcon />}
                                 className={cx('detail-btn')}

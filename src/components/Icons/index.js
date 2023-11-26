@@ -240,7 +240,7 @@ export const ExitMessageIcon = ({ width = '20px', height = '20px', color = 'whit
     </svg>
 );
 
-export const StatisticIcon = ({ width = '25px', height = '25px', color = 'white' }) => (
+export const StatisticIcon = ({ width, height, color = 'white' }) => (
     <svg xmlns="http://www.w3.org/2000/svg"
         fill={color}
         height={height}

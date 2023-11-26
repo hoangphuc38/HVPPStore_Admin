@@ -1,56 +1,99 @@
+@use '../../../../assets/responsiveSize/mixin' as mixin;
+
 .wrapper {
     height: 60px;
     --search-border-radius: 30px;
+
+    .inner {
+        height: 100%;
+        width: var(--default-layout-width);
+        display: flex;
+        align-items: center;
+
+        .bar-icon {
+            display: none;
+        }
+
+        .task-bar {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            justify-content: flex-end;
+
+            .notification {
+                display: flex;
+                cursor: pointer;
+                position: relative;
+                margin-right: 37px;
+
+                .notification-icon {
+                    font-size: 50px;
+                    color: var(--primary-color-text);
+                    background-color: transparent;
+                    cursor: pointer;
+                }
+
+                .counter {
+                    width: 20px;
+                    height: 20px;
+                    background-color: red;
+                    border-radius: 50%;
+                    font-size: 15px;
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: absolute;
+                    top: -2px;
+                    right: -2px;
+                }
+
+
+            }
+
+            .sortdown-btn {
+                font-size: 33px;
+                margin-left: 28px;
+                color: var(--primary-color-text);
+                background-color: transparent;
+                cursor: pointer;
+            }
+
+        }
+    }
 }
 
-.inner {
-    height: 100%;
-    width: var(--default-layout-width);
-    display: flex;
-    align-items: center;
-}
+@include mixin.mobile {
+    .wrapper {
+        .inner {
+            .bar-icon {
+                display: flex;
+                font-size: 20px;
+                color: var(--primary-color-text);
+                background-color: transparent;
+                cursor: pointer;
+            }
 
-.task-bar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    justify-content: flex-end;
-}
+            .task-bar {
+                .notification {
+                    margin-right: 15px;
 
-.notification {
-    display: flex;
-    cursor: pointer;
-    position: relative;
-    margin-right: 37px;
-}
+                    .notification-icon {
+                        font-size: 30px;
+                    }
 
-.notification-icon {
-    font-size: 50px;
-    color: var(--primary-color-text);
-    background-color: transparent;
-    cursor: pointer;
-}
+                    .counter {
+                        width: 13px;
+                        height: 13px;
+                        font-size: 10px;
+                    }
+                }
 
-.counter {
-    width: 20px;
-    height: 20px;
-    background-color: red;
-    border-radius: 50%;
-    font-size: 15px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: -2px;
-    right: -2px;
-}
-
-.sortdown-btn {
-    font-size: 33px;
-    margin-left: 28px;
-    color: var(--primary-color-text);
-    background-color: transparent;
-    cursor: pointer;
+                .sortdown-btn {
+                    display: none;
+                }
+            }
+        }
+    }
 }

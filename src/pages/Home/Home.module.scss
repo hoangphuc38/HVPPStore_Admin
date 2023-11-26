@@ -1,220 +1,289 @@
+@use '../../assets/responsiveSize/mixin' as mixin;
+
 .container {
     margin-top: 10px;
-}
 
-.slogan-downloadbtn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.slogan {
-    display: flex;
-    flex-direction: column;
-}
-
-.name-shop {
-    display: flex;
-    flex-direction: row;
-    font-size: 40px;
-    font-weight: 600;
-}
-
-.sport {
-    color: var(--primary);
-}
-
-.slogan-sentence {
-    font-style: italic;
-    font-size: 30px;
-    font-weight: 500;
-}
-
-.statistic-btn {
-    border-radius: 15px;
-}
-
-.first-labels {
-    margin-top: 28px;
-    display: flex;
-}
-
-.statistic-boxes {
-    display: flex;
-    width: 55%;
-    flex-wrap: wrap;
-    gap: 30px;
-}
-
-.box {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    width: 310px;
-    border-radius: 20px;
-    background-color: white;
-    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
-}
-
-.title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: 700;
-}
-
-.customer-icon {
-    background: url('../../images/Customer.png'), lightgray 50% / contain no-repeat;
-    background-color: transparent;
-    width: 30px;
-    height: 30px;
-}
-
-.quantity {
-    font-size: 23px;
-    font-weight: 700;
-}
-
-.change-to-last-month {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.interest-change {
-    font-style: italic;
-    color: var(--green);
-}
-
-.sales-today-icon {
-    background: url('../../images/MoneyBag.png'), lightgray 50% / contain no-repeat;
-    background-color: transparent;
-    width: 30px;
-    height: 30px;
-}
-
-.sales-month-icon {
-    background: url('../../images/BusinessManagement.png'), lightgray 50% / contain no-repeat;
-    background-color: transparent;
-    width: 30px;
-    height: 30px;
-}
-
-.sales-year-icon {
-    background: url('../../images/Profit.png'), lightgray 50% / contain no-repeat;
-    background-color: transparent;
-    width: 30px;
-    height: 30px;
-}
-
-.second-box {
-    width: 45%;
-    border-radius: 20px;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
-
-    .content-wrapper {
-        width: 90%;
-        padding: 10px 0px 5px 0px;
-
-        .chart-title {
-            font-weight: 700;
-            height: 7%;
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-
-            .detail-btn {
-                padding: 5px 10px 5px 10px;
-                font-size: 14px;
-            }
-        }
-
-
-        .chart {
-            height: 93%;
-        }
-    }
-}
-
-.second-labels {
-    display: flex;
-    margin-top: 35px;
-    margin-bottom: 35px;
-    justify-content: space-between;
-}
-
-.first-statistic {
-    width: 60%;
-    height: 372px;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    background-color: white;
-    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
-
-    .content-wrapper {
-        width: 95%;
-        padding: 10px 0px 5px 0px;
-
-        .chart-title {
-            font-weight: 700;
-            height: 7%;
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-
-            .detail-btn {
-                padding: 5px 10px 5px 10px;
-                font-size: 14px;
-            }
-        }
-
-
-        .chart {
-            height: 93%;
-
-        }
-    }
-}
-
-.second-statistic {
-    width: 35%;
-    height: 372px;
-    display: flex;
-    flex-flow: column;
-    border-radius: 20px;
-    background-color: white;
-    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
-
-    .chart-title {
-        font-weight: 700;
-        margin: 10px 20px 0px 20px;
+    .slogan-downloadbtn {
         display: flex;
-        flex: 0 1 auto;
+        justify-content: space-between;
         align-items: center;
+
+        .slogan {
+            display: flex;
+            flex-direction: column;
+
+            .name-shop {
+                display: flex;
+                flex-direction: row;
+                font-size: 40px;
+                font-weight: 600;
+
+                .sport {
+                    color: var(--primary);
+                }
+            }
+
+            .slogan-sentence {
+                font-style: italic;
+                font-size: 30px;
+                font-weight: 500;
+            }
+        }
+
+        .statistic-btn {
+            border-radius: 15px;
+        }
+
+        .statistic-btn-mobile {
+            display: none;
+            border-radius: 15px;
+        }
+    }
+
+    .first-labels {
+        margin-top: 28px;
+        display: flex;
+
+        .statistic-boxes {
+            display: flex;
+            width: calc(310px + 310px + 50px);
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+
+            .box {
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 310px;
+                border-radius: 20px;
+                background-color: white;
+                filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
+
+                .title {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    font-weight: 700;
+
+                    .customer-icon {
+                        background: url('../../images/Customer.png'), lightgray 50% / contain no-repeat;
+                        background-color: transparent;
+                        width: 30px;
+                        height: 30px;
+                    }
+
+                    .sales-today-icon {
+                        background: url('../../images/MoneyBag.png'), lightgray 50% / contain no-repeat;
+                        background-color: transparent;
+                        width: 30px;
+                        height: 30px;
+                    }
+
+                    .sales-month-icon {
+                        background: url('../../images/BusinessManagement.png'), lightgray 50% / contain no-repeat;
+                        background-color: transparent;
+                        width: 30px;
+                        height: 30px;
+                    }
+
+                    .sales-year-icon {
+                        background: url('../../images/Profit.png'), lightgray 50% / contain no-repeat;
+                        background-color: transparent;
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+
+                .quantity {
+                    font-size: 23px;
+                    font-weight: 700;
+                }
+
+                .change-to-last-month {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .interest-change {
+                        font-style: italic;
+                        color: var(--green);
+                    }
+                }
+            }
+        }
+
+        .second-box {
+            margin-left: 20px;
+            width: calc(100% - 10px - 310px - 310px - 10px);
+            border-radius: 20px;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
+
+            .content-wrapper {
+                display: flex;
+                flex-direction: column;
+                width: 90%;
+                padding: 10px 0px 5px 0px;
+
+                .chart-title {
+                    font-weight: 700;
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: space-between;
+
+                    .title-text {
+                        width: 40%;
+                    }
+
+                    .detail-btn {
+                        padding: 5px 10px 5px 10px;
+                        font-size: 14px;
+                    }
+                }
+
+                .chart {
+                    margin-top: 10px;
+                    height: 400px;
+                }
+            }
+        }
+    }
+
+    .second-labels {
+        display: flex;
+        margin-top: 35px;
+        margin-bottom: 35px;
         justify-content: space-between;
 
-        .title {
+        .first-statistic {
             width: 60%;
+            height: 372px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            background-color: white;
+            filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
+
+            .content-wrapper {
+                width: 95%;
+                padding: 10px 0px 5px 0px;
+
+                .chart-title {
+                    font-weight: 700;
+                    height: 7%;
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: space-between;
+
+                    .detail-btn {
+                        padding: 5px 10px 5px 10px;
+                        font-size: 14px;
+                    }
+                }
+
+                .chart {
+                    height: 93%;
+
+                }
+            }
         }
 
-        .detail-btn {
-            padding: 5px 10px 5px 10px;
-            font-size: 14px;
+        .second-statistic {
+            width: 35%;
+            height: 372px;
+            display: flex;
+            flex-flow: column;
+            border-radius: 20px;
+            background-color: white;
+            filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
+
+            .chart-title {
+                font-weight: 700;
+                margin: 10px 20px 0px 20px;
+                display: flex;
+                flex: 0 1 auto;
+                align-items: flex-start;
+                justify-content: space-between;
+
+                .title {
+                    width: 60%;
+                }
+
+                .detail-btn {
+                    padding: 5px 10px 5px 10px;
+                    font-size: 14px;
+                }
+            }
+
+            .pie-chart-wrapper {
+                width: 100%;
+                height: 80%;
+                display: flex;
+                justify-content: center;
+                margin-bottom: 10px;
+                flex-grow: 1 1;
+                flex: 1 1 auto;
+            }
         }
     }
+}
 
-    .pie-chart-wrapper {
-        width: 100%;
-        height: 80%;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 10px;
-        flex-grow: 1 1;
-        flex: 1 1 auto;
+@include mixin.mobile {
+    .container {
+        .slogan-downloadbtn {
+            align-items: flex-end;
+
+            .slogan {
+                .name-shop {
+                    font-size: 30px;
+                }
+
+                .slogan-sentence {
+                    font-size: 20px;
+                }
+            }
+
+            .statistic-btn {
+                display: none;
+            }
+
+            .statistic-btn-mobile {
+                display: flex;
+                border-radius: 10px;
+                padding: 10px 15px;
+                align-items: center;
+                justify-content: center;
+                background-color: var(--primary-color-text);
+            }
+        }
+
+        .first-labels {
+            flex-direction: column;
+
+            .statistic-boxes {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+
+                .box {
+                    width: 100%;
+                    gap: 15px;
+
+                    .quantity {
+                        font-size: 20px;
+                    }
+                }
+            }
+
+            .second-box {
+                margin-left: 0;
+                width: 100%;
+                margin-top: 20px;
+            }
+        }
     }
 }

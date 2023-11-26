@@ -1,0 +1,25 @@
+@import './variable';
+
+@mixin mobile {
+    @media only screen and (max-width: #{$tablet-width}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media only screen and (min-width: #{$tablet-width}) and (max-width: #{$desktop-width}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media only screen and (min-width: #{$desktop-width}) and (max-width: #{$laptop-2xl-width}) {
+        @content;
+    }
+}
+
+@mixin laptop-2xl {
+    @media only screen and (min-width: #{$laptop-2xl-width}) {
+        @content;
+    }
+}
