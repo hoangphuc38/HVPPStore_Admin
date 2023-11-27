@@ -1,3 +1,5 @@
+@use '../../assets/responsiveSize/mixin' as mixin;
+
 .wrapper {
     display: inline-flex;
     align-items: center;
@@ -55,4 +57,10 @@
 
 .right-icon {
     margin-left: 5px;
+}
+
+@include mixin.mobile {
+    .wrapper {
+        padding: 5px 15px;
+    }
 }

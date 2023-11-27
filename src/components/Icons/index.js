@@ -86,7 +86,7 @@ export const NotificationIcon = ({ width = '30px', height = '30px', color = '#2A
     </svg>
 );
 
-export const AddIcon = ({ width = '30px', height = '30px' }) => (
+export const AddIcon = ({ width, height }) => (
     <svg viewBox="0 0 24 24"
         fill="none"
         height={height}

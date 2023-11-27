@@ -1,55 +1,111 @@
+@use '../../../../assets/responsiveSize/mixin' as mixin;
+
 .wrapper {
     height: 60px;
     --search-border-radius: 30px;
+
+    .inner {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .search-bar-and-offcanvas {
+            display: flex;
+
+            .offcanvas-icon {
+                display: none;
+                font-size: 20px;
+                color: var(--primary-color-text);
+                background-color: transparent;
+                cursor: pointer;
+            }
+        }
+
+        .task-bar {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            .notification {
+                display: flex;
+                cursor: pointer;
+                position: relative;
+                margin-right: 37px;
+
+                .notification-icon {
+                    font-size: 50px;
+                    color: var(--primary-color-text);
+                    background-color: transparent;
+                    cursor: pointer;
+                }
+
+                .counter {
+                    width: 20px;
+                    height: 20px;
+                    background-color: red;
+                    border-radius: 50%;
+                    font-size: 15px;
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: absolute;
+                    top: -2px;
+                    right: -2px;
+                }
+            }
+
+            .sortdown-btn {
+                font-size: 33px;
+                margin-left: 28px;
+                color: var(--primary-color-text);
+                background-color: transparent;
+                cursor: pointer;
+            }
+        }
+    }
 }
 
-.inner {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+@include mixin.mobile {
+    .wrapper {
+        .inner {
+            .search-bar-and-offcanvas {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                width: 50%;
 
-.task-bar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
+                .offcanvas-icon {
+                    display: flex;
+                    font-size: 20px;
+                    color: var(--primary-color-text);
+                    background-color: transparent;
+                    cursor: pointer;
+                }
+            }
 
-.notification {
-    display: flex;
-    cursor: pointer;
-    position: relative;
-    margin-right: 37px;
-}
+            .task-bar {
 
-.notification-icon {
-    font-size: 50px;
-    color: var(--primary-color-text);
-    background-color: transparent;
-    cursor: pointer;
-}
+                .notification {
+                    margin-right: 10px;
 
-.counter {
-    width: 20px;
-    height: 20px;
-    background-color: red;
-    border-radius: 50%;
-    font-size: 15px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: -2px;
-    right: -2px;
-}
+                    .notification-icon {
+                        font-size: 30px;
+                    }
 
-.sortdown-btn {
-    font-size: 33px;
-    margin-left: 28px;
-    color: var(--primary-color-text);
-    background-color: transparent;
-    cursor: pointer;
+                    .counter {
+                        width: 13px;
+                        height: 13px;
+                        font-size: 10px;
+                    }
+                }
+
+                .sortdown-btn {
+                    display: none;
+                }
+            }
+        }
+    }
 }

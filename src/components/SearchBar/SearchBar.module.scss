@@ -1,3 +1,5 @@
+@use '../../assets/responsiveSize/mixin' as mixin;
+
 .search-result {
     width: 523px;
     font-size: 16px;
@@ -50,21 +52,46 @@
             font-family: 'Nunito Sans', sans-serif;
         }
     }
+
+    .search-btn {
+        width: 95px;
+        height: 100%;
+        background-color: #FCAF17;
+        border-style: solid;
+        border-top: none;
+        border-bottom: none;
+        border-right: none;
+        border-left-color: #2A2A86;
+        outline: none;
+        border-top-right-radius: var(--search-border-radius);
+        border-bottom-right-radius: var(--search-border-radius);
+        font-size: 25px;
+        color: #2A2A86;
+        cursor: pointer;
+    }
 }
 
-.search-btn {
-    width: 95px;
-    height: 100%;
-    background-color: #FCAF17;
-    border-style: solid;
-    border-top: none;
-    border-bottom: none;
-    border-right: none;
-    border-left-color: #2A2A86;
-    outline: none;
-    border-top-right-radius: var(--search-border-radius);
-    border-bottom-right-radius: var(--search-border-radius);
-    font-size: 25px;
-    color: #2A2A86;
-    cursor: pointer;
+@include mixin.mobile {
+    .search-result {
+        h4 {}
+
+        .result-wrapper {}
+    }
+
+    .search {
+        width: 95%;
+        height: 35px;
+        padding-left: 10px;
+
+        input {
+            padding-right: 0px;
+            font-size: 12px;
+            width: 60%;
+        }
+
+        .search-btn {
+            font-size: 13px;
+            width: 20%;
+        }
+    }
 }

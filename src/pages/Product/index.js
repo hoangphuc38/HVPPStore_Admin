@@ -150,7 +150,11 @@ function Product() {
                 <Button href={config.routes.addProduct}
                     className={cx('add-product-btn')}
                     primary
-                    leftIcon={<AddIcon />}>Thêm sản phẩm</Button>
+                    leftIcon={<AddIcon width={30} height={30} />}>Thêm sản phẩm</Button>
+
+                <Button href={config.routes.addProduct}
+                    className={cx('add-product-btn-mobile')}
+                    primary>Thêm sản phẩm</Button>
             </div>
             <div className={cx('product-table-wrapper')}>
                 <div className={cx('product-table')}>

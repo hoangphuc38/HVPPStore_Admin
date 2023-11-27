@@ -1,168 +1,325 @@
+@use '../../assets/responsiveSize/mixin' as mixin;
+
 .content {
     margin-top: 36px;
-}
 
-.sortbars-and-button {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
+    .sortbars-and-button {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
 
-.sortbars {
-    display: flex;
-    flex-direction: row;
-    gap: 60px;
-}
+        .sortbars {
+            display: flex;
+            flex-direction: row;
+            gap: 60px;
 
-.dropdown-bar {
-    width: 341px;
-    height: 55px;
-}
+            .Dropdown-control {
+                display: flex;
+                width: 340px;
+                height: 55px;
+                border: 3px solid var(--primary-color-text);
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+                align-items: center;
+                padding-left: 30px;
+                color: var(--primary-color-text);
+                font-size: 18px;
+                font-weight: 500;
 
-.Dropdown-control {
-    display: flex;
-    width: 340px;
-    height: 55px;
-    border: 3px solid var(--primary-color-text);
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    align-items: center;
-    padding-left: 30px;
-    color: var(--primary-color-text);
-    font-size: 18px;
-    font-weight: 500;
-}
+                .arrow-closed {
+                    border-color: #2A2A86 transparent transparent;
+                    border-style: solid;
+                    border-width: 10px 10px 0;
+                    content: ' ';
+                    display: block;
+                    height: 0;
+                    position: absolute;
+                    right: 10px;
+                    top: 20px;
+                    width: 0
+                }
 
-.Dropdown-control-season {
-    display: flex;
-    width: 206px;
-    height: 55px;
-    border: 3px solid var(--primary-color-text);
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    align-items: center;
-    padding-left: 30px;
-    color: var(--primary-color-text);
-    font-size: 18px;
-    font-weight: 500;
-}
+                .arrow-open {
+                    border-color: transparent transparent #2A2A86;
+                    border-style: solid;
+                    border-width: 0px 10px 10px;
+                    content: ' ';
+                    display: block;
+                    height: 0;
+                    position: absolute;
+                    right: 10px;
+                    top: 20px;
+                    width: 0
+                }
 
-.Dropdown-control-sort {
-    display: flex;
-    width: 350px;
-    border: 3px solid var(--primary-color-text);
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    align-items: center;
-    padding-left: 20px;
-    color: var(--primary-color-text);
-    font-size: 18px;
-    font-weight: 500;
+                .menu-open {
+                    border-radius: 5px;
+                }
+            }
 
-    .arrow-closed-sort {
-        border-color: #2A2A86 transparent transparent;
-        border-style: solid;
-        border-width: 10px 10px 0;
-        content: ' ';
-        display: block;
-        height: 0;
-        position: absolute;
-        right: 10px;
-        top: 17px;
-        width: 0
+            .Dropdown-control-season {
+                display: flex;
+                width: 206px;
+                height: 55px;
+                border: 3px solid var(--primary-color-text);
+                border-top-right-radius: 20px;
+                border-bottom-right-radius: 20px;
+                border-top-left-radius: 0px;
+                border-bottom-left-radius: 0px;
+                align-items: center;
+                padding-left: 30px;
+                color: var(--primary-color-text);
+                font-size: 18px;
+                font-weight: 500;
+
+                .arrow-closed {
+                    border-color: #2A2A86 transparent transparent;
+                    border-style: solid;
+                    border-width: 10px 10px 0;
+                    content: ' ';
+                    display: block;
+                    height: 0;
+                    position: absolute;
+                    right: 10px;
+                    top: 20px;
+                    width: 0
+                }
+
+                .arrow-open {
+                    border-color: transparent transparent #2A2A86;
+                    border-style: solid;
+                    border-width: 0px 10px 10px;
+                    content: ' ';
+                    display: block;
+                    height: 0;
+                    position: absolute;
+                    right: 10px;
+                    top: 20px;
+                    width: 0
+                }
+
+                .menu-open {
+                    border-radius: 5px;
+                }
+            }
+        }
+
+        .add-product-btn {
+            background-color: var(--primary-color-text);
+        }
+
+        .add-product-btn-mobile {
+            display: none;
+        }
     }
 
-    .arrow-open-sort {
-        border-color: transparent transparent #2A2A86;
-        border-style: solid;
-        border-width: 0px 10px 10px;
-        content: ' ';
-        display: block;
-        height: 0;
-        position: absolute;
-        right: 10px;
-        top: 17px;
-        width: 0
+    .product-table-wrapper {
+        margin-top: 35px;
+        margin-bottom: 30px;
+        height: 714px;
+        display: flex;
+        justify-content: center;
+        background-color: white;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.65);
+        border-radius: 20px;
+
+        .product-table {
+            width: 95%;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+
+            .functions {
+                margin-bottom: 20px;
+                display: flex;
+                justify-content: space-between;
+
+                .Dropdown-control-sort {
+                    display: flex;
+                    width: 350px;
+                    border: 3px solid var(--primary-color-text);
+                    border-top-right-radius: 20px;
+                    border-bottom-right-radius: 20px;
+                    border-top-left-radius: 0px;
+                    border-bottom-left-radius: 0px;
+                    align-items: center;
+                    padding-left: 20px;
+                    color: var(--primary-color-text);
+                    font-size: 18px;
+                    font-weight: 500;
+
+                    .arrow-closed-sort {
+                        border-color: #2A2A86 transparent transparent;
+                        border-style: solid;
+                        border-width: 10px 10px 0;
+                        content: ' ';
+                        display: block;
+                        height: 0;
+                        position: absolute;
+                        right: 10px;
+                        top: 17px;
+                        width: 0
+                    }
+
+                    .arrow-open-sort {
+                        border-color: transparent transparent #2A2A86;
+                        border-style: solid;
+                        border-width: 0px 10px 10px;
+                        content: ' ';
+                        display: block;
+                        height: 0;
+                        position: absolute;
+                        right: 10px;
+                        top: 17px;
+                        width: 0
+                    }
+
+                    .menu-open {
+                        border-radius: 5px;
+                    }
+                }
+            }
+
+            .table-content {
+                width: 100%;
+                height: 86%;
+                margin-top: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                overflow-y: scroll;
+            }
+        }
     }
 }
 
-.arrow-closed {
-    border-color: #2A2A86 transparent transparent;
-    border-style: solid;
-    border-width: 10px 10px 0;
-    content: ' ';
-    display: block;
-    height: 0;
-    position: absolute;
-    right: 10px;
-    top: 20px;
-    width: 0
+@include mixin.M-mobile {
+    .content {
+        .sortbars-and-button {
+            flex-direction: column-reverse;
+            align-items: flex-start;
+            gap: 20px;
+
+            .sortbars {
+                gap: 15px;
+                width: 100%;
+
+                .Dropdown-control {
+                    width: 120px;
+                    height: 35px;
+                    font-size: 16px;
+                    border-top-left-radius: 15px;
+                    border-bottom-left-radius: 15px;
+                    padding-left: 15px;
+
+                    .arrow-closed {
+                        top: 13px;
+                        border-width: 7px 7px 0px;
+                    }
+
+                    .arrow-open {
+                        top: 13px;
+                        border-width: 0px 7px 7px;
+                    }
+
+                    .menu-open {
+                        font-size: 14px;
+                    }
+                }
+
+                .Dropdown-control-season {
+                    width: 170px;
+                    height: 35px;
+                    font-size: 16px;
+                    border-top-right-radius: 15px;
+                    border-bottom-right-radius: 15px;
+                    padding-left: 15px;
+
+
+                    .arrow-closed {
+                        top: 13px;
+                        border-width: 7px 7px 0px;
+                    }
+
+                    .arrow-open {
+                        top: 13px;
+                        border-width: 0px 7px 7px;
+                    }
+                }
+            }
+
+            .add-product-btn {
+                display: none;
+            }
+
+            .add-product-btn-mobile {
+                display: inline-flex;
+                font-size: 16px;
+            }
+        }
+    }
 }
 
-.arrow-open {
-    border-color: transparent transparent #2A2A86;
-    border-style: solid;
-    border-width: 0px 10px 10px;
-    content: ' ';
-    display: block;
-    height: 0;
-    position: absolute;
-    right: 10px;
-    top: 20px;
-    width: 0
-}
+@include mixin.L-mobile {
+    .content {
+        .sortbars-and-button {
+            gap: 20px;
 
-.menu-open {
-    border-radius: 5px;
-}
+            .sortbars {
+                gap: 15px;
 
-.add-product-btn {
-    background-color: var(--primary-color-text);
-}
+                .Dropdown-control {
+                    width: 120px;
+                    height: 35px;
+                    font-size: 16px;
+                    border-top-left-radius: 15px;
+                    border-bottom-left-radius: 15px;
+                    padding-left: 15px;
 
-.product-table-wrapper {
-    margin-top: 35px;
-    margin-bottom: 30px;
-    height: 714px;
-    display: flex;
-    justify-content: center;
-    background-color: white;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.65);
-    border-radius: 20px;
-}
+                    .arrow-closed {
+                        top: 13px;
+                        border-width: 7px 7px 0px;
+                    }
 
-.product-table {
-    width: 95%;
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-}
+                    .arrow-open {
+                        top: 13px;
+                        border-width: 0px 7px 7px;
+                    }
 
-.functions {
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-}
+                    .menu-open {
+                        font-size: 14px;
+                    }
+                }
 
-.table-content {
-    width: 100%;
-    height: 86%;
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    overflow-y: scroll;
-}
+                .Dropdown-control-season {
+                    width: 170px;
+                    height: 35px;
+                    font-size: 16px;
+                    border-top-right-radius: 15px;
+                    border-bottom-right-radius: 15px;
+                    padding-left: 15px;
 
-.header-title {
-    width: 100%;
-    height: 5%;
-    display: flex;
-    justify-content: space-around;
-    margin-top: 18px;
-    font-weight: 700;
+
+                    .arrow-closed {
+                        top: 13px;
+                        border-width: 7px 7px 0px;
+                    }
+
+                    .arrow-open {
+                        top: 13px;
+                        border-width: 0px 7px 7px;
+                    }
+                }
+            }
+
+            .add-product-btn {
+                display: none;
+            }
+
+            .add-product-btn-mobile {
+                display: inline-flex;
+                font-size: 16px;
+            }
+        }
+    }
 }

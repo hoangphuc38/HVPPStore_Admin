@@ -33,14 +33,47 @@
     }
 }
 
-@include mixin.desktop {
+@include mixin.mobile {
     .wrapper {
+        font-size: 16px;
+
         .sidebar {
             display: none;
         }
 
         .container {
-            margin-left: 0%;
+            margin-left: 0;
+            padding: 10px 10px;
+        }
+    }
+}
+
+@include mixin.tablet {
+    .wrapper {
+        font-size: 16px;
+
+        .sidebar {
+            display: none;
+        }
+
+        .container {
+            margin-left: 0;
+            padding: 10px 15px;
+        }
+    }
+}
+
+@include mixin.desktop {
+    .wrapper {
+        font-size: 18px;
+
+        .sidebar {
+            display: none;
+        }
+
+        .container {
+            margin-left: 0;
+            padding: 10px 20px;
         }
     }
 }
