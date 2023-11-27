@@ -18,19 +18,19 @@ function Home() {
         {
             name: 'Manchester City',
             uv: 4000,
-            pv: 2400,
+            pv: 2.400,
             amt: 2400,
         },
         {
             name: 'Barcelona',
             uv: 3000,
-            pv: 1398,
+            pv: 1.398,
             amt: 2210,
         },
         {
             name: 'Liverpool',
             uv: 2000,
-            pv: 9800,
+            pv: 9.800,
             amt: 2290,
         },
     ];
@@ -213,7 +213,7 @@ function Home() {
                                 href={config.routes.statisticBestSeller}>Xem thêm</Button>
                         </div>
                         <div className={cx('chart')}>
-                            <BarChartItem data={dataBarChart} domain={[0, 15000]} />
+                            <BarChartItem data={dataBarChart} domain={[0, 15]} />
                         </div>
                     </div>
                 </div>

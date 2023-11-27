@@ -13,61 +13,61 @@ function StatisticBestSeller() {
         {
             name: 'Manchester City',
             uv: 4000,
-            pv: 2400,
+            pv: 2.400,
             amt: 2400,
         },
         {
             name: 'Barcelona',
             uv: 3000,
-            pv: 1398,
+            pv: 1.398,
             amt: 2210,
         },
         {
             name: 'Liverpool',
             uv: 2000,
-            pv: 9800,
+            pv: 9.800,
             amt: 2290,
         },
         {
             name: 'Manchester United',
             uv: 4000,
-            pv: 2400,
+            pv: 2.400,
             amt: 2400,
         },
         {
             name: 'PSG',
             uv: 3000,
-            pv: 1398,
+            pv: 1.398,
             amt: 2210,
         },
         {
             name: 'HAGL',
             uv: 2000,
-            pv: 9800,
+            pv: 9.800,
             amt: 2290,
         },
         {
             name: 'Hà Nội FC',
             uv: 4000,
-            pv: 2400,
+            pv: 2.400,
             amt: 2400,
         },
         {
             name: 'Chelsea',
             uv: 3000,
-            pv: 1398,
+            pv: 1.398,
             amt: 2210,
         },
         {
             name: 'Real Madrid',
             uv: 2000,
-            pv: 9800,
+            pv: 9.800,
             amt: 2290,
         },
         {
             name: 'Inter Miami',
             uv: 2000,
-            pv: 9800,
+            pv: 9.800,
             amt: 2290,
         },
 
@@ -156,8 +156,8 @@ function StatisticBestSeller() {
                 <div className={cx('statistic-content')}>
                     {
                         statisticChart === 'Theo năm'
-                            ? <BarChartItem data={dataBarChart} domain={[0, 30000]} fontSize={14} />
-                            : <BarChartItem data={dataBarChart} domain={[0, 12000]} fontSize={14} />
+                            ? <BarChartItem data={dataBarChart} domain={[0, 30]} fontSize={14} />
+                            : <BarChartItem data={dataBarChart} domain={[0, 12]} fontSize={14} />
                     }
 
                 </div>

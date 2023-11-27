@@ -49,7 +49,7 @@ function LineChartItem({ data }) {
                     style={{ fontSize: "16px" }}
                     stroke="#2A2A86"
                     padding={{ right: "10" }} />
-                <YAxis tickLine={false}
+                <YAxis
                     style={{ fontSize: "14px" }}
                     stroke="#2A2A86"
                     domain={[0, 10]} />

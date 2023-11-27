@@ -238,6 +238,8 @@
             align-items: flex-end;
 
             .slogan {
+                width: 65%;
+
                 .name-shop {
                     font-size: 30px;
                 }
@@ -283,6 +285,247 @@
                 margin-left: 0;
                 width: 100%;
                 margin-top: 20px;
+
+                .content-wrapper {
+                    .chart-title {
+
+                        .title-text {
+                            width: 60%;
+                        }
+
+                        .detail-btn {
+                            font-size: 10px;
+                        }
+                    }
+
+                    .chart {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+
+        .second-labels {
+            flex-direction: column;
+
+            .first-statistic {
+                width: 100%;
+
+                .content-wrapper {
+                    .chart-title {
+                        .detail-btn {
+                            font-size: 10px;
+                        }
+                    }
+
+                    .chart {
+                        font-size: 13px;
+                    }
+                }
+            }
+
+            .second-statistic {
+                width: 100%;
+                margin-top: 30px;
+
+                .chart-title {
+                    margin: 10px 10px 0px 10px;
+
+                    .title {
+                        width: 60%;
+                    }
+
+                    .detail-btn {
+                        font-size: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include mixin.tablet {
+    .container {
+        .slogan-downloadbtn {
+            align-items: flex-end;
+
+            .slogan {
+                width: 65%;
+
+                .name-shop {
+                    font-size: 30px;
+                }
+
+                .slogan-sentence {
+                    font-size: 20px;
+                }
+            }
+
+            .statistic-btn {
+                display: none;
+            }
+
+            .statistic-btn-mobile {
+                display: flex;
+                border-radius: 10px;
+                padding: 10px 15px;
+                align-items: center;
+                justify-content: center;
+                background-color: var(--primary-color-text);
+            }
+        }
+
+        .first-labels {
+            flex-direction: column;
+
+            .statistic-boxes {
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+
+                .box {
+                    width: 48%;
+                    gap: 15px;
+
+                    .quantity {
+                        font-size: 20px;
+                    }
+                }
+            }
+
+            .second-box {
+                margin-left: 0;
+                width: 100%;
+                margin-top: 20px;
+
+                .content-wrapper {
+                    .chart-title {
+
+                        .title-text {
+                            width: 60%;
+                        }
+
+                        .detail-btn {
+                            font-size: 13px;
+                        }
+                    }
+
+                    .chart {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+
+        .second-labels {
+            flex-direction: column;
+
+            .first-statistic {
+                width: 100%;
+
+                .content-wrapper {
+                    .chart-title {
+                        .detail-btn {
+                            font-size: 13px;
+                        }
+                    }
+
+                    .chart {
+                        font-size: 13px;
+                    }
+                }
+            }
+
+            .second-statistic {
+                width: 100%;
+                margin-top: 30px;
+
+                .chart-title {
+                    margin: 10px 10px 0px 10px;
+
+                    .title {
+                        width: 60%;
+                    }
+
+                    .detail-btn {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include mixin.desktop {
+    .container {
+
+        .first-labels {
+            flex-direction: column;
+
+            .statistic-boxes {
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+
+                .box {
+                    width: 48%;
+                    gap: 15px;
+
+                    .quantity {
+                        font-size: 20px;
+                    }
+                }
+            }
+
+            .second-box {
+                margin-left: 0;
+                width: 100%;
+                margin-top: 20px;
+
+                .content-wrapper {
+
+                    .chart-title {
+
+                        .title-text {
+                            width: 60%;
+                        }
+
+                        .detail-btn {
+                            font-size: 13px;
+                        }
+                    }
+
+                    .chart {
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+
+        .second-labels {
+
+            .first-statistic {
+
+                .content-wrapper {
+                    .chart-title {
+                        .detail-btn {
+                            font-size: 13px;
+                        }
+                    }
+
+                }
+            }
+
+            .second-statistic {
+                .chart-title {
+                    .title {
+                        width: 60%;
+                    }
+
+                    .detail-btn {
+                        font-size: 13px;
+                    }
+                }
             }
         }
     }

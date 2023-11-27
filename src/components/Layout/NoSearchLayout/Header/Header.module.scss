@@ -97,3 +97,71 @@
         }
     }
 }
+
+@include mixin.tablet {
+    .wrapper {
+        .inner {
+            .bar-icon {
+                display: flex;
+                font-size: 20px;
+                color: var(--primary-color-text);
+                background-color: transparent;
+                cursor: pointer;
+            }
+
+            .task-bar {
+                .notification {
+                    margin-right: 15px;
+
+                    .notification-icon {
+                        font-size: 30px;
+                    }
+
+                    .counter {
+                        width: 13px;
+                        height: 13px;
+                        font-size: 10px;
+                    }
+                }
+
+                .sortdown-btn {
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+}
+
+@include mixin.desktop {
+    .wrapper {
+        .inner {
+            .bar-icon {
+                display: flex;
+                font-size: 25px;
+                color: var(--primary-color-text);
+                background-color: transparent;
+                cursor: pointer;
+            }
+
+            .task-bar {
+                .notification {
+                    margin-right: 15px;
+
+                    .notification-icon {
+                        font-size: 40px;
+                    }
+
+                    .counter {
+                        width: 18px;
+                        height: 18px;
+                        font-size: 13px;
+                    }
+                }
+
+                .sortdown-btn {
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+}

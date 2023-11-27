@@ -48,3 +48,45 @@
         }
     }
 }
+
+@include mixin.tablet {
+    .wrapper {
+        .avatar {
+            width: 35px;
+            height: 35px;
+        }
+
+        .info {
+            margin-left: 5px;
+
+            .name {
+                font-size: 12px;
+            }
+
+            .role {
+                font-size: 11px;
+            }
+        }
+    }
+}
+
+@include mixin.desktop {
+    .wrapper {
+        .avatar {
+            width: 45px;
+            height: 45px;
+        }
+
+        .info {
+            margin-left: 10px;
+
+            .name {
+                font-size: 18px;
+            }
+
+            .role {
+                font-size: 16px;
+            }
+        }
+    }
+}
