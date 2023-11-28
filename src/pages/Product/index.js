@@ -155,11 +155,21 @@ function Product() {
                 <Button href={config.routes.addProduct}
                     className={cx('add-product-btn-mobile')}
                     primary>Thêm sản phẩm</Button>
+
+                <a href={config.routes.addProduct}
+                    className={cx('add-product-btn-mobile-icon')}>
+                    <AddIcon width={20} height={20} />
+                </a>
             </div>
             <div className={cx('product-table-wrapper')}>
                 <div className={cx('product-table')}>
                     <div className={cx('functions')}>
-                        <Button onClick={HandleDeleteAllRemoveItems} red>Xóa sản phẩm đã chọn</Button>
+                        <Button onClick={HandleDeleteAllRemoveItems}
+                            red
+                            className={cx('delete-btn')}>Xóa sản phẩm đã chọn</Button>
+
+                        <button onClick={HandleDeleteAllRemoveItems}
+                            className={cx('delete-btn-mobile')}>Xóa tất cả</button>
 
                         <Dropdown controlClassName={cx('Dropdown-control-sort')}
                             arrowClosed={<span className={cx('arrow-closed-sort')} />}

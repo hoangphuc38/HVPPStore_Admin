@@ -111,6 +111,10 @@
         .add-product-btn-mobile {
             display: none;
         }
+
+        .add-product-btn-mobile-icon {
+            display: none;
+        }
     }
 
     .product-table-wrapper {
@@ -133,6 +137,10 @@
                 margin-bottom: 20px;
                 display: flex;
                 justify-content: space-between;
+
+                .delete-btn-mobile {
+                    display: none;
+                }
 
                 .Dropdown-control-sort {
                     display: flex;
@@ -195,13 +203,13 @@
 
 @include mixin.M-mobile {
     .content {
+        margin-top: 15px;
+
         .sortbars-and-button {
-            flex-direction: column-reverse;
-            align-items: flex-start;
-            gap: 20px;
+            gap: 5px;
 
             .sortbars {
-                gap: 15px;
+                gap: 5px;
                 width: 100%;
 
                 .Dropdown-control {
@@ -228,7 +236,7 @@
                 }
 
                 .Dropdown-control-season {
-                    width: 170px;
+                    width: 140px;
                     height: 35px;
                     font-size: 16px;
                     border-top-right-radius: 15px;
@@ -253,8 +261,65 @@
             }
 
             .add-product-btn-mobile {
-                display: inline-flex;
-                font-size: 16px;
+                display: none;
+            }
+
+            .add-product-btn-mobile-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: var(--primary-color-text);
+                padding: 5px 8px;
+                border-radius: 10px;
+            }
+        }
+
+        .product-table-wrapper {
+            margin-top: 15px;
+
+            .product-table {
+                margin-top: 10px;
+
+                .functions {
+                    margin-bottom: 0px;
+
+                    .delete-btn {
+                        display: none;
+                    }
+
+                    .delete-btn-mobile {
+                        display: flex;
+                        background-color: var(--red);
+                        padding: 0px 10px;
+                        font-family: 'Nunito Sans', sans-serif;
+                        color: white;
+                        border-radius: 10px;
+                        align-items: center;
+                        font-size: 16px;
+
+                    }
+
+                    .Dropdown-control-sort {
+                        width: 100%;
+                        height: 35px;
+                        padding-left: 10px;
+                        font-size: 16px;
+
+                        .arrow-closed-sort {
+                            top: 13px;
+                            border-width: 7px 7px 0px;
+                        }
+
+                        .arrow-open-sort {
+                            top: 13px;
+                            border-width: 0px 7px 7px;
+                        }
+
+                        .menu-open {}
+                    }
+                }
+
+                .table-content {}
             }
         }
     }
@@ -262,11 +327,13 @@
 
 @include mixin.L-mobile {
     .content {
+        margin-top: 15px;
+
         .sortbars-and-button {
-            gap: 20px;
+            gap: 15px;
 
             .sortbars {
-                gap: 15px;
+                gap: 10px;
 
                 .Dropdown-control {
                     width: 120px;
@@ -319,6 +386,10 @@
             .add-product-btn-mobile {
                 display: inline-flex;
                 font-size: 16px;
+            }
+
+            .add-product-btn-mobile-icon {
+                display: none;
             }
         }
     }

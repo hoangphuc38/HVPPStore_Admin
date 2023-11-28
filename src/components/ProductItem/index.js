@@ -25,6 +25,15 @@ function ProductItem({ data, onClick, deleteItem, href }) {
                     <div className={cx('price')}>{data.price}</div>
                 </div>
 
+                <div className={cx('name-price-mobile')}>
+                    <div className={cx('name')}>{data.description}</div>
+                    <div className={cx('sold-product-mobile')}>
+                        <span>Đã bán</span>
+                        <span className={cx('sold-text')}>{data.sold}K</span>
+                    </div>
+                    <div className={cx('price')}>{data.price}</div>
+                </div>
+
                 <div className={cx('sold-product')}>
                     <span>Đã bán</span>
                     <span className={cx('sold-text')}>{data.sold}K</span>
@@ -33,9 +42,22 @@ function ProductItem({ data, onClick, deleteItem, href }) {
                 <div className={cx('button-wrapper')}>
                     <Button href={href} orange>Xem chi tiết</Button>
                 </div>
+
+                <div className={cx('functions-wrapper-mobile')}>
+                    <div className={cx('delete-wrapper-mobile')} onClick={onClick}>
+                        <RemoveProductIcon width={15} height={15} />
+                    </div>
+                    <div className={cx('wrapper-detail-btn')}>
+                        <a className={cx('button-wrapper-mobile')}
+                            href={href}>
+                            Chi tiết
+                        </a>
+                    </div>
+
+                </div>
             </div>
             <div className={cx('delete-wrapper')} onClick={onClick}>
-                <RemoveProductIcon />
+                <RemoveProductIcon width={25} height={25} />
             </div>
 
 

@@ -250,7 +250,7 @@ export const StatisticIcon = ({ width, height, color = 'white' }) => (
     </svg>
 );
 
-export const RemoveProductIcon = ({ width = '25px', height = '25px', color = '#2A2A86' }) => (
+export const RemoveProductIcon = ({ width, height, color = '#2A2A86' }) => (
     <svg xmlns="http://www.w3.org/2000/svg"
         fill={color}
         height={height}
