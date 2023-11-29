@@ -214,19 +214,19 @@
 
                 .Dropdown-control {
                     width: 120px;
-                    height: 35px;
-                    font-size: 16px;
+                    height: 30px;
+                    font-size: 14px;
                     border-top-left-radius: 15px;
                     border-bottom-left-radius: 15px;
                     padding-left: 15px;
 
                     .arrow-closed {
-                        top: 13px;
+                        top: 10px;
                         border-width: 7px 7px 0px;
                     }
 
                     .arrow-open {
-                        top: 13px;
+                        top: 10px;
                         border-width: 0px 7px 7px;
                     }
 
@@ -237,20 +237,20 @@
 
                 .Dropdown-control-season {
                     width: 140px;
-                    height: 35px;
-                    font-size: 16px;
+                    height: 30px;
+                    font-size: 14px;
                     border-top-right-radius: 15px;
                     border-bottom-right-radius: 15px;
                     padding-left: 15px;
 
 
                     .arrow-closed {
-                        top: 13px;
+                        top: 10px;
                         border-width: 7px 7px 0px;
                     }
 
                     .arrow-open {
-                        top: 13px;
+                        top: 10px;
                         border-width: 0px 7px 7px;
                     }
                 }
@@ -295,23 +295,23 @@
                         color: white;
                         border-radius: 10px;
                         align-items: center;
-                        font-size: 16px;
+                        font-size: 14px;
 
                     }
 
                     .Dropdown-control-sort {
                         width: 100%;
-                        height: 35px;
+                        height: 30px;
                         padding-left: 10px;
-                        font-size: 16px;
+                        font-size: 14px;
 
                         .arrow-closed-sort {
-                            top: 13px;
+                            top: 10px;
                             border-width: 7px 7px 0px;
                         }
 
                         .arrow-open-sort {
-                            top: 13px;
+                            top: 10px;
                             border-width: 0px 7px 7px;
                         }
 
@@ -338,7 +338,7 @@
                 .Dropdown-control {
                     width: 120px;
                     height: 35px;
-                    font-size: 16px;
+                    font-size: 14px;
                     border-top-left-radius: 15px;
                     border-bottom-left-radius: 15px;
                     padding-left: 15px;
@@ -361,6 +361,125 @@
                 .Dropdown-control-season {
                     width: 170px;
                     height: 35px;
+                    font-size: 14px;
+                    border-top-right-radius: 15px;
+                    border-bottom-right-radius: 15px;
+                    padding-left: 15px;
+
+
+                    .arrow-closed {
+                        top: 13px;
+                        border-width: 7px 7px 0px;
+                    }
+
+                    .arrow-open {
+                        top: 13px;
+                        border-width: 0px 7px 7px;
+                    }
+                }
+            }
+
+            .add-product-btn {
+                display: none;
+            }
+
+            .add-product-btn-mobile {
+                display: inline-flex;
+                font-size: 14px;
+            }
+
+            .add-product-btn-mobile-icon {
+                display: none;
+            }
+        }
+
+        .product-table-wrapper {
+            margin-top: 15px;
+
+            .product-table {
+                margin-top: 10px;
+
+                .functions {
+                    margin-bottom: 0px;
+
+                    .delete-btn {
+                        display: none;
+                    }
+
+                    .delete-btn-mobile {
+                        display: flex;
+                        background-color: var(--red);
+                        padding: 0px 10px;
+                        font-family: 'Nunito Sans', sans-serif;
+                        color: white;
+                        border-radius: 10px;
+                        align-items: center;
+                        font-size: 14px;
+
+                    }
+
+                    .Dropdown-control-sort {
+                        width: 100%;
+                        height: 35px;
+                        padding-left: 10px;
+                        font-size: 14px;
+
+                        .arrow-closed-sort {
+                            top: 13px;
+                            border-width: 7px 7px 0px;
+                        }
+
+                        .arrow-open-sort {
+                            top: 13px;
+                            border-width: 0px 7px 7px;
+                        }
+
+                        .menu-open {}
+                    }
+                }
+
+                .table-content {}
+            }
+        }
+    }
+}
+
+@include mixin.tablet {
+    .content {
+        margin-top: 15px;
+
+        .sortbars-and-button {
+            gap: 15px;
+
+            .sortbars {
+                gap: 20px;
+
+                .Dropdown-control {
+                    width: 240px;
+                    height: 38px;
+                    font-size: 16px;
+                    border-top-left-radius: 15px;
+                    border-bottom-left-radius: 15px;
+                    padding-left: 15px;
+
+                    .arrow-closed {
+                        top: 13px;
+                        border-width: 7px 7px 0px;
+                    }
+
+                    .arrow-open {
+                        top: 13px;
+                        border-width: 0px 7px 7px;
+                    }
+
+                    .menu-open {
+                        font-size: 14px;
+                    }
+                }
+
+                .Dropdown-control-season {
+                    width: 150px;
+                    height: 38px;
                     font-size: 16px;
                     border-top-right-radius: 15px;
                     border-bottom-right-radius: 15px;
@@ -390,6 +509,146 @@
 
             .add-product-btn-mobile-icon {
                 display: none;
+            }
+        }
+
+        .product-table-wrapper {
+            margin-top: 15px;
+
+            .product-table {
+                margin-top: 10px;
+
+                .functions {
+                    margin-bottom: 0px;
+
+                    .delete-btn {
+                        display: none;
+                    }
+
+                    .delete-btn-mobile {
+                        display: flex;
+                        background-color: var(--red);
+                        padding: 0px 10px;
+                        font-family: 'Nunito Sans', sans-serif;
+                        color: white;
+                        border-radius: 10px;
+                        align-items: center;
+                        font-size: 16px;
+
+                    }
+
+                    .Dropdown-control-sort {
+                        width: 100%;
+                        height: 38px;
+                        padding-left: 10px;
+                        font-size: 16px;
+
+                        .arrow-closed-sort {
+                            top: 13px;
+                            border-width: 7px 7px 0px;
+                        }
+
+                        .arrow-open-sort {
+                            top: 13px;
+                            border-width: 0px 7px 7px;
+                        }
+
+                        .menu-open {}
+                    }
+                }
+
+                .table-content {}
+            }
+        }
+    }
+}
+
+@include mixin.desktop {
+    .content {
+        margin-top: 15px;
+
+        .sortbars-and-button {
+            gap: 15px;
+
+            .sortbars {
+                gap: 20px;
+
+                .Dropdown-control {
+                    width: 300px;
+                    height: 50px;
+                    font-size: 18px;
+                    border-top-left-radius: 15px;
+                    border-bottom-left-radius: 15px;
+                    padding-left: 15px;
+
+                    .arrow-closed {
+                        top: 17px;
+                        border-width: 10px 10px 0px;
+                    }
+
+                    .arrow-open {
+                        top: 17px;
+                        border-width: 0px 10px 10px;
+                    }
+
+                    .menu-open {
+                        font-size: 18px;
+                    }
+                }
+
+                .Dropdown-control-season {
+                    width: 170px;
+                    height: 50px;
+                    font-size: 18px;
+                    border-top-right-radius: 15px;
+                    border-bottom-right-radius: 15px;
+                    padding-left: 15px;
+
+
+                    .arrow-closed {
+                        top: 17px;
+                        border-width: 10px 10px 0px;
+                    }
+
+                    .arrow-open {
+                        top: 17px;
+                        border-width: 0px 10px 10px;
+                    }
+                }
+            }
+
+        }
+
+        .product-table-wrapper {
+            margin-top: 15px;
+
+            .product-table {
+                margin-top: 10px;
+
+                .functions {
+                    margin-bottom: 0px;
+
+                    .Dropdown-control-sort {
+                        width: 100%;
+                        height: 50px;
+                        padding-left: 10px;
+                        font-size: 18px;
+
+                        .arrow-closed-sort {
+                            top: 17px;
+                            border-width: 10px 10px 0px;
+                        }
+
+                        .arrow-open-sort {
+                            top: 17px;
+                            border-width: 0px 10px 10px;
+                        }
+
+                        .menu-open {}
+                    }
+                }
+
+                .table-content {}
             }
         }
     }

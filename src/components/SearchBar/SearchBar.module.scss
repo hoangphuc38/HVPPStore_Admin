@@ -95,3 +95,53 @@
         }
     }
 }
+
+@include mixin.tablet {
+    .search-result {
+        h4 {}
+
+        .result-wrapper {}
+    }
+
+    .search {
+        width: 95%;
+        height: 40px;
+        padding-left: 15px;
+
+        input {
+            padding-right: 0px;
+            font-size: 14px;
+            width: 60%;
+        }
+
+        .search-btn {
+            font-size: 15px;
+            width: 20%;
+        }
+    }
+}
+
+@include mixin.desktop {
+    .search-result {
+        h4 {}
+
+        .result-wrapper {}
+    }
+
+    .search {
+        width: 95%;
+        height: 45px;
+        padding-left: 20px;
+
+        input {
+            padding-right: 0px;
+            font-size: 16px;
+            width: 60%;
+        }
+
+        .search-btn {
+            font-size: 18px;
+            width: 20%;
+        }
+    }
+}
