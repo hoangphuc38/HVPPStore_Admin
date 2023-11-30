@@ -1,31 +1,122 @@
+@use '../../assets/responsiveSize/mixin' as mixin;
+
 .container {
     margin-top: 38px;
+
+    .customer-table-wrapper {
+        margin-top: 35px;
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: center;
+        background-color: white;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.65);
+        border-radius: 20px;
+
+        .customer-table {
+            border-collapse: collapse;
+            width: 95%;
+            margin-top: 18px;
+            margin-bottom: 300px;
+
+            td {
+                text-align: center;
+                border-bottom: 3px solid #D9D9D9;
+                padding: 20px;
+            }
+
+            tr:hover {
+                background-color: #f2f9fc;
+                cursor: pointer;
+            }
+        }
+    }
 }
 
-.customer-table-wrapper {
-    margin-top: 35px;
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: center;
-    background-color: white;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.65);
-    border-radius: 20px;
+@include mixin.M-mobile {
+    .container {
+        margin-top: 15px;
+
+        .search-bar-wrapper {
+            width: 65%;
+        }
+
+        .customer-table-wrapper {
+            margin-top: 20px;
+            margin-bottom: 20px;
+
+            .customer-table {
+                margin-top: 10px;
+                margin-bottom: 300px;
+                font-size: 9px;
+
+                td {
+                    text-align: center;
+                    border-bottom: 3px solid #D9D9D9;
+                    padding: 5px;
+                }
+            }
+        }
+    }
 }
 
-.customer-table {
-    border-collapse: collapse;
-    width: 95%;
-    margin-top: 18px;
-    margin-bottom: 300px;
+@include mixin.L-mobile {
+    .container {
+        margin-top: 15px;
+
+        .search-bar-wrapper {
+            width: 65%;
+        }
+
+        .customer-table-wrapper {
+            margin-top: 20px;
+            margin-bottom: 20px;
+
+            .customer-table {
+                margin-top: 10px;
+                margin-bottom: 300px;
+                font-size: 12px;
+
+                td {
+                    text-align: center;
+                    border-bottom: 3px solid #D9D9D9;
+                    padding: 5px;
+                }
+            }
+        }
+    }
 }
 
-td {
-    text-align: center;
-    border-bottom: 3px solid #D9D9D9;
-    padding: 20px;
+@include mixin.tablet {
+    .container {
+        margin-top: 25px;
+
+        .search-bar-wrapper {
+            width: 65%;
+        }
+
+        .customer-table-wrapper {
+            margin-top: 25px;
+            margin-bottom: 25px;
+
+            .customer-table {
+                margin-top: 15px;
+                margin-bottom: 300px;
+            }
+        }
+    }
 }
 
-tr:hover {
-    background-color: #f2f9fc;
-    cursor: pointer;
+@include mixin.desktop {
+    .container {
+        margin-top: 30px;
+
+        .search-bar-wrapper {
+            width: 65%;
+        }
+
+        .customer-table-wrapper {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+    }
 }

@@ -28,7 +28,9 @@ function Customer() {
 
     return (
         <div className={cx('container')}>
-            <SearchBar placeholder="Tìm kiếm khách hàng" href={'https://tiktok.fullstack.edu.vn/api/users/search?q='} />
+            <div className={cx('search-bar-wrapper')}>
+                <SearchBar placeholder="Tìm kiếm khách hàng" href={'https://tiktok.fullstack.edu.vn/api/users/search?q='} />
+            </div>
 
             <div className={cx('customer-table-wrapper')}>
                 <table className={cx('customer-table')}>
