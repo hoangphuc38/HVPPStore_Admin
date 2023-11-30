@@ -276,13 +276,12 @@
 
         .search-and-sortbar {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
+            gap: 80px;
 
             .sortbar {
                 .Dropdown-control {
                     display: flex;
-                    width: 230px;
+                    width: 200px;
                     height: 35px;
                     padding-left: 10px;
                     font-size: 14px;
@@ -379,5 +378,158 @@
 
     .status-lightgreen {
         width: 15%;
+    }
+}
+
+@include mixin.tablet {
+    .container {
+        margin-top: 20px;
+
+        .search-and-sortbar {
+            display: flex;
+            gap: 60px;
+
+            .sortbar {
+                .Dropdown-control {
+                    display: flex;
+                    width: 300px;
+                    height: 40px;
+                    padding-left: 10px;
+                    font-size: 16px;
+
+                    .arrow-closed {
+                        border-width: 7px 7px 0;
+                        top: 14px;
+                    }
+
+                    .arrow-open {
+                        border-width: 0px 7px 7px;
+                        top: 14px;
+                    }
+
+                    .menu-open {
+                        border-radius: 5px;
+                    }
+                }
+            }
+        }
+
+        .order-counter {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .order-table {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            height: 600px;
+
+            .table-content {
+                width: 98%;
+
+                .header-title {
+                    width: 100%;
+                    height: auto;
+                    display: flex;
+                    justify-content: space-around;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                    font-size: 16px;
+                }
+
+                .detail-infos {
+                    font-size: 14px;
+
+                    .info-wrapper {
+                        height: 9%;
+                        padding-left: 5px;
+
+                        &:hover {
+                            background-color: #f2f9fc;
+                        }
+
+                        .info {
+
+                            .id {
+                                margin-right: 5px;
+                            }
+
+                            .name {
+                                display: flex;
+                                justify-content: center;
+                                margin-right: 5px;
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .status-yellow {
+        width: 15%;
+    }
+
+    .status-green {
+        width: 15%;
+    }
+
+    .status-red {
+        width: 15%;
+    }
+
+    .status-blue {
+        width: 15%;
+    }
+
+    .status-lightblue {
+        width: 15%;
+    }
+
+    .status-lightgreen {
+        width: 15%;
+    }
+}
+
+@include mixin.desktop {
+    .container {
+        margin-top: 25px;
+
+        .search-and-sortbar {
+            display: flex;
+            gap: 60px;
+
+            .sortbar {
+                .Dropdown-control {
+                    display: flex;
+                    width: 350px;
+                    height: 45px;
+                    padding-left: 15px;
+                    font-size: 18px;
+
+                    .arrow-closed {
+                        top: 15px
+                    }
+
+                    .arrow-open {
+                        top: 15px;
+                    }
+
+                    .menu-open {
+                        border-radius: 5px;
+                    }
+                }
+            }
+        }
+
+        .order-counter {
+            margin-top: 25px;
+        }
+
+        .order-table {
+            margin-top: 25px;
+            margin-bottom: 20px;
+        }
     }
 }
