@@ -23,11 +23,16 @@ function EventItem({ editEvent, deleteEvent, data }) {
                     <button className={cx('edit-btn')} onClick={editEvent}>
                         <EditIcon width="15px" height="15px" />
                     </button>
+
                 </div>
             </div>
 
             <button className={cx('delete-btn')} onClick={deleteEvent}>
-                <RemoveIcon />
+                <RemoveIcon width={35} height={35} />
+            </button>
+
+            <button className={cx('delete-btn-mobile')} onClick={deleteEvent}>
+                <RemoveIcon width={28} height={28} />
             </button>
         </div>
     );

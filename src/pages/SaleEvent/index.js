@@ -70,17 +70,24 @@ function SaleEvent() {
         setEvents(currentEvents);
     }
 
-    const HandleEditEvent = (event) => {
-
-
-        setSelectedEvent(event);
-    }
-
     return (
         <div className={cx('container')}>
             <div className={cx('search-and-addbutton')}>
-                <SearchBar placeholder="Tìm kiếm khuyến mãi" />
-                <Button orange leftIcon={<AddSaleIcon />} onClick={openDialog}>Thêm khuyến mãi</Button>
+                <div className={cx('search-wrapper')}>
+                    <SearchBar placeholder="Tìm kiếm khuyến mãi" />
+                </div>
+
+                <Button orange
+                    leftIcon={<AddSaleIcon width={30} height={30} />}
+                    onClick={openDialog}
+                    className={cx('add-sale-btn')}>Thêm khuyến mãi</Button>
+
+                <button className={cx('add-sale-btn-mobile')}
+                    onClick={openDialog}
+                >
+                    <AddSaleIcon width={20} height={20} className={cx('icon')} />
+                    Thêm khuyến mãi
+                </button>
             </div>
             <div className={cx('event-list')}>
                 {

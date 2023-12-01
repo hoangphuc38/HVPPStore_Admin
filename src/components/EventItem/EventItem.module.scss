@@ -1,3 +1,5 @@
+@use '../../assets/responsiveSize/mixin' as mixin;
+
 .event-wrapper {
     display: flex;
     position: relative;
@@ -5,67 +7,221 @@
     box-shadow: -2px 2px 2px 2px #D9D9D9;
     border-radius: 20px;
     background-color: white;
+
+    .info-image-editBtn {
+        display: flex;
+        flex-direction: row;
+        width: 520px;
+        height: 100%;
+        padding: 13px 18px 13px 12px;
+
+        .image {
+            width: 91px;
+            height: 95px;
+        }
+
+        .content {
+            display: grid;
+            font-size: 15px;
+            margin-left: 20px;
+            width: 310px;
+            gap: 3px;
+
+            .title {
+                font-weight: 800;
+            }
+
+            .value .code {
+                font-weight: 500;
+            }
+
+            .value-number {
+                color: red;
+                font-weight: 800;
+            }
+
+            .time {
+                color: red;
+                font-weight: 400;
+            }
+        }
+
+        .edit-btn-wrapper {
+            display: flex;
+            align-items: flex-end;
+
+            .edit-btn {
+                background-color: var(--primary);
+                border-radius: 10px;
+                width: 30px;
+                height: 30px;
+                margin-left: 28px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .delete-btn {
+        display: flex;
+        position: relative;
+        background-color: transparent;
+        cursor: pointer;
+        height: 25%;
+        top: -15px;
+        left: -20px;
+    }
+
+    .delete-btn-mobile {
+        display: none;
+    }
 }
 
-.info-image-editBtn {
-    display: flex;
-    flex-direction: row;
-    width: 520px;
-    height: 100%;
-    padding: 13px 18px 13px 12px;
+@include mixin.M-mobile {
+    .event-wrapper {
+        width: 100%;
+
+        .info-image-editBtn {
+            padding: 10px 0px 10px 10px;
+            width: 100%;
+
+            .image {
+                width: 50px;
+                height: 50px;
+            }
+
+            .content {
+                margin-left: 10px;
+                font-size: 14px;
+                width: 100%;
+            }
+
+            .edit-btn-wrapper {
+
+                .edit-btn {
+                    margin-left: 10px;
+                }
+            }
+        }
+
+        .delete-btn {
+            display: none;
+        }
+
+        .delete-btn-mobile {
+            display: flex;
+            position: relative;
+            background-color: transparent;
+            cursor: pointer;
+            height: 25%;
+            top: -10px;
+            left: 5px;
+        }
+    }
 }
 
-.image {
-    width: 91px;
-    height: 95px;
+@include mixin.L-mobile {
+    .event-wrapper {
+        width: 100%;
+
+        .info-image-editBtn {
+            padding: 15px 0px 15px 15px;
+            width: 100%;
+
+            .image {
+                width: 80px;
+                height: 80px;
+            }
+
+            .content {
+                margin-left: 15px;
+                font-size: 14px;
+                width: 100%;
+            }
+
+            .edit-btn-wrapper {
+
+                .edit-btn {
+                    margin-left: 10px;
+                }
+            }
+        }
+
+        .delete-btn {
+            display: none;
+        }
+
+        .delete-btn-mobile {
+            display: flex;
+            position: relative;
+            background-color: transparent;
+            cursor: pointer;
+            height: 25%;
+            top: -10px;
+            left: 5px;
+        }
+    }
 }
 
-.content {
-    display: grid;
-    font-size: 15px;
-    margin-left: 20px;
-    width: 310px;
-    gap: 3px;
+@include mixin.tablet {
+    .event-wrapper {
+        width: 70%;
+
+        .info-image-editBtn {
+            padding: 15px 0px 15px 15px;
+            width: 100%;
+
+            .image {
+                width: 80px;
+                height: 80px;
+            }
+
+            .content {
+                margin-left: 15px;
+                font-size: 16px;
+                width: 100%;
+            }
+
+            .edit-btn-wrapper {
+
+                .edit-btn {
+                    margin-left: 10px;
+                }
+            }
+        }
+
+        .delete-btn {
+            display: none;
+        }
+
+        .delete-btn-mobile {
+            display: flex;
+            position: relative;
+            background-color: transparent;
+            cursor: pointer;
+            height: 25%;
+            top: -10px;
+            left: 5px;
+        }
+    }
 }
 
-.title {
-    font-weight: 800;
-}
+@include mixin.desktop {
+    .event-wrapper {
+        width: 45%;
 
-.value .code {
-    font-weight: 500;
-}
+        .info-image-editBtn {
+            width: 100%;
 
-.value-number {
-    color: red;
-    font-weight: 800;
-}
+            .content {
+                width: 500px;
+            }
 
-.time {
-    color: red;
-    font-weight: 400;
-}
+            .edit-btn-wrapper {
 
-.edit-btn-wrapper {
-    display: flex;
-    align-items: flex-end;
-}
-
-.edit-btn {
-    background-color: var(--primary);
-    border-radius: 10px;
-    width: 30px;
-    height: 30px;
-    margin-left: 28px;
-    cursor: pointer;
-}
-
-.delete-btn {
-    display: flex;
-    position: relative;
-    background-color: transparent;
-    cursor: pointer;
-    height: 25%;
-    top: -15px;
-    left: -20px;
+                .edit-btn {
+                    margin-left: 0px;
+                }
+            }
+        }
+    }
 }

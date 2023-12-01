@@ -26,19 +26,22 @@ function AddEvent({ closeDialog }) {
                         <span>Mã giảm giá:   </span>
                         <input className={cx('input-event')} type="text" />
                     </div>
-                    <div className={cx('title-event')}>
+                    <div className={cx('title-event-time')}>
                         <span>Thời gian áp dụng:   </span>
 
-                        <div className={cx('date')}>
-                            <span className={cx('from-to')}>Từ</span>
-                            <input className={cx('input-time')} type="datetime-local" />
+                        <div className={cx('date-wrapper')}>
+                            <div className={cx('date')}>
+                                <span className={cx('from-to')}>Từ</span>
+                                <input className={cx('input-time')} type="datetime-local" />
 
-                        </div>
-                        <div className={cx('date')}>
-                            <span className={cx('from-to')}>đến</span>
-                            <input className={cx('input-time')} type="datetime-local" />
+                            </div>
+                            <div className={cx('date')}>
+                                <span className={cx('from-to')}>đến</span>
+                                <input className={cx('input-time')} type="datetime-local" />
 
+                            </div>
                         </div>
+
                     </div>
 
                     <div className={cx('buttons')}>

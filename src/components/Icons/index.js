@@ -120,7 +120,7 @@ export const LogoutIcon = ({ width = '25px', height = '25px', color = '#2A2A86' 
     </svg>
 );
 
-export const RemoveIcon = ({ width = '35px', height = '35px', color = '#EF0D0D' }) => (
+export const RemoveIcon = ({ width, height, color = '#EF0D0D' }) => (
     <svg xmlns="http://www.w3.org/2000/svg"
         height={height}
         width={width}
@@ -130,11 +130,12 @@ export const RemoveIcon = ({ width = '35px', height = '35px', color = '#EF0D0D' 
     </svg>
 );
 
-export const AddSaleIcon = ({ width = '30px', height = '30px', color = 'white' }) => (
+export const AddSaleIcon = ({ width, height, color = 'white', className }) => (
     <svg height={height}
         width={width}
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
+        className={className}
         viewBox="0 0 512 512"
         fill={color}>
         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
