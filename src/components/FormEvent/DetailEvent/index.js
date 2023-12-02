@@ -56,24 +56,26 @@ function DetailEvent({ closeDialog, data, changeEvent }) {
                             value={data.code}
                         />
                     </div>
-                    <div className={cx('title-event')}>
+                    <div className={cx('title-event-time')}>
                         <span>Thời gian áp dụng:   </span>
 
-                        <div className={cx('date')}>
-                            <span className={cx('from-to')}>Từ</span>
-                            <input className={cx('input-time')}
-                                type="datetime-local"
-                                value={formatDate(data.start_time)}
-                            />
+                        <div className={cx('date-wrapper')}>
+                            <div className={cx('date')}>
+                                <span className={cx('from-to')}>Từ</span>
+                                <input className={cx('input-time')}
+                                    type="datetime-local"
+                                    value={formatDate(data.start_time)}
+                                />
 
-                        </div>
-                        <div className={cx('date')}>
-                            <span className={cx('from-to')}>đến</span>
-                            <input className={cx('input-time')}
-                                type="datetime-local"
-                                value={formatDate(data.expired_time)}
-                            />
+                            </div>
+                            <div className={cx('date')}>
+                                <span className={cx('from-to')}>đến</span>
+                                <input className={cx('input-time')}
+                                    type="datetime-local"
+                                    value={formatDate(data.expired_time)}
+                                />
 
+                            </div>
                         </div>
                     </div>
 
