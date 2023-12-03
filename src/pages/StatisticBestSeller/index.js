@@ -147,17 +147,82 @@ function StatisticBestSeller() {
                     </div>
                 </div>
                 <div className={cx('button-wrapper')}>
-                    <Button leftIcon={<StatisticIcon />}
+                    <Button leftIcon={<StatisticIcon width={25} height={25} />}
                         primary>Xuất hình ảnh thống kê</Button>
                 </div>
+                <div className={cx('button-wrapper-mobile')}>
+                    <button className={cx('button-moible')}>
+                        <StatisticIcon width={16} height={16} />
+                    </button>
+                </div>
+
             </div>
 
             <div className={cx('statistic-wrapper')}>
                 <div className={cx('statistic-content')}>
                     {
                         statisticChart === 'Theo năm'
-                            ? <BarChartItem data={dataBarChart} domain={[0, 30]} fontSize={14} />
-                            : <BarChartItem data={dataBarChart} domain={[0, 12]} fontSize={14} />
+                            ? <BarChartItem data={dataBarChart}
+                                domain={[0, 30]}
+                                fontSize={14}
+                                barSize={40}
+                                isToolTip={false} />
+                            : <BarChartItem data={dataBarChart}
+                                domain={[0, 12]}
+                                fontSize={14}
+                                barSize={40}
+                                isToolTip={false} />
+                    }
+
+                </div>
+
+                <div className={cx('statistic-content-M-mobile')}>
+                    {
+                        statisticChart === 'Theo năm'
+                            ? <BarChartItem data={dataBarChart}
+                                domain={[0, 30]}
+                                fontSize={5}
+                                barSize={20}
+                                isToolTip={true} />
+                            : <BarChartItem data={dataBarChart}
+                                domain={[0, 12]}
+                                fontSize={5}
+                                barSize={20}
+                                isToolTip={true} />
+                    }
+
+                </div>
+
+                <div className={cx('statistic-content-L-mobile')}>
+                    {
+                        statisticChart === 'Theo năm'
+                            ? <BarChartItem data={dataBarChart}
+                                domain={[0, 30]}
+                                fontSize={5}
+                                barSize={20}
+                                isToolTip={false} />
+                            : <BarChartItem data={dataBarChart}
+                                domain={[0, 12]}
+                                fontSize={5}
+                                barSize={20}
+                                isToolTip={false} />
+                    }
+
+                </div>
+
+                <div className={cx('statistic-content-tablet')}>
+                    {
+                        statisticChart === 'Theo năm'
+                            ? <BarChartItem data={dataBarChart}
+                                domain={[0, 30]}
+                                fontSize={9}
+                                barSize={30}
+                                isToolTip={false} />
+                            : <BarChartItem data={dataBarChart}
+                                domain={[0, 12]}
+                                fontSize={9}
+                                barSize={30}
+                                isToolTip={false} />
                     }
 
                 </div>

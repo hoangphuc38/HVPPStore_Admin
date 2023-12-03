@@ -1,0 +1,28 @@
+@use '../../../assets/responsiveSize/mixin' as mixin;
+
+@include mixin.M-mobile {
+    .title {
+        font-size: 9px;
+    }
+
+    .custom-tooltip {
+        background-color: var(--hover-color);
+        font-size: 9px;
+        padding: 5px 10px;
+        border-radius: 10px;
+    }
+
+    .x-axis {
+        display: none;
+    }
+}
+
+@include mixin.L-mobile {
+    .title {
+        font-size: 11px;
+    }
+
+    .custom-tooltip {
+        display: none;
+    }
+}
