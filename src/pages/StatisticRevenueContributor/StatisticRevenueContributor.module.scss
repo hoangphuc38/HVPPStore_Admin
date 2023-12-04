@@ -1,3 +1,5 @@
+@use '../../assets/responsiveSize/mixin' as mixin;
+
 .container {
     margin-top: 30px;
 
@@ -16,103 +18,112 @@
             display: flex;
             gap: 20px;
 
-            .type-of-filter {
-                font-size: 18px;
+            .filter {
+                display: flex;
+                gap: 20px;
 
-                .Dropdown-control {
-                    display: flex;
-                    width: 206px;
-                    border: 3px solid var(--primary-color-text);
-                    border-top-right-radius: 0px;
-                    border-bottom-right-radius: 0px;
-                    border-top-left-radius: 20px;
-                    border-bottom-left-radius: 20px;
-                    align-items: center;
-                    padding-left: 30px;
-                    color: var(--primary-color-text);
+                .type-of-filter {
                     font-size: 18px;
 
-                    .arrow-closed {
-                        border-color: #2A2A86 transparent transparent;
-                        border-style: solid;
-                        border-width: 10px 10px 0;
-                        content: ' ';
-                        display: block;
-                        height: 0;
-                        position: absolute;
-                        right: 10px;
-                        top: 18px;
-                        width: 0
-                    }
-
-                    .arrow-open {
-                        border-color: transparent transparent #2A2A86;
-                        border-style: solid;
-                        border-width: 0px 10px 10px;
-                        content: ' ';
-                        display: block;
-                        height: 0;
-                        position: absolute;
-                        right: 10px;
-                        top: 18px;
-                        width: 0
-                    }
-
-                    .menu-open {
-                        border-radius: 5px;
+                    .Dropdown-control {
+                        display: flex;
+                        width: 206px;
+                        border: 3px solid var(--primary-color-text);
+                        border-top-right-radius: 0px;
+                        border-bottom-right-radius: 0px;
+                        border-top-left-radius: 20px;
+                        border-bottom-left-radius: 20px;
+                        align-items: center;
+                        padding-left: 30px;
                         color: var(--primary-color-text);
+                        font-size: 18px;
+
+                        .arrow-closed {
+                            border-color: #2A2A86 transparent transparent;
+                            border-style: solid;
+                            border-width: 10px 10px 0;
+                            content: ' ';
+                            display: block;
+                            height: 0;
+                            position: absolute;
+                            right: 10px;
+                            top: 18px;
+                            width: 0
+                        }
+
+                        .arrow-open {
+                            border-color: transparent transparent #2A2A86;
+                            border-style: solid;
+                            border-width: 0px 10px 10px;
+                            content: ' ';
+                            display: block;
+                            height: 0;
+                            position: absolute;
+                            right: 10px;
+                            top: 18px;
+                            width: 0
+                        }
+
+                        .menu-open {
+                            border-radius: 5px;
+                            color: var(--primary-color-text);
+                        }
+                    }
+                }
+
+                .filter {
+                    font-size: 18px;
+                    color: var(--primary-color-text);
+
+                    .Dropdown-control {
+                        display: flex;
+                        width: 206px;
+                        border: 3px solid var(--primary-color-text);
+                        border-top-right-radius: 20px;
+                        border-bottom-right-radius: 20px;
+                        border-top-left-radius: 0px;
+                        border-bottom-left-radius: 0px;
+                        align-items: center;
+                        padding-left: 30px;
+                        color: var(--primary-color-text);
+                        font-size: 18px;
+
+                        .arrow-closed {
+                            border-color: #2A2A86 transparent transparent;
+                            border-style: solid;
+                            border-width: 10px 10px 0;
+                            content: ' ';
+                            display: block;
+                            height: 0;
+                            position: absolute;
+                            right: 10px;
+                            top: 18px;
+                            width: 0
+                        }
+
+                        .arrow-open {
+                            border-color: transparent transparent #2A2A86;
+                            border-style: solid;
+                            border-width: 0px 10px 10px;
+                            content: ' ';
+                            display: block;
+                            height: 0;
+                            position: absolute;
+                            right: 10px;
+                            top: 18px;
+                            width: 0
+                        }
+
+                        .menu-open {
+                            border-radius: 5px;
+                            height: 40px;
+                        }
                     }
                 }
             }
 
-            .filter {
-                font-size: 18px;
-                color: var(--primary-color-text);
-
-                .Dropdown-control {
-                    display: flex;
-                    width: 206px;
-                    border: 3px solid var(--primary-color-text);
-                    border-top-right-radius: 20px;
-                    border-bottom-right-radius: 20px;
-                    border-top-left-radius: 0px;
-                    border-bottom-left-radius: 0px;
-                    align-items: center;
-                    padding-left: 30px;
-                    color: var(--primary-color-text);
-                    font-size: 18px;
-
-                    .arrow-closed {
-                        border-color: #2A2A86 transparent transparent;
-                        border-style: solid;
-                        border-width: 10px 10px 0;
-                        content: ' ';
-                        display: block;
-                        height: 0;
-                        position: absolute;
-                        right: 10px;
-                        top: 18px;
-                        width: 0
-                    }
-
-                    .arrow-open {
-                        border-color: transparent transparent #2A2A86;
-                        border-style: solid;
-                        border-width: 0px 10px 10px;
-                        content: ' ';
-                        display: block;
-                        height: 0;
-                        position: absolute;
-                        right: 10px;
-                        top: 18px;
-                        width: 0
-                    }
-
-                    .menu-open {
-                        border-radius: 5px;
-                        height: 40px;
-                    }
-                }
+            .btn-mobile {
+                display: none;
             }
         }
     }
@@ -132,6 +143,246 @@
             height: 100%;
             display: flex;
             padding: 10px 0px 10px 0px
+        }
+    }
+}
+
+@include mixin.M-mobile {
+    .container {
+        margin-top: 15px;
+
+        .title-of-page {
+            font-size: 18px;
+        }
+
+        .title-and-filter {
+            margin: 15px 0px 15px 0px;
+            gap: 15px;
+
+            .filter-wrapper {
+                gap: 5px;
+                width: 100%;
+                justify-content: space-between;
+
+                .filter {
+                    gap: 5px;
+
+                    .type-of-filter {
+                        font-size: 14px;
+
+                        .Dropdown-control {
+                            width: 120px;
+                            height: 35px;
+                            border-top-left-radius: 15px;
+                            border-bottom-left-radius: 15px;
+                            padding-left: 10px;
+                            padding-right: 10px;
+                            font-size: 14px;
+
+                            .arrow-closed {
+                                border-width: 7px 7px 0;
+                                top: 13px;
+                            }
+
+                            .arrow-open {
+                                border-width: 0px 7px 7px;
+                                top: 13px;
+                                width: 0
+                            }
+                        }
+                    }
+
+                    .filter {
+                        font-size: 14px;
+
+                        .Dropdown-control {
+                            width: 120px;
+                            height: 35px;
+                            border-top-right-radius: 15px;
+                            border-bottom-right-radius: 15px;
+                            padding-left: 10px;
+                            padding-right: 10px;
+                            font-size: 14px;
+
+                            .arrow-closed {
+                                border-width: 7px 7px 0;
+                                top: 13px;
+                            }
+
+                            .arrow-open {
+                                border-width: 0px 7px 7px;
+                                top: 13px;
+                            }
+                        }
+                    }
+                }
+
+                .btn-mobile {
+                    display: flex;
+                    padding: 5px 10px;
+                    background-color: var(--primary-color-text);
+                    align-items: center;
+                    border-radius: 10px;
+
+                    .text-btn {
+                        display: none;
+                    }
+                }
+            }
+
+            .button-wrapper {
+                display: none;
+            }
+        }
+
+        .statistic-wrapper {
+            height: auto;
+        }
+    }
+}
+
+@include mixin.L-mobile {
+    .container {
+        margin-top: 15px;
+
+        .title-of-page {
+            font-size: 18px;
+        }
+
+        .title-and-filter {
+            margin: 15px 0px 15px 0px;
+            gap: 15px;
+
+            .filter-wrapper {
+                gap: 5px;
+                width: 100%;
+                justify-content: space-between;
+
+                .filter {
+                    gap: 5px;
+
+                    .type-of-filter {
+                        font-size: 14px;
+
+                        .Dropdown-control {
+                            width: 120px;
+                            height: 35px;
+                            border-top-left-radius: 15px;
+                            border-bottom-left-radius: 15px;
+                            padding-left: 10px;
+                            padding-right: 10px;
+                            font-size: 14px;
+
+                            .arrow-closed {
+                                border-width: 7px 7px 0;
+                                top: 13px;
+                            }
+
+                            .arrow-open {
+                                border-width: 0px 7px 7px;
+                                top: 13px;
+                                width: 0
+                            }
+                        }
+                    }
+
+                    .filter {
+                        font-size: 14px;
+
+                        .Dropdown-control {
+                            width: 120px;
+                            height: 35px;
+                            border-top-right-radius: 15px;
+                            border-bottom-right-radius: 15px;
+                            padding-left: 10px;
+                            padding-right: 10px;
+                            font-size: 14px;
+
+                            .arrow-closed {
+                                border-width: 7px 7px 0;
+                                top: 13px;
+                            }
+
+                            .arrow-open {
+                                border-width: 0px 7px 7px;
+                                top: 13px;
+                            }
+                        }
+                    }
+                }
+
+                .btn-mobile {
+                    display: flex;
+                    padding: 5px 10px;
+                    background-color: var(--primary-color-text);
+                    align-items: center;
+                    border-radius: 10px;
+                    gap: 10px;
+
+                    .text-btn {
+                        display: block;
+                        font-family: 'Nunito Sans', sans-serif;
+                        color: white;
+                        font-weight: 600;
+                    }
+                }
+            }
+
+            .button-wrapper {
+                display: none;
+            }
+        }
+
+        .statistic-wrapper {
+            height: auto;
+        }
+    }
+}
+
+@include mixin.tablet {
+    .container {
+
+        .title-and-filter {
+
+            .filter-wrapper {
+
+                .filter {
+
+                    .type-of-filter {
+                        font-size: 16px;
+
+                        .Dropdown-control {
+                            font-size: 16px;
+                            height: 45px;
+
+                            .arrow-closed {
+                                top: 15px;
+                            }
+
+                            .arrow-open {
+                                top: 15px;
+                            }
+                        }
+                    }
+
+                    .filter {
+                        font-size: 16px;
+
+                        .Dropdown-control {
+                            font-size: 16px;
+                            height: 45px;
+
+                            .arrow-closed {
+                                top: 15px;
+                            }
+
+                            .arrow-open {
+                                top: 15px;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

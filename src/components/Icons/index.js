@@ -275,8 +275,9 @@ export const DetailIcon = ({ width = '14px', height = '14px', color = 'white' })
     </svg>
 );
 
-export const FromToDateIcon = ({ width = '40px', height = '30px', color = '#2A2A86' }) => (
+export const FromToDateIcon = ({ width, height, className, color = '#2A2A86' }) => (
     <svg xmlns="http://www.w3.org/2000/svg"
+        className={className}
         fill={color}
         height={height}
         width={width}

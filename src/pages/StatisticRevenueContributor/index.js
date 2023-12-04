@@ -75,38 +75,44 @@ function StatisticRevenueContributor() {
 
             <div className={cx('title-and-filter')}>
                 <div className={cx('filter-wrapper')}>
-                    <div className={cx('type-of-filter')}>
-                        <Dropdown controlClassName={cx('Dropdown-control')}
-                            arrowClosed={<span className={cx('arrow-closed')} />}
-                            arrowOpen={<span className={cx('arrow-open')} />}
-                            menuClassName={cx('menu-open')}
-                            onChange={(e) => HandleSelectFilter(e.value)}
-                            options={optionFilter}
-                            value={defaultOptionFilter}
-                            placeholder="Select" />
-                    </div>
                     <div className={cx('filter')}>
-                        {
-                            selectedFilter === 'Theo tháng'
-                                ? <Dropdown controlClassName={cx('Dropdown-control')}
-                                    arrowClosed={<span className={cx('arrow-closed')} />}
-                                    arrowOpen={<span className={cx('arrow-open')} />}
-                                    menuClassName={cx('menu-open')}
-                                    options={optionMonth}
-                                    value={defaultOptionMonth}
-                                    placeholder="Select" />
-                                : <Dropdown controlClassName={cx('Dropdown-control')}
-                                    arrowClosed={<span className={cx('arrow-closed')} />}
-                                    arrowOpen={<span className={cx('arrow-open')} />}
-                                    menuClassName={cx('menu-open')}
-                                    options={optionYear}
-                                    value={defaultOptionYear}
-                                    placeholder="Select" />
-                        }
+                        <div className={cx('type-of-filter')}>
+                            <Dropdown controlClassName={cx('Dropdown-control')}
+                                arrowClosed={<span className={cx('arrow-closed')} />}
+                                arrowOpen={<span className={cx('arrow-open')} />}
+                                menuClassName={cx('menu-open')}
+                                onChange={(e) => HandleSelectFilter(e.value)}
+                                options={optionFilter}
+                                value={defaultOptionFilter}
+                                placeholder="Select" />
+                        </div>
+                        <div className={cx('filter')}>
+                            {
+                                selectedFilter === 'Theo tháng'
+                                    ? <Dropdown controlClassName={cx('Dropdown-control')}
+                                        arrowClosed={<span className={cx('arrow-closed')} />}
+                                        arrowOpen={<span className={cx('arrow-open')} />}
+                                        menuClassName={cx('menu-open')}
+                                        options={optionMonth}
+                                        value={defaultOptionMonth}
+                                        placeholder="Select" />
+                                    : <Dropdown controlClassName={cx('Dropdown-control')}
+                                        arrowClosed={<span className={cx('arrow-closed')} />}
+                                        arrowOpen={<span className={cx('arrow-open')} />}
+                                        menuClassName={cx('menu-open')}
+                                        options={optionYear}
+                                        value={defaultOptionYear}
+                                        placeholder="Select" />
+                            }
+                        </div>
                     </div>
+                    <button className={cx('btn-mobile')}>
+                        <StatisticIcon width={17} height={17} />
+                        <span className={cx('text-btn')}>Xuất hình ảnh thống kê</span>
+                    </button>
                 </div>
                 <div className={cx('button-wrapper')}>
-                    <Button leftIcon={<StatisticIcon />}
+                    <Button leftIcon={<StatisticIcon width={25} height={25} />}
                         primary>Xuất hình ảnh thống kê</Button>
                 </div>
             </div>

@@ -1,3 +1,5 @@
+@use '../../assets/responsiveSize/mixin' as mixin;
+
 .container {
     margin-top: 30px;
 
@@ -63,6 +65,10 @@
                         color: var(--primary-color-text);
                     }
                 }
+
+                .button-wrapper-mobile {
+                    display: none;
+                }
             }
 
             .filter {
@@ -82,6 +88,10 @@
                     border: 3px solid var(--primary-color-text);
                     border-radius: 10px;
                 }
+
+                .icon-mobile {
+                    display: none;
+                }
             }
         }
     }
@@ -100,6 +110,357 @@
             width: 95%;
             height: 100%;
             padding: 10px 0px 10px 0px
+        }
+    }
+}
+
+@include mixin.M-mobile {
+    .container {
+        margin-top: 15px;
+
+        .title-of-page {
+            font-size: 18px;
+        }
+
+        .title-and-filter {
+            margin: 15px 0px 15px 0px;
+
+            .filter-wrapper {
+                flex-direction: column-reverse;
+                width: 100%;
+                gap: 10px;
+
+                .type-of-filter {
+                    font-size: 14px;
+                    display: flex;
+                    justify-content: space-between;
+
+                    .Dropdown-control {
+                        width: 140px;
+                        height: 30px;
+                        border-top-right-radius: 10px;
+                        border-bottom-right-radius: 10px;
+                        padding-left: 10px;
+                        font-size: 14px;
+
+                        .arrow-closed {
+                            border-width: 7px 7px 0;
+                            top: 11px;
+                        }
+
+                        .arrow-open {
+                            border-width: 0px 7px 7px;
+                            top: 11px;
+                        }
+                    }
+
+                    .button-wrapper-mobile {
+                        display: flex;
+                        padding: 5px 10px;
+                        background-color: var(--primary-color-text);
+                        border-radius: 10px;
+
+                        .text-btn {
+                            display: none;
+                        }
+                    }
+                }
+
+                .filter {
+                    font-size: 14px;
+                    margin-left: 0px;
+                    gap: 5px;
+
+                    input {
+                        font-size: 14px;
+                        padding: 0px 5px 0px 5px;
+                        height: 30px;
+                        width: 130px;
+                    }
+
+                    .icon-ordinary {
+                        display: none;
+                    }
+
+                    .icon-mobile {
+                        display: block;
+                    }
+                }
+            }
+
+            .button-wrapper {
+                display: none;
+            }
+        }
+
+        .statistic-wrapper {
+            margin-bottom: 15px;
+
+            .statistic-content {
+                width: 98%;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 675px) {
+    .container {
+        margin-top: 15px;
+
+        .title-of-page {
+            font-size: 18px;
+        }
+
+        .title-and-filter {
+            margin: 15px 0px 15px 0px;
+
+            .filter-wrapper {
+                flex-direction: column-reverse;
+                width: 100%;
+                gap: 10px;
+
+                .type-of-filter {
+                    font-size: 14px;
+                    display: flex;
+                    justify-content: space-between;
+
+                    .Dropdown-control {
+                        width: 140px;
+                        height: 30px;
+                        border-top-right-radius: 10px;
+                        border-bottom-right-radius: 10px;
+                        padding-left: 10px;
+                        font-size: 14px;
+
+                        .arrow-closed {
+                            border-width: 7px 7px 0;
+                            top: 11px;
+                        }
+
+                        .arrow-open {
+                            border-width: 0px 7px 7px;
+                            top: 11px;
+                        }
+                    }
+
+                    .button-wrapper-mobile {
+                        display: flex;
+                        padding: 5px 15px;
+                        background-color: var(--primary-color-text);
+                        border-radius: 10px;
+                        align-items: center;
+                        gap: 10px;
+
+                        .text-btn {
+                            display: block;
+                            color: white;
+                            font-family: 'Nunito Sans', sans-serif;
+                            font-weight: 700;
+                        }
+                    }
+                }
+
+                .filter {
+                    font-size: 14px;
+                    margin-left: 0px;
+                    gap: 5px;
+
+                    input {
+                        font-size: 14px;
+                        padding: 0px 5px 0px 5px;
+                        height: 30px;
+                        width: 130px;
+                    }
+
+                    .icon-ordinary {
+                        display: none;
+                    }
+
+                    .icon-mobile {
+                        display: block;
+                    }
+                }
+            }
+
+            .button-wrapper {
+                display: none;
+            }
+        }
+
+        .statistic-wrapper {
+            margin-bottom: 15px;
+
+            .statistic-content {
+                width: 98%;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 675px) and (max-width: 768px) {
+    .container {
+        margin-top: 15px;
+
+        .title-of-page {
+            font-size: 18px;
+        }
+
+        .title-and-filter {
+            margin: 15px 0px 15px 0px;
+
+            .filter-wrapper {
+                flex-direction: row-reverse;
+                justify-content: space-between;
+                width: 100%;
+                gap: 10px;
+
+                .type-of-filter {
+                    font-size: 14px;
+                    display: flex;
+                    width: 60%;
+                    justify-content: space-between;
+
+                    .Dropdown-control {
+                        width: 140px;
+                        height: 30px;
+                        border-top-right-radius: 10px;
+                        border-bottom-right-radius: 10px;
+                        padding-left: 10px;
+                        font-size: 14px;
+
+                        .arrow-closed {
+                            border-width: 7px 7px 0;
+                            top: 11px;
+                        }
+
+                        .arrow-open {
+                            border-width: 0px 7px 7px;
+                            top: 11px;
+                        }
+                    }
+
+                    .button-wrapper-mobile {
+                        display: flex;
+                        padding: 5px 15px;
+                        background-color: var(--primary-color-text);
+                        border-radius: 10px;
+                        align-items: center;
+                        gap: 10px;
+
+                        .text-btn {
+                            display: block;
+                            color: white;
+                            font-family: 'Nunito Sans', sans-serif;
+                            font-weight: 700;
+                        }
+                    }
+                }
+
+                .filter {
+                    font-size: 14px;
+                    margin-left: 0px;
+                    gap: 5px;
+
+                    input {
+                        font-size: 14px;
+                        padding: 0px 5px 0px 5px;
+                        height: 30px;
+                        width: 130px;
+                    }
+
+                    .icon-ordinary {
+                        display: none;
+                    }
+
+                    .icon-mobile {
+                        display: block;
+                    }
+                }
+            }
+
+            .button-wrapper {
+                display: none;
+            }
+        }
+
+        .statistic-wrapper {
+            margin-bottom: 15px;
+
+            .statistic-content {
+                width: 98%;
+            }
+        }
+    }
+}
+
+@include mixin.tablet {
+    .container {
+        margin-top: 25px;
+
+        .title-and-filter {
+            margin: 20px 0px 25px 0px;
+
+            .filter-wrapper {
+                gap: 10px;
+
+                .type-of-filter {
+                    font-size: 16px;
+
+                    .Dropdown-control {
+                        width: 150px;
+                        height: 40px;
+                        border-top-right-radius: 10px;
+                        border-bottom-right-radius: 10px;
+                        padding-left: 10px;
+                        font-size: 16px;
+
+                        .arrow-closed {
+                            border-width: 7px 7px 0;
+                            top: 14px;
+                        }
+
+                        .arrow-open {
+                            border-width: 0px 7px 7px;
+                            top: 14px;
+                        }
+                    }
+                }
+
+                .filter {
+                    font-size: 16px;
+                    margin-left: 0px;
+                    gap: 10px;
+
+                    input {
+                        font-size: 16px;
+                        padding: 0px 5px 0px 5px;
+                        width: 135px;
+                    }
+                }
+            }
+        }
+
+        .statistic-wrapper {
+            margin-bottom: 20px;
+
+            .statistic-content {
+                width: 98%;
+            }
+        }
+    }
+}
+
+@include mixin.desktop {
+    .container {
+        .title-and-filter {
+            .filter-wrapper {
+                gap: 20px;
+
+                .filter {
+                    margin-left: 0px;
+                    gap: 15px;
+                }
+            }
         }
     }
 }

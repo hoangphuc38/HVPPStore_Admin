@@ -125,15 +125,21 @@ function StatisticRevenueSales() {
                             options={optionFilter}
                             value={defaultOptionFilter}
                             placeholder="Select" />
+
+                        <button className={cx('button-wrapper-mobile')}>
+                            <StatisticIcon width={17} height={15} />
+                            <span className={cx('text-btn')}>Xuất hình ảnh thống kê</span>
+                        </button>
                     </div>
                     <div className={cx('filter')}>
                         <input type='date' placeholder='dd-mm-yyyy' />
-                        <FromToDateIcon />
+                        <FromToDateIcon width={40} height={30} className={cx('icon-ordinary')} />
+                        <FromToDateIcon width={17} height={12} className={cx('icon-mobile')} />
                         <input type='date' placeholder='dd-mm-yyyy' />
                     </div>
                 </div>
                 <div className={cx('button-wrapper')}>
-                    <Button leftIcon={<StatisticIcon />}
+                    <Button leftIcon={<StatisticIcon width={25} height={25} />}
                         primary>Xuất hình ảnh thống kê</Button>
                 </div>
             </div>
