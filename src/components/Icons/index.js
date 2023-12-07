@@ -173,7 +173,7 @@ export const CalendarIcon = ({ width = '20px', height = '20px', color = '#2A2A86
     </svg>
 );
 
-export const NextIcon = ({ width = '30px', height = '30px', color = 'white' }) => (
+export const NextIcon = ({ width, height, color = 'white' }) => (
     <svg viewBox="0 0 1024 1024"
         height={height}
         width={width}
@@ -187,7 +187,7 @@ export const NextIcon = ({ width = '30px', height = '30px', color = 'white' }) =
     </svg>
 );
 
-export const BackIcon = ({ width = '30px', height = '30px', color = '#2A2A86' }) => (
+export const BackIcon = ({ width, height, color = '#2A2A86' }) => (
     <svg viewBox="0 0 1024 1024"
         height={height}
         width={width}
@@ -202,7 +202,7 @@ export const BackIcon = ({ width = '30px', height = '30px', color = '#2A2A86' })
     </svg>
 );
 
-export const AddImageIcon = ({ width = '30px', height = '30px', color = 'white' }) => (
+export const AddImageIcon = ({ width, height, color = 'white' }) => (
     <svg fill={color}
         height={height}
         width={width}
@@ -283,6 +283,28 @@ export const FromToDateIcon = ({ width, height, className, color = '#2A2A86' }) 
         width={width}
         viewBox="0 0 512 512">
         <path d="M334.5 414c8.8 3.8 19 2 26-4.6l144-136c4.8-4.5 7.5-10.8 7.5-17.4s-2.7-12.9-7.5-17.4l-144-136c-7-6.6-17.2-8.4-26-4.6s-14.5 12.5-14.5 22l0 72L32 192c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l288 0 0 72c0 9.6 5.7 18.2 14.5 22z" />
+    </svg>
+);
+
+export const BackMobileIcon = ({ width, height, className, color = '#2A2A86' }) => (
+    <svg xmlns="http://www.w3.org/2000/svg"
+        className={className}
+        fill={color}
+        height={height}
+        width={width}
+        viewBox="0 0 448 512">
+        <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
+    </svg>
+);
+
+export const NextMobileIcon = ({ width, height, className, color = '#2A2A86' }) => (
+    <svg xmlns="http://www.w3.org/2000/svg"
+        className={className}
+        fill={color}
+        height={height}
+        width={width}
+        viewBox="0 0 448 512">
+        <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
     </svg>
 );
 

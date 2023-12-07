@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './ProductDetail.module.scss';
-import { AddImageIcon, BackIcon, EditIcon, NextIcon } from '../../components/Icons';
+import { AddImageIcon, BackIcon, BackMobileIcon, EditIcon, NextIcon, NextMobileIcon } from '../../components/Icons';
 import Button from '../../components/Button';
 import Dropdown from 'react-dropdown';
 import SizeButton from '../../components/SizeButton';
@@ -85,18 +85,39 @@ function ProductDetail() {
             <div className={cx('image-function')}>
                 <div className={cx('image-buttons')}>
                     <div className={cx('circle-back')} onClick={HandleBackImage}>
-                        <BackIcon />
+                        <BackIcon width={30} height={30} />
+                    </div>
+
+                    <div onClick={HandleBackImage}>
+                        <NextMobileIcon width={35} height={35} className={cx('circle-next-mobile')} />
                     </div>
 
                     <div className={cx('image-product')}>
                         <img src={mainImage} alt='product-thumb' className={cx('product-thumb')} />
-                        <button className={cx('add-image-btn')}>
-                            <AddImageIcon />
-                        </button>
+                        <div className={cx('add-image-btn')}>
+                            <input type='file' id='file' className={cx('image-upload')} />
+                            <label htmlFor='file' className={cx('image-icon')}>
+                                <AddImageIcon width={30} height={30} />
+                            </label>
+                        </div>
+                    </div>
+
+                    <div className={cx('image-product-mobile')}>
+                        <img src={mainImage} alt='product-thumb' className={cx('product-thumb')} />
+                        <div className={cx('add-image-btn-mobile')}>
+                            <input type='file' id='file' className={cx('image-upload')} />
+                            <label htmlFor='file' className={cx('image-icon')}>
+                                <AddImageIcon width={25} height={25} />
+                            </label>
+                        </div>
+                    </div>
+
+                    <div onClick={HandleNextImage}>
+                        <BackMobileIcon width={35} height={35} className={cx('circle-back-mobile')} />
                     </div>
 
                     <div className={cx('circle-next')} onClick={HandleNextImage}>
-                        <NextIcon />
+                        <NextIcon width={30} height={30} />
                     </div>
                 </div>
                 <div className={cx('num-of-image')}>

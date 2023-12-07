@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { AddIcon, AddImageIcon, BackIcon, NextIcon } from '../../components/Icons';
+import { AddIcon, AddImageIcon, BackIcon, BackMobileIcon, NextIcon, NextMobileIcon } from '../../components/Icons';
 import Button from '../../components/Button';
 import styles from './ProductAddNew.module.scss';
 import Dropdown from 'react-dropdown';
@@ -21,24 +21,37 @@ function ProductAddNew() {
             <div className={cx('image-function')}>
                 <div className={cx('image-buttons')}>
                     <div className={cx('circle-back')}>
-                        <BackIcon />
+                        <BackIcon width={30} height={30} />
                     </div>
+                    <NextMobileIcon width={35} height={35} className={cx('circle-next-mobile')} />
 
                     <div className={cx('image-product')}>
-                        <button className={cx('add-image-btn')}>
-                            <AddImageIcon />
-                        </button>
+
+                        <div className={cx('add-image-btn')}>
+                            <input type='file' id='file' className={cx('image-upload')} />
+                            <label htmlFor='file' className={cx('image-icon')}>
+                                <AddImageIcon width={30} height={30} />
+                            </label>
+                        </div>
+
+                        <div className={cx('add-image-btn-mobile')}>
+                            <input type='file' id='file' className={cx('image-upload')} />
+                            <label htmlFor='file' className={cx('image-icon')}>
+                                <AddImageIcon width={23} height={23} />
+                            </label>
+                        </div>
                     </div>
 
                     <div className={cx('circle-next')}>
-                        <NextIcon />
+                        <NextIcon width={30} height={30} />
                     </div>
+
+                    <BackMobileIcon width={35} height={35} className={cx('circle-back-mobile')} />
                 </div>
                 <div className={cx('num-of-image')}>
                     <div className={cx('circle')}></div>
                 </div>
                 <div className={cx('buttons')}>
-                    <Button className={cx('button-size')} green>Thêm ảnh</Button>
                     <Button className={cx('button-size')} red>Xóa ảnh</Button>
                     <Button className={cx('button-size')} orange>Lưu ảnh</Button>
                 </div>
@@ -70,7 +83,10 @@ function ProductAddNew() {
                 <div className={cx('size-product')}>
                     <p>Kích cỡ</p>
                     <button className={cx('add-size-btn')}>
-                        <AddIcon />
+                        <AddIcon width={30} height={30} />
+                    </button>
+                    <button className={cx('add-size-btn-mobile')}>
+                        <AddIcon width={25} height={25} />
                     </button>
                 </div>
 

@@ -16,6 +16,7 @@ function Menu({ children, items = [] }) {
     return (
         <Tippy
             interactive
+            trigger='click'
             placement='bottom-end'
             render={(attrs) => (
                 <div className={cx('content')} tabIndex="-1" {...attrs}>
