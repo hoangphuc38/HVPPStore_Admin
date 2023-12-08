@@ -1,3 +1,5 @@
+@use '../../assets/responsiveSize/mixin' as mixin;
+
 .accordion {
     width: 100%;
     display: flex;
@@ -6,12 +8,14 @@
     .first {
         display: flex;
         flex-direction: row;
+        align-items: center;
         justify-content: space-between;
         margin-bottom: 20px;
         cursor: pointer;
 
         .title {
             display: flex;
+            align-items: center;
             gap: 13px;
 
             .icon-product-list {
@@ -46,5 +50,47 @@
 
     .expanded {
         height: auto;
+    }
+}
+
+@include mixin.mobile {
+    .accordion {
+
+        .first {
+            margin-bottom: 10px;
+
+            .title {
+                gap: 10px;
+
+                .text-title {
+                    font-size: 16px;
+                }
+            }
+
+            .arrow-icon {
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+@include mixin.tablet {
+    .accordion {
+
+        .first {
+            margin-bottom: 15px;
+
+            .title {
+                gap: 15px;
+
+                .text-title {
+                    font-size: 18px;
+                }
+            }
+
+            .arrow-icon {
+                font-size: 25px;
+            }
+        }
     }
 }

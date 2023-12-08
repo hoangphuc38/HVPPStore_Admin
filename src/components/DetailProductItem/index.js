@@ -7,7 +7,10 @@ const cx = classNames.bind(styles);
 function DetailProductItem({ data }) {
     return (
         <div className={cx('detail-product-wrapper')}>
-            <img className={cx('product-image')} src={image} alt='ProductImage' />
+            <div className={cx('product-image')}>
+                <img className={cx('product-thumb')} src={image} alt='ProductImage' />
+            </div>
+
             <div className={cx('product-info')}>
                 <span className={cx('name')}>{data.nameProduct}</span>
                 <p className={cx('quantity-size')}>

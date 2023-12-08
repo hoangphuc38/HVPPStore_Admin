@@ -161,7 +161,7 @@ function OrderDetail() {
             <div className={cx('delivery-payment')}>
                 <div className={cx('title')}>
                     <div className={cx('icon-delivery-payment')}></div>
-                    <span className={cx('text-title')}>PHƯƠNG THỨC VẬN CHUYỂN & THANH TOÁN</span>
+                    <span className={cx('text-title')}>VẬN CHUYỂN & THANH TOÁN</span>
                 </div>
                 <div className={cx('content')}>
                     <div className={cx('content-title')}>
