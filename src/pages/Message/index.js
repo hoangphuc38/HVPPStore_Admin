@@ -108,7 +108,14 @@ function Message() {
                     <button className={cx('search-btn')}>
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </button>
-                    <input type="search" placeholder="Tìm kiếm ai đó ..." spellCheck={false} />
+                    <input type="search"
+                        placeholder="Tìm kiếm ai đó ..."
+                        spellCheck={false}
+                        className={cx('search-input')} />
+                    <input type="search"
+                        placeholder="..."
+                        spellCheck={false}
+                        className={cx('search-mobile')} />
                 </div>
 
                 <p className={cx('title')}>Tin nhắn</p>

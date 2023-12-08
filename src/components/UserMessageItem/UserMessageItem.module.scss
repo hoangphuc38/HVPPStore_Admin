@@ -1,3 +1,5 @@
+@use '../../assets/responsiveSize/mixin' as mixin;
+
 .wrapper {
     display: flex;
     align-items: center;
@@ -21,38 +23,40 @@
 
 .avatar-wrapper {
     height: 56px;
+
+    .avatar {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
 }
 
-.avatar {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    object-fit: cover;
-}
+
 
 .info {
     width: 80%;
     margin-left: 14px;
-}
 
-.name {
-    font-size: 20px;
-    font-weight: 700;
-    color: black;
-}
+    .name {
+        font-size: 20px;
+        font-weight: 700;
+        color: black;
+    }
 
-.message {
-    display: flex;
-    justify-content: space-between;
-    font-size: 18px;
-    font-weight: 600;
-    color: rgba(42, 42, 134, 0.30);
-}
+    .message {
+        display: flex;
+        justify-content: space-between;
+        font-size: 18px;
+        font-weight: 600;
+        color: rgba(42, 42, 134, 0.30);
 
-.text {
-    display: block;
-    width: 85%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+        .text {
+            display: block;
+            width: 85%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
 }

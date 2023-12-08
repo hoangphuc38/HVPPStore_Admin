@@ -1,33 +1,63 @@
+@use '../../assets/responsiveSize/mixin' as mixin;
+
 .wrapper {
     display: flex;
     align-items: center;
+
+    .avatar-wrapper {
+        height: 56px;
+
+        .avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+
+    .info {
+        margin-left: 14px;
+
+        .name {
+            font-size: 20px;
+            font-weight: 700;
+            color: black;
+        }
+
+        .time {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: 600;
+            color: rgba(42, 42, 134, 0.30);
+        }
+    }
 }
 
-.avatar-wrapper {
-    height: 56px;
-}
+@include mixin.mobile {
+    .wrapper {
 
-.avatar {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    object-fit: cover;
-}
+        .avatar-wrapper {
+            height: 40px;
 
-.info {
-    margin-left: 14px;
-}
+            .avatar {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+        }
 
-.name {
-    font-size: 20px;
-    font-weight: 700;
-    color: black;
-}
+        .info {
+            margin-left: 10px;
 
-.time {
-    display: flex;
-    justify-content: space-between;
-    font-size: 18px;
-    font-weight: 600;
-    color: rgba(42, 42, 134, 0.30);
+            .name {
+                font-size: 14px;
+            }
+
+            .time {
+                font-size: 12px;
+            }
+        }
+    }
 }

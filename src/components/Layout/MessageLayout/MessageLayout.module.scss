@@ -1,41 +1,115 @@
+@use '../../../assets/responsiveSize/mixin' as mixin;
+
 .wrapper {
     display: flex;
     flex-flow: column;
     height: 100%;
+
+    .sidebar {
+        width: 5%;
+        height: 100%;
+        display: flex;
+        padding-top: 90px;
+        background-image: url("../../../images/background-header.jpg");
+        background-size: cover;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        overflow-x: hidden;
+    }
+
+    .container {
+        background-color: #F5F5F5;
+        width: 95%;
+        padding-top: 26px;
+        margin-left: 5%;
+        overflow: auto;
+        display: flex;
+        flex-flow: column;
+        height: 100vh;
+
+        .header {
+            padding-right: 3%;
+            flex: 0 1 auto;
+        }
+
+        .content {
+            flex: 1 1 auto;
+            margin-top: 18px;
+            background-color: white;
+        }
+    }
 }
 
-.header {
-    padding-right: 3%;
-    flex: 0 1 auto;
+@include mixin.mobile {
+    .wrapper {
+        font-size: 14px;
+
+        .sidebar {
+            display: none;
+        }
+
+        .container {
+            width: 100%;
+            margin-left: 0;
+            padding: 0;
+
+            .header {
+                padding: 10px 10px;
+            }
+
+            .content {
+                margin-top: 15px;
+            }
+        }
+    }
 }
 
-.content {
-    flex: 1 1 auto;
-    margin-top: 18px;
-    background-color: white;
+@include mixin.tablet {
+    .wrapper {
+        font-size: 16px;
+
+        .sidebar {
+            display: none;
+        }
+
+        .container {
+            width: 100%;
+            margin-left: 0;
+            padding: 0;
+
+            .header {
+                padding: 10px 15px;
+            }
+
+            .content {
+                margin-top: 15px;
+            }
+        }
+    }
 }
 
-.sidebar {
-    width: 5%;
-    height: 100%;
-    display: flex;
-    padding-top: 90px;
-    background-image: url("../../../images/background-header.jpg");
-    background-size: cover;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    overflow-x: hidden;
-}
+@include mixin.desktop {
+    .wrapper {
+        font-size: 18px;
 
-.container {
-    background-color: #F5F5F5;
-    width: 95%;
-    padding-top: 26px;
-    margin-left: 5%;
-    overflow: auto;
-    display: flex;
-    flex-flow: column;
-    height: 100vh;
+        .sidebar {
+            display: none;
+        }
+
+        .container {
+            width: 100%;
+            margin-left: 0;
+            padding: 0;
+
+            .header {
+                padding: 10px 20px;
+            }
+
+            .content {
+                margin-top: 15px;
+            }
+        }
+    }
 }
