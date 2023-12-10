@@ -1,4 +1,4 @@
-export const HomeIcon = ({ width = '30px', height = '30px' }) => (
+export const HomeIcon = ({ width, height }) => (
     <svg xmlns="http://www.w3.org/2000/svg"
         height={height}
         width={width}
@@ -9,7 +9,7 @@ export const HomeIcon = ({ width = '30px', height = '30px' }) => (
     </svg>
 );
 
-export const ProductIcon = ({ width = '30px', height = '30px' }) => (
+export const ProductIcon = ({ width, height }) => (
     <svg xmlns="http://www.w3.org/2000/svg"
         height={height}
         width={width}
@@ -19,7 +19,7 @@ export const ProductIcon = ({ width = '30px', height = '30px' }) => (
     </svg>
 );
 
-export const OrderIcon = ({ width = '30px', height = '30px' }) => (
+export const OrderIcon = ({ width, height }) => (
     <svg xmlns="http://www.w3.org/2000/svg"
         height={height}
         width={width}
@@ -29,7 +29,7 @@ export const OrderIcon = ({ width = '30px', height = '30px' }) => (
     </svg>
 );
 
-export const CustomerIcon = ({ width = '30px', height = '30px' }) => (
+export const CustomerIcon = ({ width, height }) => (
     <svg xmlns="http://www.w3.org/2000/svg"
         height={height}
         width={width}
@@ -39,7 +39,7 @@ export const CustomerIcon = ({ width = '30px', height = '30px' }) => (
     </svg>
 );
 
-export const SalesEventIcon = ({ width = '30px', height = '30px' }) => (
+export const SalesEventIcon = ({ width, height }) => (
     <svg height={height}
         width={width}
         version="1.1"
@@ -57,7 +57,7 @@ export const SalesEventIcon = ({ width = '30px', height = '30px' }) => (
     </svg>
 );
 
-export const MessageIcon = ({ width = '30px', height = '30px' }) => (
+export const MessageIcon = ({ width, height }) => (
     <svg viewBox="0 0 24 24"
         height={height}
         width={width}

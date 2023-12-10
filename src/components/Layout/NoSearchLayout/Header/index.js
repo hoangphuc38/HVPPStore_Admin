@@ -5,6 +5,8 @@ import { faBell, faSortDown, faBars } from '@fortawesome/free-solid-svg-icons';
 import AvatarItem from '../../../AvatarItem';
 import Menu from '../../../Popper/Menu';
 import { UserIcon, LogoutIcon } from '../../../Icons';
+import { useState } from 'react';
+import OffCanvas from '../../../OffCanvas';
 
 const cx = classNames.bind(styles);
 
@@ -22,14 +24,17 @@ const SORTBAR_ITEMS = [
 ];
 
 function Header({ className }) {
-
+    const [isClicked, setIsClicked] = useState(false);
+    const handleClick = () => {
+        setIsClicked((prevIsClicked) => !prevIsClicked)
+    }
     return (
         <header className={cx('wrapper', className)}>
             <div className={cx('inner')}>
-                <button className={cx('bar-icon')}>
+                <button className={cx('bar-icon')} onClick={handleClick}>
                     <FontAwesomeIcon icon={faBars} />
                 </button>
-
+                {isClicked && <OffCanvas handleClose={handleClick} />}
 
                 <div className={cx('task-bar')}>
                     <div className={cx('notification')}>

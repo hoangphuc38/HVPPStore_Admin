@@ -17,12 +17,12 @@ function Sidebar() {
                 <hr />
             </div>
             <Menu>
-                <MenuItem title="Trang chủ" to={config.routes.home} icon={<HomeIcon />} />
-                <MenuItem title="Sản phẩm" to={config.routes.product} icon={<ProductIcon />} />
-                <MenuItem title="Đơn hàng" to={config.routes.order} icon={<OrderIcon />} />
-                <MenuItem title="Khách hàng" to={config.routes.customer} icon={<CustomerIcon />} />
-                <MenuItem title="Khuyến mãi" to={config.routes.salesevent} icon={<SalesEventIcon />} />
-                <MenuItem title="Tin nhắn" to={config.routes.message} icon={<MessageIcon />} />
+                <MenuItem title="Trang chủ" to={config.routes.home} icon={<HomeIcon width={30} height={30} />} />
+                <MenuItem title="Sản phẩm" to={config.routes.product} icon={<ProductIcon width={30} height={30} />} />
+                <MenuItem title="Đơn hàng" to={config.routes.order} icon={<OrderIcon width={30} height={30} />} />
+                <MenuItem title="Khách hàng" to={config.routes.customer} icon={<CustomerIcon width={30} height={30} />} />
+                <MenuItem title="Khuyến mãi" to={config.routes.salesevent} icon={<SalesEventIcon width={30} height={30} />} />
+                <MenuItem title="Tin nhắn" to={config.routes.message} icon={<MessageIcon width={30} height={30} />} />
             </Menu>
         </aside>
     );

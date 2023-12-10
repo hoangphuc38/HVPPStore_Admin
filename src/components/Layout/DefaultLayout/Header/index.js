@@ -6,6 +6,8 @@ import AvatarItem from '../../../AvatarItem';
 import Menu from '../../../Popper/Menu';
 import SearchBar from '../../../SearchBar';
 import { UserIcon, LogoutIcon } from '../../../Icons';
+import { useState } from 'react';
+import OffCanvas from '../../../OffCanvas';
 
 const cx = classNames.bind(styles);
 
@@ -23,14 +25,18 @@ const SORTBAR_ITEMS = [
 ];
 
 function Header() {
-
+    const [isClicked, setIsClicked] = useState(false);
+    const handleClick = () => {
+        setIsClicked((prevIsClicked) => !prevIsClicked)
+    }
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('search-bar-and-offcanvas')}>
-                    <button className={cx('offcanvas-icon')}>
+                    <button className={cx('offcanvas-icon')} onClick={handleClick}>
                         <FontAwesomeIcon icon={faBars} />
                     </button>
+                    {isClicked && <OffCanvas handleClose={handleClick} />}
                     <SearchBar placeholder="Tìm kiếm sản phẩm"
                         href={'https://tiktok.fullstack.edu.vn/api/users/search?q='} />
                 </div>
