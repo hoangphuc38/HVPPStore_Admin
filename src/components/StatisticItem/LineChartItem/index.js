@@ -6,7 +6,8 @@ import {
     YAxis,
     Tooltip,
     Legend,
-    ResponsiveContainer
+    ResponsiveContainer,
+    CartesianGrid
 } from 'recharts';
 import classNames from "classnames/bind";
 import styles from './LineChartItem.module.scss';
@@ -44,19 +45,30 @@ function LineChartItem({ data }) {
                     bottom: 0,
                 }}
             >
+                <CartesianGrid vertical={false} stroke={"#B6C4B6"} />
                 <XAxis dataKey="name"
                     tickLine={false}
                     style={{ fontSize: "16px" }}
                     stroke="#2A2A86"
                     padding={{ right: "10" }} />
                 <YAxis
+                    yAxisId="left"
                     style={{ fontSize: "14px" }}
-                    stroke="#2A2A86"
-                    domain={[0, 10]} />
+                    tickLine={false}
+                    axisLine={false}
+                    stroke="#2A2A86" />
+
+                <YAxis
+                    yAxisId="right"
+                    orientation="right"
+                    tickLine={false}
+                    axisLine={false}
+                    style={{ fontSize: "14px" }}
+                    stroke="#2A2A86" />
                 <Tooltip content={CustomTooltip} />
                 <Legend />
-                <Line type="monotone" dataKey="pv" stroke="#2A2A86" activeDot={{ r: 8 }} />
-                <Line type="monotone" dataKey="uv" stroke="#319B2F" />
+                <Line type="monotone" dataKey="pv" stroke="#2A2A86" activeDot={{ r: 6 }} yAxisId="left" />
+                <Line type="monotone" dataKey="uv" stroke="#319B2F" activeDot={{ r: 6 }} yAxisId="right" />
             </LineChart>
         </ResponsiveContainer>
     );

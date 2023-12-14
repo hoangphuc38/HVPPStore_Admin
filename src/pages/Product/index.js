@@ -63,8 +63,8 @@ function Product() {
     ];
     const optionSortProducts = [
         'Chung',
-        'Sản phẩm bán được nhiều nhất',
-        'Sản phẩm bán được ít nhất',
+        'Sản phẩm bán chạy nhất',
+        'Sản phẩm bán ít nhất',
     ]
 
     const defaultOptionClothes = 'Chung';
