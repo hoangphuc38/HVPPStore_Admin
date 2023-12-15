@@ -10,12 +10,12 @@ function Sidebar() {
     return (
         <aside className={cx('wrapper')}>
             <Menu>
-                <MenuItem title="TRANG CHỦ" to={config.routes.home} icon={<HomeIcon />} />
-                <MenuItem title="SẢN PHẨM" to={config.routes.product} icon={<ProductIcon />} />
-                <MenuItem title="ĐƠN HÀNG" to={config.routes.order} icon={<OrderIcon />} />
-                <MenuItem title="KHÁCH HÀNG" to={config.routes.customer} icon={<CustomerIcon />} />
-                <MenuItem title="KHUYẾN MÃI" to={config.routes.salesevent} icon={<SalesEventIcon />} />
-                <MenuItem title="TIN NHẮN" to={config.routes.message} icon={<MessageIcon />} />
+                <MenuItem title="TRANG CHỦ" to={config.routes.home} icon={<HomeIcon width={30} height={30} />} />
+                <MenuItem title="SẢN PHẨM" to={config.routes.product} icon={<ProductIcon width={30} height={30} />} />
+                <MenuItem title="ĐƠN HÀNG" to={config.routes.order} icon={<OrderIcon width={30} height={30} />} />
+                <MenuItem title="KHÁCH HÀNG" to={config.routes.customer} icon={<CustomerIcon width={30} height={30} />} />
+                <MenuItem title="KHUYẾN MÃI" to={config.routes.salesevent} icon={<SalesEventIcon width={30} height={30} />} />
+                <MenuItem title="TIN NHẮN" to={config.routes.message} icon={<MessageIcon width={30} height={30} />} />
             </Menu>
         </aside>
     );

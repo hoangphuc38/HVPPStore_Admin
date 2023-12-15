@@ -5,6 +5,8 @@ import { FromToDateIcon, StatisticIcon } from '../../components/Icons';
 import Dropdown from 'react-dropdown';
 import { useState } from 'react';
 import LineChartItem from '../../components/StatisticItem/LineChartItem';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.module.css';
 
 const cx = classNames.bind(styles);
 
@@ -94,6 +96,8 @@ function StatisticRevenueSales() {
 
     const [selectedFilter, setSelectedFilter] = useState('Theo tháng');
     const [statisticChart, setStatisticChart] = useState('Theo tháng');
+    const [selectedDateFrom, setSelectedDateFrom] = useState(null);
+    const [selectedDateTo, setSelectedDateTo] = useState(null);
 
     const HandleSelectFilter = (option) => {
         if (option === 'Theo năm') {
@@ -132,10 +136,27 @@ function StatisticRevenueSales() {
                         </button>
                     </div>
                     <div className={cx('filter')}>
-                        <input type='date' placeholder='dd-mm-yyyy' />
+                        <div>
+                            <DatePicker
+                                selected={selectedDateFrom}
+                                onChange={date => setSelectedDateFrom(date)}
+                                dateFormat='dd/MM/yyyy'
+                                placeholderText='Ngày bắt đầu'
+                                className={cx('input-time')} />
+                        </div>
+
                         <FromToDateIcon width={40} height={30} className={cx('icon-ordinary')} />
                         <FromToDateIcon width={17} height={12} className={cx('icon-mobile')} />
-                        <input type='date' placeholder='dd-mm-yyyy' />
+
+                        <div>
+                            <DatePicker
+                                selected={selectedDateTo}
+                                onChange={date => setSelectedDateTo(date)}
+                                dateFormat='dd/MM/yyyy'
+                                placeholderText='Ngày kết thúc'
+                                className={cx('input-time')} />
+                        </div>
+
                     </div>
                 </div>
                 <div className={cx('button-wrapper')}>

@@ -79,12 +79,13 @@
                 margin-left: 50px;
                 gap: 20px;
 
-                input {
+                .input-time {
                     height: 100%;
+                    width: 200px;
                     font-family: 'Nunito Sans', sans-serif;
                     font-size: 18px;
                     color: var(--primary-color-text);
-                    padding: 0px 10px 0px 10px;
+                    padding: 10px;
                     border: 3px solid var(--primary-color-text);
                     border-radius: 10px;
                 }
@@ -171,9 +172,9 @@
                     margin-left: 0px;
                     gap: 5px;
 
-                    input {
+                    .input-time {
                         font-size: 14px;
-                        padding: 0px 5px 0px 5px;
+                        padding: 5px;
                         height: 30px;
                         width: 130px;
                     }
@@ -265,9 +266,9 @@
                     margin-left: 0px;
                     gap: 5px;
 
-                    input {
+                    .input-time {
                         font-size: 14px;
-                        padding: 0px 5px 0px 5px;
+                        padding: 5px;
                         height: 30px;
                         width: 130px;
                     }
@@ -361,9 +362,9 @@
                     margin-left: 0px;
                     gap: 5px;
 
-                    input {
+                    .input-time {
                         font-size: 14px;
-                        padding: 0px 5px 0px 5px;
+                        padding: 5px;
                         height: 30px;
                         width: 130px;
                     }
@@ -431,9 +432,9 @@
                     margin-left: 0px;
                     gap: 10px;
 
-                    input {
+                    .input-time {
                         font-size: 16px;
-                        padding: 0px 5px 0px 5px;
+                        padding: 5px;
                         width: 135px;
                     }
                 }

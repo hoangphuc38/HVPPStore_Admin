@@ -1,7 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './DetailEvent.module.scss';
 import Button from '../../Button';
-import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
