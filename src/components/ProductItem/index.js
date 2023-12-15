@@ -18,20 +18,20 @@ function ProductItem({ data, onClick, deleteItem, href }) {
             </div>
 
             <div className={cx('product-detail')}>
-                <img src={data.image} className={cx('product-image')} alt="product" />
+                <img src={data.urlMain} className={cx('product-image')} alt="product" />
 
                 <div className={cx('name-price')}>
-                    <div className={cx('name')}>{data.description}</div>
-                    <div className={cx('price')}>{data.price}</div>
+                    <div className={cx('name')}>{data.name}</div>
+                    <div className={cx('price')}>{data.price} $</div>
                 </div>
 
                 <div className={cx('name-price-mobile')}>
-                    <div className={cx('name')}>{data.description}</div>
+                    <div className={cx('name')}>{data.name}</div>
                     <div className={cx('sold-product-mobile')}>
                         <span>Đã bán</span>
                         <span className={cx('sold-text')}>{data.sold}K</span>
                     </div>
-                    <div className={cx('price')}>{data.price}</div>
+                    <div className={cx('price')}>{data.price} $</div>
                 </div>
 
                 <div className={cx('sold-product')}>

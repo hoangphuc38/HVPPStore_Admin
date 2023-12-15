@@ -4,9 +4,10 @@ import classNames from 'classnames/bind';
 import styles from './Product.module.scss';
 import Button from '../../components/Button';
 import { AddIcon } from '../../components/Icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProductItem from '../../components/ProductItem';
 import config from '../../config';
+import productAPI from '../../api/productAPI';
 
 const cx = classNames.bind(styles);
 
@@ -73,6 +74,22 @@ function Product() {
 
     const [removeItems, setRemoveItems] = useState([]);
     const [sortList, setSortList] = useState(products);
+
+    //fetch API
+    useEffect(() => {
+        const fetchAPI = async () => {
+            try {
+                const response = await productAPI.getAll();
+                console.log("Success: ", response);
+                setSortList(response);
+
+            } catch (error) {
+                console.log("Xảy ra lỗi: ", error);
+            }
+        }
+
+        fetchAPI();
+    }, []);
 
     //Functions
     const HandleDeleteProduct = (product) => {
