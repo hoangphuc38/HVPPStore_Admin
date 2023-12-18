@@ -1,0 +1,129 @@
+@use '../../../assets/responsiveSize/mixin' as mixin;
+
+.search-result {
+    width: 523px;
+    font-size: 16px;
+    padding-top: 10px;
+
+    h4 {
+        padding: 0px 16px;
+    }
+
+    .result-wrapper {
+        display: flex;
+        align-items: center;
+        padding: 5px 16px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #F5F7F8;
+        }
+
+        .search-icon {
+            margin-right: 10px;
+        }
+    }
+
+
+}
+
+
+.search {
+    width: 523px;
+    height: 56px;
+    padding-left: 36px;
+    display: flex;
+    background-color: white;
+    border-radius: var(--search-border-radius);
+    border: 3px solid #2A2A86;
+
+    input {
+        flex: 1;
+        height: 100%;
+        padding-right: 36px;
+        color: var(--primary-text-color);
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 16px;
+        border: none;
+        outline: none;
+        background-color: transparent;
+
+        &::placeholder {
+            font-family: 'Nunito Sans', sans-serif;
+        }
+    }
+
+    .search-btn {
+        width: 95px;
+        height: 100%;
+        background-color: #2A2A86;
+        border-style: solid;
+        border-top: none;
+        border-bottom: none;
+        border-right: none;
+        border-left-color: #2A2A86;
+        outline: none;
+        border-top-right-radius: var(--search-border-radius);
+        border-bottom-right-radius: var(--search-border-radius);
+        font-size: 25px;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+@include mixin.mobile {
+    .search {
+        width: 95%;
+        height: 35px;
+        padding-left: 10px;
+
+        input {
+            padding-right: 0px;
+            font-size: 12px;
+            width: 60%;
+        }
+
+        .search-btn {
+            font-size: 13px;
+            width: 20%;
+        }
+    }
+}
+
+@include mixin.tablet {
+    .search {
+        width: 95%;
+        height: 40px;
+        padding-left: 15px;
+
+        input {
+            padding-right: 0px;
+            font-size: 14px;
+            width: 60%;
+        }
+
+        .search-btn {
+            font-size: 15px;
+            width: 20%;
+        }
+    }
+}
+
+@include mixin.desktop {
+    .search {
+        width: 95%;
+        height: 45px;
+        padding-left: 20px;
+
+        input {
+            padding-right: 0px;
+            font-size: 16px;
+            width: 60%;
+        }
+
+        .search-btn {
+            font-size: 18px;
+            width: 20%;
+        }
+    }
+}

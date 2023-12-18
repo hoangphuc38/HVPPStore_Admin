@@ -45,7 +45,7 @@ function AddEvent({ closeDialog }) {
                     </div>
 
                     <div className={cx('buttons')}>
-                        <Button className={cx('button-detail')} orange>Thêm</Button>
+                        <Button className={cx('button-detail')} primary>Thêm</Button>
                         <Button className={cx('button-detail')} onClick={closeDialog} red>Hủy</Button>
                     </div>
 

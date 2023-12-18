@@ -1,13 +1,8 @@
 import axiosClient from "./axiosClient";
 
-class ProductAPI {
+class OrderAPI {
     getAll = (params) => {
         const url = `Products/filter-by?club=false&nation=false&minPrice=0&maxPrice=10000000&sortBy=Name&descending=false&sizeS=false&sizeM=false&sizeL=false&sizeXL=false&page=${params.page}&productPerPage=${params.productPerPage}`;
-        return axiosClient.get(url, { params })
-    }
-
-    getDetailProduct = (params) => {
-        const url = `Products/get-by-id/${params.id}`
         return axiosClient.get(url, { params })
     }
 
@@ -17,5 +12,5 @@ class ProductAPI {
     }
 }
 
-const productAPI = new ProductAPI();
-export default productAPI;
+const orderAPI = new OrderAPI();
+export default orderAPI;

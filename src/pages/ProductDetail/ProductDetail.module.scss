@@ -106,7 +106,8 @@ p {
                 display: flex;
                 width: 20px;
                 height: 20px;
-                background-color: var(--primary-color-text);
+                background-color: white;
+                border: 1px solid var(--primary-color-text);
                 border-radius: 50%;
             }
 
@@ -114,7 +115,7 @@ p {
                 display: flex;
                 width: 20px;
                 height: 20px;
-                background-color: var(--primary);
+                background-color: var(--primary-color-text);
                 border-radius: 50%;
             }
         }

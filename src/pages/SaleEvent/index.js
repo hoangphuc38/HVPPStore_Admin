@@ -1,12 +1,12 @@
 import classNames from 'classnames/bind';
 import styles from './SaleEvent.module.scss';
-import SearchBar from '../../components/SearchBar';
 import Button from '../../components/Button';
 import { AddSaleIcon } from '../../components/Icons';
 import EventItem from '../../components/EventItem';
 import { useState } from 'react';
 import AddEvent from '../../components/FormEvent/AddEvent'
 import DetailEvent from '../../components/FormEvent/DetailEvent';
+import EventSearchBar from '../../components/SearchBar/EventSearchBar';
 
 const cx = classNames.bind(styles);
 
@@ -74,10 +74,10 @@ function SaleEvent() {
         <div className={cx('container')}>
             <div className={cx('search-and-addbutton')}>
                 <div className={cx('search-wrapper')}>
-                    <SearchBar placeholder="Tìm kiếm khuyến mãi" />
+                    <EventSearchBar placeholder="Tìm kiếm khuyến mãi" />
                 </div>
 
-                <Button orange
+                <Button primary
                     leftIcon={<AddSaleIcon width={30} height={30} />}
                     onClick={openDialog}
                     className={cx('add-sale-btn')}>Thêm khuyến mãi</Button>

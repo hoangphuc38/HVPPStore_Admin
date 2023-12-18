@@ -1,0 +1,115 @@
+@use '../../../assets/responsiveSize/mixin' as mixin;
+
+.search-result {
+    width: 523px;
+    font-size: 16px;
+    padding-top: 10px;
+
+    h4 {
+        padding: 0px 16px;
+    }
+
+    .result-wrapper {
+        display: flex;
+        align-items: center;
+        padding: 5px 16px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #F5F7F8;
+        }
+
+        .search-icon {
+            margin-right: 10px;
+        }
+    }
+}
+
+.search {
+    display: flex;
+    width: 100%;
+    height: 45px;
+    margin-top: 25px;
+    padding-left: 7px;
+    border-radius: 15px;
+    background-color: rgba(42, 42, 134, 0.80);
+
+    .search-btn {
+        font-size: 30px;
+        background-color: transparent;
+        margin-right: 16px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .search-input {
+        flex: 1;
+        height: 100%;
+        padding-right: 36px;
+        color: white;
+        font-size: 15px;
+        border: none;
+        outline: none;
+        background-color: transparent;
+    }
+
+    .search-mobile {
+        display: none;
+    }
+}
+
+@include mixin.mobile {
+    .search {
+        margin-top: 15px;
+        padding-left: 5px;
+
+        .search-btn {
+            font-size: 20px;
+            margin-right: 5px;
+        }
+
+        .search-input {
+            display: none;
+        }
+
+        .search-mobile {
+            display: block;
+            flex: 1;
+            height: 100%;
+            padding-right: 36px;
+            color: white;
+            font-size: 15px;
+            border: none;
+            outline: none;
+            background-color: transparent;
+        }
+    }
+}
+
+@include mixin.tablet {
+    .search {
+        margin-top: 15px;
+        padding-left: 5px;
+
+        .search-btn {
+            font-size: 20px;
+            margin-right: 5px;
+        }
+
+        .search-input {
+            display: none;
+        }
+
+        .search-mobile {
+            display: block;
+            flex: 1;
+            height: 100%;
+            padding-right: 36px;
+            color: white;
+            font-size: 15px;
+            border: none;
+            outline: none;
+            background-color: transparent;
+        }
+    }
+}

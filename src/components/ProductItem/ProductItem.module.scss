@@ -61,6 +61,12 @@
         .button-wrapper {
             display: flex;
             align-items: center;
+
+            .detail-btn {
+                &:hover {
+                    background-color: var(--primary);
+                }
+            }
         }
     }
 

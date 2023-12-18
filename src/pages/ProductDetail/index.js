@@ -4,8 +4,11 @@ import { AddImageIcon, BackIcon, BackMobileIcon, EditIcon, NextIcon, NextMobileI
 import Button from '../../components/Button';
 import Dropdown from 'react-dropdown';
 import SizeButton from '../../components/SizeButton';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import EditQuantitySizeForm from '../../components/EditQuantitySizeForm';
+import { useParams } from 'react-router-dom';
+import productAPI from '../../api/productAPI';
+import defaultImage from '../../images/default-image.jpg';
 
 const cx = classNames.bind(styles);
 
@@ -41,10 +44,31 @@ function ProductDetail() {
         '2008 - 2009',
         '2010 - 2011',
         '2017 - 2018',
-        '2022 - 2023'
+        '2022 - 2023',
     ];
 
-    const defaultOptionSeasons = PRODUCT_DETAIL.productSeason;
+    const params = useParams();
+
+    const [productDetail, setProductDetail] = useState({});
+
+    useEffect(() => {
+        const fetchAPI = async () => {
+            try {
+                const response = await productAPI.getDetailProduct(params);
+                console.log("ID product: ", params.id);
+                console.log("Success: ", response);
+                setProductDetail(response);
+
+            } catch (error) {
+                console.log("Xảy ra lỗi: ", error);
+            }
+        }
+
+        fetchAPI();
+    }, []);
+
+    const defaultOptionSeasons = productDetail.productSeason;
+    console.log("Mùa: ", productDetail.productSeason)
     const [index, setIndex] = useState(0);
     const [mainImage, setMainImage] = useState(PRODUCT_DETAIL.productImages[0]);
     const [openEditDialog, setOpenEditDialog] = useState(false);
@@ -93,7 +117,9 @@ function ProductDetail() {
                     </div>
 
                     <div className={cx('image-product')}>
-                        <img src={mainImage} alt='product-thumb' className={cx('product-thumb')} />
+                        <img src={productDetail.urlMain !== 'string' ? productDetail.urlMain : defaultImage}
+                            alt='product-thumb'
+                            className={cx('product-thumb')} />
                         <div className={cx('add-image-btn')}>
                             <input type='file' id='file' className={cx('image-upload')} />
                             <label htmlFor='file' className={cx('image-icon')}>
@@ -103,7 +129,9 @@ function ProductDetail() {
                     </div>
 
                     <div className={cx('image-product-mobile')}>
-                        <img src={mainImage} alt='product-thumb' className={cx('product-thumb')} />
+                        <img src={productDetail.urlMain !== 'string' ? productDetail.urlMain : defaultImage}
+                            alt='product-thumb'
+                            className={cx('product-thumb')} />
                         <div className={cx('add-image-btn-mobile')}>
                             <input type='file' id='file' className={cx('image-upload')} />
                             <label htmlFor='file' className={cx('image-icon')}>
@@ -132,7 +160,7 @@ function ProductDetail() {
                 </div>
                 <div className={cx('buttons')}>
                     <Button className={cx('button-size')} red>Xóa ảnh</Button>
-                    <Button className={cx('button-size')} orange>Lưu ảnh</Button>
+                    <Button className={cx('button-size')} primary>Lưu ảnh</Button>
                 </div>
 
             </div>
@@ -142,7 +170,7 @@ function ProductDetail() {
                     <p>Tên sản phẩm</p>
                     <input className={cx('name-input')}
                         type="text"
-                        value={PRODUCT_DETAIL.productName} />
+                        value={productDetail.name} />
                 </div>
 
                 <div className={cx('price-product')}>
@@ -150,7 +178,7 @@ function ProductDetail() {
                     <input className={cx('price-input')}
                         type="text"
                         placeholder='VND'
-                        value={PRODUCT_DETAIL.productPrice + '  VND'} />
+                        value={productDetail.price + '  $'} />
                 </div>
 
                 <div className={cx('season-product')}>
@@ -189,13 +217,13 @@ function ProductDetail() {
                         className={cx('info-input')}
                         cols="40"
                         rows="5"
-                        value={PRODUCT_DETAIL.productDescription}>
+                        value={productDetail.description}>
                     </textarea>
                 </div>
 
                 <div className={cx('save-cancel-buttons')}>
                     <Button className={cx('cancel-button')} red>Hủy</Button>
-                    <Button className={cx('cancel-button')} orange>Lưu</Button>
+                    <Button className={cx('cancel-button')} primary>Lưu</Button>
                 </div>
             </div>
 

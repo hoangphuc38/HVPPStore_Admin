@@ -1,4 +1,4 @@
-@use '../../assets/responsiveSize/mixin' as mixin;
+@use '../../../assets/responsiveSize/mixin' as mixin;
 
 .search-result {
     width: 523px;
@@ -56,7 +56,7 @@
     .search-btn {
         width: 95px;
         height: 100%;
-        background-color: #FCAF17;
+        background-color: #2A2A86;
         border-style: solid;
         border-top: none;
         border-bottom: none;
@@ -66,18 +66,12 @@
         border-top-right-radius: var(--search-border-radius);
         border-bottom-right-radius: var(--search-border-radius);
         font-size: 25px;
-        color: #2A2A86;
+        color: white;
         cursor: pointer;
     }
 }
 
 @include mixin.mobile {
-    .search-result {
-        h4 {}
-
-        .result-wrapper {}
-    }
-
     .search {
         width: 95%;
         height: 35px;
@@ -97,12 +91,6 @@
 }
 
 @include mixin.tablet {
-    .search-result {
-        h4 {}
-
-        .result-wrapper {}
-    }
-
     .search {
         width: 95%;
         height: 40px;
@@ -122,12 +110,6 @@
 }
 
 @include mixin.desktop {
-    .search-result {
-        h4 {}
-
-        .result-wrapper {}
-    }
-
     .search {
         width: 95%;
         height: 45px;

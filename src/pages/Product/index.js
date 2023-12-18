@@ -12,50 +12,6 @@ import productAPI from '../../api/productAPI';
 const cx = classNames.bind(styles);
 
 function Product() {
-    const products = [
-        {
-            id: '001',
-            image: 'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw21a150b7/images/large/701225667001_pp_01_mcfc.png?sw=400&sh=400&sm=fit',
-            description: 'Áo Real Madrid màu đen mùa 2009-2010',
-            price: '500.000đ',
-            stars: '5',
-            sold: '2.0',
-        },
-        {
-            id: '002',
-            image: 'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw21a150b7/images/large/701225667001_pp_01_mcfc.png?sw=400&sh=400&sm=fit',
-            description: 'Áo Real Madrid màu đen mùa 2023-2024',
-            price: '200.000đ',
-            stars: '5',
-            sold: '4.0',
-        },
-        {
-            id: '003',
-            image: 'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw21a150b7/images/large/701225667001_pp_01_mcfc.png?sw=400&sh=400&sm=fit',
-            description: 'Áo Arsenal màu đen mùa 2009-2010',
-            price: '300.000đ',
-            stars: '5',
-            sold: '3.0',
-        },
-        {
-            id: '004',
-            image: 'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw21a150b7/images/large/701225667001_pp_01_mcfc.png?sw=400&sh=400&sm=fit',
-            description: 'Áo Arsenal màu đen mùa 2023-2024',
-            price: '250.000đ',
-            stars: '5',
-            sold: '9.0',
-        },
-        {
-            id: '005',
-            image: 'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw21a150b7/images/large/701225667001_pp_01_mcfc.png?sw=400&sh=400&sm=fit',
-            description: 'Áo Real Madrid màu đen mùa 2008-2009',
-            price: '290.000đ',
-            stars: '5',
-            sold: '2.5',
-        },
-
-    ];
-
     const optionClothes = [
         'Tất cả', 'Real Madrid', 'Arsenal'
     ];
@@ -73,14 +29,17 @@ function Product() {
     const defaultOptionSortProducts = 'Lọc sản phẩm';
 
     const [removeItems, setRemoveItems] = useState([]);
-    const [sortList, setSortList] = useState(products);
+    const [products, setProducts] = useState({});
+    const [sortList, setSortList] = useState([]);
 
     //fetch API
     useEffect(() => {
         const fetchAPI = async () => {
             try {
-                const response = await productAPI.getAll();
+                const params = { page: 1, productPerPage: 5 }
+                const response = await productAPI.getAll(params);
                 console.log("Success: ", response);
+                setProducts(response);
                 setSortList(response);
 
             } catch (error) {
@@ -89,7 +48,7 @@ function Product() {
         }
 
         fetchAPI();
-    }, []);
+    }, [products]);
 
     //Functions
     const HandleDeleteProduct = (product) => {

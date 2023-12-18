@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './Customer.module.scss';
-import SearchBar from '../../components/SearchBar';
+import CustomerSearchBar from '../../components/SearchBar/CustomerSearchBar';
 
 const cx = classNames.bind(styles);
 
@@ -29,7 +29,7 @@ function Customer() {
     return (
         <div className={cx('container')}>
             <div className={cx('search-bar-wrapper')}>
-                <SearchBar placeholder="Tìm kiếm khách hàng" href={'https://tiktok.fullstack.edu.vn/api/users/search?q='} />
+                <CustomerSearchBar placeholder="Tìm kiếm khách hàng" />
             </div>
 
             <div className={cx('customer-table-wrapper')}>

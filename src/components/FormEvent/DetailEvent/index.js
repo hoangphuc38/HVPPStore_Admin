@@ -79,7 +79,7 @@ function DetailEvent({ closeDialog, data, changeEvent }) {
                     </div>
 
                     <div className={cx('buttons')}>
-                        <Button className={cx('button-detail')} orange onClick={() => changeEvent(data)}>Lưu</Button>
+                        <Button className={cx('button-detail')} primary onClick={() => changeEvent(data)}>Lưu</Button>
                         <Button className={cx('button-detail')} onClick={closeDialog} red>Hủy</Button>
                     </div>
 

@@ -4,10 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faSortDown, faBars } from '@fortawesome/free-solid-svg-icons';
 import AvatarItem from '../../../AvatarItem';
 import Menu from '../../../Popper/Menu';
-import SearchBar from '../../../SearchBar';
 import { UserIcon, LogoutIcon } from '../../../Icons';
 import { useState } from 'react';
 import OffCanvas from '../../../OffCanvas';
+import ProductSeachBar from '../../../SearchBar/ProductSearchBar';
 
 const cx = classNames.bind(styles);
 
@@ -37,8 +37,7 @@ function Header() {
                         <FontAwesomeIcon icon={faBars} />
                     </button>
                     {isClicked && <OffCanvas handleClose={handleClick} />}
-                    <SearchBar placeholder="Tìm kiếm sản phẩm"
-                        href={'https://tiktok.fullstack.edu.vn/api/users/search?q='} />
+                    <ProductSeachBar placeholder="Tìm kiếm sản phẩm" />
                 </div>
 
 

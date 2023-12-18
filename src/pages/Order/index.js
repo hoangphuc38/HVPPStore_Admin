@@ -1,9 +1,9 @@
 import classNames from 'classnames/bind';
 import styles from './Order.module.scss';
-import SearchBar from '../../components/SearchBar';
 import Dropdown from 'react-dropdown';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import OrderSearchBar from '../../components/SearchBar/OrderSearchBar'
 
 const cx = classNames.bind(styles);
 
@@ -130,7 +130,7 @@ function Order() {
     return (
         <div className={cx('container')}>
             <div className={cx('search-and-sortbar')}>
-                <SearchBar placeholder="Tìm kiếm đơn hàng" href={'https://tiktok.fullstack.edu.vn/api/users/search?q='} />
+                <OrderSearchBar placeholder="Tìm kiếm đơn hàng" />
                 <div className={cx('sortbar')}>
                     <Dropdown controlClassName={cx('Dropdown-control')}
                         arrowClosed={<span className={cx('arrow-closed')} />}

@@ -2,6 +2,7 @@ import classNames from "classnames/bind";
 import styles from './ProductItem.module.scss';
 import Button from "../Button";
 import { RemoveProductIcon } from "../Icons";
+import defaulImage from '../../images/default-image.jpg';
 
 const cx = classNames.bind(styles);
 
@@ -18,7 +19,7 @@ function ProductItem({ data, onClick, deleteItem, href }) {
             </div>
 
             <div className={cx('product-detail')}>
-                <img src={data.urlMain} className={cx('product-image')} alt="product" />
+                <img src={data.urlMain !== 'string' && data.urlMain !== 'urlMain' ? data.urlMain : defaulImage} className={cx('product-image')} alt="product" />
 
                 <div className={cx('name-price')}>
                     <div className={cx('name')}>{data.name}</div>
@@ -40,7 +41,9 @@ function ProductItem({ data, onClick, deleteItem, href }) {
                 </div>
 
                 <div className={cx('button-wrapper')}>
-                    <Button href={href} orange>Xem chi tiết</Button>
+                    <Button href={href}
+                        primary
+                        className={cx('detail-btn')}>Xem chi tiết</Button>
                 </div>
 
                 <div className={cx('functions-wrapper-mobile')}>

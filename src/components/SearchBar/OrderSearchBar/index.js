@@ -1,28 +1,19 @@
 import classNames from "classnames/bind";
-import styles from './SearchBar.module.scss';
+import styles from './OrderSearchBar.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Tippy from "@tippyjs/react/headless";
 import { useEffect, useState } from "react";
-import Wrapper from "../Popper";
+import Wrapper from "../../Popper";
 
 const cx = classNames.bind(styles);
 
-function SearchBar({ placeholder, href }) {
+function OrderSearchBar({ placeholder, href }) {
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
 
     useEffect(() => {
-        if (!searchValue) {
-            return;  //Xử lý trường hợp trường q của api bắt buộc khác ''
-        }
-
-        fetch(href + `${encodeURIComponent(searchValue)}&type=less`)
-            .then((res) => res.json())
-            .then((res) => {
-                setSearchResult(res.data);
-            })
 
     }, [searchValue])
 
@@ -45,7 +36,7 @@ function SearchBar({ placeholder, href }) {
                                 return (
                                     <div className={cx('result-wrapper')} key={result.id}>
                                         <FontAwesomeIcon className={cx('search-icon')} icon={faMagnifyingGlass} />
-                                        <span>{result.full_name}</span>
+                                        <span>{result.name}</span>
                                     </div>
                                 )
 
@@ -72,4 +63,4 @@ function SearchBar({ placeholder, href }) {
     );
 }
 
-export default SearchBar;
+export default OrderSearchBar;
