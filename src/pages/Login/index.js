@@ -13,14 +13,8 @@ function Login() {
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        let token = localStorage.getItem("token");
-        if (token) {
-            navigate("/home");
-        }
-    }, []);
-
-    const HandleLogin = async () => {
+    const HandleLogin = async e => {
+        e.preventDefault();
         if (!email || !password) {
             return;
         }
@@ -42,7 +36,7 @@ function Login() {
         <div className={cx('container')}>
             <div className={cx('content')}>
                 <h1>Đăng nhập</h1>
-                <form className={cx('login-form')}>
+                <form className={cx('login-form')} onSubmit={HandleLogin}>
                     <div>
                         <label htmlFor="user-name"
                             className={cx('icon')}>
@@ -69,7 +63,7 @@ function Login() {
 
                     <button
                         className={cx('login-btn')}
-                        onClick={() => HandleLogin()}>
+                        type="submit">
                         {loading && <i class="fa-solid fa-rotate fa-spin"></i>}
                         &nbsp;Đăng nhập</button>
                 </form>
