@@ -28,7 +28,7 @@ function Button({ to, href, children, primary, orange, red, green, leftIcon, rig
     })
 
     return (
-        <Comp className={classes} href={href} onClick={onClick}>
+        <Comp className={classes} href={href} onClick={onClick} to={to}>
             {leftIcon && <span className={cx('left-icon')}>{leftIcon}</span>}
             <span className={cx('title')}>{children}</span>
             {rightIcon && <span className={cx('right-icon')}>{rightIcon}</span>}

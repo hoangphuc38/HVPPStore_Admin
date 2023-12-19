@@ -29,8 +29,9 @@ function Product() {
     const defaultOptionSortProducts = 'Lọc sản phẩm';
 
     const [removeItems, setRemoveItems] = useState([]);
-    const [products, setProducts] = useState({});
+    const [products, setProducts] = useState([]);
     const [sortList, setSortList] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     //fetch API
     useEffect(() => {
@@ -41,6 +42,7 @@ function Product() {
                 console.log("Success: ", response);
                 setProducts(response);
                 setSortList(response);
+                setLoading(false);
 
             } catch (error) {
                 console.log("Xảy ra lỗi: ", error);
@@ -48,7 +50,7 @@ function Product() {
         }
 
         fetchAPI();
-    }, [products]);
+    }, []);
 
     //Functions
     const HandleDeleteProduct = (product) => {
@@ -123,7 +125,7 @@ function Product() {
                         value={defaultOptionSeasons}
                         placeholder="Select" />
                 </div>
-                <Button href={config.routes.addProduct}
+                <Button to={config.routes.addProduct}
                     className={cx('add-product-btn')}
                     primary
                     leftIcon={<AddIcon width={30} height={30} />}>Thêm sản phẩm</Button>
@@ -156,21 +158,24 @@ function Product() {
                             value={defaultOptionSortProducts}
                             placeholder="Select" />
                     </div>
-                    <div className={cx('table-content')}>
-                        {
-                            sortList.length > 0 &&
-                            sortList.map((product) => {
-                                return (
-                                    <ProductItem key={product.id}
-                                        data={product}
-                                        deleteItem={() => addtoRemoveItems(product)}
-                                        onClick={() => HandleDeleteProduct(product)}
-                                        href={`/product/${product.id}`} />
-                                )
-                            })
-                        }
+                    {loading ? <i class="fa-solid fa-circle-notch fa-spin"></i>
+                        : <div className={cx('table-content')}>
+                            {
+                                sortList.length > 0 &&
+                                sortList.map((product) => {
+                                    return (
+                                        <ProductItem key={product.id}
+                                            data={product}
+                                            deleteItem={() => addtoRemoveItems(product)}
+                                            onClick={() => HandleDeleteProduct(product)}
+                                            href={`/product/${product.id}`} />
+                                    )
+                                })
+                            }
 
-                    </div>
+                        </div>
+                    }
+
                 </div>
 
             </div>

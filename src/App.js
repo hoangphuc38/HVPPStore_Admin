@@ -16,7 +16,7 @@ function App() {
                   key={index}
                   path={route.path}
                   element={
-                    <Navigate to="/home" />
+                    <Navigate to="/login" />
                   }
                 />
               )

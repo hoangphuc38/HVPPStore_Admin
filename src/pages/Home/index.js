@@ -210,7 +210,7 @@ function Home() {
                             <Button primary
                                 rightIcon={<DetailIcon />}
                                 className={cx('detail-btn')}
-                                href={config.routes.statisticBestSeller}>Xem thêm</Button>
+                                to={config.routes.statisticBestSeller}>Xem thêm</Button>
                         </div>
                         <div className={cx('chart')}>
                             <BarChartItem data={dataBarChart} domain={[0, 11]} barSize={40} />
@@ -227,7 +227,7 @@ function Home() {
                             <Button primary
                                 rightIcon={<DetailIcon />}
                                 className={cx('detail-btn')}
-                                href={config.routes.statisticRevenueSales}>Xem thêm</Button>
+                                to={config.routes.statisticRevenueSales}>Xem thêm</Button>
                         </div>
                         <div className={cx('chart')}>
                             <LineChartItem data={dataLineChart} />
@@ -241,7 +241,7 @@ function Home() {
                         <Button primary
                             rightIcon={<DetailIcon />}
                             className={cx('detail-btn')}
-                            href={config.routes.statisticrRevenueContributor}>Xem thêm</Button>
+                            to={config.routes.statisticrRevenueContributor}>Xem thêm</Button>
                     </div>
                     <div className={cx('pie-chart-wrapper')}>
                         <Pie data={dataPieChart} />

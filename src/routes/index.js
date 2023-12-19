@@ -1,3 +1,4 @@
+import Login from '../pages/Login';
 import Home from "../pages/Home";
 import Product from "../pages/Product";
 import Customer from "../pages/Customer";
@@ -15,9 +16,11 @@ import NoSearchLayout from "../components/Layout/NoSearchLayout";
 import MessageLayout from "../components/Layout/MessageLayout";
 
 import routes from "../config/routes";
+import LoginLayout from '../components/Layout/LoginLayout';
 
 const publicRoutes = [
     { path: '/' },
+    { path: routes.login, component: Login, layout: LoginLayout },
     { path: routes.home, component: Home, layout: NoSearchLayout },
     { path: routes.product, component: Product },
     { path: routes.addProduct, component: ProductAddNew, layout: NoSearchLayout },

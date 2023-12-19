@@ -1,10 +1,28 @@
 import classNames from 'classnames/bind';
 import styles from './Customer.module.scss';
 import CustomerSearchBar from '../../components/SearchBar/CustomerSearchBar';
+import { useEffect, useState } from 'react';
+import customerAPI from '../../api/customerAPI';
 
 const cx = classNames.bind(styles);
 
 function Customer() {
+    // const [customer, setCustomer] = useState([]);
+
+    // useEffect(() => {
+    //     const fetchAPI = async () => {
+    //         try {
+    //             const response = await customerAPI.getAll();
+    //             console.log("Success: ", response);
+    //             setCustomer(response);
+
+    //         } catch (error) {
+    //             console.log("Xảy ra lỗi: ", error);
+    //         }
+    //     }
+
+    //     fetchAPI();
+    // }, [])
     const CUSTOMER_INFOS = [
         {
             customer_id: 'HVPP205',
@@ -46,7 +64,7 @@ function Customer() {
                                 <td>{val.customer_id}</td>
                                 <td>{val.customer_name}</td>
                                 <td>{val.numberphone}</td>
-                                <td>{val.email}</td>
+                                <td>{val.email !== '' ? val.email : 'trống'}</td>
                             </tr>
                         )
                     })}

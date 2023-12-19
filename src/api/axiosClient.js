@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+let token = localStorage.getItem("token");
+
 const axiosClient = axios.create({
     baseURL: 'https://localhost:7030/api/',
     headers: {
@@ -9,6 +11,10 @@ const axiosClient = axios.create({
 
 axiosClient.interceptors.request.use(async (config) => {
     //Handle token here
+    if (token && config.headers) {
+        config.headers.Authorization = token;
+        return config;
+    }
     return config;
 })
 

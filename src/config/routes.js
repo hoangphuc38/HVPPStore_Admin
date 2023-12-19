@@ -1,4 +1,5 @@
 const routes = {
+    login: '/login',
     home: '/home',
     statisticBestSeller: '/home/statistic/best-seller',
     statisticrRevenueContributor: '/home/statistic/top-contributor',

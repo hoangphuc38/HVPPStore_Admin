@@ -3,6 +3,7 @@ import styles from './ProductItem.module.scss';
 import Button from "../Button";
 import { RemoveProductIcon } from "../Icons";
 import defaulImage from '../../images/default-image.jpg';
+import { NavLink } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
@@ -41,7 +42,7 @@ function ProductItem({ data, onClick, deleteItem, href }) {
                 </div>
 
                 <div className={cx('button-wrapper')}>
-                    <Button href={href}
+                    <Button to={href}
                         primary
                         className={cx('detail-btn')}>Xem chi tiết</Button>
                 </div>
@@ -51,10 +52,11 @@ function ProductItem({ data, onClick, deleteItem, href }) {
                         <RemoveProductIcon width={15} height={15} />
                     </div>
                     <div className={cx('wrapper-detail-btn')}>
-                        <a className={cx('button-wrapper-mobile')}
-                            href={href}>
+                        <NavLink className={cx('button-wrapper-mobile')}
+                            to={href}
+                        >
                             Chi tiết
-                        </a>
+                        </NavLink>
                     </div>
 
                 </div>
