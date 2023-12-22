@@ -8,6 +8,8 @@ import { useEffect, useState } from 'react';
 import ProductItem from '../../components/ProductItem';
 import config from '../../config';
 import productAPI from '../../api/productAPI';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRotate } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
@@ -158,7 +160,7 @@ function Product() {
                             value={defaultOptionSortProducts}
                             placeholder="Select" />
                     </div>
-                    {loading ? <i class="fa-solid fa-circle-notch fa-spin"></i>
+                    {loading ? <FontAwesomeIcon icon={faRotate} spin />
                         : <div className={cx('table-content')}>
                             {
                                 sortList.length > 0 &&

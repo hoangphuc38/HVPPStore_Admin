@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from './Login.module.scss';
 import classNames from "classnames/bind";
 import userAPI from "../../api/userAPI";
 import { PasswordLoginIcon, UserNameLoginIcon } from "../../components/Icons";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRotate } from "@fortawesome/free-solid-svg-icons";
 
 const cx = classNames.bind(styles);
 
@@ -64,7 +66,7 @@ function Login() {
                     <button
                         className={cx('login-btn')}
                         type="submit">
-                        {loading && <i class="fa-solid fa-rotate fa-spin"></i>}
+                        {loading && <FontAwesomeIcon icon={faRotate} spin />}
                         &nbsp;Đăng nhập</button>
                 </form>
 

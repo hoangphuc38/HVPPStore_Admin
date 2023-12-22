@@ -14,7 +14,7 @@
     position: fixed;
     z-index: 20;
     background: #fff;
-    width: 60%;
+    width: 65%;
     height: auto;
     border-radius: 10px;
 
@@ -64,6 +64,7 @@
                 .date {
                     display: flex;
                     justify-content: space-between;
+                    align-items: center;
                     gap: 20px;
 
                     .from-to {

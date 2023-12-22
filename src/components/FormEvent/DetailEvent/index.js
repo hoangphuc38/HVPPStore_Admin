@@ -5,26 +5,6 @@ import Button from '../../Button';
 const cx = classNames.bind(styles);
 
 function DetailEvent({ closeDialog, data, changeEvent }) {
-
-    const formatDate = (date) => {
-        const inputDate = new Date('30/09/2023 12:00');
-
-        const year = inputDate.getUTCFullYear();
-        const month = (inputDate.getMonth()).toString().padStart(2, "0");
-        const day = inputDate.getDate().toString().padStart(2, "0");
-        const time = inputDate.getHours().toString().padStart(2, "0")
-            + ':'
-            + inputDate.getMinutes().toString().padStart(2, "0");
-
-        const formattedDate = `${year}-${month}-${day}T${time}`;
-        console.log("ngày gốc: ", inputDate);
-        console.log("ngày: ", day);
-        console.log("tháng: ", month);
-        console.log("năm: ", year);
-        console.log(formattedDate);
-        return formattedDate;
-    }
-
     return (
         <>
             <div className={cx("overlay")}></div>
@@ -38,21 +18,21 @@ function DetailEvent({ closeDialog, data, changeEvent }) {
                         <span>Tên sự kiện:   </span>
                         <input className={cx('input-event')}
                             type="text"
-                            value={data.title}
+                            value={data.name}
                         />
                     </div>
                     <div className={cx('title-event')}>
                         <span>Mức giảm:   </span>
                         <input className={cx('input-event')}
                             type="text"
-                            value={data.promotion_value}
+                            value={data.value}
                         />
                     </div>
                     <div className={cx('title-event')}>
                         <span>Mã giảm giá:   </span>
                         <input className={cx('input-event')}
                             type="text"
-                            value={data.code}
+                            value={data.id}
                         />
                     </div>
                     <div className={cx('title-event-time')}>
@@ -63,7 +43,7 @@ function DetailEvent({ closeDialog, data, changeEvent }) {
                                 <span className={cx('from-to')}>Từ</span>
                                 <input className={cx('input-time')}
                                     type="datetime-local"
-                                    value={formatDate(data.start_time)}
+                                    value={data.dateBegin}
                                 />
 
                             </div>
@@ -71,7 +51,7 @@ function DetailEvent({ closeDialog, data, changeEvent }) {
                                 <span className={cx('from-to')}>đến</span>
                                 <input className={cx('input-time')}
                                     type="datetime-local"
-                                    value={formatDate(data.expired_time)}
+                                    value={data.dateEnd}
                                 />
 
                             </div>

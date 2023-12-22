@@ -3,10 +3,13 @@ import styles from './SaleEvent.module.scss';
 import Button from '../../components/Button';
 import { AddSaleIcon } from '../../components/Icons';
 import EventItem from '../../components/EventItem';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AddEvent from '../../components/FormEvent/AddEvent'
 import DetailEvent from '../../components/FormEvent/DetailEvent';
 import EventSearchBar from '../../components/SearchBar/EventSearchBar';
+import eventAPI from '../../api/eventAPI';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRotate } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
@@ -43,6 +46,23 @@ function SaleEvent() {
     const [isOpenNewEvent, setIsOpenNewEvent] = useState(false);
     const [isSelectEvent, setIsSelectEvent] = useState(false);
     const [selectedEvent, setSelectedEvent] = useState({});
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchAPI = async () => {
+            try {
+                const response = await eventAPI.getAll();
+                console.log("Success: ", response);
+                setEvents(response);
+                setLoading(false);
+
+            } catch (error) {
+                console.log("Xảy ra lỗi: ", error);
+            }
+        }
+
+        fetchAPI();
+    }, []);
 
     const openDialog = () => {
         setIsOpenNewEvent(true);
@@ -52,12 +72,16 @@ function SaleEvent() {
         setIsOpenNewEvent(false);
     }
 
-    const selectEvent = (event) => {
-        let currentEvent = EVENT_INFOS;
-        console.log(currentEvent);
-        currentEvent = currentEvent.filter(item => item.id === event.id);
-        setSelectedEvent(currentEvent[0]);
-        setIsSelectEvent(true);
+    const selectEvent = async (event) => {
+        try {
+            let res = await eventAPI.getEventById(event.id);
+            console.log("Event ID: ", res);
+            setSelectedEvent(res);
+            setIsSelectEvent(true);
+        }
+        catch (error) {
+            console.log("Không lấy được event");
+        }
     }
 
     const closeSelectedEvent = () => {
@@ -89,19 +113,22 @@ function SaleEvent() {
                     Thêm khuyến mãi
                 </button>
             </div>
-            <div className={cx('event-list')}>
-                {
-                    events.length > 0 &&
-                    events.map((event) => {
-                        return (
-                            <EventItem key={event.id}
-                                data={event}
-                                editEvent={() => selectEvent(event)}
-                                deleteEvent={() => HandleDeleteEvent(event)} />
-                        )
-                    })
-                }
-            </div>
+            {loading ? <FontAwesomeIcon icon={faRotate} spin />
+                : <div className={cx('event-list')}>
+                    {
+                        events.length > 0 &&
+                        events.map((event) => {
+                            return (
+                                <EventItem key={event.id}
+                                    data={event}
+                                    editEvent={() => selectEvent(event)}
+                                    deleteEvent={() => HandleDeleteEvent(event)} />
+                            )
+                        })
+                    }
+                </div>
+            }
+
 
             {
                 isOpenNewEvent && (
