@@ -4,12 +4,14 @@ import classNames from 'classnames/bind';
 import styles from './Product.module.scss';
 import Button from '../../components/Button';
 import { AddIcon } from '../../components/Icons';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import ReactPaginate from 'react-paginate';
 import ProductItem from '../../components/ProductItem';
 import config from '../../config';
 import productAPI from '../../api/productAPI';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotate } from '@fortawesome/free-solid-svg-icons';
+import { ProductContext } from '../../contexts/productContext';
 
 const cx = classNames.bind(styles);
 
@@ -28,22 +30,21 @@ function Product() {
 
     const defaultOptionClothes = 'Chung';
     const defaultOptionSeasons = 'Mùa giải';
-    const defaultOptionSortProducts = 'Lọc sản phẩm';
 
+    const { products, setProducts } = useContext(ProductContext);
+    const [currentPage, setCurrentPage] = useState(1);
     const [removeItems, setRemoveItems] = useState([]);
-    const [products, setProducts] = useState([]);
-    const [sortList, setSortList] = useState([]);
+    const [sortOption, setSortOption] = useState("Lọc sản phẩm");
     const [loading, setLoading] = useState(true);
 
     //fetch API
     useEffect(() => {
         const fetchAPI = async () => {
             try {
-                const params = { page: 1, productPerPage: 5 }
+                const params = { page: currentPage, productPerPage: 5 }
                 const response = await productAPI.getAll(params);
                 console.log("Success: ", response);
                 setProducts(response);
-                setSortList(response);
                 setLoading(false);
 
             } catch (error) {
@@ -55,55 +56,64 @@ function Product() {
     }, []);
 
     //Functions
+    const handlePageClick = async () => {
+        let curPage = currentPage + 1;
+        setCurrentPage(curPage);
+        setLoading(true);
+        try {
+            const params = { page: currentPage, productPerPage: 5 }
+            const response = await productAPI.getAll(params);
+            console.log("Success: ", response);
+            setProducts(response);
+            setLoading(false);
+
+        } catch (error) {
+            console.log("Xảy ra lỗi: ", error);
+            setLoading(false);
+        }
+    }
+
     const HandleDeleteProduct = (product) => {
-        let currentProducts = products;
-        currentProducts = currentProducts.filter(item => item.id !== product.id);
-        setSortList(currentProducts);
+
     }
 
     const addtoRemoveItems = (product) => {
-        let removeList = removeItems;
-        let selectedList = products;
-        selectedList = selectedList.filter(item => item.id === product.id);
-        removeList.push(selectedList[0]);
 
-        setRemoveItems(removeList);
     }
 
     const HandleDeleteAllRemoveItems = () => {
-        let currentProducts = products;
-        currentProducts = currentProducts.filter(item => !removeItems.find(product => item.id === product.id));
 
-        setSortList(currentProducts);
     }
 
-    const sortSale = (option) => {
-        if (option === "Sản phẩm bán được ít nhất") {
-            let ascendingSale = [...sortList].sort((a, b) => a.sold - b.sold);
-            console.log("Sắp xếp dưới lên: ", ascendingSale);
-            setSortList(ascendingSale);
+    const sortSale = async (option) => {
+        setSortOption(option);
+
+        if (option === "Sản phẩm bán chạy nhất") {
+            return await productAPI.getDescendingSaleList()
+                .then((res) => {
+                    setProducts(res);
+                    console.log("List:", res)
+                })
+                .catch((error) => console.log(error));
         }
-        else if (option === "Sản phẩm bán được nhiều nhất") {
-            let descendingSale = [...sortList].sort((a, b) => b.sold - a.sold);
-            console.log("Sắp xếp trên xuống: ", descendingSale);
-            setSortList(descendingSale);
+
+        else if (option === "Sản phẩm bán ít nhất") {
+
         }
+
         else {
-            setSortList(products);
+            const params = { page: 1, productPerPage: 5 }
+            return await productAPI.getAll(params)
+                .then((res) => {
+                    setProducts(res);
+                })
+                .catch((error) => console.log(error));
         }
     }
 
     const sortCategory = (option) => {
-        if (option === "Tất cả") {
-            setSortList(products);
-        }
-        else {
-            let sortedList = [...products].filter(product => product.description.includes(option))
-            console.log(sortedList);
-            setSortList(sortedList);
-        }
-    }
 
+    }
 
     return (
         <div className={cx('content')}>
@@ -157,14 +167,14 @@ function Product() {
                             onChange={(e) => sortSale(e.value)}
                             menuClassName={cx('menu-open')}
                             options={optionSortProducts}
-                            value={defaultOptionSortProducts}
+                            value={sortOption}
                             placeholder="Select" />
                     </div>
                     {loading ? <FontAwesomeIcon icon={faRotate} spin />
                         : <div className={cx('table-content')}>
                             {
-                                sortList.length > 0 &&
-                                sortList.map((product) => {
+                                products.length > 0 &&
+                                products.map((product) => {
                                     return (
                                         <ProductItem key={product.id}
                                             data={product}
@@ -180,7 +190,26 @@ function Product() {
 
                 </div>
 
+
             </div>
+            <div className={cx('pagination-container')}>
+                <ReactPaginate
+                    nextLabel=">"
+                    onPageChange={handlePageClick}
+                    pageRangeDisplayed={3}
+                    marginPagesDisplayed={2}
+                    pageCount={5}
+                    previousLabel="<"
+                    renderOnZeroPageCount={null}
+                    containerClassName={cx('pagination')}
+                    previousLinkClassName={cx('paginationLink')}
+                    nextLinkClassName={cx('paginationLink')}
+                    disabledClassName={cx('paginationDisabled')}
+                    activeClassName={cx('paginationActive')}
+                />
+            </div>
+
+
 
         </div>
 

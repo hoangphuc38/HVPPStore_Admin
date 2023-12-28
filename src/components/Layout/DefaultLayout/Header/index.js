@@ -26,9 +26,11 @@ const SORTBAR_ITEMS = [
 
 function Header() {
     const [isClicked, setIsClicked] = useState(false);
+
     const handleClick = () => {
         setIsClicked((prevIsClicked) => !prevIsClicked)
     }
+
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>

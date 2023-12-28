@@ -13,43 +13,23 @@ import defaultImage from '../../images/default-image.jpg';
 const cx = classNames.bind(styles);
 
 function ProductDetail() {
-    const PRODUCT_DETAIL = {
-        productName: 'Áo Real Madrid màu đen mùa giải 2022-2023',
-        productPrice: '500.000',
-        productSeason: '2022 - 2023',
-        productSize: [
-            {
-                size: 'L',
-                quantity: 10,
-            },
-            {
-                size: 'XL',
-                quantity: 20,
-            },
-            {
-                size: 'M',
-                quantity: 30,
-            },
-        ],
-        productDescription: 'Áo ngon, chất lượng',
-        productImages: [
-            'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw21a150b7/images/large/701225667001_pp_01_mcfc.png?sw=400&sh=400&sm=fit',
-            'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog/default/dw34725556/product-sets/mancity-23/away_kids_set_bg2324.png?sw=1600&sh=1600&sm=fit',
-            'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dwe19c4448/images/large/701225698001_pp_01_mcfc.png?sw=1600&sh=1600&sm=fit',
-            'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw78dae72f/images/large/701225658001_pp_01_mcfc.png?sw=1600&sh=1600&sm=fit',
-        ],
-    }
-
     const optionSeasons = [
-        '2008 - 2009',
-        '2010 - 2011',
-        '2017 - 2018',
-        '2022 - 2023',
+        '2008/2009',
+        '2010/2011',
+        '2017/2018',
+        '2022/2023',
     ];
 
     const params = useParams();
 
+    const NUM_OF_IMAGES = 4;
     const [productDetail, setProductDetail] = useState({});
+    const [productImages, setProductImages] = useState([]);
+    const [productSizes, setProductSizes] = useState([]);
+    const [mainImage, setMainImage] = useState('');
+    const [index, setIndex] = useState(0);
+    const [openEditDialog, setOpenEditDialog] = useState(false);
+    const [season, setSeasons] = useState("");
 
     useEffect(() => {
         const fetchAPI = async () => {
@@ -59,6 +39,38 @@ function ProductDetail() {
                 console.log("Success: ", response);
                 setProductDetail(response);
 
+                //Get list Images
+                let imageList = [
+                    response.urlMain,
+                    response.urlSub1,
+                    response.urlSub2,
+                    response.urlThumb,
+                ]
+                setProductImages(imageList);
+                setMainImage(imageList[0]);
+
+                //Get list of Size
+                let productSize = [
+                    {
+                        size: 'S',
+                        quantity: response.sizeS,
+                    },
+                    {
+                        size: 'M',
+                        quantity: response.sizeM,
+                    },
+                    {
+                        size: 'L',
+                        quantity: response.sizeL,
+                    },
+                    {
+                        size: 'XL',
+                        quantity: response.sizeXL,
+                    },
+                ];
+                setProductSizes(productSize);
+                setSeasons(response.season);
+
             } catch (error) {
                 console.log("Xảy ra lỗi: ", error);
             }
@@ -67,32 +79,25 @@ function ProductDetail() {
         fetchAPI();
     }, []);
 
-    const defaultOptionSeasons = productDetail.productSeason;
-    console.log("Mùa: ", productDetail.productSeason)
-    const [index, setIndex] = useState(0);
-    const [mainImage, setMainImage] = useState(PRODUCT_DETAIL.productImages[0]);
-    const [openEditDialog, setOpenEditDialog] = useState(false);
-
     const HandleNextImage = () => {
         console.log("anh hien tai: ", mainImage);
-        if (index < PRODUCT_DETAIL.productImages.length - 1) {
+        if (index < NUM_OF_IMAGES - 1) {
             setIndex(index + 1);
-            setMainImage(PRODUCT_DETAIL.productImages[index + 1]);
+            setMainImage(productImages[index + 1]);
         } else {
             setIndex(0);
-            setMainImage(PRODUCT_DETAIL.productImages[0]);
+            setMainImage(productImages[0]);
         }
     }
 
     const HandleBackImage = () => {
-        console.log("anh hien tai: ", mainImage);
         if (index > 0) {
             setIndex(index - 1);
-            setMainImage(PRODUCT_DETAIL.productImages[index - 1]);
+            setMainImage(productImages[index - 1]);
         }
         else {
-            setIndex(PRODUCT_DETAIL.productImages.length - 1);
-            setMainImage(PRODUCT_DETAIL.productImages[PRODUCT_DETAIL.productImages.length - 1]);
+            setIndex(NUM_OF_IMAGES - 1);
+            setMainImage(productImages[NUM_OF_IMAGES - 1]);
         }
     }
 
@@ -117,7 +122,7 @@ function ProductDetail() {
                     </div>
 
                     <div className={cx('image-product')}>
-                        <img src={productDetail.urlMain !== 'string' ? productDetail.urlMain : defaultImage}
+                        <img src={mainImage !== 'string' && mainImage !== '' ? mainImage : defaultImage}
                             alt='product-thumb'
                             className={cx('product-thumb')} />
                         <div className={cx('add-image-btn')}>
@@ -129,7 +134,7 @@ function ProductDetail() {
                     </div>
 
                     <div className={cx('image-product-mobile')}>
-                        <img src={productDetail.urlMain !== 'string' ? productDetail.urlMain : defaultImage}
+                        <img src={mainImage !== 'string' && mainImage !== '' ? mainImage : defaultImage}
                             alt='product-thumb'
                             className={cx('product-thumb')} />
                         <div className={cx('add-image-btn-mobile')}>
@@ -150,7 +155,7 @@ function ProductDetail() {
                 </div>
                 <div className={cx('num-of-image')}>
                     {
-                        PRODUCT_DETAIL.productImages.map((image, curIndex) => {
+                        productImages.map((image, curIndex) => {
                             return (
                                 <div className={curIndex === index ? cx('circle-active') : cx('circle')}></div>
                             )
@@ -178,7 +183,7 @@ function ProductDetail() {
                     <input className={cx('price-input')}
                         type="text"
                         placeholder='VND'
-                        value={productDetail.price + '  $'} />
+                        value={productDetail.price + '  VND'} />
                 </div>
 
                 <div className={cx('season-product')}>
@@ -188,7 +193,7 @@ function ProductDetail() {
                         arrowOpen={<span className={cx('arrow-open')} />}
                         menuClassName={cx('menu-open')}
                         options={optionSeasons}
-                        value={defaultOptionSeasons}
+                        value={season}
                         placeholder="Select" />
                 </div>
 
@@ -196,7 +201,7 @@ function ProductDetail() {
                     <p>Kích cỡ</p>
                     <div className={cx('size-list')}>
                         {
-                            PRODUCT_DETAIL.productSize.map((item, key) => {
+                            productSizes.map((item, key) => {
                                 return (
                                     <SizeButton size={item.size}
                                         key={key}
@@ -230,7 +235,7 @@ function ProductDetail() {
             {
                 openEditDialog &&
                 (
-                    <EditQuantitySizeForm closeDialog={HandleCloseEditDialog} data={PRODUCT_DETAIL.productSize} />
+                    <EditQuantitySizeForm closeDialog={HandleCloseEditDialog} data={productSizes} />
                 )
             }
         </div>

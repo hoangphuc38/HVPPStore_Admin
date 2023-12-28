@@ -22,6 +22,15 @@ const renderCustomBarLabel = ({ x, y, width, value }) => {
     </text>;
 };
 
+const CustomX = ({ club, nation }) => {
+    if (club === "None") {
+        return nation;
+    }
+    else {
+        return club;
+    }
+}
+
 const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
         return (
@@ -48,14 +57,14 @@ function BarChartItem({ data, domain, fontSize, barSize, isToolTip }) {
                     bottom: 0,
                 }}
             >
-                <XAxis dataKey="name"
+                <XAxis dataKey={CustomX}
                     stroke="#2A2A86"
                     tickLine={false}
                     fontSize={fontSize}
                     className={cx('x-axis')} />
                 <YAxis stroke="#2A2A86" domain={domain} padding={{ left: '20px' }} />
                 {isToolTip ? <Tooltip content={<CustomTooltip />} /> : <></>}
-                <Bar dataKey="pv"
+                <Bar dataKey="sold"
                     fill="#2A2A86"
                     barSize={barSize}
                     label={renderCustomBarLabel} />

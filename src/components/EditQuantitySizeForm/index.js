@@ -28,14 +28,12 @@ function EditQuantitySizeForm({ closeDialog, data }) {
                             <span>Size M:   </span>
                             <span>Size L:   </span>
                             <span>Size XL:   </span>
-                            <span>Size XXL:   </span>
                         </div>
                         <div className={cx('content-edit')}>
                             <input className={cx('input-edit')} type="text" value={getQuantitySize(data, 'S')} />
                             <input className={cx('input-edit')} type="text" value={getQuantitySize(data, 'M')} />
                             <input className={cx('input-edit')} type="text" value={getQuantitySize(data, 'L')} />
                             <input className={cx('input-edit')} type="text" value={getQuantitySize(data, 'XL')} />
-                            <input className={cx('input-edit')} type="text" value={getQuantitySize(data, 'XXL')} />
                         </div>
                     </div>
 

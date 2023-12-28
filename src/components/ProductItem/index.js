@@ -24,7 +24,7 @@ function ProductItem({ data, onClick, deleteItem, href }) {
 
                 <div className={cx('name-price')}>
                     <div className={cx('name')}>{data.name}</div>
-                    <div className={cx('price')}>{data.price} $</div>
+                    <div className={cx('price')}>{data.price} VND</div>
                 </div>
 
                 <div className={cx('name-price-mobile')}>
@@ -33,7 +33,7 @@ function ProductItem({ data, onClick, deleteItem, href }) {
                         <span>Đã bán</span>
                         <span className={cx('sold-text')}>{data.sold}K</span>
                     </div>
-                    <div className={cx('price')}>{data.price} $</div>
+                    <div className={cx('price')}>{data.price} VND</div>
                 </div>
 
                 <div className={cx('sold-product')}>

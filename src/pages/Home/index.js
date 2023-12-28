@@ -2,38 +2,48 @@ import classNames from 'classnames/bind';
 import styles from './Home.module.scss';
 import Button from '../../components/Button';
 import { DetailIcon, StatisticIcon } from '../../components/Icons';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import BarChartItem from '../../components/StatisticItem/BarChartItem';
 import LineChartItem from '../../components/StatisticItem/LineChartItem';
 import config from '../../config';
+import productAPI from '../../api/productAPI';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const cx = classNames.bind(styles);
 
 function Home() {
-    const dataBarChart = [
-        {
-            name: 'Manchester City',
-            uv: 4000,
-            pv: 2.400,
-            amt: 2400,
-        },
-        {
-            name: 'Barcelona',
-            uv: 3000,
-            pv: 1.398,
-            amt: 2210,
-        },
-        {
-            name: 'Liverpool',
-            uv: 2000,
-            pv: 9.800,
-            amt: 2290,
-        },
-    ];
+    const [dataBarChart, setDataBarChart] = useState([]);
+
+    useEffect(() => {
+        const fetchAPI = async () => {
+            try {
+                const date = new Date();
+                let month = date.getMonth() + 1;
+                let year = date.getFullYear();
+                const response = await productAPI.getTopSelling(month, year);
+                console.log("Success: ", response);
+                setDataBarChart(response);
+
+            } catch (error) {
+                console.log("Xảy ra lỗi: ", error);
+            }
+        }
+
+        fetchAPI();
+    }, []);
+
+    const getCurrentMonth = () => {
+        const date = new Date();
+        return date.getMonth() + 1;
+    }
+
+    const getCurrentYear = () => {
+        const date = new Date();
+        return date.getFullYear();
+    }
 
     const dataLineChart = [
         {
@@ -206,7 +216,7 @@ function Home() {
                 <div className={cx('second-box')}>
                     <div className={cx('content-wrapper')}>
                         <div className={cx('chart-title')}>
-                            <span className={cx('title-text')}>Top 3 Nhóm sản phẩm bán chạy nhất tháng 11</span>
+                            <span className={cx('title-text')}>Top 3 Nhóm sản phẩm bán chạy nhất tháng {getCurrentMonth()}</span>
                             <Button primary
                                 rightIcon={<DetailIcon />}
                                 className={cx('detail-btn')}
@@ -223,7 +233,7 @@ function Home() {
                 <div className={cx('first-statistic')}>
                     <div className={cx('content-wrapper')}>
                         <div className={cx('chart-title')}>
-                            <span>Doanh thu năm 2023</span>
+                            <span>Doanh thu năm {getCurrentYear()}</span>
                             <Button primary
                                 rightIcon={<DetailIcon />}
                                 className={cx('detail-btn')}
@@ -237,7 +247,7 @@ function Home() {
                 </div>
                 <div className={cx('second-statistic')}>
                     <div className={cx('chart-title')}>
-                        <span className={cx('title')}>Nhóm sản phẩm đem lợi nhuận cao nhất tháng 11</span>
+                        <span className={cx('title')}>Nhóm sản phẩm đem lợi nhuận cao nhất tháng {getCurrentMonth()}</span>
                         <Button primary
                             rightIcon={<DetailIcon />}
                             className={cx('detail-btn')}
