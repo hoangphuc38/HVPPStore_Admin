@@ -52,6 +52,17 @@ function ProductSearchBar({ placeholder }) {
         setShowResult(false);
     }
 
+    const HandleSearchOnClickItem = async (result) => {
+        setShowResult(false);
+        setSearchValue('');
+        return await productAPI.getByClub(result.name)
+            .then((res) => {
+                setProducts(res);
+                console.log("List:", res)
+            })
+            .catch((error) => console.log(error));
+    }
+
     return (
         <Tippy
             interactive
@@ -63,7 +74,9 @@ function ProductSearchBar({ placeholder }) {
                         {
                             searchResult.map((result) => {
                                 return (
-                                    <div className={cx('result-wrapper')} key={result.id}>
+                                    <div className={cx('result-wrapper')}
+                                        key={result.id}
+                                        onClick={() => HandleSearchOnClickItem(result)}>
                                         <FontAwesomeIcon className={cx('search-icon')} icon={faMagnifyingGlass} />
                                         <span>{result.name}</span>
                                     </div>

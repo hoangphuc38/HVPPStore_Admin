@@ -88,10 +88,20 @@ p {
             display: flex;
             flex-direction: row;
             justify-content: center;
+            gap: 35px;
             margin-top: 24px;
             margin-bottom: 24px;
 
             .circle {
+                display: flex;
+                width: 20px;
+                height: 20px;
+                background-color: white;
+                border: 1px solid var(--primary-color-text);
+                border-radius: 50%;
+            }
+
+            .circle-active {
                 display: flex;
                 width: 20px;
                 height: 20px;
@@ -316,10 +326,16 @@ textarea {
             }
 
             .num-of-image {
+                gap: 15px;
                 margin-top: 10px;
                 margin-bottom: 5px;
 
                 .circle {
+                    width: 14px;
+                    height: 14px;
+                }
+
+                .circle-active {
                     width: 14px;
                     height: 14px;
                 }
@@ -459,10 +475,16 @@ textarea {
             }
 
             .num-of-image {
-                margin-top: 10px;
-                margin-bottom: 5px;
+                gap: 15px;
+                margin-top: 20px;
+                margin-bottom: 15px;
 
                 .circle {
+                    width: 14px;
+                    height: 14px;
+                }
+
+                .circle-active {
                     width: 14px;
                     height: 14px;
                 }
@@ -601,10 +623,16 @@ textarea {
             }
 
             .num-of-image {
-                margin-top: 10px;
-                margin-bottom: 5px;
+                gap: 15px;
+                margin-top: 20px;
+                margin-bottom: 15px;
 
                 .circle {
+                    width: 14px;
+                    height: 14px;
+                }
+
+                .circle-active {
                     width: 14px;
                     height: 14px;
                 }
@@ -741,12 +769,18 @@ textarea {
             }
 
             .num-of-image {
-                margin-top: 15px;
+                gap: 15px;
+                margin-top: 20px;
                 margin-bottom: 15px;
 
                 .circle {
                     width: 15px;
                     height: 15px;
+                }
+
+                .circle-active {
+                    width: 14px;
+                    height: 14px;
                 }
             }
         }

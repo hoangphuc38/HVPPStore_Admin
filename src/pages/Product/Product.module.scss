@@ -203,7 +203,7 @@
     .pagination-container {
         width: 100%;
         justify-content: center;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         display: flex;
         flex-direction: row;
 
@@ -217,7 +217,7 @@
             & a {
                 padding: 10px;
                 border: 1px solid transparent;
-                color: #505050;
+                color: var(--primary-color-text);
 
                 &:hover {
                     color: #3965ce !important;
@@ -238,9 +238,9 @@
 
         .paginationActive {
             & a {
-                color: #505050;
+                color: #310bca;
                 border: 1px solid #cacaca;
-                background: linear-gradient(to bottom, #fff 0, #eaeaea 100%);
+                background: white;
             }
         }
 

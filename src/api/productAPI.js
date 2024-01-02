@@ -25,6 +25,21 @@ class ProductAPI {
         const url = `Products/filter-by?club=false&nation=false&minPrice=0&maxPrice=10000000&sortBy=Sold&descending=false&sizeS=false&sizeM=false&sizeL=false&sizeXL=false&page=1&productPerPage=5`
         return axiosClient.get(url);
     }
+
+    getByClub = (club) => {
+        const url = `Products/filter-by?names=${club}&club=false&nation=false&minPrice=0&maxPrice=10000000&sortBy=Name&sizeS=false&sizeM=false&sizeL=false&sizeXL=false&page=1&productPerPage=5`;
+        return axiosClient.get(url);
+    }
+
+    getBySeason = (season) => {
+        const url = `Products/filter-by?seasons=${season}&club=false&nation=false&minPrice=0&maxPrice=10000000&sortBy=Name&sizeS=false&sizeM=false&sizeL=false&sizeXL=false&page=1&productPerPage=5`;
+        return axiosClient.get(url);
+    }
+
+    deleteProduct = (id) => {
+        const url = `Products/delete/${id}`;
+        return axiosClient.delete(url);
+    }
 }
 
 const productAPI = new ProductAPI();

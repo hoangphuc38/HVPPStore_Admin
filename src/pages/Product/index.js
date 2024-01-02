@@ -17,10 +17,13 @@ const cx = classNames.bind(styles);
 
 function Product() {
     const optionClothes = [
-        'Tất cả', 'Real Madrid', 'Arsenal'
+        'Tất cả',
+        'AC Milan', 'Argentina', 'Bayern Munich', 'Brazil', 'Liverpool',
+        'Germany', 'Real Madrid',
     ];
     const optionSeasons = [
-        'Tất cả', '2008-2009', '2009-2010', '2023-2024'
+        'Tất cả', '1988/1989', '1995/1996', '1998/1999', '2000/2001',
+        '2004/2005', '2006/2007', '2009/2010',
     ];
     const optionSortProducts = [
         'Chung',
@@ -41,7 +44,7 @@ function Product() {
     useEffect(() => {
         const fetchAPI = async () => {
             try {
-                const params = { page: currentPage, productPerPage: 5 }
+                const params = { page: 1, productPerPage: 5 }
                 const response = await productAPI.getAll(params);
                 console.log("Success: ", response);
                 setProducts(response);
@@ -56,12 +59,12 @@ function Product() {
     }, []);
 
     //Functions
-    const handlePageClick = async () => {
-        let curPage = currentPage + 1;
-        setCurrentPage(curPage);
+    const handlePageClick = async (event) => {
         setLoading(true);
         try {
-            const params = { page: currentPage, productPerPage: 5 }
+            setCurrentPage(event.selected + 1);
+            console.log("current page: ", event.selected + 1);
+            const params = { page: event.selected + 1, productPerPage: 5 }
             const response = await productAPI.getAll(params);
             console.log("Success: ", response);
             setProducts(response);
@@ -73,16 +76,29 @@ function Product() {
         }
     }
 
-    const HandleDeleteProduct = (product) => {
-
+    const HandleDeleteProduct = async (product) => {
+        const params = { page: 1, productPerPage: 5 }
+        return await productAPI.deleteProduct(product.id)
+            .then(() => {
+                productAPI.getAll(params).then((res) => {
+                    setProducts(res);
+                })
+            })
+            .catch((error) => console.log(error));
     }
 
     const addtoRemoveItems = (product) => {
-
+        removeItems.push(product.id);
     }
 
     const HandleDeleteAllRemoveItems = () => {
-
+        const params = { page: 1, productPerPage: 5 }
+        removeItems.forEach((productID) => {
+            productAPI.deleteProduct(productID);
+        })
+        productAPI.getAll(params).then((res) => {
+            setProducts(res);
+        })
     }
 
     const sortSale = async (option) => {
@@ -111,8 +127,42 @@ function Product() {
         }
     }
 
-    const sortCategory = (option) => {
+    const sortCategoryClub = async (option) => {
+        if (option !== 'Tất cả') {
+            return await productAPI.getByClub(option)
+                .then((res) => {
+                    setProducts(res);
+                    console.log("List:", res)
+                })
+                .catch((error) => console.log(error));
+        }
+        else {
+            const params = { page: 1, productPerPage: 5 }
+            return await productAPI.getAll(params)
+                .then((res) => {
+                    setProducts(res);
+                })
+                .catch((error) => console.log(error));
+        }
+    }
 
+    const sortCategorySeason = async (option) => {
+        if (option !== 'Tất cả') {
+            return await productAPI.getBySeason(option)
+                .then((res) => {
+                    setProducts(res);
+                    console.log("List:", res)
+                })
+                .catch((error) => console.log(error));
+        }
+        else {
+            const params = { page: 1, productPerPage: 5 }
+            return await productAPI.getAll(params)
+                .then((res) => {
+                    setProducts(res);
+                })
+                .catch((error) => console.log(error));
+        }
     }
 
     return (
@@ -123,7 +173,7 @@ function Product() {
                         arrowClosed={<span className={cx('arrow-closed')} />}
                         arrowOpen={<span className={cx('arrow-open')} />}
                         menuClassName={cx('menu-open')}
-                        onChange={(e) => sortCategory(e.value)}
+                        onChange={(e) => sortCategoryClub(e.value)}
                         options={optionClothes}
                         value={defaultOptionClothes}
                         placeholder="Select" />
@@ -131,7 +181,7 @@ function Product() {
                     <Dropdown controlClassName={cx('Dropdown-control-season')}
                         arrowClosed={<span className={cx('arrow-closed')} />}
                         arrowOpen={<span className={cx('arrow-open')} />}
-                        onChange={(e) => sortCategory(e.value)}
+                        onChange={(e) => sortCategorySeason(e.value)}
                         menuClassName={cx('menu-open')}
                         options={optionSeasons}
                         value={defaultOptionSeasons}
