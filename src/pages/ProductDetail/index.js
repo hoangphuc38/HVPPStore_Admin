@@ -13,13 +13,6 @@ import defaultImage from '../../images/default-image.jpg';
 const cx = classNames.bind(styles);
 
 function ProductDetail() {
-    const optionSeasons = [
-        '2008/2009',
-        '2010/2011',
-        '2017/2018',
-        '2022/2023',
-    ];
-
     const params = useParams();
 
     const NUM_OF_IMAGES = 4;
@@ -29,7 +22,6 @@ function ProductDetail() {
     const [mainImage, setMainImage] = useState('');
     const [index, setIndex] = useState(0);
     const [openEditDialog, setOpenEditDialog] = useState(false);
-    const [season, setSeasons] = useState("");
 
     useEffect(() => {
         const fetchAPI = async () => {
@@ -69,7 +61,6 @@ function ProductDetail() {
                     },
                 ];
                 setProductSizes(productSize);
-                setSeasons(response.season);
 
             } catch (error) {
                 console.log("Xảy ra lỗi: ", error);
@@ -178,6 +169,34 @@ function ProductDetail() {
                         value={productDetail.name} />
                 </div>
 
+                <div className={cx('name-product')}>
+                    <p>Câu lạc bộ</p>
+                    <input className={cx('name-input')}
+                        type="text"
+                        value={productDetail.club} />
+                </div>
+
+                <div className={cx('name-product')}>
+                    <p>Quốc gia</p>
+                    <input className={cx('name-input')}
+                        type="text"
+                        value={productDetail.nation} />
+                </div>
+
+                <div className={cx('name-product')}>
+                    <p>Khu vực</p>
+                    <input className={cx('name-input')}
+                        type="text"
+                        value={productDetail.groupName} />
+                </div>
+
+                <div className={cx('name-product')}>
+                    <p>Mùa giải</p>
+                    <input className={cx('name-input')}
+                        type="text"
+                        value={productDetail.season} />
+                </div>
+
                 <div className={cx('price-product')}>
                     <p>Giá sản phẩm</p>
                     <input className={cx('price-input')}
@@ -186,28 +205,19 @@ function ProductDetail() {
                         value={productDetail.price + '  VND'} />
                 </div>
 
-                <div className={cx('season-product')}>
-                    <p>Mùa giải</p>
-                    <Dropdown controlClassName={cx('Dropdown-control')}
-                        arrowClosed={<span className={cx('arrow-closed')} />}
-                        arrowOpen={<span className={cx('arrow-open')} />}
-                        menuClassName={cx('menu-open')}
-                        options={optionSeasons}
-                        value={season}
-                        placeholder="Select" />
-                </div>
-
                 <div className={cx('size-product')}>
                     <p>Kích cỡ</p>
                     <div className={cx('size-list')}>
                         {
                             productSizes.map((item, key) => {
-                                return (
-                                    <SizeButton size={item.size}
-                                        key={key}
-                                        quantity={item.quantity}
-                                        className={cx('button-size')} />
-                                )
+                                if (item.quantity > 0) {
+                                    return (
+                                        <SizeButton size={item.size}
+                                            key={key}
+                                            quantity={item.quantity}
+                                            className={cx('button-size')} />
+                                    )
+                                }
                             })
                         }
                         <button className={cx('add-size-btn')} onClick={HandleOpenEditDialog}>

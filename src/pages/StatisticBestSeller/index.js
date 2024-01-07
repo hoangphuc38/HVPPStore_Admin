@@ -3,75 +3,33 @@ import styles from './StatisticBestSeller.module.scss';
 import Button from '../../components/Button';
 import { StatisticIcon } from '../../components/Icons';
 import Dropdown from 'react-dropdown';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import BarChartItem from '../../components/StatisticItem/BarChartItem';
+import productAPI from '../../api/productAPI';
 
 const cx = classNames.bind(styles);
 
 function StatisticBestSeller() {
-    const dataBarChart = [
-        {
-            name: 'Manchester City',
-            uv: 4000,
-            pv: 2.400,
-            amt: 2400,
-        },
-        {
-            name: 'Barcelona',
-            uv: 3000,
-            pv: 1.398,
-            amt: 2210,
-        },
-        {
-            name: 'Liverpool',
-            uv: 2000,
-            pv: 9.800,
-            amt: 2290,
-        },
-        {
-            name: 'Manchester United',
-            uv: 4000,
-            pv: 2.400,
-            amt: 2400,
-        },
-        {
-            name: 'PSG',
-            uv: 3000,
-            pv: 1.398,
-            amt: 2210,
-        },
-        {
-            name: 'HAGL',
-            uv: 2000,
-            pv: 9.800,
-            amt: 2290,
-        },
-        {
-            name: 'Hà Nội FC',
-            uv: 4000,
-            pv: 2.400,
-            amt: 2400,
-        },
-        {
-            name: 'Chelsea',
-            uv: 3000,
-            pv: 1.398,
-            amt: 2210,
-        },
-        {
-            name: 'Real Madrid',
-            uv: 2000,
-            pv: 9.800,
-            amt: 2290,
-        },
-        {
-            name: 'Inter Miami',
-            uv: 2000,
-            pv: 9.800,
-            amt: 2290,
-        },
+    const [dataBarChart, setDataBarChart] = useState([]);
 
-    ];
+    useEffect(() => {
+        const fetchAPI = async () => {
+            try {
+                //const date = new Date();
+                //let month = date.getMonth() + 1;
+                //let year = date.getFullYear(); Change after having data
+
+                const response = await productAPI.getTopSelling(12, 2023);
+                console.log("Success: ", response);
+                setDataBarChart(response);
+
+            } catch (error) {
+                console.log("Xảy ra lỗi: ", error);
+            }
+        }
+
+        fetchAPI();
+    }, [])
 
     const optionFilter = [
         'Theo tháng',
@@ -108,6 +66,26 @@ function StatisticBestSeller() {
         }
     }
 
+    const HandleStatistic = async (option) => {
+        if (statisticChart === 'Theo tháng') {
+            let month = parseInt(option.replace('Tháng ', ''));
+            return await productAPI.getTopSelling(month, 2023)
+                .then((res) => {
+                    setDataBarChart(res);
+                })
+                .catch((error) => console.log(error));
+        }
+        else {
+            let year = parseInt(option);
+            return await productAPI.getTopSelling(0, year)
+                .then((res) => {
+                    setDataBarChart(res);
+                })
+                .catch((error) => console.log(error));
+        }
+
+    }
+
     return (
         <div className={cx('container')}>
             <div className={cx('title-of-page')}>
@@ -133,6 +111,7 @@ function StatisticBestSeller() {
                                     arrowClosed={<span className={cx('arrow-closed')} />}
                                     arrowOpen={<span className={cx('arrow-open')} />}
                                     menuClassName={cx('menu-open')}
+                                    onChange={(e) => HandleStatistic(e.value)}
                                     options={optionMonth}
                                     value={defaultOptionMonth}
                                     placeholder="Select" />
@@ -140,6 +119,7 @@ function StatisticBestSeller() {
                                     arrowClosed={<span className={cx('arrow-closed')} />}
                                     arrowOpen={<span className={cx('arrow-open')} />}
                                     menuClassName={cx('menu-open')}
+                                    onChange={(e) => HandleStatistic(e.value)}
                                     options={optionYear}
                                     value={defaultOptionYear}
                                     placeholder="Select" />

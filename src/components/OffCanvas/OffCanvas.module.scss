@@ -1,3 +1,5 @@
+@use '../../assets/responsiveSize/mixin' as mixin;
+
 .container {
     z-index: 2147483647;
     background-color: rgba(0, 0, 0, 0.6);
@@ -85,5 +87,21 @@
         color: white;
         justify-content: center;
         align-items: center;
+    }
+}
+
+@include mixin.tablet {
+    .container {
+        .menu {
+            width: 40%;
+        }
+    }
+}
+
+@include mixin.desktop {
+    .container {
+        .menu {
+            width: 30%;
+        }
     }
 }

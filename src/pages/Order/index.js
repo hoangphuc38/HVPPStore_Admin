@@ -3,70 +3,14 @@ import styles from './Order.module.scss';
 import Dropdown from 'react-dropdown';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRotate } from '@fortawesome/free-solid-svg-icons';
 import OrderSearchBar from '../../components/SearchBar/OrderSearchBar'
+import orderAPI from '../../api/orderAPI';
 
 const cx = classNames.bind(styles);
 
 function Order() {
-    const ORDER_INFOS = [
-        {
-            order_id: 'HVPP205',
-            customer_name: 'Hoàng Phúc',
-            time_ordered: '30/09/2023',
-            order_value: '3.000.000đ',
-            status: 'Chờ xác nhận',
-        },
-        {
-            order_id: 'HVPP205',
-            customer_name: 'Vũ Phạm Đình Thái',
-            time_ordered: '30/09/2023',
-            order_value: '3.000.000đ',
-            status: 'Đã nhận',
-        },
-        {
-            order_id: 'HVPP205',
-            customer_name: 'Lê Văn Phú',
-            time_ordered: '30/09/2023',
-            order_value: '3.000.000đ',
-            status: 'Đã hủy',
-        },
-        {
-            order_id: 'HVPP205',
-            customer_name: 'Phạm Nguyễn Đình Thái',
-            time_ordered: '30/09/2023',
-            order_value: '3.000.000đ',
-            status: 'Đang vận chuyển',
-        },
-        {
-            order_id: 'HVPP205',
-            customer_name: 'Hoàng Phúc',
-            time_ordered: '30/09/2023',
-            order_value: '3.000.000đ',
-            status: 'Đã xác nhận',
-        },
-        {
-            order_id: 'HVPP205',
-            customer_name: 'Vũ Phạm Đình Thái',
-            time_ordered: '30/09/2023',
-            order_value: '3.000.000đ',
-            status: 'Chờ nhận',
-        },
-        {
-            order_id: 'HVPP205',
-            customer_name: 'Lê Văn Phú',
-            time_ordered: '30/09/2023',
-            order_value: '3.000.000đ',
-            status: 'Đã hủy',
-        },
-        {
-            order_id: 'HVPP205',
-            customer_name: 'Phạm Nguyễn Đình Thái',
-            time_ordered: '30/09/2023',
-            order_value: '3.000.000đ',
-            status: 'Đang vận chuyển',
-        },
-    ]
-
     const optionStatusOrders = [
         'Tất cả',
         'Chờ xác nhận',
@@ -88,29 +32,56 @@ function Order() {
     ]
 
     //set default list according to Status of Order
-    let defaultList = [...ORDER_INFOS].sort((d1, d2) => statusOrder.indexOf(d1.status) - statusOrder.indexOf(d2.status));
-    const [sortList, setSortList] = useState(defaultList);
+
+    const [orderList, setOrderList] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchAPI = async () => {
+            try {
+                const response = await orderAPI.getAll();
+                console.log("Success: ", response);
+                setOrderList(response);
+                setLoading(false);
+
+            } catch (error) {
+                console.log("Xảy ra lỗi: ", error);
+            }
+        }
+
+        fetchAPI();
+    }, []);
 
 
     //Functions
     const sortStatusOrder = (option) => {
-        if (option === 'Tất cả') {
-            let sortList =
-                [...ORDER_INFOS].sort((d1, d2) => statusOrder.indexOf(d1.status) - statusOrder.indexOf(d2.status));
 
-            setSortList(sortList);
-        }
-        else {
-            let sortList = [...ORDER_INFOS].filter(order => order.status === option);
-            setSortList(sortList);
-        }
+    }
+
+    const formatDate = (date) => {
+        const inputDate = new Date(date);
+
+        const year = inputDate.getUTCFullYear();
+        const month = (inputDate.getMonth()).toString().padStart(2, "0");
+        const day = inputDate.getDate().toString().padStart(2, "0");
+        const time = inputDate.getHours().toString().padStart(2, "0")
+            + ':'
+            + inputDate.getMinutes().toString().padStart(2, "0");
+
+        const formattedDate = `${time} ` + `${day}/${month}/${year}`;
+        console.log("ngày gốc: ", inputDate);
+        console.log("ngày: ", day);
+        console.log("tháng: ", month);
+        console.log("năm: ", year);
+        console.log(formattedDate);
+        return formattedDate;
     }
 
     const renderStatusOrderFontStyle = (val) => {
-        if (val.status === 'Chờ xác nhận') {
+        if (val.status === 'Pending') {
             return <span className={cx('status-yellow')}>{val.status}</span>
         }
-        else if (val.status === 'Đã nhận') {
+        else if (val.status === 'Payment') {
             return <span className={cx('status-green')}>{val.status}</span>
         }
         else if (val.status === 'Đang vận chuyển') {
@@ -144,8 +115,8 @@ function Order() {
             </div>
             <div className={cx('order-counter')}>
                 {
-                    sortList.length > 0
-                        ? <span>Tất cả {sortList.length} đơn hàng</span>
+                    orderList.length > 0
+                        ? <span>Tất cả {orderList.length} đơn hàng</span>
                         : <span>Không tìm thấy đơn hàng</span>
                 }
             </div>
@@ -160,24 +131,30 @@ function Order() {
                         <span>Trạng thái</span>
                     </div>
 
-                    <div className={cx('detail-infos')}>
-                        {
-                            sortList.map((val, key) => {
-                                return (
-                                    <div className={cx('info-wrapper')}>
-                                        <Link className={cx('info')} to={`/order/${val.order_id}`}>
-                                            <span className={cx('id')}>{val.order_id}</span>
-                                            <span className={cx('name')}>{val.customer_name}</span>
-                                            <span className={cx('time')}>{val.time_ordered}</span>
-                                            <span className={cx('value')}>{val.order_value}</span>
-                                            {renderStatusOrderFontStyle(val)}
-                                        </Link>
-                                    </div>
+                    {
+                        loading ? <FontAwesomeIcon icon={faRotate} spin />
+                            :
+                            <div className={cx('detail-infos')}>
+                                {
+                                    orderList.map((val, key) => {
+                                        return (
+                                            <div className={cx('info-wrapper')}>
+                                                <Link className={cx('info')} to={`/order/${val.id}`}>
+                                                    <span className={cx('id')}>{val.id}</span>
+                                                    <span className={cx('name')}>{val.name !== null ? val.name : 'null'}</span>
+                                                    <span className={cx('time')}>{formatDate(val.timeCreate)}</span>
+                                                    <span className={cx('value')}>{val.value}đ</span>
+                                                    {renderStatusOrderFontStyle(val)}
+                                                </Link>
+                                            </div>
 
-                                )
-                            })
-                        }
-                    </div>
+                                        )
+                                    })
+                                }
+                            </div>
+                    }
+
+
                 </div>
             </div>
 

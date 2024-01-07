@@ -157,6 +157,8 @@ function StatisticRevenueSales() {
                                 className={cx('input-time')} />
                         </div>
 
+                        <Button className={cx('detail-btn')}
+                            primary>Xem</Button>
                     </div>
                 </div>
                 <div className={cx('button-wrapper')}>

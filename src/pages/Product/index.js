@@ -114,7 +114,12 @@ function Product() {
         }
 
         else if (option === "Sản phẩm bán ít nhất") {
-
+            return await productAPI.getAscendingSaleList()
+                .then((res) => {
+                    setProducts(res);
+                    console.log("List: ", res);
+                })
+                .catch((error) => console.log(error));
         }
 
         else {

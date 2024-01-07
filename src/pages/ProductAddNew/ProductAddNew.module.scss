@@ -22,20 +22,30 @@ p {
                 width: 345px;
                 height: 475px;
                 display: flex;
-                justify-content: flex-end;
+                position: relative;
+                justify-content: center;
+                align-items: center;
                 border-radius: 15px;
                 background: #FFF;
                 box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
+                .product-thumb {
+                    width: 95%;
+                    transition: transform 0.3s ease-in-out;
+                }
+
                 .add-image-btn {
                     width: 50px;
                     height: 50px;
+                    position: absolute;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     border-radius: 15px;
                     background-color: var(--primary-color-text);
                     cursor: pointer;
+                    top: -15px;
+                    left: -15px;
 
                     .image-upload {
                         display: none;
@@ -44,11 +54,22 @@ p {
                     .image-icon {
                         display: flex;
                         justify-content: center;
+                        cursor: pointer;
                     }
                 }
 
                 .add-image-btn-mobile {
                     display: none;
+                    width: 40px;
+                    height: 40px;
+                    position: absolute;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 15px;
+                    background-color: var(--primary-color-text);
+                    top: -15px;
+                    left: -15px;
+                    cursor: pointer;
                 }
             }
 
@@ -164,74 +185,45 @@ p {
             }
         }
 
-        .season-product {
-            width: 100%;
-
-            .Dropdown-control {
-                display: flex;
-                width: 50%;
-                height: 50px;
-                border: 1px solid var(--primary-color-text);
-                border-radius: 15px;
-                align-items: center;
-                padding-left: 3%;
-                margin-top: 10px;
-                color: var(--primary-color-text);
-                font-size: 16px;
-                font-weight: 400;
-
-                .arrow-closed {
-                    border-color: #2A2A86 transparent transparent;
-                    border-style: solid;
-                    border-width: 10px 10px 0;
-                    content: ' ';
-                    display: block;
-                    height: 0;
-                    position: absolute;
-                    right: 10px;
-                    top: 20px;
-                    width: 0;
-                    cursor: pointer;
-                }
-
-                .arrow-open {
-                    border-color: transparent transparent #2A2A86;
-                    border-style: solid;
-                    border-width: 0px 10px 10px;
-                    content: ' ';
-                    display: block;
-                    height: 0;
-                    position: absolute;
-                    right: 10px;
-                    top: 20px;
-                    width: 0;
-                    cursor: pointer;
-                }
-            }
-
-            .menu-open {
-                border-radius: 5px;
-                width: 50%;
-            }
-        }
-
         .size-product {
-            .add-size-btn {
-                width: 50px;
-                height: 50px;
-                border-radius: 15px;
-                margin-top: 10px;
-                background-color: var(--primary);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .first-line {
                 display: flex;
-                justify-content: center;
-                align-items: center;
-                cursor: pointer;
+                gap: 20px;
+
+                .size-quantity {
+                    .size-input {
+                        width: 80%;
+                        height: 50px;
+                        border: 1px solid var(--primary-color-text);
+                        border-radius: 15px;
+                        margin-top: 10px;
+                        padding: 10%;
+                        font-size: 16px;
+                        color: var(--primary-color-text);
+                    }
+                }
             }
 
+            .second-line {
+                display: flex;
+                gap: 20px;
 
-
-            .add-size-btn-mobile {
-                display: none;
+                .size-quantity {
+                    .size-input {
+                        width: 80%;
+                        height: 50px;
+                        border: 1px solid var(--primary-color-text);
+                        border-radius: 15px;
+                        margin-top: 10px;
+                        padding: 10%;
+                        font-size: 16px;
+                        color: var(--primary-color-text);
+                    }
+                }
             }
         }
 
@@ -288,14 +280,7 @@ textarea {
                     }
 
                     .add-image-btn-mobile {
-                        width: 40px;
-                        height: 40px;
                         display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        border-radius: 15px;
-                        background-color: var(--primary-color-text);
-                        cursor: pointer;
 
                         .image-upload {
                             display: none;
@@ -354,7 +339,6 @@ textarea {
             padding-left: 0px;
             gap: 10px;
 
-
             .name-product {
 
                 .name-input {
@@ -371,38 +355,23 @@ textarea {
                 }
             }
 
-            .season-product {
-                .Dropdown-control {
-                    height: 40px;
-                    font-size: 14px;
-
-                    .arrow-closed {
-                        border-width: 8px 8px 0;
-                        top: 16px;
-                    }
-
-                    .arrow-open {
-                        border-width: 0 8px 8px;
-                        top: 16px;
-                    }
-                }
-            }
-
             .size-product {
-                .add-size-btn {
-                    display: none;
+                .first-line {
+                    .size-quantity {
+                        .size-input {
+                            height: 40px;
+                            font-size: 14px;
+                        }
+                    }
                 }
 
-                .add-size-btn-mobile {
-                    width: 40px;
-                    height: 40px;
-                    border-radius: 15px;
-                    margin-top: 10px;
-                    background-color: var(--primary);
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    cursor: pointer;
+                .second-line {
+                    .size-quantity {
+                        .size-input {
+                            height: 40px;
+                            font-size: 14px;
+                        }
+                    }
                 }
             }
 
@@ -437,14 +406,7 @@ textarea {
                     }
 
                     .add-image-btn-mobile {
-                        width: 40px;
-                        height: 40px;
                         display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        border-radius: 15px;
-                        background-color: var(--primary-color-text);
-                        cursor: pointer;
 
                         .image-upload {
                             display: none;
@@ -503,9 +465,7 @@ textarea {
             padding-left: 0px;
             gap: 10px;
 
-
             .name-product {
-
                 .name-input {
                     height: 40px;
                     font-size: 14px;
@@ -513,45 +473,29 @@ textarea {
             }
 
             .price-product {
-
                 .price-input {
                     height: 40px;
                     font-size: 14px;
                 }
             }
 
-            .season-product {
-                .Dropdown-control {
-                    height: 40px;
-                    font-size: 14px;
-
-                    .arrow-closed {
-                        border-width: 8px 8px 0;
-                        top: 16px;
-                    }
-
-                    .arrow-open {
-                        border-width: 0 8px 8px;
-                        top: 16px;
-                    }
-                }
-            }
-
             .size-product {
-                .add-size-btn {
-                    display: none;
+                .first-line {
+                    .size-quantity {
+                        .size-input {
+                            height: 40px;
+                            font-size: 14px;
+                        }
+                    }
                 }
 
-                .add-size-btn-mobile {
-                    width: 40px;
-                    height: 40px;
-                    border-radius: 15px;
-                    margin-top: 10px;
-                    background-color: var(--primary);
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    cursor: pointer;
+                .second-line {
+                    .size-quantity {
+                        .size-input {
+                            height: 40px;
+                            font-size: 14px;
+                        }
+                    }
                 }
             }
 
@@ -585,14 +529,7 @@ textarea {
                     }
 
                     .add-image-btn-mobile {
-                        width: 40px;
-                        height: 40px;
                         display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        border-radius: 15px;
-                        background-color: var(--primary-color-text);
-                        cursor: pointer;
 
                         .image-upload {
                             display: none;
@@ -668,38 +605,23 @@ textarea {
                 }
             }
 
-            .season-product {
-                .Dropdown-control {
-                    height: 40px;
-                    font-size: 14px;
-
-                    .arrow-closed {
-                        border-width: 8px 8px 0;
-                        top: 16px;
-                    }
-
-                    .arrow-open {
-                        border-width: 0 8px 8px;
-                        top: 16px;
-                    }
-                }
-            }
-
             .size-product {
-                .add-size-btn {
-                    display: none;
+                .first-line {
+                    .size-quantity {
+                        .size-input {
+                            height: 40px;
+                            font-size: 14px;
+                        }
+                    }
                 }
 
-                .add-size-btn-mobile {
-                    width: 40px;
-                    height: 40px;
-                    border-radius: 15px;
-                    margin-top: 10px;
-                    background-color: var(--primary);
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    cursor: pointer;
+                .second-line {
+                    .size-quantity {
+                        .size-input {
+                            height: 40px;
+                            font-size: 14px;
+                        }
+                    }
                 }
             }
 
@@ -731,14 +653,7 @@ textarea {
                     }
 
                     .add-image-btn-mobile {
-                        width: 40px;
-                        height: 40px;
                         display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        border-radius: 15px;
-                        background-color: var(--primary-color-text);
-                        cursor: pointer;
 
                         .image-upload {
                             display: none;

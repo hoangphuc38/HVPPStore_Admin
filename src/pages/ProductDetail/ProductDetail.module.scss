@@ -173,55 +173,6 @@ p {
                 font-weight: 600;
             }
         }
-
-        .season-product {
-            .Dropdown-control {
-                display: flex;
-                width: 50%;
-                height: 50px;
-                border: 1px solid var(--primary-color-text);
-                border-radius: 15px;
-                align-items: center;
-                padding-left: 3%;
-                margin-top: 10px;
-                color: var(--primary-color-text);
-                font-size: 16px;
-                font-weight: 400;
-
-                .arrow-closed {
-                    border-color: #2A2A86 transparent transparent;
-                    border-style: solid;
-                    border-width: 10px 10px 0;
-                    content: ' ';
-                    display: block;
-                    height: 0;
-                    position: absolute;
-                    right: 10px;
-                    top: 20px;
-                    width: 0;
-                    cursor: pointer;
-                }
-
-                .arrow-open {
-                    border-color: transparent transparent #2A2A86;
-                    border-style: solid;
-                    border-width: 0px 10px 10px;
-                    content: ' ';
-                    display: block;
-                    height: 0;
-                    position: absolute;
-                    right: 10px;
-                    top: 20px;
-                    width: 0;
-                    cursor: pointer;
-                }
-            }
-
-            .menu-open {
-                border-radius: 5px;
-                width: 50%;
-            }
-        }
     }
 
     .size-product {
@@ -396,23 +347,6 @@ textarea {
                     font-size: 14px;
                 }
             }
-
-            .season-product {
-                .Dropdown-control {
-                    height: 40px;
-                    font-size: 14px;
-
-                    .arrow-closed {
-                        border-width: 8px 8px 0;
-                        top: 16px;
-                    }
-
-                    .arrow-open {
-                        border-width: 0 8px 8px;
-                        top: 16px;
-                    }
-                }
-            }
         }
 
         .size-product {
@@ -563,23 +497,6 @@ textarea {
                 .price-input {
                     height: 40px;
                     font-size: 14px;
-                }
-            }
-
-            .season-product {
-                .Dropdown-control {
-                    height: 40px;
-                    font-size: 14px;
-
-                    .arrow-closed {
-                        border-width: 8px 8px 0;
-                        top: 16px;
-                    }
-
-                    .arrow-open {
-                        border-width: 0 8px 8px;
-                        top: 16px;
-                    }
                 }
             }
         }
@@ -733,23 +650,6 @@ textarea {
                     font-size: 14px;
                 }
             }
-
-            .season-product {
-                .Dropdown-control {
-                    height: 40px;
-                    font-size: 14px;
-
-                    .arrow-closed {
-                        border-width: 8px 8px 0;
-                        top: 16px;
-                    }
-
-                    .arrow-open {
-                        border-width: 0 8px 8px;
-                        top: 16px;
-                    }
-                }
-            }
         }
 
         .size-product {
@@ -895,23 +795,6 @@ textarea {
                 .price-input {
                     height: 40px;
                     font-size: 14px;
-                }
-            }
-
-            .season-product {
-                .Dropdown-control {
-                    height: 40px;
-                    font-size: 14px;
-
-                    .arrow-closed {
-                        border-width: 8px 8px 0;
-                        top: 16px;
-                    }
-
-                    .arrow-open {
-                        border-width: 0 8px 8px;
-                        top: 16px;
-                    }
                 }
             }
         }

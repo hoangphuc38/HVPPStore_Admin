@@ -1,9 +1,14 @@
 import axiosClient from "./axiosClient";
 
 class OrderAPI {
-    getAll = (params) => {
-        const url = `Products/filter-by?club=false&nation=false&minPrice=0&maxPrice=10000000&sortBy=Name&descending=false&sizeS=false&sizeM=false&sizeL=false&sizeXL=false&page=${params.page}&productPerPage=${params.productPerPage}`;
-        return axiosClient.get(url, { params })
+    getAll = () => {
+        const url = `Orders/get-orders?orderType=0&month=0&customerID=-1&today=false`;
+        return axiosClient.get(url)
+    }
+
+    getDetailOrder = (orderID) => {
+        const url = `OrderDetails/get-detail/${orderID}`;
+        return axiosClient.get(url, { orderID });
     }
 
     searchProduct = (params) => {

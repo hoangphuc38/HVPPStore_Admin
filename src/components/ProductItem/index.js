@@ -20,7 +20,7 @@ function ProductItem({ data, onClick, deleteItem, href }) {
             </div>
 
             <div className={cx('product-detail')}>
-                <img src={data.urlMain !== 'string' && data.urlMain !== 'urlMain' ? data.urlMain : defaulImage} className={cx('product-image')} alt="product" />
+                <img src={data.urlMain !== '' && data.urlMain !== 'urlMain' ? data.urlMain : defaulImage} className={cx('product-image')} alt="product" />
 
                 <div className={cx('name-price')}>
                     <div className={cx('name')}>{data.name}</div>
