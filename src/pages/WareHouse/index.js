@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotate } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
 import WareHouseSearchBar from "../../components/SearchBar/WareHouseSearchBar";
-import { AddIcon } from "../../components/Icons";
 import WareHouseForm from "../../components/WareHouseForm";
 
 const cx = classNames.bind(styles);
@@ -45,9 +44,10 @@ function WareHouse() {
             <div className={cx('search-and-buttons')}>
                 <WareHouseSearchBar placeholder="Tìm kiếm phiếu nhập theo tên sản phẩm" />
                 <div className={cx('buttons')}>
-                    <Button primary >Xuất file</Button>
                     <Button primary
-                        leftIcon={<AddIcon width={30} height={30} />}
+                        className={cx('export-btn')}>Xuất file</Button>
+                    <Button primary
+                        className={cx('new-import')}
                         onClick={HandleOpenDialog}>Phiếu nhập mới</Button>
                 </div>
             </div>

@@ -73,7 +73,7 @@
 
 @include mixin.mobile {
     .search {
-        width: 95%;
+        width: 40%;
         height: 35px;
         padding-left: 10px;
 
@@ -92,7 +92,7 @@
 
 @include mixin.tablet {
     .search {
-        width: 95%;
+        width: 50%;
         height: 40px;
         padding-left: 15px;
 
@@ -111,7 +111,6 @@
 
 @include mixin.desktop {
     .search {
-        width: 95%;
         height: 45px;
         padding-left: 20px;
 

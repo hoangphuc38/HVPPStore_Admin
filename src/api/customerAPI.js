@@ -6,9 +6,14 @@ class CustomerAPI {
         return axiosClient.get(url);
     }
 
-    searchCustomer = (params) => {
-        const url = `Products/filter-by?names=${params.name}&club=false&nation=false&minPrice=0&maxPrice=10000000&sortBy=Name&descending=false&sizeS=false&sizeM=false&sizeL=false&sizeXL=false&page=1&productPerPage=8`;
-        return axiosClient.get(url, { params })
+    getbyID = (customerID) => {
+        const url = `Customers/get-by-id/${customerID}`;
+        return axiosClient.get(url, { customerID });
+    }
+
+    searchCustomer = (name) => {
+        const url = `Customers/search-by-name?name=${name}`;
+        return axiosClient.get(url, { name })
     }
 }
 

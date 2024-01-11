@@ -224,7 +224,7 @@ function Home() {
                                 to={config.routes.statisticBestSeller}>Xem thêm</Button>
                         </div>
                         <div className={cx('chart')}>
-                            <BarChartItem data={dataBarChart} domain={[0, 11]} barSize={40} />
+                            <BarChartItem data={dataBarChart} domain={[0, 20]} barSize={40} />
                         </div>
                     </div>
                 </div>

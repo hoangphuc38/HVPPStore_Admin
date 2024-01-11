@@ -14,10 +14,10 @@ function CurrentUserItem({ data }) {
 
             <div className={cx('info')}>
                 <div className={cx('name')}>
-                    <span>{data.nameUser}</span>
+                    <span>{data.name}</span>
                 </div>
                 <div className={cx('time')}>
-                    <span>Hoạt động {data.lastSeen} trước</span>
+                    <span>Hoạt động 10 phút trước</span>
                 </div>
             </div>
         </div>

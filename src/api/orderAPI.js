@@ -11,6 +11,11 @@ class OrderAPI {
         return axiosClient.get(url, { orderID });
     }
 
+    updateStatusOrder = (orderID) => {
+        const url = `Orders/update-status/${orderID}`;
+        return axiosClient.put(url);
+    }
+
     searchProduct = (params) => {
         const url = `Products/filter-by?names=${params.name}&club=false&nation=false&minPrice=0&maxPrice=10000000&sortBy=Name&descending=false&sizeS=false&sizeM=false&sizeL=false&sizeXL=false&page=1&productPerPage=8`;
         return axiosClient.get(url, { params })

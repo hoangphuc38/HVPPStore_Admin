@@ -13,22 +13,20 @@ const cx = classNames.bind(styles);
 function Order() {
     const optionStatusOrders = [
         'Tất cả',
-        'Chờ xác nhận',
-        'Đã xác nhận',
-        'Đang vận chuyển',
-        'Chờ nhận',
-        'Đã nhận',
-        'Đã hủy'
+        'Pending',
+        'Packaging',
+        'Delivering',
+        'Completed',
+        'Cancelled'
     ];
 
     const defaultOptionStatusOrders = 'Trạng thái đơn hàng';
     const statusOrder = [
-        'Chờ xác nhận',
-        'Đã xác nhận',
-        'Đang vận chuyển',
-        'Chờ nhận',
-        'Đã nhận',
-        'Đã hủy'
+        'Pending',
+        'Packaging',
+        'Delivering',
+        'Completed',
+        'Cancelled'
     ]
 
     //set default list according to Status of Order
@@ -41,7 +39,9 @@ function Order() {
             try {
                 const response = await orderAPI.getAll();
                 console.log("Success: ", response);
-                setOrderList(response);
+
+                let defaultList = response.sort((d1, d2) => statusOrder.indexOf(d1.status) - statusOrder.indexOf(d2.status));
+                setOrderList(defaultList);
                 setLoading(false);
 
             } catch (error) {
@@ -62,7 +62,7 @@ function Order() {
         const inputDate = new Date(date);
 
         const year = inputDate.getUTCFullYear();
-        const month = (inputDate.getMonth()).toString().padStart(2, "0");
+        const month = (inputDate.getMonth() + 1).toString().padStart(2, "0");
         const day = inputDate.getDate().toString().padStart(2, "0");
         const time = inputDate.getHours().toString().padStart(2, "0")
             + ':'
@@ -81,17 +81,14 @@ function Order() {
         if (val.status === 'Pending') {
             return <span className={cx('status-yellow')}>{val.status}</span>
         }
-        else if (val.status === 'Payment') {
-            return <span className={cx('status-green')}>{val.status}</span>
-        }
-        else if (val.status === 'Đang vận chuyển') {
-            return <span className={cx('status-blue')}>{val.status}</span>
-        }
-        else if (val.status === 'Đã xác nhận') {
+        else if (val.status === 'Packaging') {
             return <span className={cx('status-lightblue')}>{val.status}</span>
         }
-        else if (val.status === 'Chờ nhận') {
-            return <span className={cx('status-lightgreen')}>{val.status}</span>
+        else if (val.status === 'Delivering') {
+            return <span className={cx('status-blue')}>{val.status}</span>
+        }
+        else if (val.status === 'Completed') {
+            return <span className={cx('status-green')}>{val.status}</span>
         }
         else {
             return <span className={cx('status-red')}>{val.status}</span>

@@ -14,11 +14,11 @@ function UserMessageItem({ data, onClick, isActive }) {
 
             <div className={cx('info')}>
                 <div className={cx('name')}>
-                    <span>{data.nameUser}</span>
+                    <span>{data.name}</span>
                 </div>
                 <div className={cx('message')}>
-                    <span className={cx('text')}>{data.lastMessage}</span>
-                    <span>{data.timeMessage}</span>
+                    {/* <span className={cx('text')}>{data.lastMessage}</span>
+                    <span>{data.timeMessage}</span> */}
                 </div>
             </div>
         </div>

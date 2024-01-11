@@ -11,7 +11,7 @@ function EventItem({ editEvent, deleteEvent, data }) {
         const inputDate = new Date(date);
 
         const year = inputDate.getUTCFullYear();
-        const month = (inputDate.getMonth()).toString().padStart(2, "0");
+        const month = (inputDate.getMonth() + 1).toString().padStart(2, "0");
         const day = inputDate.getDate().toString().padStart(2, "0");
         const time = inputDate.getHours().toString().padStart(2, "0")
             + ':'

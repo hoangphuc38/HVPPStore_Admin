@@ -22,6 +22,7 @@ function ProductSearchBar({ placeholder }) {
             const response = await productAPI.searchProduct(searchValue);
             console.log("Success: ", response);
             setProducts(response);
+            setShowResult(false);
         } catch (error) {
             console.log("Xảy ra lỗi: ", error);
         }

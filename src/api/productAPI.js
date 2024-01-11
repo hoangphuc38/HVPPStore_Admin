@@ -65,6 +65,27 @@ class ProductAPI {
             UrlThumb: urlThumb
         });
     }
+
+    updateProduct = (productID, name, club, nation, season, price, sizeS, sizeM, sizeL, sizeXL, description, urlMain, urlSub1, urlSub2, urlThumb) => {
+        const url = `Products/update/${productID}`;
+        return axiosClient.put(url, {
+            productId: productID,
+            Name: name,
+            Club: club,
+            Nation: nation,
+            Season: season,
+            Price: price,
+            SizeS: sizeS,
+            SizeM: sizeM,
+            SizeL: sizeL,
+            SizeXL: sizeXL,
+            Description: description,
+            UrlMain: urlMain,
+            UrlSub1: urlSub1,
+            UrlSub2: urlSub2,
+            UrlThumb: urlThumb
+        })
+    }
 }
 
 const productAPI = new ProductAPI();

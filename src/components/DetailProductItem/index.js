@@ -8,22 +8,22 @@ function DetailProductItem({ data }) {
     return (
         <div className={cx('detail-product-wrapper')}>
             <div className={cx('product-image')}>
-                <img className={cx('product-thumb')} src={image} alt='ProductImage' />
+                <img className={cx('product-thumb')} src={data.product.urlMain} alt='ProductImage' />
             </div>
 
             <div className={cx('product-info')}>
-                <span className={cx('name')}>{data.nameProduct}</span>
+                <span className={cx('name')}>{data.product.name}</span>
                 <p className={cx('quantity-size')}>
                     <span>Số lượng:</span>
-                    <span>{data.quantityProduct}</span>
+                    <span>{data.quantity}</span>
                 </p>
 
                 <p className={cx('quantity-size')}>
                     <span>Kích cỡ: </span>
-                    <span>{data.sizeProduct}</span>
+                    <span>{data.size}</span>
                 </p>
 
-                <span className={cx('price')}>{data.sumPrice}đ</span>
+                <span className={cx('price')}>{data.product.price * data.quantity} VND</span>
             </div>
         </div>
     );

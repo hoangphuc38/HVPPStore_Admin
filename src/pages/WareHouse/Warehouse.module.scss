@@ -93,12 +93,50 @@
 
         .search-and-buttons {
             display: flex;
+            flex-direction: column-reverse;
+            gap: 10px;
+
+            .buttons {
+                display: flex;
+                gap: 10px;
+
+                .export-btn {
+                    font-size: 14px;
+                }
+
+                .new-import {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .import-table-wrapper {
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+@include mixin.L-mobile {
+    .container {
+        margin-top: 15px;
+
+        .search-and-buttons {
+            display: flex;
             justify-content: space-between;
             flex-direction: row;
 
             .buttons {
                 display: flex;
                 gap: 20px;
+
+                .export-btn {
+                    font-size: 14px;
+                }
+
+                .new-import {
+                    font-size: 14px;
+                }
             }
         }
 

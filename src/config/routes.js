@@ -13,6 +13,7 @@ const routes = {
     salesevent: '/salesevent',
     message: '/message',
     warehouse: '/warehouse',
+    warehouseDetail: '/warehouse/:id',
 }
 
 export default routes;

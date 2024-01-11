@@ -18,6 +18,7 @@ import MessageLayout from "../components/Layout/MessageLayout";
 import routes from "../config/routes";
 import LoginLayout from '../components/Layout/LoginLayout';
 import WareHouse from '../pages/WareHouse';
+import WareHouseDetail from '../pages/WareHouseDetail';
 
 const publicRoutes = [
     { path: '/' },
@@ -35,6 +36,7 @@ const publicRoutes = [
     { path: routes.statisticrRevenueContributor, component: StatisticRevenueContributor, layout: NoSearchLayout },
     { path: routes.statisticRevenueSales, component: StatisticRevenueSales, layout: NoSearchLayout },
     { path: routes.warehouse, component: WareHouse, layout: NoSearchLayout },
+    { path: routes.warehouseDetail, component: WareHouseDetail, layout: NoSearchLayout },
 ];
 
 export { publicRoutes };

@@ -14,35 +14,7 @@ import { faRotate } from '@fortawesome/free-solid-svg-icons';
 const cx = classNames.bind(styles);
 
 function SaleEvent() {
-    const EVENT_INFOS = [
-        {
-            id: '001',
-            title: 'Đồng hành cùng UEFA Champions League dkajhsdkjashdkahdksaj',
-            promotion_value: '10%',
-            code: 'HVPP2023',
-            start_time: '01/09/2023 12:00',
-            expired_time: '30/09/2023 12:00',
-        },
-        {
-            id: '002',
-            title: 'Đồng hành cùng UEFA Champions League',
-            promotion_value: '10%',
-            code: 'HVPP2023',
-            start_time: '01/09/2023 03:00',
-            expired_time: '30/09/2023 12:00',
-        },
-        {
-            id: '003',
-            title: 'Đồng hành cùng UEFA Champions League',
-            promotion_value: '10%',
-            code: 'HVPP2023',
-            start_time: '01/09/2023 03:00',
-            expired_time: '30/09/2023 12:00',
-        },
-    ];
-
-
-    const [events, setEvents] = useState(EVENT_INFOS);
+    const [events, setEvents] = useState([]);
     const [isOpenNewEvent, setIsOpenNewEvent] = useState(false);
     const [isSelectEvent, setIsSelectEvent] = useState(false);
     const [selectedEvent, setSelectedEvent] = useState({});
@@ -88,10 +60,17 @@ function SaleEvent() {
         setIsSelectEvent(false);
     }
 
-    const HandleDeleteEvent = (event) => {
+    const HandleDeleteEvent = async (event) => {
         let currentEvents = events;
         currentEvents = currentEvents.filter(item => item.id !== event.id);
         setEvents(currentEvents);
+        try {
+            let res = await eventAPI.deleteEvent(event.id);
+            console.log("Event ID: ", res);
+        }
+        catch (error) {
+            console.log("Không lấy được event");
+        }
     }
 
     return (

@@ -2,18 +2,19 @@ import classNames from 'classnames/bind';
 import styles from './ProductDetail.module.scss';
 import { AddImageIcon, BackIcon, BackMobileIcon, EditIcon, NextIcon, NextMobileIcon } from '../../components/Icons';
 import Button from '../../components/Button';
-import Dropdown from 'react-dropdown';
 import SizeButton from '../../components/SizeButton';
 import { useEffect, useState } from 'react';
 import EditQuantitySizeForm from '../../components/EditQuantitySizeForm';
 import { useParams } from 'react-router-dom';
 import productAPI from '../../api/productAPI';
 import defaultImage from '../../images/default-image.jpg';
+import { useNavigate } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
 function ProductDetail() {
     const params = useParams();
+    const navigate = useNavigate();
 
     const NUM_OF_IMAGES = 4;
     const [productDetail, setProductDetail] = useState({});
@@ -23,6 +24,21 @@ function ProductDetail() {
     const [index, setIndex] = useState(0);
     const [openEditDialog, setOpenEditDialog] = useState(false);
 
+    const [name, setName] = useState('');
+    const [club, setClub] = useState('');
+    const [nation, setNation] = useState('');
+    const [season, setSeason] = useState('');
+    const [price, setPrice] = useState(0);
+    const [sizeS, setSizeS] = useState(0);
+    const [sizeM, setSizeM] = useState(0);
+    const [sizeL, setSizeL] = useState(0);
+    const [sizeXL, setSizeXL] = useState(0);
+    const [description, setDescription] = useState('');
+    const [urlMain, setUrlMain] = useState(null);
+    const [urlSub1, setUrlSub1] = useState('');
+    const [urlSub2, setUrlSub2] = useState('');
+    const [urlThumb, setUrlThumb] = useState('');
+
     useEffect(() => {
         const fetchAPI = async () => {
             try {
@@ -30,6 +46,21 @@ function ProductDetail() {
                 console.log("ID product: ", params.id);
                 console.log("Success: ", response);
                 setProductDetail(response);
+
+                setName(response.name);
+                setClub(response.club);
+                setNation(response.nation);
+                setSeason(response.season);
+                setPrice(response.price);
+                setSizeS(response.sizeS);
+                setSizeM(response.sizeM);
+                setSizeL(response.sizeL);
+                setSizeXL(response.sizeXL);
+                setDescription(response.description);
+                setUrlMain(response.urlMain);
+                setUrlSub1(response.urlSub1);
+                setUrlSub2(response.urlSub2);
+                setUrlThumb(response.urlThumb);
 
                 //Get list Images
                 let imageList = [
@@ -92,12 +123,46 @@ function ProductDetail() {
         }
     }
 
+    const onChangeImage = (event) => {
+        if (event.target.files && event.target.files[0]) {
+            setMainImage(URL.createObjectURL(event.target.files[0]));
+            console.log("link image: ", event.target.files[0].name);
+            let imagesCopy = [...productImages];
+            imagesCopy[index] = URL.createObjectURL(event.target.files[0]);
+
+            if (index === 0) {
+                setUrlMain(event.target.files[0]);
+            }
+            else if (index === 1) {
+                setUrlSub1(event.target.files[0]);
+            }
+            else if (index === 2) {
+                setUrlSub2(event.target.files[0]);
+            }
+            else {
+                setUrlThumb(event.target.files[0]);
+            }
+
+            setProductImages(imagesCopy);
+        }
+    }
+
     const HandleOpenEditDialog = () => {
         setOpenEditDialog(true);
     }
 
     const HandleCloseEditDialog = () => {
         setOpenEditDialog(false);
+    }
+
+    const HandleSubmit = async (e) => {
+        e.preventDefault();
+        return await productAPI.updateProduct(params.id, name, club, nation, season, price, sizeS, sizeM, sizeL, sizeXL, description, urlMain, urlSub1, urlSub2, urlThumb)
+            .then(() => {
+                alert("Cập nhật sản phẩm thành công");
+                navigate("/product");
+            })
+            .catch((error) => console.log(error));
     }
 
     return (
@@ -117,7 +182,10 @@ function ProductDetail() {
                             alt='product-thumb'
                             className={cx('product-thumb')} />
                         <div className={cx('add-image-btn')}>
-                            <input type='file' id='file' className={cx('image-upload')} />
+                            <input type='file'
+                                id='file'
+                                className={cx('image-upload')}
+                                onChange={onChangeImage} />
                             <label htmlFor='file' className={cx('image-icon')}>
                                 <AddImageIcon width={30} height={30} />
                             </label>
@@ -129,7 +197,10 @@ function ProductDetail() {
                             alt='product-thumb'
                             className={cx('product-thumb')} />
                         <div className={cx('add-image-btn-mobile')}>
-                            <input type='file' id='file' className={cx('image-upload')} />
+                            <input type='file'
+                                id='file'
+                                className={cx('image-upload')}
+                                onChange={onChangeImage} />
                             <label htmlFor='file' className={cx('image-icon')}>
                                 <AddImageIcon width={25} height={25} />
                             </label>
@@ -166,21 +237,24 @@ function ProductDetail() {
                     <p>Tên sản phẩm</p>
                     <input className={cx('name-input')}
                         type="text"
-                        value={productDetail.name} />
+                        onChange={(e) => setName(e.target.value)}
+                        value={name} />
                 </div>
 
                 <div className={cx('name-product')}>
                     <p>Câu lạc bộ</p>
                     <input className={cx('name-input')}
                         type="text"
-                        value={productDetail.club} />
+                        onChange={(e) => setClub(e.target.value)}
+                        value={club} />
                 </div>
 
                 <div className={cx('name-product')}>
                     <p>Quốc gia</p>
                     <input className={cx('name-input')}
                         type="text"
-                        value={productDetail.nation} />
+                        onChange={(e) => setNation(e.target.value)}
+                        value={nation} />
                 </div>
 
                 <div className={cx('name-product')}>
@@ -194,7 +268,8 @@ function ProductDetail() {
                     <p>Mùa giải</p>
                     <input className={cx('name-input')}
                         type="text"
-                        value={productDetail.season} />
+                        onChange={(e) => setSeason(e.target.value)}
+                        value={season} />
                 </div>
 
                 <div className={cx('price-product')}>
@@ -202,7 +277,8 @@ function ProductDetail() {
                     <input className={cx('price-input')}
                         type="text"
                         placeholder='VND'
-                        value={productDetail.price + '  VND'} />
+                        onChange={(e) => setPrice(e.target.value)}
+                        value={price} />
                 </div>
 
                 <div className={cx('size-product')}>
@@ -232,13 +308,14 @@ function ProductDetail() {
                         className={cx('info-input')}
                         cols="40"
                         rows="5"
-                        value={productDetail.description}>
+                        onChange={(e) => setDescription(e.target.value)}
+                        value={description}>
                     </textarea>
                 </div>
 
                 <div className={cx('save-cancel-buttons')}>
                     <Button className={cx('cancel-button')} red>Hủy</Button>
-                    <Button className={cx('cancel-button')} primary>Lưu</Button>
+                    <Button className={cx('cancel-button')} primary onClick={HandleSubmit}>Lưu</Button>
                 </div>
             </div>
 

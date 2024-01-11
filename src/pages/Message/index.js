@@ -2,98 +2,91 @@ import classNames from 'classnames/bind';
 import styles from './Message.module.scss';
 import UserMessageItem from '../../components/UserMessageItem';
 import { ExitMessageIcon, NoChatMessageIcon } from '../../components/Icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CurrentUserItem from '../../components/CurrentUserItem';
 import camera from '../../images/Camera.png';
 import send from '../../images/EmailSend.png';
 import MessageSearchBar from '../../components/SearchBar/MessageSearchBar';
+import customerAPI from '../../api/customerAPI';
+import messageAPI from '../../api/messageAPI';
+import { HubConnectionBuilder } from '@microsoft/signalr'
 
 const cx = classNames.bind(styles);
 
 function Message() {
-    const USER_ID = '002';
-
-    const USER_INFOS = [
-        {
-            id: '1',
-            avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            nameUser: 'Hoàng Phúc',
-            lastMessage: 'Mặt hàng này còn không ạ',
-            timeMessage: '10p',
-            lastSeen: '30 phút',
-        },
-        {
-            id: '2',
-            avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            nameUser: 'Lê Hoài Hải',
-            lastMessage: 'Mặt hàng này còn không ạ',
-            timeMessage: '10p',
-            lastSeen: '30 phút',
-        },
-        {
-            id: '3',
-            avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            nameUser: 'Lê Văn Phú',
-            lastMessage: 'Mặt hàng này còn không ạ djhaddsadsadákhdkahsdkuasjdkadks',
-            timeMessage: '10p',
-            lastSeen: '30 phút',
-        },
-        {
-            id: '4',
-            avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            nameUser: 'Trần Tuấn Vũ',
-            lastMessage: 'Mặt hàng này còn không ạ',
-            timeMessage: '10p',
-            lastSeen: '30 phút',
-        },
-    ]
-
-    const CONVERSATION = [
-        {
-            idUser: '001',
-            timeMessage: '23/11/2023 6:50',
-            textMessage: 'Alo alo',
-            imageMessage: '',
-            videoMessage: '',
-        },
-        {
-            idUser: '002',
-            timeMessage: '23/11/2023 6:51',
-            textMessage: '',
-            imageMessage: 'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw21a150b7/images/large/701225667001_pp_01_mcfc.png?sw=400&sh=400&sm=fit',
-            videoMessage: '',
-        },
-        {
-            idUser: '001',
-            timeMessage: '23/11/2023 6:51',
-            textMessage: 'Mặt hàng này còn không sốp',
-            imageMessage: '',
-            videoMessage: '',
-        },
-        {
-            idUser: '001',
-            timeMessage: '23/11/2023 6:51',
-            textMessage: '',
-            imageMessage: 'https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dwe19c4448/images/large/701225698001_pp_01_mcfc.png?sw=1600&sh=1600&sm=fit',
-            videoMessage: '',
-        },
-        {
-            idUser: '002',
-            timeMessage: '23/11/2023 6:52',
-            textMessage: 'Check inbox',
-            imageMessage: '',
-            videoMessage: '',
-        },
-    ]
-
+    const [userList, setUserList] = useState([]);
+    const [customerID, setCustomerID] = useState("");
+    const [messages, setMessages] = useState([]);
+    const [file, setFile] = useState(null);
+    const [connection, setConnection] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
     const [isShow, setIsShow] = useState(false);
     const [currentMessage, setCurrentMessage] = useState({});
+    const [conversation, setConversation] = useState([]);
 
-    const showMessage = (user) => {
+    useEffect(() => {
+        const fetchAPI = async () => {
+            try {
+                const response = await customerAPI.getAll()
+                    .then((response) => {
+                        setUserList(response);
+                    });
+                console.log("Success: ", response);
+
+            } catch (error) {
+                console.log("Xảy ra lỗi: ", error);
+            }
+        }
+
+        fetchAPI();
+    }, [])
+
+    useEffect(() => {
+        const connect = new HubConnectionBuilder()
+            .withUrl('https://localhost:7030/chathub')
+            .withAutomaticReconnect()
+            .build()
+
+        setConnection(connect)
+    }, [])
+
+    useEffect(() => {
+        if (connection) {
+            connection
+                .start()
+                .then(() => {
+                    console.log('SignalR connected');
+                    connection.on('ReceiveMessage', (message) => {
+                        console.log('message:', message)
+                        //setMessages((prev) => [...prev, message])
+                    })
+                })
+                .catch((error) => {
+                    console.error('Error starting SignalR connection:', error)
+                })
+            // connection.invoke('Connect', user.id)
+        }
+    }, [connection])
+
+    const showMessage = async (user) => {
         setIsShow(true);
-        let activeUser = USER_INFOS;
+        let activeUser = userList;
         activeUser = activeUser.filter(item => item.id === user.id);
         setCurrentMessage(activeUser);
+        return await messageAPI.getMessage(user.id)
+            .then((res) => {
+                setConversation(res);
+                setCustomerID(user.id);
+            })
+            .catch((error) => console.log(error));
+    }
+
+    const HandleSendMessage = async () => {
+        return await messageAPI.sendMessage(customerID, messages, file, false)
+            .then(() => {
+                setIsLoading(true);
+            })
+            .catch((error) => console.log(error));
     }
 
     const closeMessage = () => {
@@ -109,7 +102,7 @@ function Message() {
 
                 <div className={cx('user-list')}>
                     {
-                        USER_INFOS.map((user, key) => {
+                        userList.map((user, key) => {
                             return (
                                 <UserMessageItem data={user}
                                     key={user.id}
@@ -146,13 +139,13 @@ function Message() {
                         </div>
                         <div className={cx('message-content')}>
                             {
-                                CONVERSATION.map((message) => {
+                                conversation.map((message) => {
                                     return (
-                                        <div className={message.idUser === USER_ID ? cx('owner') : cx('other')}>
+                                        <div className={message.isCustomerSend ? cx('other') : cx('owner')}>
                                             {
-                                                message.imageMessage &&
+                                                message.media &&
                                                 <div className={cx('image-wrapper')}>
-                                                    <img src={message.imageMessage}
+                                                    <img src={message.media}
                                                         className={cx('image')}
                                                         alt='message' />
                                                 </div>
@@ -160,9 +153,9 @@ function Message() {
 
                                             }
                                             {
-                                                message.textMessage &&
+                                                message.content &&
                                                 <div className={cx('text-wrapper')}>
-                                                    {message.textMessage}
+                                                    {message.content}
                                                 </div>
                                             }
 
@@ -179,8 +172,14 @@ function Message() {
                                 </label>
                             </div>
                             <div className={cx('input-content')}>
-                                <input type='text' placeholder='Aa' />
-                                <img src={send} alt='send-message' className={cx('send-button')} />
+                                <input type='text'
+                                    placeholder='Aa'
+                                    onChange={(e) => setMessages(e.target.value)}
+                                    value={messages} />
+                                <img src={send}
+                                    alt='send-message'
+                                    className={cx('send-button')}
+                                    onClick={HandleSendMessage} />
                             </div>
                         </div>
                     </div>
