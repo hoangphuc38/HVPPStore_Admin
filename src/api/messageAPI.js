@@ -11,7 +11,7 @@ class MessageAPI {
     return axiosClient.post(url, {
       customerID,
       content,
-      media: media ? media : "",
+      media,
       isCustomerSend,
     });
   };

@@ -7,9 +7,9 @@ import CurrentUserItem from "../../components/CurrentUserItem";
 import camera from "../../images/Camera.png";
 import send from "../../images/EmailSend.png";
 import MessageSearchBar from "../../components/SearchBar/MessageSearchBar";
-import customerAPI from "../../api/customerAPI";
 import messageAPI from "../../api/messageAPI";
 import { HubConnectionBuilder } from "@microsoft/signalr";
+import { Helper } from "../../utils/helper";
 
 const cx = classNames.bind(styles);
 
@@ -21,7 +21,7 @@ function Message() {
   const [messages, setMessages] = useState([]);
   const [file, setFile] = useState(null);
   const [connection, setConnection] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+
   const [isShow, setIsShow] = useState(false);
   const [currentMessage, setCurrentMessage] = useState([]);
   const [conversation, setConversation] = useState([]);
@@ -91,16 +91,23 @@ function Message() {
   };
 
   const HandleSendMessage = async () => {
+    console.log("gửi: ", file);
     return await messageAPI
       .sendMessage(customerID, messages, file, false)
       .then(() => {
-        // setIsLoading(true);
-        // setConver
         textareaRef.current.focus();
         setMessages("");
       })
       .catch((error) => console.log(error));
   };
+
+  const HandleSendImage = (event) => {
+    if (event.target.files[0] && Helper.validateFile(event.target.files[0])) {
+      const base64Image = Helper.readAsBase64(event.target.files[0])
+      setFile(base64Image.substring('data:image/png;base64,'.length))
+      console.log("ảnh: ", base64Image.substring('data:image/png;base64,'.length))
+    }
+  }
 
   const closeMessage = () => {
     setIsShow(false);
@@ -124,8 +131,8 @@ function Message() {
                   Object.keys(currentMessage).length === 0
                     ? false
                     : user.customer.id === currentMessage[0].customerID
-                    ? true
-                    : false
+                      ? true
+                      : false
                 }
               />
             );
@@ -166,7 +173,10 @@ function Message() {
           </div>
           <div className={cx("message-input")}>
             <div className={cx("photo-button")}>
-              <input type="file" id="file" className={cx("input-file")} />
+              <input type="file"
+                id="file"
+                className={cx("input-file")}
+                onChange={HandleSendImage} />
               <label htmlFor="file" className={cx("camera-icon")}>
                 <img src={camera} alt="camera" />
               </label>
