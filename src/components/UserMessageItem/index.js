@@ -4,7 +4,6 @@ import styles from "./UserMessageItem.module.scss";
 const cx = classNames.bind(styles);
 
 function UserMessageItem({ data, onClick, isActive }) {
-  console.log("data avatar:", data);
   return (
     <div
       className={isActive ? cx("wrapper-active") : cx("wrapper")}

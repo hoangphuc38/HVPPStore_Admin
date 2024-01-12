@@ -2,7 +2,7 @@ import classNames from "classnames/bind";
 import styles from "./Message.module.scss";
 import UserMessageItem from "../../components/UserMessageItem";
 import { ExitMessageIcon, NoChatMessageIcon } from "../../components/Icons";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import CurrentUserItem from "../../components/CurrentUserItem";
 import camera from "../../images/Camera.png";
 import send from "../../images/EmailSend.png";
@@ -18,7 +18,7 @@ function Message() {
   const messageEndRef = useRef(null);
   const [userList, setUserList] = useState([]);
   const [customerID, setCustomerID] = useState("");
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState("");
   const [file, setFile] = useState(null);
   const [connection, setConnection] = useState(null);
 
@@ -62,8 +62,14 @@ function Message() {
         .start()
         .then(() => {
           console.log("SignalR connected");
-          connection.on("ReceiveMessage", (message) => {
+          connection.on("ReceiveMessage", async (message) => {
             console.log("message:", message);
+
+            if (message.media) {
+              message.media = await ("data:image/png;base64," + message.media);
+              setFile(null);
+            }
+
             setConversation((prev) => [...prev, message]);
           });
         })
@@ -77,8 +83,6 @@ function Message() {
   const showMessage = async (user) => {
     setIsShow(true);
     const activeUser = userList.filter((item) => item.customer.id === user.id);
-    console.log("active user: ", activeUser);
-    console.log("active user 0", activeUser[0].customerID);
     setCurrentMessage(activeUser || []);
 
     return await messageAPI
@@ -101,13 +105,12 @@ function Message() {
       .catch((error) => console.log(error));
   };
 
-  const HandleSendImage = (event) => {
+  const HandleSendImage = async (event) => {
     if (event.target.files[0] && Helper.validateFile(event.target.files[0])) {
-      const base64Image = Helper.readAsBase64(event.target.files[0])
-      setFile(base64Image.substring('data:image/png;base64,'.length))
-      console.log("ảnh: ", base64Image.substring('data:image/png;base64,'.length))
+      const base64Image = await Helper.readAsBase64(event.target.files[0]);
+      setFile(base64Image.substring("data:image/png;base64,".length));
     }
-  }
+  };
 
   const closeMessage = () => {
     setIsShow(false);
@@ -131,8 +134,8 @@ function Message() {
                   Object.keys(currentMessage).length === 0
                     ? false
                     : user.customer.id === currentMessage[0].customerID
-                      ? true
-                      : false
+                    ? true
+                    : false
                 }
               />
             );
@@ -173,10 +176,12 @@ function Message() {
           </div>
           <div className={cx("message-input")}>
             <div className={cx("photo-button")}>
-              <input type="file"
+              <input
+                type="file"
                 id="file"
                 className={cx("input-file")}
-                onChange={HandleSendImage} />
+                onChange={HandleSendImage}
+              />
               <label htmlFor="file" className={cx("camera-icon")}>
                 <img src={camera} alt="camera" />
               </label>
