@@ -130,8 +130,10 @@ function OrderDetail() {
             setActiveIndex(activeIndex + 1);
             setStatusSelectedOrder(STATUS_ORDER[activeIndex].status);
             return await orderAPI.updateStatusOrder(orderID)
-                .then(() => {
-                    HandleExportFile();
+                .then((response) => {
+                    if (response.status === "Packaging") {
+                        HandleExportFile();
+                    }
                     alert("Cập nhật trạng thái đơn hàng thành công")
                 })
                 .catch((error) => console.log(error));
