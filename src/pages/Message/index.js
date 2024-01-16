@@ -134,8 +134,8 @@ function Message() {
                   Object.keys(currentMessage).length === 0
                     ? false
                     : user.customer.id === currentMessage[0].customerID
-                    ? true
-                    : false
+                      ? true
+                      : false
                 }
               />
             );
@@ -153,11 +153,9 @@ function Message() {
           <div className={cx("message-content")}>
             {conversation.map((message) => {
               console.log("media: ", message.media);
-              return (
-                <div
-                  className={message.isCustomerSend ? cx("other") : cx("owner")}
-                >
-                  {message.media && message.media !== "string" && (
+              if (message.media && message.media !== "string") {
+                return (
+                  <div className={message.isCustomerSend ? cx("other") : cx("owner")}>
                     <div className={cx("image-wrapper")}>
                       <img
                         src={message.media}
@@ -165,12 +163,17 @@ function Message() {
                         alt="message"
                       />
                     </div>
-                  )}
-                  {message.content && (
+                  </div>
+                )
+              }
+              else if (message.content) {
+                return (
+                  <div className={message.isCustomerSend ? cx("other") : cx("owner")}>
                     <div className={cx("text-wrapper")}>{message.content}</div>
-                  )}
-                </div>
-              );
+                  </div>
+                )
+              }
+
             })}
             <div ref={messageEndRef}></div>
           </div>
