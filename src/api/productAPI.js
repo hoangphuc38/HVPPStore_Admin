@@ -86,6 +86,21 @@ class ProductAPI {
             UrlThumb: urlThumb
         })
     }
+
+    importProduct = (productID, sizeS, sizeM, sizeL, sizeXL, supplier, contact, price) => {
+        const url = `Products/import-products`;
+        return axiosClient.get(url, { productID, sizeS, sizeM, sizeL, sizeXL, supplier, contact, price });
+    }
+
+    getImportList = () => {
+        const url = `Products/get-all`;
+        return axiosClient.get(url);
+    }
+
+    getDetailImport = (productID) => {
+        const url = `Products/get-detail-import/${productID}`;
+        return axiosClient.get(url, { productID });
+    }
 }
 
 const productAPI = new ProductAPI();

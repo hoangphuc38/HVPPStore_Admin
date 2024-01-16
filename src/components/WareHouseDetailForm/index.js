@@ -5,6 +5,25 @@ import Button from "../Button";
 const cx = classNames.bind(styles);
 
 function WareHouseDetailForm({ closeDialog, data }) {
+    const formatDate = (date) => {
+        const inputDate = new Date(date);
+
+        const year = inputDate.getUTCFullYear();
+        const month = (inputDate.getMonth() + 1).toString().padStart(2, "0");
+        const day = inputDate.getDate().toString().padStart(2, "0");
+        const time = inputDate.getHours().toString().padStart(2, "0")
+            + ':'
+            + inputDate.getMinutes().toString().padStart(2, "0");
+
+        const formattedDate = `${time} ` + `${day}/${month}/${year}`;
+        console.log("ngày gốc: ", inputDate);
+        console.log("ngày: ", day);
+        console.log("tháng: ", month);
+        console.log("năm: ", year);
+        console.log(formattedDate);
+        return formattedDate;
+    }
+
     return (
         <>
             <div className={cx("overlay")}></div>
@@ -15,12 +34,6 @@ function WareHouseDetailForm({ closeDialog, data }) {
                 </header>
                 <main className={cx("modal__main")}>
                     <div className={cx('main-wrapper')}>
-                        <div className={cx('first-container')}>
-                            <span>Tên sản phẩm: </span>
-                            <input className={cx('input-edit')}
-                                type="text"
-                                value="Real Madrid" />
-                        </div>
                         <span>Tổng số lượng nhập   </span>
 
                         <div className={cx('second-container')}>
@@ -66,14 +79,14 @@ function WareHouseDetailForm({ closeDialog, data }) {
                                 <span>Ngày nhập: </span>
                                 <input className={cx('delivery-info')}
                                     type="text"
-                                    value={data.importDate} />
+                                    value={formatDate(data.dateIn)} />
                             </div>
 
                             <div className={cx('info')}>
                                 <span>Nguồn nhập: </span>
                                 <input className={cx('delivery-info')}
                                     type="text"
-                                    value={data.importFrom} />
+                                    value={data.supplier} />
                             </div>
 
                             <div className={cx('info')}>
