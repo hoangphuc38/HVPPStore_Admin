@@ -37,13 +37,6 @@ function Header({ className }) {
                 {isClicked && <OffCanvas handleClose={handleClick} />}
 
                 <div className={cx('task-bar')}>
-                    <div className={cx('notification')}>
-                        <button className={cx('notification-icon')}>
-                            <FontAwesomeIcon icon={faBell} />
-                        </button>
-                        <div className={cx('counter')}>2</div>
-                    </div>
-
                     <AvatarItem />
 
                     <Menu

@@ -55,7 +55,7 @@ function Order() {
         'Packaging',
         'Delivering',
         'Completed',
-        'Cancelled'
+        'Canceled'
     ]
 
     //Functions
