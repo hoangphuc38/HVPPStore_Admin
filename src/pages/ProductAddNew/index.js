@@ -6,6 +6,7 @@ import { useState } from 'react';
 import defaultImage from '../../images/default-image.jpg';
 import productAPI from '../../api/productAPI';
 import { useNavigate } from 'react-router-dom';
+import { Helper } from '../../utils/helper';
 
 const cx = classNames.bind(styles);
 
@@ -25,7 +26,6 @@ function ProductAddNew() {
     const [name, setName] = useState('');
     const [club, setClub] = useState('');
     const [nation, setNation] = useState('');
-    const [area, setArea] = useState('');
     const [season, setSeason] = useState('');
     const [price, setPrice] = useState(0);
     const [sizeS, setSizeS] = useState(0);
@@ -60,24 +60,25 @@ function ProductAddNew() {
         }
     }
 
-    const onChangeImage = (event) => {
-        if (event.target.files && event.target.files[0]) {
+    const onChangeImage = async (event) => {
+        if (event.target.files[0] && Helper.validateFile(event.target.files[0])) {
+            const base64Image = await Helper.readAsBase64(event.target.files[0]);
             setMainImage(URL.createObjectURL(event.target.files[0]));
             console.log("link image: ", event.target.files[0].name);
             let imagesCopy = [...productImages];
             imagesCopy[index] = URL.createObjectURL(event.target.files[0]);
 
             if (index === 0) {
-                setUrlMain(event.target.files[0]);
+                setUrlMain(base64Image.substring("data:image/png;base64,".length));
             }
             else if (index === 1) {
-                setUrlSub1(event.target.files[0]);
+                setUrlSub1(base64Image.substring("data:image/png;base64,".length));
             }
             else if (index === 2) {
-                setUrlSub2(event.target.files[0]);
+                setUrlSub2(base64Image.substring("data:image/png;base64,".length));
             }
             else {
-                setUrlThumb(event.target.files[0]);
+                setUrlThumb(base64Image.substring("data:image/png;base64,".length));
             }
 
             setProductImages(imagesCopy);
@@ -189,14 +190,6 @@ function ProductAddNew() {
                         placeholder='Nếu là câu lạc bộ thì để trống'
                         onChange={(e) => setNation(e.target.value)}
                         value={nation} />
-                </div>
-
-                <div className={cx('name-product')}>
-                    <p>Khu vực</p>
-                    <input className={cx('name-input')}
-                        type="text"
-                        onChange={(e) => setArea(e.target.value)}
-                        value={area} />
                 </div>
 
                 <div className={cx('price-product')}>

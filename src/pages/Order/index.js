@@ -11,6 +11,35 @@ import orderAPI from '../../api/orderAPI';
 const cx = classNames.bind(styles);
 
 function Order() {
+    const [orderList, setOrderList] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchAPI = async () => {
+            try {
+                const response = await orderAPI.getAll();
+                console.log("Success: ", response);
+
+                let defaultList = response.sort((d1, d2) => {
+                    const statusComparision = statusOrder.indexOf(d1.status) - statusOrder.indexOf(d2.status);
+                    if (statusComparision !== 0) {
+                        return statusComparision
+                    }
+                    else {
+                        return new Date(d2.timeCreate) - new Date(d1.timeCreate);
+                    }
+                });
+                setOrderList(defaultList);
+                setLoading(false);
+
+            } catch (error) {
+                console.log("Xảy ra lỗi: ", error);
+            }
+        }
+
+        fetchAPI();
+    }, []);
+
     const optionStatusOrders = [
         'Tất cả',
         'Pending',
@@ -26,36 +55,31 @@ function Order() {
         'Packaging',
         'Delivering',
         'Completed',
-        'Cancelled'
+        'Canceled'
     ]
 
-    //set default list according to Status of Order
-
-    const [orderList, setOrderList] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchAPI = async () => {
-            try {
-                const response = await orderAPI.getAll();
-                console.log("Success: ", response);
-
-                let defaultList = response.sort((d1, d2) => statusOrder.indexOf(d1.status) - statusOrder.indexOf(d2.status));
-                setOrderList(defaultList);
-                setLoading(false);
-
-            } catch (error) {
-                console.log("Xảy ra lỗi: ", error);
-            }
-        }
-
-        fetchAPI();
-    }, []);
-
-
     //Functions
-    const sortStatusOrder = (option) => {
+    const sortStatusOrder = async (option) => {
+        if (option === 'Tất cả') {
+            const response = await orderAPI.getAll();
+            let sortList =
+                response.sort((d1, d2) => {
+                    const statusComparision = statusOrder.indexOf(d1.status) - statusOrder.indexOf(d2.status);
+                    if (statusComparision !== 0) {
+                        return statusComparision
+                    }
+                    else {
+                        return new Date(d2.timeCreate) - new Date(d1.timeCreate);
+                    }
+                });
 
+            setOrderList(sortList);
+        }
+        else {
+            const response = await orderAPI.getAll();
+            let sortList = response.filter(order => order.status === option);
+            setOrderList(sortList);
+        }
     }
 
     const formatDate = (date) => {

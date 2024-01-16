@@ -3,12 +3,14 @@ import styles from './ProductDetail.module.scss';
 import { AddImageIcon, BackIcon, BackMobileIcon, EditIcon, NextIcon, NextMobileIcon } from '../../components/Icons';
 import Button from '../../components/Button';
 import SizeButton from '../../components/SizeButton';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import EditQuantitySizeForm from '../../components/EditQuantitySizeForm';
 import { useParams } from 'react-router-dom';
 import productAPI from '../../api/productAPI';
 import defaultImage from '../../images/default-image.jpg';
 import { useNavigate } from 'react-router-dom';
+import { Helper } from '../../utils/helper';
+import { ProductContext } from '../../contexts/productContext';
 
 const cx = classNames.bind(styles);
 
@@ -16,10 +18,12 @@ function ProductDetail() {
     const params = useParams();
     const navigate = useNavigate();
 
+    const { productSizes, setProductSizes } = useContext(ProductContext);
+
     const NUM_OF_IMAGES = 4;
     const [productDetail, setProductDetail] = useState({});
     const [productImages, setProductImages] = useState([]);
-    const [productSizes, setProductSizes] = useState([]);
+
     const [mainImage, setMainImage] = useState('');
     const [index, setIndex] = useState(0);
     const [openEditDialog, setOpenEditDialog] = useState(false);
@@ -90,7 +94,7 @@ function ProductDetail() {
                         size: 'XL',
                         quantity: response.sizeXL,
                     },
-                ];
+                ]
                 setProductSizes(productSize);
 
             } catch (error) {
@@ -123,24 +127,25 @@ function ProductDetail() {
         }
     }
 
-    const onChangeImage = (event) => {
-        if (event.target.files && event.target.files[0]) {
+    const onChangeImage = async (event) => {
+        if (event.target.files[0] && Helper.validateFile(event.target.files[0])) {
+            const base64Image = await Helper.readAsBase64(event.target.files[0]);
             setMainImage(URL.createObjectURL(event.target.files[0]));
             console.log("link image: ", event.target.files[0].name);
             let imagesCopy = [...productImages];
             imagesCopy[index] = URL.createObjectURL(event.target.files[0]);
 
             if (index === 0) {
-                setUrlMain(event.target.files[0]);
+                setUrlMain(base64Image.substring("data:image/png;base64,".length));
             }
             else if (index === 1) {
-                setUrlSub1(event.target.files[0]);
+                setUrlSub1(base64Image.substring("data:image/png;base64,".length));
             }
             else if (index === 2) {
-                setUrlSub2(event.target.files[0]);
+                setUrlSub2(base64Image.substring("data:image/png;base64,".length));
             }
             else {
-                setUrlThumb(event.target.files[0]);
+                setUrlThumb(base64Image.substring("data:image/png;base64,".length));
             }
 
             setProductImages(imagesCopy);
@@ -152,6 +157,14 @@ function ProductDetail() {
     }
 
     const HandleCloseEditDialog = () => {
+        setOpenEditDialog(false);
+    }
+
+    const HandleUpdateSize = () => {
+        setSizeS(productSizes[0].quantity);
+        setSizeL(productSizes[1].quantity);
+        setSizeM(productSizes[2].quantity);
+        setSizeXL(productSizes[3].quantity);
         setOpenEditDialog(false);
     }
 
@@ -322,7 +335,9 @@ function ProductDetail() {
             {
                 openEditDialog &&
                 (
-                    <EditQuantitySizeForm closeDialog={HandleCloseEditDialog} data={productSizes} />
+                    <EditQuantitySizeForm closeDialog={HandleCloseEditDialog}
+                        data={productSizes}
+                        onSave={HandleUpdateSize} />
                 )
             }
         </div>

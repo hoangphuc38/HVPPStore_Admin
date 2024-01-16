@@ -153,26 +153,6 @@ function Message() {
           <div className={cx("message-content")}>
             {conversation.map((message) => {
               console.log("media: ", message.media);
-              {
-                /* return (
-                <div
-                  className={message.isCustomerSend ? cx("other") : cx("owner")}
-                >
-                  {message.media && message.media !== "string" && (
-                    <div className={cx("image-wrapper")}>
-                      <img
-                        src={message.media}
-                        className={cx("image")}
-                        alt="message"
-                      />
-                    </div>
-                  )}
-                  {message.content && (
-                    <div className={cx("text-wrapper")}>{message.content}</div>
-                  )}
-                </div>
-              ); */
-              }
               if (message.media && message.media !== "string") {
                 return (
                   <div

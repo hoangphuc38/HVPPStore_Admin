@@ -20,10 +20,6 @@ function Home() {
     useEffect(() => {
         const fetchAPI = async () => {
             try {
-                //const date = new Date();
-                //let month = date.getMonth() + 1;
-                //let year = date.getFullYear(); Change after having data
-
                 const response = await productAPI.getTopSelling(12, 2023);
                 console.log("Success: ", response);
                 setDataBarChart(response);

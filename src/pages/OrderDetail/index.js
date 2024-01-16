@@ -3,8 +3,10 @@ import styles from './OrderDetail.module.scss';
 import DetailProductItem from '../../components/DetailProductItem';
 import Accordion from '../../components/Accordion';
 import { useEffect, useState } from 'react';
-import { useLoaderData, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import orderAPI from '../../api/orderAPI';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotate } from '@fortawesome/free-solid-svg-icons';
 
@@ -32,6 +34,7 @@ function OrderDetail() {
 
     const param = useParams();
 
+    const [data, setData] = useState([]);
     const [statusSelectedOrder, setStatusSelectedOrder] = useState("");
     const [activeIndex, setActiveIndex] = useState(-1);
     const [orderDetail, setOrderDetail] = useState({});
@@ -53,12 +56,45 @@ function OrderDetail() {
         }
     }
 
+    const formatDate = (date) => {
+        const inputDate = new Date(date);
+
+        const year = inputDate.getUTCFullYear();
+        const month = (inputDate.getMonth() + 1).toString().padStart(2, "0");
+        const day = inputDate.getDate().toString().padStart(2, "0");
+        const time = inputDate.getHours().toString().padStart(2, "0")
+            + ':'
+            + inputDate.getMinutes().toString().padStart(2, "0");
+
+        const formattedDate = `${time} ` + `${day}/${month}/${year}`;
+        console.log("ngày gốc: ", inputDate);
+        console.log("ngày: ", day);
+        console.log("tháng: ", month);
+        console.log("năm: ", year);
+        console.log(formattedDate);
+        return formattedDate;
+    }
+
     useEffect(() => {
         const fetchAPI = async () => {
             try {
                 let orderID = parseInt(param.order_id);
                 const response = await orderAPI.getDetailOrder(orderID)
                     .then((response) => {
+                        let dataExport = [
+                            {
+                                customerName: response.order.name,
+                                customerAddress: response.order.address,
+                                customerPhone: response.order.phone,
+                                deliveryMethod: response.order.deliveryMethod,
+                                payMethod: response.order.payMethod,
+                                timeCreate: formatDate(response.order.timeCreate),
+                                productName: response.products[0].product.name,
+                                productSize: response.products[0].size,
+                                productValue: response.products[0].quantity,
+                            }
+                        ]
+                        setData(dataExport);
                         setOrderDetail(response.order);
                         setProductInfo(response.products);
                         setStatusSelectedOrder(response.order.status);
@@ -80,6 +116,14 @@ function OrderDetail() {
         console.log("Param: ", param);
     }, [])
 
+    const HandleExportFile = () => {
+        const worksheet = XLSX.utils.json_to_sheet(data);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+        const excelBuffer = XLSX.write(workbook, { type: 'array', bookType: 'xlsx' });
+        saveAs(new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }), 'importInfo.xlsx');
+    }
+
     const HandleChangeStatus = async () => {
         let orderID = parseInt(param.order_id);
         if (activeIndex < 4) {
@@ -87,6 +131,7 @@ function OrderDetail() {
             setStatusSelectedOrder(STATUS_ORDER[activeIndex].status);
             return await orderAPI.updateStatusOrder(orderID)
                 .then(() => {
+                    HandleExportFile();
                     alert("Cập nhật trạng thái đơn hàng thành công")
                 })
                 .catch((error) => console.log(error));
