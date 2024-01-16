@@ -1,37 +1,43 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from './Warehouse.module.scss';
 import classNames from "classnames/bind";
 import Button from "../../components/Button";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRotate } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faRotate } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
-import WareHouseSearchBar from "../../components/SearchBar/WareHouseSearchBar";
+import ProductSearchBar from "../../components/SearchBar/ProductSearchBar";
 import WareHouseForm from "../../components/WareHouseForm";
+import productAPI from "../../api/productAPI";
+import { ProductContext } from "../../contexts/productContext";
 
 const cx = classNames.bind(styles);
 
 function WareHouse() {
-    const importInfo = [
-        {
-            id: 1,
-            nameProduct: 'Real Madrid',
-            available: 4,
-            unit: 'áo',
-            note: '',
-        },
-        {
-            id: 2,
-            nameProduct: 'Liverpool',
-            available: 4,
-            unit: 'áo',
-            note: '',
-        },
-    ]
+
+    const { products, setProducts } = useContext(ProductContext);
 
     const [loading, setLoading] = useState(false);
     const [openDialog, setOpenDialog] = useState(false);
+    const [selectProduct, setSelectProduct] = useState({ id: '', name: '' });
 
-    const HandleOpenDialog = () => {
+    useEffect(() => {
+        const fetchAPI = async () => {
+            try {
+                const response = await productAPI.getImportList();
+                console.log("Success: ", response);
+                setProducts(response);
+
+            } catch (error) {
+                console.log("Xảy ra lỗi: ", error);
+            }
+        }
+
+        fetchAPI();
+    }, [])
+
+    const HandleOpenDialog = (val) => {
+        console.log("sản phẩm: ", val);
+        setSelectProduct({ id: val.id, name: val.name });
         setOpenDialog(true);
     }
 
@@ -42,13 +48,10 @@ function WareHouse() {
     return (
         <div className={cx('container')}>
             <div className={cx('search-and-buttons')}>
-                <WareHouseSearchBar placeholder="Tìm kiếm phiếu nhập theo tên sản phẩm" />
+                <ProductSearchBar placeholder="Tìm kiếm phiếu nhập theo tên sản phẩm" />
                 <div className={cx('buttons')}>
                     <Button primary
                         className={cx('export-btn')}>Xuất file</Button>
-                    <Button primary
-                        className={cx('new-import')}
-                        onClick={HandleOpenDialog}>Phiếu nhập mới</Button>
                 </div>
             </div>
 
@@ -66,15 +69,20 @@ function WareHouse() {
                             :
                             <div className={cx('detail-infos')}>
                                 {
-                                    importInfo.map((val, key) => {
+                                    products.map((val, key) => {
                                         return (
                                             <div className={cx('info-wrapper')}>
                                                 <Link className={cx('info')} to={`/warehouse/${val.id}`}>
-                                                    <span className={cx('id')}>{val.nameProduct}</span>
-                                                    <span className={cx('name')}>{val.available}</span>
-                                                    <span className={cx('time')}>{val.unit}</span>
-                                                    <span className={cx('value')}>{val.note !== '' ? val.available : 'trống'}</span>
+                                                    <span className={cx('id')}>{val.name}</span>
+                                                    <span className={cx('name')}>{val.sizeS + val.sizeL + val.sizeM + val.sizeXL}</span>
+                                                    <span className={cx('time')}>áo</span>
+                                                    <span className={cx('value')}>trống</span>
                                                 </Link>
+                                                <button primary
+                                                    className={cx('new-import')}
+                                                    onClick={() => HandleOpenDialog(val)}>
+                                                    <FontAwesomeIcon icon={faPlus} />
+                                                </button>
                                             </div>
 
                                         )
@@ -91,7 +99,7 @@ function WareHouse() {
             {
                 openDialog &&
                 (
-                    <WareHouseForm closeDialog={HandleCloseDialog} />
+                    <WareHouseForm closeDialog={HandleCloseDialog} data={selectProduct} />
                 )
             }
         </div>

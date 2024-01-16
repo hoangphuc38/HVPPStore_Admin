@@ -2,42 +2,37 @@ import classNames from "classnames/bind";
 import styles from './WareHouseDetail.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotate } from '@fortawesome/free-solid-svg-icons';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import WareHouseDetailForm from "../../components/WareHouseDetailForm";
+import productAPI from "../../api/productAPI";
+import { useParams } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
 function WareHouseDetail() {
-    const importInfo = [
-        {
-            quantity: 7,
-            sizeS: 1,
-            sizeL: 2,
-            sizeM: 3,
-            sizeXL: 1,
-            unit: 'áo',
-            price: 3000000,
-            importFrom: 'Sport Center',
-            contact: '0123456789',
-            importDate: '25/06/2023',
-        },
-        {
-            quantity: 7,
-            sizeS: 1,
-            sizeL: 2,
-            sizeM: 3,
-            sizeXL: 1,
-            unit: 'áo',
-            price: 3000000,
-            importFrom: 'Sport Center',
-            contact: '0123456789',
-            importDate: '25/06/2023',
-        },
-    ]
+    const param = useParams();
+    console.log("param: ", param);
 
     const [openDialog, setOpenDialog] = useState(false);
     const [loading, setLoading] = useState(false);
     const [detailInfo, setDetailInfo] = useState({});
+    const [importInfo, setImportInfo] = useState([]);
+
+    useEffect(() => {
+        const fetchAPI = async () => {
+            try {
+                let productID = param.id;
+                const response = await productAPI.getDetailImport(productID)
+                console.log("Success: ", response);
+                setImportInfo(response);
+
+            } catch (error) {
+                console.log("Xảy ra lỗi: ", error);
+            }
+        }
+
+        fetchAPI();
+    }, [])
 
     const HandleOpenDialog = (result) => {
         setDetailInfo(result)
@@ -48,11 +43,30 @@ function WareHouseDetail() {
         setOpenDialog(false);
     }
 
+    const formatDate = (date) => {
+        const inputDate = new Date(date);
+
+        const year = inputDate.getUTCFullYear();
+        const month = (inputDate.getMonth() + 1).toString().padStart(2, "0");
+        const day = inputDate.getDate().toString().padStart(2, "0");
+        const time = inputDate.getHours().toString().padStart(2, "0")
+            + ':'
+            + inputDate.getMinutes().toString().padStart(2, "0");
+
+        const formattedDate = `${time} ` + `${day}/${month}/${year}`;
+        console.log("ngày gốc: ", inputDate);
+        console.log("ngày: ", day);
+        console.log("tháng: ", month);
+        console.log("năm: ", year);
+        console.log(formattedDate);
+        return formattedDate;
+    }
+
     return (
         <div className={cx('container')}>
             <div className={cx('title')}>
                 <span>CHI TIẾT NHẬP KHO:</span>
-                <span className={cx('name-product')}>Real Madrid</span>
+                <span className={cx('name-product')}>{importInfo.name}</span>
             </div>
 
             <div className={cx('import-table-wrapper')}>
@@ -72,10 +86,10 @@ function WareHouseDetail() {
                                     importInfo.map((val, key) => {
                                         return (
                                             <div className={cx('info-wrapper')} onClick={() => HandleOpenDialog(val)}>
-                                                <span className={cx('id')}>{val.quantity}</span>
-                                                <span className={cx('name')}>{val.unit}</span>
+                                                <span className={cx('id')}>{val.sizeS + val.sizeM + val.sizeL + val.sizeXL}</span>
+                                                <span className={cx('name')}>áo</span>
                                                 <span className={cx('time')}>{val.price}</span>
-                                                <span className={cx('value')}>{val.importDate}</span>
+                                                <span className={cx('value')}>{formatDate(val.dateIn)}</span>
                                             </div>
 
                                         )
