@@ -47,8 +47,8 @@ function Product() {
             try {
                 const params = { page: 1, productPerPage: 5 }
                 const response = await productAPI.getAll(params);
-                console.log("Success: ", response.value);
-                setProducts(response.value);
+                console.log("Success: ", response.value ? response.value : response);
+                setProducts(response.value ? response.value : response);
                 setLoading(false);
 
             } catch (error) {
@@ -68,7 +68,7 @@ function Product() {
             const params = { page: event.selected + 1, productPerPage: 5 }
             const response = await productAPI.getAll(params);
             console.log("Success: ", response);
-            setProducts(response.value);
+            setProducts(response.value ? response.value : response);
             setLoading(false);
 
         } catch (error) {
@@ -82,7 +82,7 @@ function Product() {
         return await productAPI.deleteProduct(product.id)
             .then(() => {
                 productAPI.getAll(params).then((res) => {
-                    setProducts(res.value);
+                    setProducts(res.value ? res.value : res);
                 })
             })
             .catch((error) => console.log(error));
@@ -98,7 +98,7 @@ function Product() {
             productAPI.deleteProduct(productID);
         })
         productAPI.getAll(params).then((res) => {
-            setProducts(res.value);
+            setProducts(res.value ? res.value : res);
         })
     }
 
@@ -108,7 +108,7 @@ function Product() {
         if (option === "Sản phẩm bán chạy nhất") {
             return await productAPI.getDescendingSaleList()
                 .then((res) => {
-                    setProducts(res.value);
+                    setProducts(res.value ? res.value : res);
                     console.log("List:", res)
                 })
                 .catch((error) => console.log(error));
@@ -117,7 +117,7 @@ function Product() {
         else if (option === "Sản phẩm bán ít nhất") {
             return await productAPI.getAscendingSaleList()
                 .then((res) => {
-                    setProducts(res.value);
+                    setProducts(res.value ? res.value : res);
                     console.log("List: ", res);
                 })
                 .catch((error) => console.log(error));
@@ -127,7 +127,7 @@ function Product() {
             const params = { page: 1, productPerPage: 5 }
             return await productAPI.getAll(params)
                 .then((res) => {
-                    setProducts(res.value);
+                    setProducts(res.value ? res.value : res);
                 })
                 .catch((error) => console.log(error));
         }
@@ -137,7 +137,7 @@ function Product() {
         if (option !== 'Tất cả') {
             return await productAPI.getByClub(option)
                 .then((res) => {
-                    setProducts(res.value);
+                    setProducts(res.value ? res.value : res);
                     console.log("List:", res)
                 })
                 .catch((error) => console.log(error));
@@ -146,7 +146,7 @@ function Product() {
             const params = { page: 1, productPerPage: 5 }
             return await productAPI.getAll(params)
                 .then((res) => {
-                    setProducts(res.value);
+                    setProducts(res.value ? res.value : res);
                 })
                 .catch((error) => console.log(error));
         }
@@ -156,7 +156,7 @@ function Product() {
         if (option !== 'Tất cả') {
             return await productAPI.getBySeason(option)
                 .then((res) => {
-                    setProducts(res.value);
+                    setProducts(res.value ? res.value : res);
                     console.log("List:", res)
                 })
                 .catch((error) => console.log(error));
@@ -165,7 +165,7 @@ function Product() {
             const params = { page: 1, productPerPage: 5 }
             return await productAPI.getAll(params)
                 .then((res) => {
-                    setProducts(res.value);
+                    setProducts(res.value ? res.value : res);
                 })
                 .catch((error) => console.log(error));
         }
