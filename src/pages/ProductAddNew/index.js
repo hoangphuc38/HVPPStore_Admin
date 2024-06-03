@@ -78,14 +78,26 @@ function ProductAddNew() {
       let imagesCopy = [...productImages];
       imagesCopy[index] = URL.createObjectURL(event.target.files[0]);
 
+      const regex = /^data:image\/(png|jpeg|gif|bmp|webp);base64,/;
+      const matches = base64Image.match(regex);
+
+      if (!matches) {
+        console.log("Unsupported image format");
+        return;
+      }
+
+      // Extract the prefix length dynamically
+      const prefixLength = matches[0].length;
+      const imageData = base64Image.substring(prefixLength);
+
       if (index === 0) {
-        setUrlMain(base64Image.substring("data:image/png;base64,".length));
+        setUrlMain(imageData);
       } else if (index === 1) {
-        setUrlSub1(base64Image.substring("data:image/png;base64,".length));
+        setUrlSub1(imageData);
       } else if (index === 2) {
-        setUrlSub2(base64Image.substring("data:image/png;base64,".length));
+        setUrlSub2(imageData);
       } else {
-        setUrlThumb(base64Image.substring("data:image/png;base64,".length));
+        setUrlThumb(imageData);
       }
 
       setProductImages(imagesCopy);

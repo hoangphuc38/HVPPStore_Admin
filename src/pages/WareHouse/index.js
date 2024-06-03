@@ -62,7 +62,7 @@ function WareHouse() {
             <FontAwesomeIcon icon={faRotate} spin />
           ) : (
             <div className={cx("detail-infos")}>
-              {products.map((val, key) => {
+              {products && products.length > 0 && products.map((val, key) => {
                 return (
                   <div className={cx("info-wrapper")}>
                     <Link className={cx("info")} to={`/warehouse/${val.id}`}>

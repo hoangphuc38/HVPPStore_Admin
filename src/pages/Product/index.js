@@ -34,11 +34,12 @@ function Product() {
     const defaultOptionClothes = 'Chung';
     const defaultOptionSeasons = 'Mùa giải';
 
-    const { products, setProducts } = useContext(ProductContext);
+    // const { products, setProducts } = useContext(ProductContext);
     const [currentPage, setCurrentPage] = useState(1);
     const [removeItems, setRemoveItems] = useState([]);
     const [sortOption, setSortOption] = useState("Lọc sản phẩm");
     const [loading, setLoading] = useState(true);
+    const [products, setProducts] = useState([]);
 
     //fetch API
     useEffect(() => {
@@ -46,8 +47,8 @@ function Product() {
             try {
                 const params = { page: 1, productPerPage: 5 }
                 const response = await productAPI.getAll(params);
-                console.log("Success: ", response);
-                setProducts(response);
+                console.log("Success: ", response.value);
+                setProducts(response.value);
                 setLoading(false);
 
             } catch (error) {
@@ -67,7 +68,7 @@ function Product() {
             const params = { page: event.selected + 1, productPerPage: 5 }
             const response = await productAPI.getAll(params);
             console.log("Success: ", response);
-            setProducts(response);
+            setProducts(response.value);
             setLoading(false);
 
         } catch (error) {
@@ -81,7 +82,7 @@ function Product() {
         return await productAPI.deleteProduct(product.id)
             .then(() => {
                 productAPI.getAll(params).then((res) => {
-                    setProducts(res);
+                    setProducts(res.value);
                 })
             })
             .catch((error) => console.log(error));
@@ -97,7 +98,7 @@ function Product() {
             productAPI.deleteProduct(productID);
         })
         productAPI.getAll(params).then((res) => {
-            setProducts(res);
+            setProducts(res.value);
         })
     }
 
@@ -107,7 +108,7 @@ function Product() {
         if (option === "Sản phẩm bán chạy nhất") {
             return await productAPI.getDescendingSaleList()
                 .then((res) => {
-                    setProducts(res);
+                    setProducts(res.value);
                     console.log("List:", res)
                 })
                 .catch((error) => console.log(error));
@@ -116,7 +117,7 @@ function Product() {
         else if (option === "Sản phẩm bán ít nhất") {
             return await productAPI.getAscendingSaleList()
                 .then((res) => {
-                    setProducts(res);
+                    setProducts(res.value);
                     console.log("List: ", res);
                 })
                 .catch((error) => console.log(error));
@@ -126,7 +127,7 @@ function Product() {
             const params = { page: 1, productPerPage: 5 }
             return await productAPI.getAll(params)
                 .then((res) => {
-                    setProducts(res);
+                    setProducts(res.value);
                 })
                 .catch((error) => console.log(error));
         }
@@ -136,7 +137,7 @@ function Product() {
         if (option !== 'Tất cả') {
             return await productAPI.getByClub(option)
                 .then((res) => {
-                    setProducts(res);
+                    setProducts(res.value);
                     console.log("List:", res)
                 })
                 .catch((error) => console.log(error));
@@ -145,7 +146,7 @@ function Product() {
             const params = { page: 1, productPerPage: 5 }
             return await productAPI.getAll(params)
                 .then((res) => {
-                    setProducts(res);
+                    setProducts(res.value);
                 })
                 .catch((error) => console.log(error));
         }
@@ -155,7 +156,7 @@ function Product() {
         if (option !== 'Tất cả') {
             return await productAPI.getBySeason(option)
                 .then((res) => {
-                    setProducts(res);
+                    setProducts(res.value);
                     console.log("List:", res)
                 })
                 .catch((error) => console.log(error));
@@ -164,7 +165,7 @@ function Product() {
             const params = { page: 1, productPerPage: 5 }
             return await productAPI.getAll(params)
                 .then((res) => {
-                    setProducts(res);
+                    setProducts(res.value);
                 })
                 .catch((error) => console.log(error));
         }
@@ -228,7 +229,7 @@ function Product() {
                     {loading ? <FontAwesomeIcon icon={faRotate} spin />
                         : <div className={cx('table-content')}>
                             {
-                                products.length > 0 &&
+                                products && products.length > 0 &&
                                 products.map((product) => {
                                     return (
                                         <ProductItem key={product.id}

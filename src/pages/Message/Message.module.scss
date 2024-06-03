@@ -147,6 +147,12 @@
           border-radius: 18px 18px 0px 18px;
           color: white;
         }
+
+        .all-content {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
       }
 
       .other {
@@ -172,6 +178,31 @@
           flex-wrap: wrap;
           padding: 8px 12px;
           border-radius: 18px 18px 18px 0px;
+        }
+
+        .all-content {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+
+          .image-wrapper {
+            display: flex;
+            border: 1px solid #d9d9d9;
+            border-radius: 20px;
+            max-width: 280px;
+            max-height: 280px;
+            min-width: fit-content;
+            min-height: fit-content;
+            justify-content: center;
+  
+            .image {
+              max-width: 280px;
+              max-height: 280px;
+              min-width: fit-content;
+              min-height: fit-content;
+              object-fit: cover;
+            }
+          }
         }
       }
     }

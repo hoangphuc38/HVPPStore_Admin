@@ -78,7 +78,7 @@ function Message() {
         });
       // connection.invoke('Connect', user.id)
     }
-  }, [connection]);
+  }, []);
 
   const showMessage = async (user) => {
     setIsShow(true);
@@ -151,9 +151,32 @@ function Message() {
             </div>
           </div>
           <div className={cx("message-content")}>
-            {conversation.map((message) => {
+            {conversation.map((message, index) => {
               console.log("media: ", message.media);
-              if (message.media && message.media !== "string") {
+              if (message.media && message.media !== "string" && message.content) {
+                return (
+                  <div
+                    key={index}
+                    className={
+                      message.isCustomerSend ? cx("other") : cx("owner")
+                    }
+                  >
+                    <div className={cx("all-content")}>
+                    <div className={cx("image-wrapper")}>
+                      <img
+                        src={message.media}
+                        className={cx("image")}
+                        alt="message"
+                      />
+                    </div>
+                    <div className={cx("text-wrapper")}>{message.content}</div>
+                    </div>                
+                  </div>
+      
+                )
+                
+              }
+              else if (message.media && message.media !== "string") {
                 return (
                   <div
                     className={
@@ -179,7 +202,7 @@ function Message() {
                     <div className={cx("text-wrapper")}>{message.content}</div>
                   </div>
                 );
-              }
+              }             
             })}
             <div ref={messageEndRef}></div>
           </div>
